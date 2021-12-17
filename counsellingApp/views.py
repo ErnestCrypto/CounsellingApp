@@ -4,5 +4,11 @@ from django.shortcuts import render
 
 
 def homePage(request):
-    context = {}
-    return render(request, 'app/home.html', {})
+
+    profile = 'app/profile.html'
+    notification = 'app/notification.html'
+    index = 'app/index.html'
+    return render(request, 'app/home.html', {'profile': profile,
+                                             'notification': notification,
+                                             'index': index,
+                                             })
