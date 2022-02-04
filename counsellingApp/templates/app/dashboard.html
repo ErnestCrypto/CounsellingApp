@@ -1,0 +1,657 @@
+{% include 'app/header.html' %} {% load static%}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+{% block body %}{% endblock %}
+
+<body>
+  <section id="section6">
+    <div id="section6container3">
+      <div class="container text-left">
+        <h6 style="font-size: 20px">My dashboard</h6>
+      </div>
+      <br />
+
+      <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container-fluid bg-3 text-left">
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                {{counsellor.profile}} {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+                <label for="usr">Profile Pic</label>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="form-group">
+                {% comment %}
+                <select
+                  name="sub"
+                  class="form-control"
+                  style="height: 50%"
+                  required
+                >
+                  <option></option>
+                  <option>Mr.</option>
+                  <option>Mrs.</option>
+                  <option>Dr.</option>
+                  <option>Prof.</option>
+                </select>
+                {% endcomment %} {{counsellor.title}}
+                <label for="usr"> Title </label>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                {{counsellor.firstName}} {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+                <label for="usr">First Name</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                {{counsellor.lastName}} {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+                <label for="usr">Last Name</label>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                {% comment %}
+                <input type="text" class="form-control" required /> {%
+                endcomment %} {{counsellor.lastName}}
+                <label for="usr">Last Name</label>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                {% comment %}
+                <select
+                  name="sub"
+                  class="form-control"
+                  style="height: 50%"
+                  required
+                >
+                  <option></option>
+                  <option value="DS">Male</option>
+                  <option value="Algo">Female</option>
+                </select>
+                {% endcomment %} {{counsellor.gender}}
+                <label for="usr">Gender</label>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %} {{counsellor.email}}
+                <label for="usr">Email</label>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %} {{counsellor.contact}}
+                <label for="usr">Contact</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!---->
+        <!---->
+
+        <div class="container-fluid bg-3 text-left">
+          <h6 style="font-size: 20px">About</h6>
+          <hr style="margin: 0%" />
+          <br />
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-groups">
+                {{ counsellor.about}} {% comment %}
+                <textarea
+                  type="text"
+                  class="form-control"
+                  id="usr"
+                  style="height: 200px"
+                  required
+                ></textarea>
+                {% endcomment %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <!---->
+        <div class="container-fluid bg-3 text-left">
+          <h6 style="font-size: 20px">Availability</h6>
+          <hr style="margin: 0%" />
+          <br />
+          <br />
+          <div class="row">
+            <div class="input-group control-group after-add-first">
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ availability.date }} {% comment %}
+                  <input type="date" class="form-control" /> {% endcomment %}
+                  <label for="usr">Day</label>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ availability.start_time }} {% comment %}
+                  <input type="time" class="form-control" /> {% endcomment %}
+                  <label for="usr">Start Time</label>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ availability.end_time }} {% comment %}
+                  <input type="time" class="form-control" /> {% endcomment %}
+                  <label for="usr">End Time</label>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <button
+                  style="font-size: 20px"
+                  class="btn btn-success add-first"
+                  type="button"
+                >
+                  <i class="glyphicon glyphicon-plus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="myfirst hide">
+              <div id="rmfirst" style="width: 100%">
+                <div class="col-sm-3">
+                  <div
+                    class="control-group input-group"
+                    style="margin-bottom: 20px"
+                  >
+                    {% comment %} {{ availability.date }}
+                    <input type="date" class="form-control" /> {% endcomment %}
+                    <label for="usr">Day</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div
+                    class="control-group input-group"
+                    style="margin-bottom: 20px"
+                  >
+                    {% comment %} {{ availability.start_time }}
+                    <input type="time" class="form-control" /> {% endcomment %}
+                    <label for="usr">Start Time</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div
+                    class="control-group input-group"
+                    style="margin-bottom: 20px"
+                  >
+                    {% comment %} {{ availability.end_time }}
+                    <input type="time" class="form-control" /> {% endcomment %}
+                    <label for="usr">End Time</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-1">
+                  <button
+                    style="font-size: 20px"
+                    class="btn btn-danger remove"
+                    type="button"
+                  >
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---->
+
+        <div class="container-fluid bg-3 text-left">
+          <h6 style="font-size: 20px">Experience</h6>
+          <hr style="margin: 0%" />
+          <br />
+          <br />
+          <div class="row">
+            <div class="input-group control-group after-add-last">
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ education.education_institution }}
+                  <!---->{% comment %}
+                  <input type="text" class="form-control" /> {% endcomment %}
+                  <label for="usr">Institution</label>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ education.year_completed }} {% comment %}
+                  <input type="text" class="form-control" /> {% endcomment %}
+                  <label for="usr">Position</label>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <button
+                  style="font-size: 20px"
+                  class="btn btn-success add-last"
+                  type="button"
+                >
+                  <i class="glyphicon glyphicon-plus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="mylast hide">
+              <div id="rmlast">
+                <div class="col-sm-5">
+                  <div
+                    class="control-group input-group"
+                    style="margin-bottom: 20px"
+                  >
+                    {% comment %} {{ experience.experience_institution }}
+                    <!---->
+                    <input type="text" class="form-control" /> {% endcomment %}
+                    <label for="usr">Institution</label>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div
+                    class="control-group input-group"
+                    style="margin-bottom: 20px"
+                  >
+                    {% comment %} {{ experience.experience_position }}
+                    <input type="text" class="form-control" /> {% endcomment %}
+                    <label for="usr">Position</label>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <button
+                    style="font-size: 20px"
+                    class="btn btn-danger remove"
+                    type="button"
+                  >
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---->
+        <!---->
+        <div class="container-fluid bg-3 text-left">
+          <h6 style="font-size: 20px">Education</h6>
+          <hr style="margin: 0%" />
+          <br />
+          <br />
+          <div class="row">
+            <div class="input-group control-group after-add-much">
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ education.education_institution }}
+                  <!---->{% comment %}
+                  <input type="text" class="form-control" /> {% endcomment %}
+                  <label for="usr">Institution</label>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ education.year_completed }} {% comment %}
+                  <input type="text" class="form-control" /> {% endcomment %}
+                  <label for="usr">Year completed</label>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <button
+                  style="font-size: 20px"
+                  class="btn btn-success add-much"
+                  type="button"
+                >
+                  <i class="glyphicon glyphicon-plus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="mycopy hide">
+              <div id="rm">
+                <div class="col-sm-5">
+                  <div
+                    class="control-group input-group"
+                    style="margin-bottom: 20px"
+                  >
+                    {% comment %} {{ education.education_institution }}
+                    <!---->
+                    <input type="text" class="form-control" /> {% endcomment %}
+                    <label for="usr">Institution</label>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div
+                    class="control-group input-group"
+                    style="margin-bottom: 20px"
+                  >
+                    {% comment %} {{ education.year_completed }}
+                    <input type="text" class="form-control" /> {% endcomment %}
+                    <label for="usr">Year completed</label>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <button
+                    style="font-size: 20px"
+                    class="btn btn-danger remove"
+                    type="button"
+                  >
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---->
+        <!---->
+        <div class="container-fluid bg-3 text-left">
+          <h6 style="font-size: 20px">Achievements</h6>
+          <hr style="margin: 0%" />
+          <br />
+
+          <div class="row">
+            <div class="input-group control-group after-add-more">
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ achievement.awards }} {% comment %}
+                  <input
+                    name="addmore[]"
+                    id="ContactNo"
+                    type="text"
+                    class="form-control"
+                  />
+                  {% endcomment %}
+                  <div class="input-group-btn">
+                    <button
+                      style="font-size: 20px"
+                      class="btn btn-success add-more"
+                      type="button"
+                    >
+                      <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="copy hide">
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {% comment %} {{ achievement.awards }}
+                  <input type="text" name="addmore[]" class="form-control" />
+                  {% endcomment %}
+                  <div class="input-group-btn">
+                    <button
+                      style="font-size: 20px"
+                      class="btn btn-danger remove"
+                      type="button"
+                    >
+                      <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---->
+
+        <!---->
+        <div class="container-fluid bg-3 text-left">
+          <h6 style="font-size: 20px">Therapies Offered</h6>
+          <hr style="margin: 0%" />
+          <br />
+
+          <div class="row">
+            <div class="input-group control-group after-add-plus">
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ therapy.therapies_offered }} {% comment %}
+                  <input
+                    name="addmore[]"
+                    id="ContactNo"
+                    type="text"
+                    class="form-control"
+                  />
+                  {% endcomment %}
+                  <div class="input-group-btn">
+                    <button
+                      style="font-size: 20px"
+                      class="btn btn-success add-plus"
+                      type="button"
+                    >
+                      <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cop hide">
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {% comment %} {{ therapy.therapies_offered }}
+                  <input type="text" name="addmore[]" class="form-control" />
+                  {% endcomment %}
+                  <div class="input-group-btn">
+                    <button
+                      style="font-size: 20px"
+                      class="btn btn-danger remove"
+                      type="button"
+                    >
+                      <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---->
+
+        <!---->
+        <div class="container-fluid bg-3 text-left">
+          <h6 style="font-size: 20px">Top Specialities</h6>
+          <hr style="margin: 0%" />
+          <br />
+
+          <div class="row">
+            <div class="input-group control-group after-add-some">
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ specialities.top_specialities }}
+                  <!---->{% comment %}
+                  <input
+                    name="addmore[]"
+                    id="ContactNo"
+                    type="text"
+                    class="form-control"
+                  />
+                  {% endcomment %}
+                  <div class="input-group-btn">
+                    <button
+                      style="font-size: 20px"
+                      class="btn btn-success add-some"
+                      type="button"
+                    >
+                      <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="copies hide">
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {% comment %} {{ specialities.top_specialities }}
+                  <!---->
+
+                  <input type="text" name="addmore[]" class="form-control" />
+                  {% endcomment %}
+                  <div class="input-group-btn">
+                    <button
+                      style="font-size: 20px"
+                      class="btn btn-danger remove"
+                      type="button"
+                    >
+                      <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---->
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        {% comment %} {% if messages %}{% for message in messages %}
+        <div class="alert" alert-{{message.tags}}>{{ message}}</div>
+        {% endfor %}{% endif %} {% endcomment %}
+      </form>
+    </div>
+  </section>
+
+  <script>
+    $(document).ready(function () {
+      $(".add-more").click(function () {
+        var html = $(".copy").html();
+        $(".after-add-more").after(html);
+      });
+      $("body").on("click", ".remove", function () {
+        $(this).parents(".control-group").remove();
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $(".add-plus").click(function () {
+        var html = $(".cop").html();
+        $(".after-add-plus").after(html);
+      });
+      $("body").on("click", ".remove", function () {
+        $(this).parents(".control-group").remove();
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $(".add-some").click(function () {
+        var html = $(".copies").html();
+        $(".after-add-some").after(html);
+      });
+      $("body").on("click", ".remove", function () {
+        $(this).parents(".control-group").remove();
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $(".add-much").click(function () {
+        var html = $(".mycopy").html();
+        $(".after-add-much").after(html);
+      });
+      $("body").on("click", ".remove", function () {
+        $(this).parents("#rm").remove();
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $(".add-last").click(function () {
+        var html = $(".mylast").html();
+        $(".after-add-last").after(html);
+      });
+      $("body").on("click", ".remove", function () {
+        $(this).parents("#rmlast").remove();
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $(".add-first").click(function () {
+        var html = $(".myfirst").html();
+        $(".after-add-first").after(html);
+      });
+      $("body").on("click", ".remove", function () {
+        $(this).parents("#rmfirst").remove();
+      });
+    });
+  </script>
+</body>

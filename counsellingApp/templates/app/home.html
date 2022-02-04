@@ -1,143 +1,126 @@
-{% include 'app/styles.html'%}
-  
+
+ {% include 'app/index.html' %} {% include 'app/profile.html' %} {% include 'app/notification.html' %}
+ {% include 'app/admin.html' %} {% include 'app/header.html' %}
+
+
 {% load static%}
 
 
-<!DOCTYPE html>
-<html>
 
-  <head>
-          <meta charset="utf-8" />
-          
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="./css/main.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</head>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
-  </head>
-
+  {% block body %}
   
 <body ng-app="counsellingApp">
     
     <div id="sectionContainer">
       
-    <section id="section1">
-        <div id="tabIcons">     
-<p id="indexPage"><i class="fa fa-home" aria-hidden="true"  id="elementID" type="submit" method="GET"></i></p>  
-<p id="notificationPage"><i class="fa fa-bell" aria-hidden="true" id="elementID" type="submit" method="GET"></i></p>
-<p id="profilePage"><i class="fa fa-user" aria-hidden="true" id="elementID" type="submit" method="GET"></i></p>
-</div>
-    <p  class="openbtn" onclick="openNav()"> <i class="fas fa-bars" id="collapse" ></i></p>
-    </section>
-
-
-    <section id="section2" > 
-<div id="section2div">
-      <div>
-        <div id="imgfield1">
-       <p>
-         {% load static %} <img id="logo1" src="{% static "media/University_of_Ghana-removebg-preview.png" %}" alt="home" />
-       </p>
- <div id="time">     
+    <section id="section1" >
+ <ul class="bubble-boxes">
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+      <div id="picContainier" >
+        <center>
+        
+         <img id="logo1" src="{% static "media/University.png" %}" 
+         alt="home" />
+        <div id="time">     
          <p style="margin:0">UG GUIDANCE &</p>
-         <center><p style="margin:0"> COUNSELLING APP</p> </center>
+         <center><p style="margin:0"> COUNSELLING </p> </center>
          </div>
-    <center><a href="javascript:void(0)" class="closebtn" onclick="closeNav()" id="none"><i class="fa fa-times" aria-hidden="true"  style="padding:2%;"></i>
-</a></center>
+        </center>
+      
+      </div>
 
 
-            </div>
 
-    <div id="imgfield2">
-        <p id="filter1">Your Preferances</p>
-        <p style="color: rgba(0,0,0,0.1); font-size: 10px;">6 filters aplied -<a href="#"  style="color:blue; font-weight: bold;opacity:0.7;"> Reset All</a></p>
+        <div id="tabIcons">   
+<p id="admin"><i class="fas fa-user-shield"  aria-hidden="true" id="elementID" type="submit" method="GET"> Dashboard</i></p>
+<p id="indexPage"><i class="fa fa-home" aria-hidden="true"  id="elementID" type="submit" method="GET"> Home</i></p>  
+<p id="notificationPage"><i class="fa fa-bell" aria-hidden="true" id="elementID" type="submit" method="GET"> Notifications</i></p>
+<p id="profilePage"><i class="fa fa-user" aria-hidden="true" id="elementID" type="submit" method="GET"> Profile</i></p>
+<a href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"><i class="fas fa-map-marker-alt" aria-hidden="true" id="elementID" type="submit" method="GET"> UG MAP</i></a>
 
-    </div>
-   
-<div style="padding-bottom:9%;">
-
-    <div class="dropdown" >
-  <p class="dropbtn">I want some help with...
-</p> 
-  <div class="dropdown-content">
-  <a href="#">Anxiety</a>
-<a href="#">Depression </a>
- <a href="#">Anger</a>
-  </div>
-</div>
-     <i class="fas fa-caret-down" id="awesome" style="padding-top:3%;"></i>
-</div>
-
-<div>
-    <p style="font-size: 10px;opacity: 0.7;font-weight:bold; ">Location
-   <i class="fas fa-caret-down" id="awesome"style="padding-top:1%;"></i></p> 
-   <div>
-     <i class="fas fa-location-arrow" style="opacity:0.4;"></i>
-  <input  type="text" placeholder= "Your Location"/>
-</div>
-     <hr id="new2">   
-
-</div>
-   
-<div style="padding-top:20%;">
-<div class="dropdown" >
-  <p class="dropbtn" >How</p>
-
-  <div class="dropdown-content">
-  <a href="#"><i class="fas fa-video" style="color:blue;padding-right:10%;"></i>Video Call</a>
-<a href="#"><i class="fas fa-user-friends" style="color:blue;padding-right:10%;"></i>In Person </a>
- <a href="#"><i class="far fa-comment-dots" style="color:blue;padding-right:10%;"></i></i>Live Chat</a>
-  </div>
-</div>
-<i class="fas fa-caret-down" id="awesome" style="padding-top:5%;"></i>
-</div>
-</div>
-</div>
-    </section>
-  
+</div> 
+    <p  class="openbtn" onclick="openNav()"> <i class="fas fa-bars" id="collapse" ></i></p>
  
 
+ 
+ 
+ 
+ 
+ 
+  </section>
+
+
 <!--section 3-->
-  {% include notification %}
-  {% include index %}
-  {% include profile %}
+   
 
-
+   
+    
 
   <script>
     document.getElementById("profilePage").addEventListener("click", myFunction1)
     document.getElementById("notificationPage").addEventListener("click", myFunction2)
     document.getElementById("indexPage").addEventListener("click", myFunction3)
+    document.getElementById("admin").addEventListener("click", myFunction4)
 
     function myFunction1(){
-  document.getElementById("section3").style.display = "block";
   document.getElementById("section4").style.display = "none";
+    document.getElementById("footer6").style.display = "none";
+
   document.getElementById("section5").style.display = "none";
+  document.getElementById("section3").style.display = "block";
+  document.getElementById("section6").style.display = "none";
+      document.getElementById("section6container1").style.display = "none";
+      document.getElementById("section6container2").style.display = "none";
+      document.getElementById("section6container3").style.display = "none";
+
 
     }
 
     function myFunction2(){
   document.getElementById("section3").style.display = "none";
   document.getElementById("section4").style.display = "block";
-  document.getElementById("section5").style.display = "none";
+      document.getElementById("footer6").style.display = "none";
 
+  document.getElementById("section5").style.display = "none";
+  document.getElementById("section6").style.display = "none";
+ document.getElementById("section6container1").style.display = "none";
+      document.getElementById("section6container2").style.display = "none";
+      document.getElementById("section6container3").style.display = "none";
     }
 
     function myFunction3(){
   document.getElementById("section3").style.display = "none";
   document.getElementById("section4").style.display = "none";
   document.getElementById("section5").style.display = "block";
+      document.getElementById("footer6").style.display = "none";
 
-    }
+  document.getElementById("section6").style.display = "none";
+ document.getElementById("section6container1").style.display = "none";
+      document.getElementById("section6container2").style.display = "none";
+      document.getElementById("section6container3").style.display = "none";   
+}
+
+  function myFunction4(){
+  document.getElementById("section3").style.display = "none";
+  document.getElementById("section4").style.display = "none";
+  document.getElementById("section5").style.display = "none";
+  document.getElementById("section6").style.display = "block";
+        document.getElementById("footer6").style.display = "flex";
+ document.getElementById("section6container1").style.display = "block";
+      document.getElementById("section6container2").style.display = "none";
+      document.getElementById("section6container3").style.display = "none";  
+}
   
   
   </script>
@@ -182,10 +165,10 @@ function closeNav() {
 
 
 
-
   </body>
 
 
+{% endblock %}
 
 
 
@@ -196,4 +179,3 @@ function closeNav() {
 
 
 
-</html>

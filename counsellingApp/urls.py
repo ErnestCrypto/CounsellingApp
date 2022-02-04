@@ -7,6 +7,9 @@ app_name = 'counsellingUrls'
 
 urlpatterns = [
     path('', views.homePage, name="homePage"),
+    path('login/', views.loginPage, name="loginPage"),
+    path('ad/', views.adminPage, name="adminPage"),
+    path('profile/', views.profilePage, name="profilePage"),
 
 ]
 

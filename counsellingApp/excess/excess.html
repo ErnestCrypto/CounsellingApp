@@ -1,0 +1,579 @@
+ADMIN.HTML
+
+    {% comment %}
+    <div id="rightcontent6">
+      <div id="books" class="bg-white">
+        <p id="bookings">BOOKINGS</p>
+        <center>
+          <hr id="bookshr" />
+        </center>
+        <div>
+          <!---->
+          <div id="bookscontent">
+            <img src="{% static "media/download.png"%}" id="bookspic6"/>
+            <div id="bokcontent">
+              <p id="name1">ATTAH MENSAH</p>
+              <p id="subname1">10789256</p>
+            </div>
+
+            <div id="bokscontent">
+              <p id="name1">Wednesday, 23rd Jan 2022.</p>
+              <p id="subname2">8:00pm</p>
+            </div>
+          </div>
+          <center>
+            <hr id="bookshr" />
+          </center>
+        </div>
+        <!---->
+
+        <div>
+          <!---->
+          <div id="bookscontent">
+            <img src="{% static "media/download.png"%}" id="bookspic6"/>
+            <div id="bokcontent">
+              <p id="name1">ATTAH MENSAH</p>
+              <p id="subname1">10789256</p>
+            </div>
+
+            <div id="bokscontent">
+              <p id="name1">Wednesday, 23rd Jan 2022.</p>
+              <p id="subname2">8:00pm</p>
+            </div>
+          </div>
+          <center>
+            <hr id="bookshr" />
+          </center>
+        </div>
+        <!---->
+
+        <div>
+          <!---->
+          <div id="bookscontent">
+            <img src="{% static "media/download.png"%}" id="bookspic6"/>
+            <div id="bokcontent">
+              <p id="name1">ATTAH MENSAH</p>
+              <p id="subname1">10789256</p>
+            </div>
+
+            <div id="bokscontent">
+              <p id="name1">Wednesday, 23rd Jan 2022.</p>
+              <p id="subname2">8:00pm</p>
+            </div>
+          </div>
+          <center>
+            <hr id="bookshr" />
+          </center>
+        </div>
+        <!---->
+
+        <div>
+          <!---->
+          <div id="bookscontent">
+            <img src="{% static "media/download.png"%}" id="bookspic6"/>
+            <div id="bokcontent">
+              <p id="name1">ATTAH MENSAH</p>
+              <p id="subname1">10789256</p>
+            </div>
+
+            <div id="bokscontent">
+              <p id="name1">Wednesday, 23rd Jan 2022.</p>
+              <p id="subname2">8:00pm</p>
+            </div>
+          </div>
+          <center>
+            <hr id="bookshr" />
+          </center>
+        </div>
+        <!---->
+
+        <div>
+          <!---->
+          <div id="bookscontent">
+            <img src="{% static "media/download.png"%}" id="bookspic6"/>
+            <div id="bokcontent">
+              <p id="name1">ATTAH MENSAH</p>
+              <p id="subname1">10789256</p>
+            </div>
+
+            <div id="bokscontent">
+              <p id="name1">Wednesday, 23rd Jan 2022.</p>
+              <p id="subname2">8:00pm</p>
+            </div>
+          </div>
+          <center>
+            <hr id="bookshr" />
+          </center>
+        </div>
+        <!---->
+
+        <div>
+          <!---->
+          <div id="bookscontent">
+            <img src="{% static "media/download.png"%}" id="bookspic6"/>
+            <div id="bokcontent">
+              <p id="name1">ATTAH MENSAH</p>
+              <p id="subname1">10789256</p>
+            </div>
+
+            <div id="bokscontent">
+              <p id="name1">Wednesday, 23rd Jan 2022.</p>
+              <p id="subname2">8:00pm</p>
+            </div>
+          </div>
+          <center>
+            <hr id="bookshr" />
+          </center>
+        </div>
+        <!---->
+      </div>
+    </div>
+    {% endcomment %}
+
+    {% comment %}{% endcomment %} {% comment %}
+    <div id="leftcontent6">
+      <div id="subleftcontent6">
+        <p id="realtext">Hello Rakesh</p>
+        <img src="{% static 'media/admin.png'%}" id="real" alt="image" />
+      </div>
+    </div>
+    {% endcomment %} {% comment %}{% endcomment %}
+ADMIN.HTML
+
+
+INDEX.HTML
+
+{% comment %} 
+<div align="center">
+  <br><br><br><br>
+  <a href="#popup_screen" class="button">Click here to Log In</a>
+  </div>
+  
+ {% endcomment %}
+
+
+
+
+
+
+
+
+
+{% comment %}
+
+<div class="popup-wrapper" id="home_pop">
+  <div class="col-sm-12"> 
+  <div class="mask" style="background-color: rgba(0, 0, 0, 0.2);">
+<div class="d-flex justify-content-center">
+   
+  
+            <div class="popup">
+
+                <div class="popup-close" style="float: right"><i class="far fa-times-circle"></i>
+</div>
+
+                <div class="popup-content">
+
+                    <h1>This is the popup</h1>
+
+                    <p> We are going to add more info here soon</p>
+
+                    <a href="#"> View Website</a>
+</div>
+              </div>
+</div>
+            </div>
+</div>
+        </div>{% endcomment %}
+
+{% comment %}{% endcomment %}
+        {% comment %} <script> {% endcomment %}
+          {% comment %} // get elements for popup {% endcomment %}
+
+{% comment %} const popupbtn = document.querySelector('#home_img');
+
+const popup = document.querySelector('.popup-wrapper');
+
+const popupclose = document.querySelector('.popup-close');
+
+// popup
+
+popupbtn.addEventListener('click',() =>{
+
+    popup.style.display = "block";
+   
+   
+
+});
+
+popupclose.addEventListener('click', () => {
+
+    popup.style.display = 'none';
+    
+     
+   
+
+});
+
+popup.addEventListener('click', (e) => {
+
+    if(e.target.className === 'popup-wrapper'){
+
+      popup.style.display = 'none';
+
+    }
+
+});
+          </script> {% endcomment %}
+
+ 
+
+
+
+
+
+
+
+
+
+
+  {% comment %} <div id="firstcolumn">
+    <div id="firstcolumncontainer">
+     <!-- <i class="fas fa-arrow-left"></i>-->
+
+      <img src="{% static "media/University.png"%}"
+      alt="profile_pic" id="profileimage" />
+      <div style="padding-left: 10%">
+        <p style="font-weight: bold; margin: 0%; font-family: Montserrat">
+          BATJIN BOLDBAT
+          <i
+            class="fas fa-check-circle"
+            style="color: rgba(0, 0, 255, 0.6)"
+          ></i>
+        </p>
+        <p style="opacity: 0.4">Harvard University</p>
+
+        <p style="opacity: 0.4; margin: 0%">Ratings</p>
+
+        <p
+          style="
+            width: 25%;
+            float: left;
+            font-weight: bold;
+
+            font-size: 18px;
+          "
+        >
+          4.0<i class="fas fa-star" style="color: yellow"></i>
+        </p>
+        <p style="opacity: 0.4; font-size: 18px">22h,35m</p>
+        <p style="opacity: 0.4; margin: 0%">Badges</p>
+        <div>
+          <i class="fas fa-stopwatch" id="myicons"></i>
+          <i class="fas fa-heart" id="myicons"></i>
+          <i class="fas fa-birthday-cake" id="myicons"></i>
+          <i class="far fa-grin-alt" id="myicons"></i>
+          <i class="fas fa-lightbulb" id="myicons"></i>
+        </div>
+        <center>
+          <div id="chooseid">
+          <p id="Choose">
+            Choose
+          </div>
+          </p>
+        </center>
+      </div>
+    </div>
+  </div>
+
+  <div id="secondcolumn">
+    <div id="secondcolumncontainer">
+      <div id="about">
+        <p id="titlepa">About</p>
+
+        <pre style="opacity: 0.6; font-family: Montserrat; margin: 0%">
+A social enterpreneur. Founder of Tomujin Academy and Ulaanbaater 
+Passport(UBP).Father of two. Determined to change the world through disruptive
+business bassed in Moglia and alternative education.<!-- --></pre>
+        <!--><!-->
+      </div>
+
+      <!--education-->
+      <div id="education">
+        <p id="titlep">Education</p>
+        <p id="titles">see all <i class="fas fa-arrow-right"></i></p>
+        <div id="box">
+          
+          <!---->
+          <img src="{% static "media/untitled-1_245-removebg-preview.png"%}"
+          alt="knust_logo " id="boximage"/>
+          <p id="boxtext">KNUST</p>
+          <p id="boxsubtext">Class of 2003</p>
+        </div>
+
+        <div id="box">
+          
+          <!---->
+          <img src= "{% static "media/Williams_College_Seal.svg.png"%}"
+          alt="knust_logo "id="boximage"/>
+          <p id="boxtext">Williams Collage</p>
+          <p id="boxsubtext">Class of 2005</p>
+        </div>
+
+        <div id="box">
+          
+          <!---->
+          <img src= "{% static "media/Williams_College_Seal.svg.png"%}"
+          alt="knust_logo "id="boximage"/>
+          <p id="boxtext">Williams Collage</p>
+          <p id="boxsubtext">Class of 2005</p>
+        </div>
+      </div>
+      <!--education-->
+
+      <!--experience-->
+      <div id="experience">
+        <p id="titlep">Experience</p>
+        <p id="titles">see all <i class="fas fa-arrow-right"></i></p>
+        <div id="box">
+          
+          <!---->
+          <img src="{% static "media/untitled-1_245-removebg-preview.png"%}"
+          alt="knust_logo " id="boximage"/>
+          <p id="boxtext">KNUST</p>
+          <p id="boxsubtext">Founder</p>
+        </div>
+
+        <div id="box">
+          
+          <!---->
+          <img src="{% static "media/untitled-1_245-removebg-preview.png"%}"
+          alt="knust_logo " id="boximage"/>
+          <p id="boxtext">KNUST</p>
+          <p id="boxsubtext">Founder</p>
+        </div>
+
+        <div id="box">
+          
+          <!---->
+          <img src= "{% static "media/mongolia-asia-country-rubber-stamp.png"%}"
+          alt="knust_logo "id="boximage"/>
+          <p id="boxtext">Ulaanbaater Passport</p>
+          <p id="boxsubtext">Founder</p>
+        </div>
+      </div>
+      <!--experience-->
+
+      <!--classes-->
+      <div id="classes">
+        <p id="titlep">Classes</p>
+        <p id="titles">see all <i class="fas fa-arrow-right"></i></p>
+        <div id="box">
+          
+          <!---->
+          <img src= "{% static "media/University.png"%}"
+          alt="University_of_Ghana_logo "id="boximage"/>
+          <p id="boxtext">Foreign Language TEFL</p>
+          <p id="boxsubtext">Jan 2015</p>
+        </div>
+
+        <div id="box">
+          
+          <!---->
+          <img src= "{% static "media/University.png"%}" alt="knust_logo
+          "id="boximage"/>
+          <p id="boxtext">Foreign Language TEFL</p>
+          <p id="boxsubtext">Jan 2015</p>
+        </div>
+
+        <div id="box">
+          
+          <!---->
+          <img src= "{% static "media/Williams_College_Seal.svg.png"%}"
+          alt="knust_logo "id="boximage"/>
+          <p id="boxtext">Human Research</p>
+          <p id="boxsubtext">Aug 2014</p>
+        </div>
+      </div>
+      <!--classes-->
+
+      <!--reviews-->
+      <div id="reviews">
+        <p id="titlep">Reviews</p>
+        <p id="titles">see all <i class="fas fa-arrow-right"></i></p>
+        <div id="boxreviews">
+          
+          <!---->
+          <img src= "{% static "media/shutterstock.png"%}" alt="knust_logo
+          "id="boximage"/>
+          <p id="boxtext">Sumiyabat</p>
+          <p id="boxsubtext">17 Oct 2019</p>
+
+          <pre
+            style="
+              width: 100%;
+              opacity: 0.4;
+              font-family: Montserrat;
+              padding-bottom: 0%;
+            "
+          >
+    "Education is the next killer app.
+     Education was the first the best 
+     investment I ever  made."</pre
+          >
+        </div>
+
+        <div id="boxreviews">
+          
+          <!---->
+          <img src= "{% static "media/photo-1438761681033.png"%}"
+          alt="knust_logo "id="boximage"/>
+          <p id="boxtext">Dulgoon</p>
+          <p id="boxsubtext">15 Oct 2019</p>
+
+          <pre
+            style="
+              width: 100%;
+              opacity: 0.4;
+              font-family: Montserrat;
+              padding-bottom: 0%;
+            "
+          >
+    "Education is the next killer app.
+     Education was the first the best 
+     investment I ever made."</pre
+          >
+        </div>
+      </div>
+      <!--reviews-->
+    </div>
+  </div> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+{% comment %} 
+  {% for project in projects %}
+
+                        <div class="project-item">
+
+                            <img src="{{ project.image.url }}" alt="project images">
+
+                            <h1>{{ project.title}}</h1>
+
+                            <p>{{project.description}}</p>
+
+                            <a href="{{project.url}}" target="_blank" class="card-link">  <h2>{{ project.linktext }}</h2></a>
+
+                            <a href="{{project.url}}" target="_blank" class="card-link popupbtn">  <h2> More Info </h2></a>
+
+                        </div>
+
+                    {% endfor %} {% endcomment %}
+INDEX.HTML
+
+SETTINGS.HTML
+{% comment %}
+https://maps.googleapis.com/maps/api/js/StaticMapService.GetMapImage?1m2&1i19762570&2i25223198&2e1&3u18&4m2&1u600&2u459&5m5&1e0&5sen-US&6sus&10b1&12b1&key=AIzaSyDZu7C9_1lT74ii82RxlKC-6L3gG2Zu1Fk&token=2187
+{% endcomment %}
+
+SETTINGS.HTML
+
+HEADER.HTML
+{% comment %}
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  />
+  {% endcomment %}
+  {% comment %}
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+  />
+  {% endcomment %}
+HEADER.HTML
+
+DASHBOARD.HTML
+ {% comment %}
+        <div class="container-fluid bg-3 text-left">
+          <hr style="margin: 0%" />
+          <br />
+          <br />
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" class="form-control" />
+                <label for="usr">Therapies Offered</label>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" class="form-control" />
+                <label for="usr">Therapies Offered</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" class="form-control" />
+                <label for="usr">Therapies Offered</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" class="form-control" />
+                <label for="usr">Therapies Offered</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---->
+
+        <div class="container-fluid bg-3 text-left">
+          <hr style="margin: 0%" />
+          <br />
+          <br />
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" class="form-control" />
+                <label for="usr">Top Specialities</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" class="form-control" />
+                <label for="usr">Top Specialities</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" class="form-control" />
+                <label for="usr">Top Specialities</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" class="form-control" />
+                <label for="usr">Top Specialities</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endcomment %}
+        <!---->
+DASHBOARD.HTML
