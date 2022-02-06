@@ -43,9 +43,16 @@ class BaseModel(models.Model):
     contact = models.IntegerField(default=None)
     profile = models.ImageField(
         upload_to='images/', default=None, null=True, blank=True)
+    pin = models.IntegerField(default=None, null=True, blank=True)
+    user_id = models.IntegerField(default=None, null=True, blank=True)
+    status = models.CharField(
+        max_length=255, choices=LOGIN, default=None, null=True, blank=True)
 
     class Meta:
         abstract = True
+
+    def __str__(self):
+        return self.lastName
 
 
 class SuperCounsellor(BaseModel):
@@ -129,6 +136,3 @@ class Login(models.Model):
         max_length=255, choices=LOGIN, default=None, blank=True, null=True,)
     date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
-
-    def __str__(self):
-        return self.user

@@ -72,8 +72,8 @@ class AvailabilityAdmin(admin.ModelAdmin):
 @admin.register(Counsellor)
 class CounsellorAdmin(admin.ModelAdmin):
     list_display = [
-        'id', 'title', 'firstName', 'lastName', 'email', 'contact',
-        'gender', 'about', 'profile'
+        'id', 'status', 'title', 'firstName', 'lastName', 'email', 'contact',
+        'gender', 'about', 'profile', 'pin'
     ]
 
     inlines = [
@@ -89,7 +89,7 @@ class CounsellorAdmin(admin.ModelAdmin):
 @admin.register(SuperCounsellor)
 class SuperCounsellorAdmin(admin.ModelAdmin):
     list_display = [
-        'id', 'title', 'firstName', 'lastName', 'gender', 'email', 'contact', 'profile'
+        'id', 'status', 'title', 'firstName', 'lastName', 'gender', 'email', 'contact', 'profile', 'pin'
     ]
 
 

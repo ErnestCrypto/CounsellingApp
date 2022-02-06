@@ -1,13 +1,43 @@
 # creating views
 from audioop import reverse
 from django.http import request
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login
 from .forms import CounsellorForm, SuperCounsellorForm, AchievementForm, AvailabilityForm, EducationForm, ExperienceForm, TherapyForm, SpecialitiesForm, LoginForm
 from django.contrib import messages
-import logging
+from django.contrib.auth.decorators import login_required
+
+
+def loginPage(request):
+    login = LoginForm()
+
+    if request.method == "POST":
+        login = LoginForm(request.POST)
+        person_id = request.POST.get('person_id')
+        pin_login = request.POST.get('pin')
+        status_login = request.POST.get('option')
+
+        if login.is_valid():
+            user_id = Counsellor.objects.get(user_id=person_id)
+            pin = Counsellor.objects.get(pin=pin_login)
+            status_log = Counsellor.objects.get(status=status_login)
+
+            if user_id and pin and status_log is not None:
+                login.save()
+                messages.success(request, 'Welcome to UGCounselling')
+                return redirect('home/')
+
+            else:
+                messages.error(request, 'Account does not exsits')
+
+        else:
+            messages.error(request, 'Please check your credentials')
+
+    return render(request, 'app/login.html', {
+        'log': login
+
+    })
 
 
 def indexPage(request):
@@ -15,6 +45,7 @@ def indexPage(request):
     return render(request, 'app/index.html', {'home': home})
 
 
+@login_required
 def homePage(request):
     admin = 'app/admin.html'
     profile = 'app/profile.html'
@@ -90,27 +121,6 @@ def adminPage(request):
         'admins': admin,
         'settings': settings,
         'dashboard': dashboard,
-    })
-
-
-def loginPage(request):
-    login = LoginForm()
-
-    if request.method == 'POST':
-        login = LoginForm(request.POST)
-
-        if login.is_valid():
-
-            login.save()
-            messages.success(request, f'Welcome  to UGCounselling')
-            return redirect('/')
-
-        else:
-            messages.error(request, 'Please check your credentials')
-
-    return render(request, 'app/login.html', {
-
-        'log': login,
     })
 
 
