@@ -11,14 +11,12 @@
 
 /* BASIC */
 
-html {
-  background-color: #56baed;
-}
+
 
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  overflow : hidden;
+  overflow-y : scroll;
 }
 
 a {
@@ -281,6 +279,7 @@ select:placeholder {
 
 
 
+
 </style>
 
 
@@ -302,12 +301,25 @@ select:placeholder {
     <div class="fadeIn first">
       <img src="{% static "media/University.png" %}"  id="icon" alt="UG_logo" />
     </div>
-
+<div classs="container p-5">
+	<div class="row no-gutters">
+		<div class="col-lg-6 col-md-12 m-auto">
+			<div class="alert alert-success fade show" role="alert">
+				 
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+      {{ message }}
+      </div>
+    {% endfor %}
+</div>
+		</div>
+	</div>
+</div>
     <!-- Login Form -->
     <form method = "POST" action ="" enctype="multipart/form-data">
       {% csrf_token %}
     {{ log.person_id }}
-    {{ log.pin }}
+    {{ log.pin_log }}
     
     {{log.option }}
    
@@ -319,7 +331,7 @@ select:placeholder {
       <input type="submit" class="fadeIn fourth" value="Log In">
 
 
-     
+      
     </form>
 
     

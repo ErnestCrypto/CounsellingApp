@@ -130,7 +130,7 @@ class Login(models.Model):
                               null=True, blank=True, db_index=True)
     person_id = models.CharField(
         max_length=255, db_index=True, default=None, blank=True, null=True)
-    pin = models.IntegerField(
+    pin_log = models.IntegerField(
         db_index=True, default=None, blank=True, null=True)
     option = models.CharField(
         max_length=255, choices=LOGIN, default=None, blank=True, null=True,)

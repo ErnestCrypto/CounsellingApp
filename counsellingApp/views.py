@@ -15,21 +15,11 @@ def loginPage(request):
     if request.method == "POST":
         login = LoginForm(request.POST)
         person_id = request.POST.get('person_id')
-        pin_login = request.POST.get('pin')
-        status_login = request.POST.get('option')
+        pin_log = request.POST.get('pin_log')
+        option = request.POST.get('option')
 
         if login.is_valid():
-            user_id = Counsellor.objects.get(user_id=person_id)
-            pin = Counsellor.objects.get(pin=pin_login)
-            status_log = Counsellor.objects.get(status=status_login)
-
-            if user_id and pin and status_log is not None:
-                login.save()
-                messages.success(request, 'Welcome to UGCounselling')
-                return redirect('home/')
-
-            else:
-                messages.error(request, 'Account does not exsits')
+            messages.success(request, 'Welcome to UGCounselling')
 
         else:
             messages.error(request, 'Please check your credentials')

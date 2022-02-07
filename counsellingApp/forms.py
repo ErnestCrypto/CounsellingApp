@@ -113,6 +113,6 @@ class LoginForm(ModelForm):
         fields = "__all__"
         widgets = {
             'person_id': forms.TextInput(attrs={'placeholder': 'ID', 'class': 'fadeIn second', 'type': 'text'}),
-            'pin': forms.TextInput(attrs={'placeholder': 'PIN', 'class': 'fadeIn third', 'type': 'password'}),
+            'pin_log': forms.TextInput(attrs={'placeholder': 'PIN', 'class': 'fadeIn third', 'type': 'password'}),
             'option': forms.Select(attrs={'class': 'fadeIn fourth', 'type': 'select'}),
         }

@@ -98,7 +98,7 @@ class LoginAdmin(admin.ModelAdmin):
     list_display = [
         'person',
         'person_id',
-        'pin',
+        'pin_log',
         'option',
         'date'
     ]
