@@ -19,21 +19,26 @@ def loginPage(request):
         option = request.POST.get('option')
         user = Counsellor.objects.all()
         if login.is_valid():
-            arr_user_id = []
             messages.success(request, 'Welcome to UGCounselling')
+            arr_user_id = []
+            arr_pin = []
+            arr_status = []
 
             for use in user:
                 user_id = use.user_id
                 pin = use.pin
                 status = use.status
-                arr_user_id = user_id
+                arr_user_id.append(user_id)
+                arr_pin.append(pin)
+                arr_status.append(status)
 
-            if arr_user_id == person_id:
-                login.save()
-
-            else:
-                messages.error(request, '-- This account does not exist --')
-
+            for u in range(len(arr_user_id)):
+                l_user = arr_user_id[u]
+                l_pin = arr_pin[u]
+                l_status = arr_status[u]
+                if str(l_user) == str(person_id) and str(l_pin) == str(pin_log) and str(l_status) == str(option):
+                    login.save()
+                    # return redirect('/home/')
         else:
             messages.error(request, '-- Please check your credentials --')
 
