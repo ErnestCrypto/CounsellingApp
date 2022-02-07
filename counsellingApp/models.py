@@ -37,6 +37,8 @@ class BaseModel(models.Model):
         max_length=255, db_index=True, blank=True, default=None)
     lastName = models.CharField(
         max_length=255, db_index=True, blank=True, default=None)
+    occupation = models.CharField(
+        max_length=255, db_index=True, blank=True, null=True, default=None)
     gender = models.CharField(choices=GENDER,
                               default='Male', max_length=25, db_index=True)
     email = models.EmailField(default=None, blank=True)

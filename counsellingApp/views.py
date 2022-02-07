@@ -17,12 +17,25 @@ def loginPage(request):
         person_id = request.POST.get('person_id')
         pin_log = request.POST.get('pin_log')
         option = request.POST.get('option')
-
+        user = Counsellor.objects.all()
         if login.is_valid():
+            arr_user_id = []
             messages.success(request, 'Welcome to UGCounselling')
 
+            for use in user:
+                user_id = use.user_id
+                pin = use.pin
+                status = use.status
+                arr_user_id = user_id
+
+            if arr_user_id == person_id:
+                login.save()
+
+            else:
+                messages.error(request, '-- This account does not exist --')
+
         else:
-            messages.error(request, 'Please check your credentials')
+            messages.error(request, '-- Please check your credentials --')
 
     return render(request, 'app/login.html', {
         'log': login
@@ -49,6 +62,7 @@ def homePage(request):
     therapy = TherapyForm()
     specialities = SpecialitiesForm()
     Supercounselloform = SuperCounsellorForm()
+    objects = Counsellor.objects.all()
 
     if request.method == 'POST':
 
@@ -98,6 +112,7 @@ def homePage(request):
                                              'experience': experience,
                                              'therapy': therapy,
                                              'specialities': specialities,
+                                             'Counsellor': objects,
 
                                              })
 

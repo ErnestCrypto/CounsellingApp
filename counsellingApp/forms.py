@@ -82,6 +82,8 @@ class CounsellorForm(ModelForm):
             'firstName': forms.TextInput(attrs={'class': 'form-control'}),
             'lastName': forms.TextInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'occupation': forms.TextInput(attrs={'class': 'form-control'}),
+
             'contact': forms.TextInput(attrs={'class': 'form-control'}),
             'gender': forms.Select(attrs={'class': 'form-control', 'id': 'focusid'}),
             'about': forms.Textarea(attrs={'class': 'form-control'}),
@@ -99,6 +101,7 @@ class SuperCounsellorForm(ModelForm):
             'firstName': forms.TextInput(attrs={'class': 'form-control'}),
             'lastName': forms.TextInput(attrs={'class': 'form-control'}),
             'email': forms.TextInput(attrs={'class': 'form-control'}),
+            'occupation': forms.TextInput(attrs={'class': 'form-control'}),
             'contact': forms.TextInput(attrs={'class': 'form-control'}),
             'gender': forms.Select(attrs={'class': 'form-control'}),
 
