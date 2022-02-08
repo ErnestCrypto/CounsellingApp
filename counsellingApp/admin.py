@@ -72,7 +72,7 @@ class AvailabilityAdmin(admin.ModelAdmin):
 @admin.register(Counsellor)
 class CounsellorAdmin(admin.ModelAdmin):
     list_display = [
-        'id', 'status', 'title', 'firstName', 'lastName', 'occupation',
+        'id', 'user_id', 'pin', 'status', 'title', 'firstName', 'lastName', 'occupation',
         'email', 'contact',
         'gender', 'about', 'profile', 'user_id', 'pin'
     ]
@@ -90,15 +90,16 @@ class CounsellorAdmin(admin.ModelAdmin):
 @admin.register(SuperCounsellor)
 class SuperCounsellorAdmin(admin.ModelAdmin):
     list_display = [
-        'id', 'status', 'title', 'firstName', 'occupation',
-        'lastName', 'gender', 'email', 'contact', 'profile', 'user_id', 'pin'
+        'id', 'user_id', 'pin', 'status', 'title', 'firstName', 'occupation',
+        'lastName', 'gender', 'email', 'contact', 'profile',
     ]
 
 
 @admin.register(Login)
 class LoginAdmin(admin.ModelAdmin):
     list_display = [
-        'person',
+        'person_firstname',
+        'person_lastname',
         'person_id',
         'pin_log',
         'option',

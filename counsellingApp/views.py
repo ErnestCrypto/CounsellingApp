@@ -18,27 +18,46 @@ def loginPage(request):
         pin_log = request.POST.get('pin_log')
         option = request.POST.get('option')
         user = Counsellor.objects.all()
+
         if login.is_valid():
             messages.success(request, 'Welcome to UGCounselling')
+            arr_title = []
+            arr_firstname = []
+            arr_lastname = []
             arr_user_id = []
             arr_pin = []
             arr_status = []
 
             for use in user:
+                title = use.title
+                firstName = use.firstName
+                lastname = use.lastName
                 user_id = use.user_id
                 pin = use.pin
                 status = use.status
+                arr_title.append(title)
+                arr_firstname.append(firstName)
+                arr_lastname.append(lastname)
                 arr_user_id.append(user_id)
                 arr_pin.append(pin)
                 arr_status.append(status)
 
             for u in range(len(arr_user_id)):
+                l_title = arr_title[u]
+                l_firstname = arr_firstname[u]
+                l_lastname = arr_lastname[u]
                 l_user = arr_user_id[u]
                 l_pin = arr_pin[u]
                 l_status = arr_status[u]
+
                 if str(l_user) == str(person_id) and str(l_pin) == str(pin_log) and str(l_status) == str(option):
-                    login.save()
-                    # return redirect('/home/')
+                    messages.success(
+                        request, f'{l_title} { l_firstname}  {l_lastname} ')
+                    obj = login.save(commit=False)
+                    obj.person_firstname = l_firstname
+                    obj.person_lastname = l_lastname
+                    obj.save()
+                #   return redirect('/home/')
         else:
             messages.error(request, '-- Please check your credentials --')
 
@@ -53,7 +72,6 @@ def indexPage(request):
     return render(request, 'app/index.html', {'home': home})
 
 
-@login_required
 def homePage(request):
     admin = 'app/admin.html'
     profile = 'app/profile.html'

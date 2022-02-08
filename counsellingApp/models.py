@@ -4,10 +4,10 @@ from django.db import models
 
 
 TITLE = [
-    ('mr.', 'Mr.'),
-    ('mrs.', 'Mrs.'),
-    ('dr.', 'Dr.'),
-    ('prof.', 'Prof.'),
+    ('Mr.', 'Mr.'),
+    ('Mrs.', 'Mrs.'),
+    ('Dr.', 'Dr.'),
+    ('Prof.', 'Prof.'),
 ]
 
 GENDER = [
@@ -128,8 +128,10 @@ class Specialities(models.Model):
 
 
 class Login(models.Model):
-    person = models.CharField(max_length=255, default=None,
-                              null=True, blank=True, db_index=True)
+    person_firstname = models.CharField(max_length=255, default=None,
+                                        null=True, blank=True, db_index=True)
+    person_lastname = models.CharField(max_length=255, default=None,
+                                       null=True, blank=True, db_index=True)
     person_id = models.CharField(
         max_length=255, db_index=True, default=None, blank=True, null=True)
     pin_log = models.IntegerField(
