@@ -51,18 +51,17 @@ def loginPage(request):
                 l_status = arr_status[u]
 
                 if str(l_user) == str(person_id) and str(l_pin) == str(pin_log) and str(l_status) == str(option):
+                    user_id = l_user
                     messages.success(
                         request, f'{l_title} { l_firstname}  {l_lastname} ')
                     obj = login.save(commit=False)
                     obj.person_firstname = l_firstname
                     obj.person_lastname = l_lastname
-
                     obj.save()
-                    # return redirect('/home/')
+                    return redirect('counsellingUrls:homePage', user_id)
 
         else:
             messages.error(request, '-- Please check your credentials --')
-
     return render(request, 'app/login.html', {
         'log': login
 
@@ -74,7 +73,7 @@ def indexPage(request):
     return render(request, 'app/index.html', {'home': home})
 
 
-def homePage(request):
+def homePage(request, pk):
     admin = 'app/admin.html'
     profile = 'app/profile.html'
     notification = 'app/notification.html'
@@ -88,6 +87,7 @@ def homePage(request):
     specialities = SpecialitiesForm()
     Supercounselloform = SuperCounsellorForm()
     objects = Counsellor.objects.all()
+
     if request.method == 'POST':
 
         counsellor = CounsellorForm(request.POST, request.FILES)
@@ -122,7 +122,7 @@ def homePage(request):
             counsellor_inst = Counsellor.objects.get(id=l_counsellor_id)
             ach_obj.counsellor = counsellor_inst
             # ach_obj.user_id = counsellor_user_inst
-            messages.success(request, f'{l_counsellor_id}')
+            messages.success(request, f'{l_counsellor_id} ')
             ach_obj.save()
             # availability.save()
             # education .save()

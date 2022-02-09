@@ -6,7 +6,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 app_name = 'counsellingUrls'
 
 urlpatterns = [
-    path('home/', views.homePage, name="homePage"),
+    path('home/<int:pk>', views.homePage, name="homePage"),
     path('', views.loginPage, name="loginPage"),
     path('ad/', views.adminPage, name="adminPage"),
     path('profile/', views.profilePage, name="profilePage"),
