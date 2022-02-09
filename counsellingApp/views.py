@@ -87,7 +87,7 @@ def homePage(request, pk):
     specialities = SpecialitiesForm()
     Supercounselloform = SuperCounsellorForm()
     objects = Counsellor.objects.all()
-
+    user_id = pk
     if request.method == 'POST':
 
         counsellor = CounsellorForm(request.POST, request.FILES)
@@ -97,33 +97,35 @@ def homePage(request, pk):
         experience = ExperienceForm(request.POST)
         therapy = TherapyForm(request.POST)
         specialities = SpecialitiesForm(request.POST)
-
+        objects = Counsellor.objects.all()
         Supercounselloform = SuperCounsellorForm(request.POST)
 
         if counsellor.is_valid():
+            messages.success(request, f'pk: {pk}')
             # counsellor.save()
             arr_counsellor_id = []
-            # arr_counsellor_user_id = []
+            arr_counsellor_user_id = []
 
             for object in objects:
                 counsellor_id = object.id
                 counsellor_user_id = object.user_id
+                arr_counsellor_user_id.append(counsellor_user_id)
                 arr_counsellor_id.append(counsellor_id)
-                # arr_counsellor_user_id.append(counsellor_user_id)
 
             for u in range(len(arr_counsellor_id)):
+                l_counsellor_user_id = arr_counsellor_user_id[u]
                 l_counsellor_id = arr_counsellor_id[u]
-                # l_counsellor_user_id = arr_counsellor_user_id[u]
 
-            ach_obj = achievement.save(commit=False)
+                if str(l_counsellor_user_id) == str(pk):
+                    ach_obj = achievement.save(commit=False)
+                    counsellor_inst = Counsellor.objects.get(
+                        id=l_counsellor_id)
+                    ach_obj.counsellor = counsellor_inst
+                    messages.success(request, f'id : {l_counsellor_user_id} ')
+                    ach_obj.save()
+                else:
+                    messages.success(request, f'id : {l_counsellor_user_id} ')
 
-            # counsellor_user_inst = Counsellor.objects.get(
-            #     user_id=l_counsellor_user_id)
-            counsellor_inst = Counsellor.objects.get(id=l_counsellor_id)
-            ach_obj.counsellor = counsellor_inst
-            # ach_obj.user_id = counsellor_user_inst
-            messages.success(request, f'{l_counsellor_id} ')
-            ach_obj.save()
             # availability.save()
             # education .save()
             # experience.save()
