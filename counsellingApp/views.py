@@ -56,8 +56,10 @@ def loginPage(request):
                     obj = login.save(commit=False)
                     obj.person_firstname = l_firstname
                     obj.person_lastname = l_lastname
+
                     obj.save()
-                #   return redirect('/home/')
+                    # return redirect('/home/')
+
         else:
             messages.error(request, '-- Please check your credentials --')
 
@@ -86,7 +88,6 @@ def homePage(request):
     specialities = SpecialitiesForm()
     Supercounselloform = SuperCounsellorForm()
     objects = Counsellor.objects.all()
-
     if request.method == 'POST':
 
         counsellor = CounsellorForm(request.POST, request.FILES)
@@ -96,16 +97,38 @@ def homePage(request):
         experience = ExperienceForm(request.POST)
         therapy = TherapyForm(request.POST)
         specialities = SpecialitiesForm(request.POST)
+
         Supercounselloform = SuperCounsellorForm(request.POST)
 
         if counsellor.is_valid():
-            counsellor.save()
-            achievement.save()
-            availability.save()
-            education .save()
-            experience.save()
-            therapy .save()
-            specialities.save()
+            # counsellor.save()
+            arr_counsellor_id = []
+            # arr_counsellor_user_id = []
+
+            for object in objects:
+                counsellor_id = object.id
+                counsellor_user_id = object.user_id
+                arr_counsellor_id.append(counsellor_id)
+                # arr_counsellor_user_id.append(counsellor_user_id)
+
+            for u in range(len(arr_counsellor_id)):
+                l_counsellor_id = arr_counsellor_id[u]
+                # l_counsellor_user_id = arr_counsellor_user_id[u]
+
+            ach_obj = achievement.save(commit=False)
+
+            # counsellor_user_inst = Counsellor.objects.get(
+            #     user_id=l_counsellor_user_id)
+            counsellor_inst = Counsellor.objects.get(id=l_counsellor_id)
+            ach_obj.counsellor = counsellor_inst
+            # ach_obj.user_id = counsellor_user_inst
+            messages.success(request, f'{l_counsellor_id}')
+            ach_obj.save()
+            # availability.save()
+            # education .save()
+            # experience.save()
+            # therapy .save()
+            # specialities.save()
             firstname = counsellor.cleaned_data['firstName']
             lastname = counsellor.cleaned_data['lastName']
 
@@ -116,11 +139,11 @@ def homePage(request):
             counsellor = CounsellorForm()
             achievement = AchievementForm()
             availability = AvailabilityForm()
+
             education = EducationForm()
             experience = ExperienceForm()
             therapy = TherapyForm()
             specialities = SpecialitiesForm()
-
             messages.error(
                 request, 'Failed to create your account, please check your details')
 
@@ -135,7 +158,10 @@ def homePage(request):
                                              'experience': experience,
                                              'therapy': therapy,
                                              'specialities': specialities,
-                                             'Counsellor': objects,
+                                             'Counsellor': counsellor,
+
+                                             'objects': objects,
+
 
                                              })
 

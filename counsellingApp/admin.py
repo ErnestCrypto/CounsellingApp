@@ -60,7 +60,7 @@ class ExperienceAdmin(admin.ModelAdmin):
 
 @admin.register(Achievement)
 class AchievementsAdmin(admin.ModelAdmin):
-    list_display = ['id', 'awards', 'counsellor', ]
+    list_display = ['id', 'awards', 'user_id', 'counsellor', ]
 
 
 @admin.register(Availability)
@@ -74,7 +74,7 @@ class CounsellorAdmin(admin.ModelAdmin):
     list_display = [
         'id', 'user_id', 'pin', 'status', 'title', 'firstName', 'lastName', 'occupation',
         'email', 'contact',
-        'gender', 'about', 'profile', 'user_id', 'pin'
+        'gender', 'about', 'profile',
     ]
 
     inlines = [
