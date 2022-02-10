@@ -22,7 +22,8 @@
       <br />
 
       <form method="POST" action="" enctype="multipart/form-data">
-        {% csrf_token %}
+        {% csrf_token %} {% for object in objects%}<!---->
+        {% if object.user_id == pk|add:0 %}
         <div class="container-fluid bg-3 text-left">
           <div class="row">
             <div class="col-sm-3">
@@ -30,6 +31,11 @@
                 {% comment %}
                 <input type="text" class="form-control" required />
                 {% endcomment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.user_id}}"
+                />
 
                 <label for="usr">ID</label>
               </div>
@@ -37,7 +43,9 @@
 
             <div class="col-sm-3">
               <div class="form-group">
-                {{counsellor.profile}} {% comment %}
+                {{counsellor.profile}}
+                <!---->
+                {% comment %}
                 <input type="text" class="form-control" required />
                 {% endcomment %}
 
@@ -59,14 +67,29 @@
                   <option>Dr.</option>
                   <option>Prof.</option>
                 </select>
-                {% endcomment %} {{counsellor.title}}
+                {% endcomment %}
+
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.title}}"
+                />
+                {% comment %} {{counsellor.title}} {% endcomment %}
                 <label for="usr"> Title </label>
               </div>
             </div>
 
             <div class="col-sm-3">
               <div class="form-group">
-                {{counsellor.firstName}} {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.firstName}}"
+                />
+
+                {% comment %} {{counsellor.firstName}} {% endcomment %}
+                <!---->
+                {% comment %}
                 <input type="text" class="form-control" required />
                 {% endcomment %}
 
@@ -75,7 +98,14 @@
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                {{counsellor.lastName}} {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.lastName}}"
+                />
+                {% comment %} {{counsellor.lastName}} {% endcomment %}
+                <!---->
+                {% comment %}
                 <input type="text" class="form-control" required />
                 {% endcomment %}
 
@@ -105,7 +135,14 @@
                   <option value="DS">Male</option>
                   <option value="Algo">Female</option>
                 </select>
-                {% endcomment %} {{counsellor.gender}}
+                {% endcomment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.gender}}"
+                />
+
+                {% comment %} {{counsellor.gender}} {% endcomment %}
                 <label for="usr">Gender</label>
               </div>
             </div>
@@ -114,14 +151,30 @@
               <div class="form-group">
                 {% comment %}
                 <input type="text" class="form-control" required />
-                {% endcomment %} {{counsellor.email}}
+                {% endcomment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.email}}"
+                />
+
+                {% comment %} {{counsellor.email}} {% endcomment %}
                 <label for="usr">Email</label>
               </div>
             </div>
 
             <div class="col-sm-3">
               <div class="form-group">
-                {{counsellor.occupation}} {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.occupation}}"
+                />
+
+                {% comment %} {{counsellor.occupation}} {% endcomment %}
+                <!---->
+
+                {% comment %}
                 <input type="text" class="form-control" required />
                 {% endcomment %}
 
@@ -133,7 +186,14 @@
               <div class="form-group">
                 {% comment %}
                 <input type="text" class="form-control" required />
-                {% endcomment %} {{counsellor.contact}}
+                {% endcomment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.contact}}"
+                />
+
+                {% comment %} {{counsellor.contact}} {% endcomment %}
                 <label for="usr">Contact</label>
               </div>
             </div>
@@ -151,7 +211,14 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="form-groups">
-                {{ counsellor.about}} {% comment %}
+                <textarea type="text" class="form-control">
+{{object.about}}</textarea
+                >
+
+                {% comment %} {{ counsellor.about}} {% endcomment %}
+                <!---->
+
+                {% comment %}
                 <textarea
                   type="text"
                   class="form-control"
@@ -274,7 +341,7 @@
                   class="control-group input-group"
                   style="margin-bottom: 20px"
                 >
-                  {{ education.education_institution }}
+                  {{ experience.experience_institution }}
                   <!---->{% comment %}
                   <input type="text" class="form-control" /> {% endcomment %}
                   <label for="usr">Institution</label>
@@ -285,7 +352,7 @@
                   class="control-group input-group"
                   style="margin-bottom: 20px"
                 >
-                  {{ education.year_completed }} {% comment %}
+                  {{experience.experience_position}} {% comment %}
                   <input type="text" class="form-control" /> {% endcomment %}
                   <label for="usr">Position</label>
                 </div>
@@ -599,6 +666,8 @@
         {% comment %} {% if messages %}{% for message in messages %}
         <div class="alert" alert-{{message.tags}}>{{ message}}</div>
         {% endfor %}{% endif %} {% endcomment %}
+        <!---->
+        {% else%}{% endif%} {% endfor%}
       </form>
     </div>
   </section>

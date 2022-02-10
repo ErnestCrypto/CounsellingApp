@@ -31,14 +31,14 @@ class ExperienceInline(admin.StackedInline):
 @admin.register(Therapy)
 class TherapyAdmin(admin.ModelAdmin):
     list_display = [
-        'id', 'therapies_offered', 'counsellor',
+        'id', 'therapies_offered', 'user_id', 'counsellor',
     ]
 
 
 @admin.register(Specialities)
 class SpecialitiesAdmin(admin.ModelAdmin):
     list_display = [
-        'id', 'top_specialities', 'counsellor',
+        'id', 'top_specialities', 'user_id', 'counsellor',
     ]
 
 
@@ -46,7 +46,7 @@ class SpecialitiesAdmin(admin.ModelAdmin):
 class EductaionAdmin(admin.ModelAdmin):
     list_display = [
         'id', 'education_institution',
-        'year_completed', 'counsellor',
+        'year_completed', 'user_id', 'counsellor',
     ]
 
 
@@ -54,7 +54,7 @@ class EductaionAdmin(admin.ModelAdmin):
 class ExperienceAdmin(admin.ModelAdmin):
     list_display = [
         'id', 'experience_institution',
-        'experience_position',  'counsellor',
+        'experience_position', 'user_id',  'counsellor',
     ]
 
 
@@ -66,7 +66,7 @@ class AchievementsAdmin(admin.ModelAdmin):
 @admin.register(Availability)
 class AvailabilityAdmin(admin.ModelAdmin):
     list_display = ['id', 'date', 'start_time', 'end_time',
-                    'counsellor', ]
+                    'user_id', 'counsellor', ]
 
 
 @admin.register(Counsellor)

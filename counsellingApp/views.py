@@ -87,7 +87,7 @@ def homePage(request, pk):
     specialities = SpecialitiesForm()
     Supercounselloform = SuperCounsellorForm()
     objects = Counsellor.objects.all()
-    user_id = pk
+
     if request.method == 'POST':
 
         counsellor = CounsellorForm(request.POST, request.FILES)
@@ -97,10 +97,9 @@ def homePage(request, pk):
         experience = ExperienceForm(request.POST)
         therapy = TherapyForm(request.POST)
         specialities = SpecialitiesForm(request.POST)
-        objects = Counsellor.objects.all()
         Supercounselloform = SuperCounsellorForm(request.POST)
 
-        if counsellor.is_valid():
+        if achievement.is_valid():
             messages.success(request, f'pk: {pk}')
             # counsellor.save()
             arr_counsellor_id = []
@@ -118,24 +117,41 @@ def homePage(request, pk):
 
                 if str(l_counsellor_user_id) == str(pk):
                     ach_obj = achievement.save(commit=False)
+                    avail_obj = availability.save(commit=False)
+                    edu_obj = education.save(commit=False)
+                    exp_obj = experience.save(commit=False)
+                    ther_obj = therapy.save(commit=False)
+                    spec_obj = specialities.save(commit=False)
+
                     counsellor_inst = Counsellor.objects.get(
                         id=l_counsellor_id)
                     ach_obj.counsellor = counsellor_inst
+                    avail_obj.counsellor = counsellor_inst
+                    edu_obj.counsellor = counsellor_inst
+                    exp_obj.counsellor = counsellor_inst
+                    ther_obj.counsellor = counsellor_inst
+                    spec_obj.counsellor = counsellor_inst
+
+                    ach_obj.user_id = pk
+                    avail_obj.user_id = pk
+                    edu_obj.user_id = pk
+                    exp_obj.user_id = pk
+                    ther_obj.user_id = pk
+                    spec_obj.user_id = pk
+
                     messages.success(request, f'id : {l_counsellor_user_id} ')
                     ach_obj.save()
-                else:
-                    messages.success(request, f'id : {l_counsellor_user_id} ')
+                    avail_obj.save()
+                    edu_obj.save()
+                    exp_obj.save()
+                    ther_obj.save()
+                    spec_obj.save()
 
-            # availability.save()
-            # education .save()
-            # experience.save()
-            # therapy .save()
-            # specialities.save()
-            firstname = counsellor.cleaned_data['firstName']
-            lastname = counsellor.cleaned_data['lastName']
+            # firstname = counsellor.cleaned_data['firstName']
+            # lastname = counsellor.cleaned_data['lastName']
 
             messages.success(
-                request, f'Hi {firstname} {lastname} your account has been created successfully.')
+                request, f'Your account has been created successfully.')
 
         else:
             counsellor = CounsellorForm()
@@ -161,8 +177,9 @@ def homePage(request, pk):
                                              'therapy': therapy,
                                              'specialities': specialities,
                                              'Counsellor': counsellor,
-
                                              'objects': objects,
+                                             'pk': pk,
+
 
 
                                              })

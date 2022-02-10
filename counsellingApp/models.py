@@ -75,6 +75,8 @@ class Education(models.Model):
         max_length=255, db_index=True, blank=True, default=None, null=True)
     year_completed = models.CharField(
         max_length=255, db_index=True, default=None, blank=True, null=True)
+    user_id = models.CharField(
+        max_length=255, db_index=True, blank=True, null=True, default=None)
 
     class Meta:
         verbose_name_plural = 'education'
@@ -96,6 +98,8 @@ class Availability(models.Model):
     end_time = models.TimeField(default=None,  null=True, blank=True)
     date = models.CharField(choices=DAYS, default=None,
                             null=True, max_length=255, blank=True)
+    user_id = models.CharField(
+        max_length=255, db_index=True, blank=True, null=True, default=None)
 
     class Meta:
         verbose_name_plural = "availabilities"
@@ -108,6 +112,8 @@ class Experience(models.Model):
         max_length=255, db_index=True, blank=True, default=None, null=True)
     experience_position = models.CharField(
         max_length=255, db_index=True,  blank=True, default=None, null=True)
+    user_id = models.CharField(
+        max_length=255, db_index=True, blank=True, null=True, default=None)
 
 
 class Therapy(models.Model):
@@ -115,6 +121,8 @@ class Therapy(models.Model):
         Counsellor, related_name='therapy', on_delete=models.CASCADE, blank=True, default=None, null=True)
     therapies_offered = models.CharField(
         max_length=255, db_index=True, default=None, blank=True, null=True)
+    user_id = models.CharField(
+        max_length=255, db_index=True, blank=True, null=True, default=None)
 
     class Meta:
         verbose_name_plural = 'therapies'
@@ -125,6 +133,8 @@ class Specialities(models.Model):
         Counsellor, related_name='specialities', on_delete=models.CASCADE, blank=True, default=None, null=True)
     top_specialities = models.CharField(
         max_length=255, db_index=True, default=None, blank=True, null=True)
+    user_id = models.CharField(
+        max_length=255, db_index=True, blank=True, null=True, default=None)
 
     class Meta:
         verbose_name_plural = 'specialities'
