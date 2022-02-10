@@ -16,30 +16,32 @@
 <body>
   <section id="section6">
     <div id="section6container3">
+      {% for object in objects%}<!---->
+      {% if object.user_id == pk|add:0 %}
       <div class="container text-left">
-        <h6 style="font-size: 20px">My dashboard</h6>
+        <h6 style="font-size: 20px">My Dashboard - {{object.user_id}}</h6>
       </div>
       <br />
 
       <form method="POST" action="" enctype="multipart/form-data">
-        {% csrf_token %} {% for object in objects%}<!---->
-        {% if object.user_id == pk|add:0 %}
+        {% csrf_token %}
         <div class="container-fluid bg-3 text-left">
           <div class="row">
+            {% comment %}
             <div class="col-sm-3">
               <div class="form-group">
-                {% comment %}
                 <input type="text" class="form-control" required />
-                {% endcomment %} {% comment %}
+
                 <input
                   type="text"
                   class="form-control"
                   value="{{object.user_id}}"
                 />
-                {% endcomment %} {{counsellor.user_id}}
+                {{counsellor.user_id}}
                 <label for="usr">ID</label>
               </div>
             </div>
+            {% endcomment %}
 
             <div class="col-sm-3">
               <div class="form-group">

@@ -12,11 +12,8 @@
     <div id="topleftcontent6">
       {% for object in objects%}<!---->
       {% if object.user_id == pk|add:0 %}
-      <img
-        src="{{media_url}}{{ object.profile }}"
-        id="profilepic6"
-        alt="profile"
-      />
+      <img src="{{ object.profile }}" id="profilepic6" alt="profile" />
+
       <div class="dropdown">
         <p class="dropbtn" id="profiletext">
           {{object.user_id}}

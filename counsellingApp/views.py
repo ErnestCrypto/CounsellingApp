@@ -100,8 +100,10 @@ def homePage(request, pk):
         Supercounselloform = SuperCounsellorForm(request.POST)
 
         if counsellor.is_valid():
+            counsellor.save(update_fields=["price"])
             messages.success(request, f'pk: {pk}')
             arr_counsellor_id = []
+            arr_counsellor_pin = []
             arr_counsellor_user_id = []
             arr_counsellor_firstname = []
             arr_counsellor_lastname = []
@@ -115,6 +117,7 @@ def homePage(request, pk):
 
             for object in objects:
                 counsellor_id = object.id
+                counsellor_pin = object.pin
                 counsellor_user_id = object.user_id
                 counsellor_firstname = object.firstName
                 counsellor_lastname = object.lastName
@@ -125,6 +128,7 @@ def homePage(request, pk):
                 counsellor_contact = object.contact
                 counsellor_occupation = object.occupation
                 arr_counsellor_id.append(counsellor_id)
+                arr_counsellor_pin.append(counsellor_pin)
                 arr_counsellor_user_id.append(counsellor_user_id)
                 arr_counsellor_firstname.append(counsellor_firstname)
                 arr_counsellor_lastname.append(counsellor_lastname)
@@ -138,6 +142,7 @@ def homePage(request, pk):
             for u in range(len(arr_counsellor_id)):
                 l_counsellor_user_id = arr_counsellor_user_id[u]
                 l_counsellor_id = arr_counsellor_id[u]
+                l_counsellor_pin = arr_counsellor_pin[u]
                 l_counsellor_firstname = arr_counsellor_firstname[u]
                 l_counsellor_lastname = arr_counsellor_lastname[u]
                 l_counsellor_title = arr_counsellor_title[u]
@@ -157,6 +162,7 @@ def homePage(request, pk):
                     spec_obj = specialities.save(commit=False)
                     counsellor_inst = Counsellor.objects.get(
                         id=l_counsellor_id)
+
                     ach_obj.counsellor = counsellor_inst
                     avail_obj.counsellor = counsellor_inst
                     edu_obj.counsellor = counsellor_inst
@@ -173,17 +179,17 @@ def homePage(request, pk):
 
                     messages.success(
                         request, f'id : {l_counsellor_user_id} ')
-                    counsellor = CounsellorForm(initial={
-                        'user_id': l_counsellor_user_id,
-                        'firstName': str(l_counsellor_firstname),
-                        'lastName': str(l_counsellor_lastname),
-                        'email': l_counsellor_email,
-                        'title': l_counsellor_title,
-                        'gender': l_counsellor_gender,
-                        'about': l_counsellor_about,
-                        'contact': l_counsellor_contact,
-                        'occupation': l_counsellor_occupation,
-                    })
+                    # counsellor = CounsellorForm(initial={
+                    #     'user_id': l_counsellor_user_id,
+                    #     'firstName': str(l_counsellor_firstname),
+                    #     'lastName': str(l_counsellor_lastname),
+                    #     'email': l_counsellor_email,
+                    #     'title': l_counsellor_title,
+                    #     'gender': l_counsellor_gender,
+                    #     'about': l_counsellor_about,
+                    #     'contact': l_counsellor_contact,
+                    #     'occupation': l_counsellor_occupation,
+                    # })
 
                     ach_obj.save()
                     avail_obj.save()
