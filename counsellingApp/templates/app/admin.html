@@ -10,12 +10,21 @@
       <p id="panel">ADMIN PANEL</p>
     </div>
     <div id="topleftcontent6">
-      <img src="{% static "media/download.png"%}" id="profilepic6"
-      alt="profile"/>
+      {% for object in objects%}<!---->
+      {% if object.user_id == pk|add:0 %}
+      <img
+        src="{{media_url}}{{ object.profile }}"
+        id="profilepic6"
+        alt="profile"
+      />
       <div class="dropdown">
         <p class="dropbtn" id="profiletext">
-          Rakesh Arora <i class="fas fa-caret-down"></i>
+          {{object.user_id}}
+
+          <i class="fas fa-caret-down"></i>
         </p>
+        <!---->
+        {% else%}{% endif%} {% endfor%}
 
         <div class="dropdown-content">
           <a href="{% url 'counsellingUrls:loginPage'%}">LOGOUT</a>

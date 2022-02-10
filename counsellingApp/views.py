@@ -99,30 +99,62 @@ def homePage(request, pk):
         specialities = SpecialitiesForm(request.POST)
         Supercounselloform = SuperCounsellorForm(request.POST)
 
-        if achievement.is_valid():
+        if counsellor.is_valid():
             messages.success(request, f'pk: {pk}')
-            # counsellor.save()
             arr_counsellor_id = []
             arr_counsellor_user_id = []
+            arr_counsellor_firstname = []
+            arr_counsellor_lastname = []
+            arr_counsellor_title = []
+            arr_counsellor_email = []
+            arr_counsellor_email = []
+            arr_counsellor_gender = []
+            arr_counsellor_occupation = []
+            arr_counsellor_about = []
+            arr_counsellor_contact = []
 
             for object in objects:
                 counsellor_id = object.id
                 counsellor_user_id = object.user_id
-                arr_counsellor_user_id.append(counsellor_user_id)
+                counsellor_firstname = object.firstName
+                counsellor_lastname = object.lastName
+                counsellor_title = object.title
+                counsellor_gender = object.gender
+                counsellor_about = object.about
+                counsellor_email = object.email
+                counsellor_contact = object.contact
+                counsellor_occupation = object.occupation
                 arr_counsellor_id.append(counsellor_id)
+                arr_counsellor_user_id.append(counsellor_user_id)
+                arr_counsellor_firstname.append(counsellor_firstname)
+                arr_counsellor_lastname.append(counsellor_lastname)
+                arr_counsellor_title.append(counsellor_title)
+                arr_counsellor_gender.append(counsellor_gender)
+                arr_counsellor_about.append(counsellor_about)
+                arr_counsellor_email.append(counsellor_email)
+                arr_counsellor_contact.append(counsellor_contact)
+                arr_counsellor_occupation.append(counsellor_occupation)
 
             for u in range(len(arr_counsellor_id)):
                 l_counsellor_user_id = arr_counsellor_user_id[u]
                 l_counsellor_id = arr_counsellor_id[u]
+                l_counsellor_firstname = arr_counsellor_firstname[u]
+                l_counsellor_lastname = arr_counsellor_lastname[u]
+                l_counsellor_title = arr_counsellor_title[u]
+                l_counsellor_gender = arr_counsellor_gender[u]
+                l_counsellor_about = arr_counsellor_about[u]
+                l_counsellor_email = arr_counsellor_email[u]
+                l_counsellor_contact = arr_counsellor_contact[u]
+                l_counsellor_occupation = arr_counsellor_occupation[u]
 
                 if str(l_counsellor_user_id) == str(pk):
+
                     ach_obj = achievement.save(commit=False)
                     avail_obj = availability.save(commit=False)
                     edu_obj = education.save(commit=False)
                     exp_obj = experience.save(commit=False)
                     ther_obj = therapy.save(commit=False)
                     spec_obj = specialities.save(commit=False)
-
                     counsellor_inst = Counsellor.objects.get(
                         id=l_counsellor_id)
                     ach_obj.counsellor = counsellor_inst
@@ -139,7 +171,20 @@ def homePage(request, pk):
                     ther_obj.user_id = pk
                     spec_obj.user_id = pk
 
-                    messages.success(request, f'id : {l_counsellor_user_id} ')
+                    messages.success(
+                        request, f'id : {l_counsellor_user_id} ')
+                    counsellor = CounsellorForm(initial={
+                        'user_id': l_counsellor_user_id,
+                        'firstName': str(l_counsellor_firstname),
+                        'lastName': str(l_counsellor_lastname),
+                        'email': l_counsellor_email,
+                        'title': l_counsellor_title,
+                        'gender': l_counsellor_gender,
+                        'about': l_counsellor_about,
+                        'contact': l_counsellor_contact,
+                        'occupation': l_counsellor_occupation,
+                    })
+
                     ach_obj.save()
                     avail_obj.save()
                     edu_obj.save()

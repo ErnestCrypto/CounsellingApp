@@ -30,13 +30,13 @@
               <div class="form-group">
                 {% comment %}
                 <input type="text" class="form-control" required />
-                {% endcomment %}
+                {% endcomment %} {% comment %}
                 <input
                   type="text"
                   class="form-control"
                   value="{{object.user_id}}"
                 />
-
+                {% endcomment %} {{counsellor.user_id}}
                 <label for="usr">ID</label>
               </div>
             </div>
@@ -67,27 +67,26 @@
                   <option>Dr.</option>
                   <option>Prof.</option>
                 </select>
-                {% endcomment %}
-
+                {% endcomment %} {% comment %}
                 <input
                   type="text"
                   class="form-control"
                   value="{{object.title}}"
                 />
-                {% comment %} {{counsellor.title}} {% endcomment %}
+                {% endcomment %} {{counsellor.title}}
                 <label for="usr"> Title </label>
               </div>
             </div>
 
             <div class="col-sm-3">
               <div class="form-group">
+                {% comment %}
                 <input
                   type="text"
                   class="form-control"
                   value="{{object.firstName}}"
                 />
-
-                {% comment %} {{counsellor.firstName}} {% endcomment %}
+                {% endcomment %} {{counsellor.firstName}}
                 <!---->
                 {% comment %}
                 <input type="text" class="form-control" required />
@@ -98,12 +97,13 @@
             </div>
             <div class="col-sm-3">
               <div class="form-group">
+                {% comment %}
                 <input
                   type="text"
                   class="form-control"
                   value="{{object.lastName}}"
                 />
-                {% comment %} {{counsellor.lastName}} {% endcomment %}
+                {% endcomment %} {{counsellor.lastName}}
                 <!---->
                 {% comment %}
                 <input type="text" class="form-control" required />
@@ -135,14 +135,13 @@
                   <option value="DS">Male</option>
                   <option value="Algo">Female</option>
                 </select>
-                {% endcomment %}
+                {% endcomment %} {% comment %}
                 <input
                   type="text"
                   class="form-control"
                   value="{{object.gender}}"
                 />
-
-                {% comment %} {{counsellor.gender}} {% endcomment %}
+                {% endcomment %} {{counsellor.gender}}
                 <label for="usr">Gender</label>
               </div>
             </div>
@@ -151,27 +150,26 @@
               <div class="form-group">
                 {% comment %}
                 <input type="text" class="form-control" required />
-                {% endcomment %}
+                {% endcomment %} {% comment %}
                 <input
                   type="text"
                   class="form-control"
                   value="{{object.email}}"
                 />
-
-                {% comment %} {{counsellor.email}} {% endcomment %}
+                {% endcomment %} {{counsellor.email}}
                 <label for="usr">Email</label>
               </div>
             </div>
 
             <div class="col-sm-3">
               <div class="form-group">
+                {% comment %}
                 <input
                   type="text"
                   class="form-control"
                   value="{{object.occupation}}"
                 />
-
-                {% comment %} {{counsellor.occupation}} {% endcomment %}
+                {% endcomment %} {{counsellor.occupation}}
                 <!---->
 
                 {% comment %}
@@ -186,14 +184,13 @@
               <div class="form-group">
                 {% comment %}
                 <input type="text" class="form-control" required />
-                {% endcomment %}
+                {% endcomment %} {% comment %}
                 <input
                   type="text"
                   class="form-control"
                   value="{{object.contact}}"
                 />
-
-                {% comment %} {{counsellor.contact}} {% endcomment %}
+                {% endcomment %} {{counsellor.contact}}
                 <label for="usr">Contact</label>
               </div>
             </div>
@@ -211,11 +208,11 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="form-groups">
+                {% comment %}
                 <textarea type="text" class="form-control">
 {{object.about}}</textarea
                 >
-
-                {% comment %} {{ counsellor.about}} {% endcomment %}
+                {% endcomment %} {{ counsellor.about}}
                 <!---->
 
                 {% comment %}
