@@ -530,6 +530,14 @@ section {
    
 }
 
+#objectsprofile{
+    width: 10%;
+    height: 20%;
+    float:left;
+    border-radius:100px;
+   
+}
+
 #sort1 {
     float: left;
     width: 76.5%;

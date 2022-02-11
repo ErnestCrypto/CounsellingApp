@@ -85,7 +85,7 @@ def homePage(request, pk):
     experience = ExperienceForm()
     therapy = TherapyForm()
     specialities = SpecialitiesForm()
-    Supercounselloform = SuperCounsellorForm()
+    Supercounsellorform = SuperCounsellorForm()
     objects = Counsellor.objects.all()
 
     if request.method == 'POST':
@@ -98,7 +98,7 @@ def homePage(request, pk):
         experience = ExperienceForm(request.POST)
         therapy = TherapyForm(request.POST)
         specialities = SpecialitiesForm(request.POST)
-        Supercounselloform = SuperCounsellorForm(request.POST)
+        Supercounsellorform = SuperCounsellorForm(request.POST)
 
         if counsellor.is_valid():
             counsellor.save()
@@ -202,7 +202,7 @@ def homePage(request, pk):
             # lastname = counsellor.cleaned_data['lastName']
 
             messages.success(
-                request, f'Your account has been created successfully.')
+                request, 'Your account has been updated successfully.')
 
         else:
             counsellor = CounsellorForm()
