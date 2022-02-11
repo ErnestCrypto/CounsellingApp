@@ -84,6 +84,7 @@ class CounsellorForm(ModelForm):
             'email': forms.EmailInput(attrs={'class': 'form-control'}),
             'occupation': forms.TextInput(attrs={'class': 'form-control'}),
             'user_id': forms.TextInput(attrs={'class': 'form-control'}),
+            'pin': forms.TextInput(attrs={'class': 'form-control'}),
             'contact': forms.TextInput(attrs={'class': 'form-control'}),
             'gender': forms.Select(attrs={'class': 'form-control', 'id': 'focusid'}),
             'about': forms.Textarea(attrs={'class': 'form-control'}),

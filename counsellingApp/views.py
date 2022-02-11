@@ -90,7 +90,8 @@ def homePage(request, pk):
 
     if request.method == 'POST':
 
-        counsellor = CounsellorForm(request.POST, request.FILES)
+        coun = Counsellor.objects.get(user_id=pk)
+        counsellor = CounsellorForm(request.POST, instance=coun)
         achievement = AchievementForm(request.POST)
         availability = AvailabilityForm(request.POST)
         education = EducationForm(request.POST)
@@ -100,7 +101,7 @@ def homePage(request, pk):
         Supercounselloform = SuperCounsellorForm(request.POST)
 
         if counsellor.is_valid():
-            counsellor.save(update_fields=["price"])
+            counsellor.save()
             messages.success(request, f'pk: {pk}')
             arr_counsellor_id = []
             arr_counsellor_pin = []
@@ -190,7 +191,6 @@ def homePage(request, pk):
                     #     'contact': l_counsellor_contact,
                     #     'occupation': l_counsellor_occupation,
                     # })
-
                     ach_obj.save()
                     avail_obj.save()
                     edu_obj.save()

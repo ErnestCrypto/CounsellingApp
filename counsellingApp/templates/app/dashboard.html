@@ -41,19 +41,36 @@
                 <label for="usr">ID</label>
               </div>
             </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                {{counsellor.profile}}
+                <!---->
+
+                <input type="text" class="form-control" required />
+
+                <label for="usr">Profile Pic</label>
+              </div>
+            </div>
             {% endcomment %}
 
             <div class="col-sm-3">
               <div class="form-group">
-                {{counsellor.profile}}
+                {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.firstName}}"
+                />
+                {% endcomment %} {{counsellor.pin}}
                 <!---->
                 {% comment %}
                 <input type="text" class="form-control" required />
                 {% endcomment %}
 
-                <label for="usr">Profile Pic</label>
+                <label for="usr">PIN</label>
               </div>
             </div>
+
             <div class="col-lg-3">
               <div class="form-group">
                 {% comment %}
