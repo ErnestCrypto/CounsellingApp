@@ -7,40 +7,43 @@
  <div id="section3div">
      <div id="topdiv">
   <div id="searchcontainer">
-   
-      <div id="top1">
-        <div id="mysearch" style="padding: 0.5%;  border-radius: 25px;background-color:rgba(211,211,211,0.5);">
-          <i class="fas fa-search"style="opacity:0.5;font-size:12px;"></i>
-            <input id="input1" style="width:90%;background-color:rgba(211,211,211,0.1);" type="search" placeholder="Search"/>
-        </div>
-     </div>
-          
-        
+    
        <div id="top2">
-         
-           <div class="dropdown" > 
-              {% for object in objects%}<!---->
+         {% for object in objects%}<!---->
         {% if object.user_id == pk|add:0 %}
-              <p  class="dropbtn" id ="objects">{{object.user_id}}</p> 
-            
+        <div>
+       <img id="logo3" src="{{ object.profile.url }}"  class="img-thumbnail" alt="Profile"/>
+</div><br><center>
+           <div class="dropdown" > 
+                
+              <p  class="dropbtn" id ="objects">ID: {{object.user_id}}</p> 
+           
               <div class="dropdown-content">
           <a href="{% url 'counsellingUrls:loginPage'%}">LOGOUT</a>
               
             </div>
+            
           </div>
         
-      <img id="logo3"  class="a" src="{{ object.profile.url }}" alt="Profile"/>
 
-        </div>
+        </div> </center>
         {% else%}{% endif%} {% endfor%}
-  </div>      
-   
-   
-      <h1 id="myh1">Our Therapist</h1>
-       
 
-  
-  <div style=" width:100%;  ">
+
+
+
+
+        <div id="top1">
+          <center>
+        <div id="mysearch" style="padding: 0.5%;  border-radius: 25px;background-color:rgba(211,211,211,0.5);">
+       
+          <i class="fas fa-search"style="opacity:0.5;font-size:12px;"></i>
+            <input id="input1" style="width:90%;background-color:rgba(211,211,211,0.1);" type="search" placeholder="Search"/>
+        </div>
+         </center><br/>
+              <h1 id="myh1">Our Therapist</h1>
+              <hr>
+  <div style=" width:50%;float: left;  ">
   <div id="mysort"style="float:left;">
   <label id="labelSort"><div class="dropdown" >         
   <p  style= "color:white;width:50px;margin: 0%" >Sort</p>
@@ -51,11 +54,21 @@
   </div>
 </div></label>
   </div>
-   
-  <div id="button1rep">
+
+     </div>
+     <div id="button1rep">
   <a href="#" style="opacity:0.7;font-size:13px;padding-bottom:0%;"> Need more help?</a>
  <button type="submit" id="button1" href="#"> Guided Matching</button>
   </div>
+  </div>      
+   
+   
+       
+
+  
+ 
+   
+  
 </div>
 </div>
 <!---->
