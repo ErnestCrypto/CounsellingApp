@@ -12,12 +12,22 @@
     <div id="topleftcontent6">
       {% for object in objects%}<!---->
       {% if object.user_id == pk|add:0 %}
+      <!---->
+      {% if object.profile %}
       <img
         src="{{ object.profile.url }}"
         class="img-thumbnail"
         id="profilepic6"
         alt="profile"
       />
+      {% else %}
+      <img
+        src="{% static 'media/download.png' %}"
+        class="img-thumbnail"
+        id="profilepic6"
+        alt="profile"
+      />
+      {% endif %}
 
       <div class="dropdown" id="profiletext">
         <p class="dropbtn" style="font-size: 20px">

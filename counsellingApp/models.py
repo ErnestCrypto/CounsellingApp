@@ -34,23 +34,22 @@ class BaseModel(models.Model):
     title = models.CharField(choices=TITLE, default=None,
                              max_length=20, db_index=True, null=True, blank=True)
     firstName = models.CharField(
-        max_length=255, db_index=True, blank=True, default=None, null=True,)
+        max_length=255, db_index=True, default=None, null=True, blank=True)
     lastName = models.CharField(
-        max_length=255, db_index=True, blank=True, default=None, null=True, )
+        max_length=255, db_index=True,  default=None, null=True, blank=True)
     occupation = models.CharField(
-        max_length=255, db_index=True, blank=True, null=True, default=None, )
+        max_length=255, db_index=True,  default=None, null=True, blank=True)
     gender = models.CharField(choices=GENDER,
                               default=None, max_length=25, db_index=True, null=True, blank=True)
-    email = models.EmailField(default=None, blank=True, null=True,)
-    contact = models.IntegerField(default=None,  blank=True, null=True, )
+    email = models.EmailField(default=None, null=True, blank=True)
+    contact = models.IntegerField(default=None, null=True, blank=True)
     profile = models.ImageField(
-        upload_to='images/', default=None, null=True, blank=True,)
-    pin = models.IntegerField(default=None, null=True,
-                              blank=True, )
+        upload_to='images/', default=None, null=True, blank=True)
+    pin = models.IntegerField(default=None, null=True, blank=True)
     user_id = models.IntegerField(
-        default=None, null=True, blank=True, )
+        default=None, null=True, blank=True)
     status = models.CharField(
-        max_length=255, choices=LOGIN, default=None, null=True, blank=True, )
+        max_length=255, choices=LOGIN, default=None, null=True, blank=True)
 
     class Meta:
         abstract = True

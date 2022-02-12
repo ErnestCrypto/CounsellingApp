@@ -12,8 +12,13 @@
          {% for object in objects%}<!---->
         {% if object.user_id == pk|add:0 %}
         <div>
+          {% if object.profile %}
        <img id="logo3" src="{{ object.profile.url }}"  class="img-thumbnail" alt="Profile"/>
-</div><br><center>
+          {% else %}
+<img id="logo3" src="{% static 'media/download.png' %}" class="img-thumbnail" alt="Profile"/>
+
+          {% endif %}
+      </div><br><center>
            <div class="dropdown" > 
                 
               <p  class="dropbtn" id ="objects">ID: {{object.user_id}}</p> 

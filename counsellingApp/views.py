@@ -91,7 +91,7 @@ def homePage(request, pk):
     if request.method == 'POST':
 
         coun = Counsellor.objects.get(user_id=pk)
-        counsellor = CounsellorForm(request.POST, instance=coun)
+        counsellor = CounsellorForm(request.POST, request.FILES, instance=coun)
         achievement = AchievementForm(request.POST)
         availability = AvailabilityForm(request.POST)
         education = EducationForm(request.POST)
@@ -115,6 +115,7 @@ def homePage(request, pk):
             arr_counsellor_occupation = []
             arr_counsellor_about = []
             arr_counsellor_contact = []
+            arr_counsellor_profile = []
 
             for object in objects:
                 counsellor_id = object.id
@@ -128,6 +129,8 @@ def homePage(request, pk):
                 counsellor_email = object.email
                 counsellor_contact = object.contact
                 counsellor_occupation = object.occupation
+                counsellor_profile = object.profile
+                arr_counsellor_profile.append(counsellor_profile)
                 arr_counsellor_id.append(counsellor_id)
                 arr_counsellor_pin.append(counsellor_pin)
                 arr_counsellor_user_id.append(counsellor_user_id)
@@ -143,6 +146,7 @@ def homePage(request, pk):
             for u in range(len(arr_counsellor_id)):
                 l_counsellor_user_id = arr_counsellor_user_id[u]
                 l_counsellor_id = arr_counsellor_id[u]
+                l_counsellor_profile = arr_counsellor_profile[u]
                 l_counsellor_pin = arr_counsellor_pin[u]
                 l_counsellor_firstname = arr_counsellor_firstname[u]
                 l_counsellor_lastname = arr_counsellor_lastname[u]
@@ -154,6 +158,17 @@ def homePage(request, pk):
                 l_counsellor_occupation = arr_counsellor_occupation[u]
 
                 if str(l_counsellor_user_id) == str(pk):
+
+                    # coun.user_id = pk
+                    # coun.about = l_counsellor_about
+                    # coun.title = l_counsellor_title
+                    # coun.firstName = l_counsellor_firstname
+                    # coun.lastName = l_counsellor_lastname
+                    # coun.gender = l_counsellor_gender
+                    # coun.occupation = l_counsellor_occupation
+                    # coun.contact = l_counsellor_contact
+                    # coun.email = l_counsellor_email
+                    # coun.profile = l_counsellor_profile
 
                     ach_obj = achievement.save(commit=False)
                     avail_obj = availability.save(commit=False)
@@ -180,17 +195,19 @@ def homePage(request, pk):
 
                     messages.success(
                         request, f'id : {l_counsellor_user_id} ')
-                    # counsellor = CounsellorForm(initial={
-                    #     'user_id': l_counsellor_user_id,
-                    #     'firstName': str(l_counsellor_firstname),
-                    #     'lastName': str(l_counsellor_lastname),
-                    #     'email': l_counsellor_email,
-                    #     'title': l_counsellor_title,
-                    #     'gender': l_counsellor_gender,
-                    #     'about': l_counsellor_about,
-                    #     'contact': l_counsellor_contact,
-                    #     'occupation': l_counsellor_occupation,
-                    # })
+                    counsellor = CounsellorForm(initial={
+                        'user_id': l_counsellor_user_id,
+                        'firstName': str(l_counsellor_firstname),
+                        'lastName': str(l_counsellor_lastname),
+                        'email': l_counsellor_email,
+                        'title': l_counsellor_title,
+                        'gender': l_counsellor_gender,
+                        'about': l_counsellor_about,
+                        'contact': l_counsellor_contact,
+                        'occupation': l_counsellor_occupation,
+                        'profile': l_counsellor_profile,
+                    })
+
                     ach_obj.save()
                     avail_obj.save()
                     edu_obj.save()
