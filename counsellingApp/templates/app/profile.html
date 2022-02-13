@@ -80,10 +80,11 @@
 <!---->
 </div></div>
 <!---->
-
+{% for object in objects%}
 <!---->
 <div>
    <!---->
+
 <div id="mypadtop" >
 
   <div id="mypad" >
@@ -108,32 +109,33 @@
 
     <div id="subtab2">
       <div>
-        <h1 id="myh2">Dr Norma Murphy</h1>
+        <h1 id="myh2">{{ object.title }} {{object.firstName}} {{object.lastName}}</h1>
         <p style="opacity:0.4">
-          Clinical Psychologist  DClinPsy
+          {{ object.occupation }}
         </p>
       <p style="padding-top:2%;opacity:0.9;">
-        Dr. Norma Murphy specialises in helping people overcome a range of anxiety issues, 
-        particularly when they relate to self-esteem. She draws upon several different types of therapy
-        to trailor the most effective approach for..
+       {{object.about }}
         <p>
-<div>
+         
+       <div>
   <p id="myh2"> Therapies Offered</p>
   <div style="width:100%;">
-     <center> <p id="label2"> CBT</p></center>
+    {% if object.therapies_offered %}
+     <center> <p id="label2">{{object.therapies_offered}}</p></center>
+  {% else %}
    <center><p id="label2"> EMDR</p></center>
-   <center><p id="label2"> ACT</p></center>
-   <center><p id="label2"> More</p></center>
+  {% endif %}
 
   </div>
 </div>
 <div>
-    <p id="myh2"> Top Specialities</p>
+    <p id="myh2" > Top Specialities</p>
 <div style="width:100%;">
-     <center> <p id="label3"> Eating Disorders</p></center>
-   <center><p id="label2"> Abuse</p></center>
-   <center><p id="label2"> PTSD</p></center>
-   <center><p id="label2"> More</p></center>
+  {% if object.top_specialities  %}
+   <center><p id="label2"> {{object.top_specialities }}</p></center>
+   {% else %}
+      <center><p id="label2"> Abuse</p></center>
+{% endif %}
 
   </div>
 </div>
@@ -165,9 +167,11 @@
 
     </div>
   </div>
+  </div>
+  
+{% endfor %}
 
-
-
+{% comment %} 
   <!---->
 <div id="mypad" style="border-radius:10px;padding-right:1%;padding-left:2%;">
    
@@ -420,7 +424,7 @@
  <!---->
 </div>
 
-</div><!---->
+</div><!----> {% endcomment %}
 
 
 </section>
