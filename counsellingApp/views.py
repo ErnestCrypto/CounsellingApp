@@ -7,6 +7,7 @@ from .models import Counsellor, SuperCounsellor, Achievement, Availability, Educ
 from .forms import CounsellorForm, SuperCounsellorForm, AchievementForm, AvailabilityForm, EducationForm, ExperienceForm, TherapyForm, SpecialitiesForm, LoginForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db.models.functions import Lower
 
 
 def loginPage(request):
@@ -92,6 +93,8 @@ def homePage(request, pk):
     obj_exp = Experience.objects.all()
     obj_the = Therapy.objects.all()
     obj_spe = Specialities.objects.all()
+    search = CounsellorForm()
+    post = Counsellor.objects.all()
 
     if request.method == 'POST':
 
@@ -235,9 +238,12 @@ def homePage(request, pk):
             experience = ExperienceForm()
             therapy = TherapyForm()
             specialities = SpecialitiesForm()
+
             messages.error(
                 request, 'Failed to create your account, please check your details')
-
+    else:
+        search = request.GET.get('search')
+        post = Counsellor.objects.all().filter(firstName=search)
     return render(request, 'app/home.html', {'profile': profile,
                                              'notification': notification,
                                              'index': index,
@@ -257,8 +263,7 @@ def homePage(request, pk):
                                              'obj_exp': obj_exp,
                                              'obj_the': obj_the,
                                              'obj_spe': obj_spe,
-
-
+                                             'post': post,
 
 
                                              })
@@ -286,3 +291,13 @@ def dashboardPage(request):
     # availability = AvailabilityForm()
 
     return render(request, 'app/dashboard.html', {})
+
+
+def search(request):
+    if request.method == 'GET':
+        search = request.GET.get('search')
+        post = Counsellor.objects.all().filter(firstName=search)
+
+        return render(request, 'app/profile.html', {
+            'post': post,
+        })

@@ -4,6 +4,9 @@
 <section id="section3" >
 
   <div id = "adjust" >
+
+
+    
  <div id="section3div" >
      <div id="topdiv">
   <div id="searchcontainer"  >
@@ -39,12 +42,13 @@
 
 
         <div id="top1" >
-          <center>
-        <div id="mysearch" style="padding: 0.5%;  border-radius: 25px;background-color:rgba(211,211,211,0.5);">
-       
-          <i class="fas fa-search"style="opacity:0.5;font-size:12px;"></i>
-            <input id="input1" style="width:90%;background-color:rgba(211,211,211,0.1);" type="search" placeholder="Search"/>
+          <center><form method="get" action="{% url 'counsellingUrls:search'  %}">
+            {% csrf_token %}
+        <div id="mysearch" style="padding: 0.5%;  border-radius: 25px;background-color:rgba(211,211,211,0.5);">    
+          <button style="border:none; padding:2%;border-radius:25px; background-color:rgba(211,211,211,0.1)" type="submit"><i  class="fas fa-search" style="opacity:0.5;font-size:12px;"></i></button>
+            <input name="search" id="input1" style="width:90%;background-color:rgba(211,211,211,0.1);" type="search" placeholder="Search"/>
         </div>
+        </form>
          </center><br/>
               <h1 id="myh1">Our Therapist</h1>
               <hr>
@@ -75,6 +79,8 @@
 </div>
 </div>
 <!---->
+
+
 
 <!---->
 {% for object in objects%}
@@ -109,9 +115,9 @@
             <p style="opacity:0.4">
               {{ object.occupation }}
               </p>
-                  <p style="padding-top:2%;opacity:0.9;">
+                  <div style="padding-top:2%;opacity:0.9; height:20%;overflow-x:scroll">
               {{object.about }}
-                <p> 
+                </div> 
             <div style="height:20%;">
              
                   <p id="myh2"> Therapies Offered</p>
@@ -127,7 +133,7 @@
               </div>
              
             </div>
-            <br>
+            <br><br>
             <div style="width:100%">
 
             <p id="myh2" > Top Specialities</p>
@@ -143,7 +149,8 @@
             </div>
           </div>
       </div>
-     
+     <form method="post" action="">
+       {% csrf_token %}
          <div id="subtab3">
                   <center>  
             <div> {% if obj_avai.start_time %}
@@ -159,13 +166,13 @@
                           <label id="labels1" href="#">No available time </label>
                           {% endif %}
 
-                <label  id="labels1" href="#" style="background-color:rgba(0,0,255,0.6);color:white;">Book</label>
+                <button type="submit" id="labels1" href="#" style="background-color:rgba(0,0,255,0.6);color:white;">Book</button>
                 </center>
                 
           </div>
           
     </div>
-
+  </form>
 
   </div> 
  
@@ -174,6 +181,21 @@
     
 
 {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 {% comment %} 

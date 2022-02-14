@@ -1,0 +1,116 @@
+{% include 'app/header.html' %} 
+{% load static%}
+<section >
+ <center><form method="get" action="{% url 'counsellingUrls:search'  %}">
+            {% csrf_token %}
+        <div id="mysearch" style="padding: 0.5%;  border-radius: 25px;background-color:rgba(211,211,211,0.5);">    
+          <button style="border:none; padding:2%;border-radius:25px; background-color:rgba(211,211,211,0.1)" type="submit"><i  class="fas fa-search" style="opacity:0.5;font-size:12px;"></i></button>
+            <input name="search" id="input1" style="width:90%;background-color:rgba(211,211,211,0.1);" type="search" placeholder="Search"/>
+        </div>
+        </form>
+         </center>
+
+
+
+
+
+{% if post %}
+{% for i in post %}
+
+ <div id="mypadtop" >
+
+    <div id="mypad" >
+   
+      <div id="subtab1">
+         <center> 
+           <img id="profile"  class="a" src="{{i.profile.url }}">
+
+          </center>
+          <center>
+            <i class="fas fa-video" style="padding:5%; color:blue; opacity:0.7;"></i>
+            <i class="fas fa-user-friends" style="padding:5%; color:blue; opacity:0.7;"></i>
+            <i class="fas fa-comment-dots"  style="padding:5%; color:blue; opacity:0.7;" ></i>
+          </center>
+              <center> 
+        
+              <p><i class="fas fa-location-arrow" style="opacity:0.4;"> 25 km</i></p>
+      
+          </center>
+      </div>
+
+
+      <div id="subtab2">
+          <div>
+            <h1 id="myh2">{{ i.title }} {{i.firstName}} {{i.lastName}}</h1>
+            <p style="opacity:0.4">
+              {{ i.occupation }}
+              </p>
+                  <div style="padding-top:2%;opacity:0.9; height:20%;overflow-x:scroll">
+              {{i.about }}
+                </div> 
+            <div style="height:20%;">
+             
+                  <p id="myh2"> Therapies Offered</p>
+              <div style="width:100%; ">
+                {% if obj_the.therapies_offered  %}
+                {% for ob_the in obj_the %}
+                <center> <p id="label2">{{ob_the.therapies_offered}}</p></center>
+                 {% endfor %}
+                {% else %}
+                <center><p id="label2"> EMDR</p></center>
+                {% endif %} 
+               
+              </div>
+             
+            </div>
+            <br><br>
+            <div style="width:100%">
+
+            <p id="myh2" > Top Specialities</p>
+              <div style="width:100%;">
+                            {% if obj_spe.top_specialities  %}
+                            {% for ob_spe in obj_spe %}
+                            <center><p id="label2"> {{ob_spe.top_specialities }}</p></center>
+                           {% endfor %}
+                            {% else %}
+                                <center><p id="label2"> Abuse</p></center>
+                          {% endif %}
+              </div>
+            </div>
+          </div>
+      </div>
+     <form method="post" action="">
+       {% csrf_token %}
+         <div id="subtab3">
+                  <center>  
+            <div> {% if obj_avai.start_time %}
+              {% for ob_avai in obj_avai %}
+                    <p id="filter2"><i class="fa fa-calendar" aria-hidden="true" style="color:blue"></i>
+             {{ob_avai.date}}</p>
+                      <p style="color: rgba(0,0,0,0.5); font-size: 10px;">Video Call 50 mins</p>
+            </div>
+                     
+                        <label id="labels1" href="#">  {{ ob_avai.start_time}} - {{ ob_avai.end_time }}</label>
+                     {% endfor %}
+                        {% else %}
+                          <label id="labels1" href="#">No available time </label>
+                          {% endif %}
+
+                <button type="submit" id="labels1" href="#" style="background-color:rgba(0,0,255,0.6);color:white;">Book</button>
+                </center>
+                
+          </div>
+          
+    </div>
+  </form>
+
+  </div> 
+ 
+
+{% endfor %}
+{% else %}
+<center>
+<p>No match...</p>
+</center>
+{% endif %}
+</section>
