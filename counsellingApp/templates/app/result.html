@@ -18,7 +18,7 @@
          </center>
          <form method="post" action="{% url 'counsellingUrls:homePage' 'pk'%}">
 {% csrf_token %}
-<button  href="{% url 'counsellingUrls:homePage' 'pk'%}" type = "submit" style="background-color:rgba(0,0,255,0.6);color:white;margin-left:5%;padding:1%;border-radius:21px;">Back</button>
+<button type = "submit" style="background-color:rgba(0,0,255,0.6);color:white;margin-left:5%;padding:1%;border-radius:21px;">Back</button>
 </form>
 
 {% if post %}

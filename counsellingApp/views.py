@@ -93,8 +93,6 @@ def homePage(request, pk):
     obj_exp = Experience.objects.all()
     obj_the = Therapy.objects.all()
     obj_spe = Specialities.objects.all()
-    search = CounsellorForm()
-    post = Counsellor.objects.all()
 
     if request.method == 'POST':
 
@@ -228,7 +226,6 @@ def homePage(request, pk):
 
             messages.success(
                 request, 'Your account has been updated successfully.')
-            return redirect('counsellingUrls:search', pk)
 
         else:
             counsellor = CounsellorForm()
@@ -262,8 +259,8 @@ def homePage(request, pk):
                                              'obj_exp': obj_exp,
                                              'obj_the': obj_the,
                                              'obj_spe': obj_spe,
-                                             'post': post,
-                                             },
+
+                                             }
 
                   )
 
@@ -293,11 +290,13 @@ def dashboardPage(request):
 
 
 def search(request, pk):
+
     if request.method == 'GET':
         search = request.GET.get('search')
         post = Counsellor.objects.all().filter(firstName=search)
-        pk = pk
+
         return render(request, 'app/result.html', {
             'post': post,
             'pk': pk,
+
         })
