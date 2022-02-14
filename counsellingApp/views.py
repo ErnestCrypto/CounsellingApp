@@ -87,6 +87,11 @@ def homePage(request, pk):
     specialities = SpecialitiesForm()
     Supercounsellorform = SuperCounsellorForm()
     objects = Counsellor.objects.all()
+    obj_ach = Achievement.objects.all()
+    obj_avai = Availability.objects.all()
+    obj_exp = Experience.objects.all()
+    obj_the = Therapy.objects.all()
+    obj_spe = Specialities.objects.all()
 
     if request.method == 'POST':
 
@@ -247,6 +252,12 @@ def homePage(request, pk):
                                              'Counsellor': counsellor,
                                              'objects': objects,
                                              'pk': pk,
+                                             'obj_ach': obj_ach,
+                                             'obj_avai': obj_avai,
+                                             'obj_exp': obj_exp,
+                                             'obj_the': obj_the,
+                                             'obj_spe': obj_spe,
+
 
 
 

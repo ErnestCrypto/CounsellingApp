@@ -26,7 +26,7 @@
     overflow: hidden;
 
 
-    display: block;
+    display: none;
     animation-name: example;
     animation-duration: 1s;
     overflow-y: scroll;
@@ -48,7 +48,7 @@
     width: 85%;
     float: right;
     height: 100%;
-    display: none;
+    display:none;
     animation-name: example;
     animation-duration: 1s;
     overflow-y: scroll;
@@ -61,7 +61,7 @@
     width: 85%;
     float: right;
     padding: 0%;
-    display: none;
+    display: block;
     animation-name: example;
     animation-duration: 1s;
     overflow: hidden;
@@ -645,6 +645,7 @@ section {
     border-radius: 25px;
     width: 20%;
     float: left;
+   
 
 }
 
@@ -676,7 +677,8 @@ section {
 }
 
 #searchcontainer {
-    padding-bottom: 5%;
+  overflow: hidden;
+ 
 
 
 }
@@ -709,8 +711,7 @@ section {
     border-radius: 10px;
     padding-right: 1%;
     padding-left: 2%;
-
-    padding-bottom: 40%;
+    height: 100%;
     background-color: white;
     padding-top: 1%;
     margin: 1%;
@@ -718,11 +719,10 @@ section {
 
 #mypadtop {
     height: 77%;
-
+margin-bottom:2%;
     padding-left: 1%;
     padding-right: 1%;
 
-    overflow-y: scroll;
     width: 100%;
 
 
@@ -958,7 +958,7 @@ section {
     padding: 1%;
     height: 95%;
     font-family: Montserrat;
-    display: none;
+    display: block;
     overflow-y: scroll;
     overflow-x: hidden;
     animation-name: example;
@@ -971,7 +971,7 @@ section {
     padding: 1%;
     height: 95%;
     font-family: Montserrat;
-    display: none;
+    display:none;
     overflow-y: scroll;
     animation-name: example;
     animation-duration: 1s;
@@ -981,7 +981,7 @@ section {
     padding: 1%;
     height: 95%;
     font-family: Montserrat;
-    display: block;
+    display:none;
     overflow-y: scroll;
     animation-name: example;
     animation-duration: 1s;
