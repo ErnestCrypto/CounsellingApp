@@ -228,6 +228,7 @@ def homePage(request, pk):
 
             messages.success(
                 request, 'Your account has been updated successfully.')
+            return redirect('counsellingUrls:search', pk)
 
         else:
             counsellor = CounsellorForm()
@@ -241,9 +242,7 @@ def homePage(request, pk):
 
             messages.error(
                 request, 'Failed to create your account, please check your details')
-    else:
-        search = request.GET.get('search')
-        post = Counsellor.objects.all().filter(firstName=search)
+
     return render(request, 'app/home.html', {'profile': profile,
                                              'notification': notification,
                                              'index': index,
@@ -264,9 +263,9 @@ def homePage(request, pk):
                                              'obj_the': obj_the,
                                              'obj_spe': obj_spe,
                                              'post': post,
+                                             },
 
-
-                                             })
+                  )
 
 
 def adminPage(request):
@@ -293,11 +292,12 @@ def dashboardPage(request):
     return render(request, 'app/dashboard.html', {})
 
 
-def search(request):
+def search(request, pk):
     if request.method == 'GET':
         search = request.GET.get('search')
         post = Counsellor.objects.all().filter(firstName=search)
-
-        return render(request, 'app/profile.html', {
+        pk = pk
+        return render(request, 'app/result.html', {
             'post': post,
+            'pk': pk,
         })

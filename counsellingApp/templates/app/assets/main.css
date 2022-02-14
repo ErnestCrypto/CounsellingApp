@@ -70,7 +70,16 @@
 
 }
 
+#section7 {
+    display: none;
+    width: 85%;
+    float: right;
+    height: 100%;
+    overflow: hidden;
+    animation-name: example;
+    animation-duration: 1s;
 
+}
 
 
 @keyframes example {
@@ -705,6 +714,19 @@ section {
 
 
 }
+
+
+#mysearch65 {
+    
+    width: 50%;
+   float: center;
+
+
+}
+
+
+
+
 
 #labelSort {
     padding-top: 3%;

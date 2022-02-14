@@ -42,11 +42,11 @@
 
 
         <div id="top1" >
-          <center><form method="get" action="{% url 'counsellingUrls:search'  %}">
-            {% csrf_token %}
-        <div id="mysearch" style="padding: 0.5%;  border-radius: 25px;background-color:rgba(211,211,211,0.5);">    
+          <center><form method="get" action="{% url 'counsellingUrls:search' 'pk'  %}">
+            {% csrf_token %} <div id="mysearch"> 
+       {% comment %}style="padding: 0.5%;  border-radius: 25px;background-color:rgba(211,211,211,0.5);"      {% endcomment %}
           <button style="border:none; padding:2%;border-radius:25px; background-color:rgba(211,211,211,0.1)" type="submit"><i  class="fas fa-search" style="opacity:0.5;font-size:12px;"></i></button>
-            <input name="search" id="input1" style="width:90%;background-color:rgba(211,211,211,0.1);" type="search" placeholder="Search"/>
+            {% comment %} <input name="search" id="input1" style="width:90%;background-color:rgba(211,211,211,0.1);" type="search" placeholder="Search"/> {% endcomment %}
         </div>
         </form>
          </center><br/>

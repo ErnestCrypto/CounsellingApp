@@ -1,18 +1,25 @@
-{% include 'app/header.html' %} 
+{% include 'app/header.html' %}
 {% load static%}
+
 <section >
- <center><form method="get" action="{% url 'counsellingUrls:search'  %}">
+
+
+
+
+ <center><form method="get" action="{% url 'counsellingUrls:search' 'pk'%}">
             {% csrf_token %}
-        <div id="mysearch" style="padding: 0.5%;  border-radius: 25px;background-color:rgba(211,211,211,0.5);">    
-          <button style="border:none; padding:2%;border-radius:25px; background-color:rgba(211,211,211,0.1)" type="submit"><i  class="fas fa-search" style="opacity:0.5;font-size:12px;"></i></button>
+            <div  style="padding-top:2%">
+        <div id="mysearch65" style="padding: 0.5%;  border-radius: 25px;background-color:rgba(211,211,211,0.5);">    
+            <button style="border:none; padding:2%;border-radius:25px; background-color:rgba(211,211,211,0.1)" type="submit"><i  class="fas fa-search" style="opacity:0.5;font-size:12px;"></i></button>
             <input name="search" id="input1" style="width:90%;background-color:rgba(211,211,211,0.1);" type="search" placeholder="Search"/>
+        </div>
         </div>
         </form>
          </center>
-
-
-
-
+         <form method="post" action="{% url 'counsellingUrls:homePage' 'pk'%}">
+{% csrf_token %}
+<button  href="{% url 'counsellingUrls:homePage' 'pk'%}" type = "submit" style="background-color:rgba(0,0,255,0.6);color:white;margin-left:5%;padding:1%;border-radius:21px;">Back</button>
+</form>
 
 {% if post %}
 {% for i in post %}
@@ -110,6 +117,7 @@
 {% endfor %}
 {% else %}
 <center>
+    <img src="{% static 'media/error.png'%}" alt = "error">
 <p>No match...</p>
 </center>
 {% endif %}
