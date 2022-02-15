@@ -10,7 +10,7 @@ urlpatterns = [
     path('', views.loginPage, name="loginPage"),
     path('ad/', views.adminPage, name="adminPage"),
     path('profile/', views.profilePage, name="profilePage"),
-    path('search/<str:pk>/', views.search, name="search"),
+    path('search/', views.search, name="search"),
 
 ]
 

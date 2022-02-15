@@ -95,6 +95,7 @@ def homePage(request, pk):
     obj_spe = Specialities.objects.all()
 
     request.session['pk'] = pk
+
     if request.method == 'POST':
 
         coun = Counsellor.objects.get(user_id=pk)
@@ -290,14 +291,16 @@ def dashboardPage(request):
     return render(request, 'app/dashboard.html', {})
 
 
-def search(request, pk):
+def search(request):
     pk = request.session['pk']
+    messages.success(request, f'pk: {pk}')
+
     if request.method == 'GET':
         search = request.GET.get('search')
         post = Counsellor.objects.all().filter(firstName=search)
-
+        pk = request.session['pk']
         return render(request, 'app/result.html', {
             'post': post,
-            'pk': pk,
 
         })
+    return redirect('counsellingUrls:homePage', pk)

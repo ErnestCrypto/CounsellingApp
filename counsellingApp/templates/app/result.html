@@ -6,7 +6,7 @@
 
 
 
- <center><form method="get" action="{% url 'counsellingUrls:search' 'pk'%}">
+ <center><form method="get" action="{% url 'counsellingUrls:search' %}">
             {% csrf_token %}
             <div  style="padding-top:2%">
         <div id="mysearch65" style="padding: 0.5%;  border-radius: 25px;background-color:rgba(211,211,211,0.5);">    
@@ -16,7 +16,7 @@
         </div>
         </form>
          </center>
-         <form method="post" action="{% url 'counsellingUrls:homePage' 'pk'%}">
+         <form method="post" action="">
 {% csrf_token %}
 <button type = "submit" style="background-color:rgba(0,0,255,0.6);color:white;margin-left:5%;padding:1%;border-radius:21px;">Back</button>
 </form>
