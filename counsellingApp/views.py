@@ -94,6 +94,7 @@ def homePage(request, pk):
     obj_the = Therapy.objects.all()
     obj_spe = Specialities.objects.all()
 
+    request.session['pk'] = pk
     if request.method == 'POST':
 
         coun = Counsellor.objects.get(user_id=pk)
@@ -290,7 +291,7 @@ def dashboardPage(request):
 
 
 def search(request, pk):
-
+    pk = request.session['pk']
     if request.method == 'GET':
         search = request.GET.get('search')
         post = Counsellor.objects.all().filter(firstName=search)
