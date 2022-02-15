@@ -297,10 +297,18 @@ def search(request):
 
     if request.method == 'GET':
         search = request.GET.get('search')
-        post = Counsellor.objects.all().filter(firstName=search)
+        if search:
+            search = request.GET.get('search')
+        else:
+            search = ''
+
+        post = Counsellor.objects.filter(firstName__contains=search)
+        post2 = Counsellor.objects.filter(lastName__contains=search)
         pk = request.session['pk']
         return render(request, 'app/result.html', {
             'post': post,
+            'post2': post2,
+            'search': search
 
         })
     return redirect('counsellingUrls:homePage', pk)
