@@ -66,7 +66,7 @@ class AvailabilityForm(ModelForm):
         widgets = {
             'start_time': forms.TimeInput(attrs={'class': 'form-control', 'type': 'time'}),
             'end_time': forms.TimeInput(attrs={'class': 'form-control', 'type': 'time'}),
-            'date': forms.Select(attrs={'class': 'form-control',  'id': 'focusid'}),
+            'date': forms.DateInput(attrs={'class': 'form-control',  'type': 'date'}),
 
         }
 

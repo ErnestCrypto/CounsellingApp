@@ -96,7 +96,7 @@ class Availability(models.Model):
         Counsellor, related_name='availability', on_delete=models.CASCADE, blank=True, default=None, null=True)
     start_time = models.TimeField(default=None,  null=True, blank=True)
     end_time = models.TimeField(default=None,  null=True, blank=True)
-    date = models.CharField(choices=DAYS, default=None,
+    date = models.CharField(default=None,
                             null=True, max_length=255, blank=True)
     user_id = models.CharField(
         max_length=255, db_index=True, blank=True, null=True, default=None)
@@ -166,12 +166,8 @@ class Bookings(models.Model):
     student_profile = models.ImageField(
         upload_to='images/', default=None, null=True, blank=True)
 
-    date = models.CharField(choices=DAYS, default=None,
-                            null=True, max_length=255, blank=True)
-
-    start_time = models.TimeField(default=None,  null=True, blank=True)
-
-    end_time = models.TimeField(default=None,  null=True, blank=True)
+    date = models.DateTimeField(
+        null=True, max_length=255, blank=True, auto_now_add=True, )
 
     student_status = models.CharField(
         max_length=255, db_index=True, default='Pending', null=True, blank=True)
@@ -191,12 +187,8 @@ class Meetings(models.Model):
     student_profile = models.ImageField(
         upload_to='images/', default=None, null=True, blank=True)
 
-    date = models.CharField(choices=DAYS, default=None,
-                            null=True, max_length=255, blank=True)
-
-    start_time = models.TimeField(default=None,  null=True, blank=True)
-
-    end_time = models.TimeField(default=None,  null=True, blank=True)
+    date = models.DateTimeField(auto_now_add=True,
+                                null=True, max_length=255, blank=True)
 
     class Meta:
         verbose_name_plural = 'Meetings'

@@ -115,8 +115,7 @@ class BookingsAdmin(admin.ModelAdmin):
         'student_name',
         'student_profile',
         'date',
-        'start_time',
-        'end_time',
+
         'student_status',
     ]
 
@@ -130,6 +129,5 @@ class MeetingsAdmin(admin.ModelAdmin):
         'student_name',
         'student_profile',
         'date',
-        'start_time',
-        'end_time',
+
     ]
