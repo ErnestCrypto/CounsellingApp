@@ -153,3 +153,50 @@ class Login(models.Model):
         max_length=255, choices=LOGIN, default=None, blank=True, null=True,)
     date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
+
+
+class Bookings(models.Model):
+    counsellor = models.ForeignKey(
+        Counsellor, related_name='bookings', on_delete=models.CASCADE, default=None, )
+    student_id = models.IntegerField(
+        default=None, null=True, blank=True)
+    student_name = models.CharField(
+        max_length=255, db_index=True, default=None, null=True, blank=True)
+
+    student_profile = models.ImageField(
+        upload_to='images/', default=None, null=True, blank=True)
+
+    date = models.CharField(choices=DAYS, default=None,
+                            null=True, max_length=255, blank=True)
+
+    start_time = models.TimeField(default=None,  null=True, blank=True)
+
+    end_time = models.TimeField(default=None,  null=True, blank=True)
+
+    student_status = models.CharField(
+        max_length=255, db_index=True, default='Pending', null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Bookings'
+
+
+class Meetings(models.Model):
+    counsellor = models.ForeignKey(
+        Counsellor, related_name='meetings', on_delete=models.CASCADE, default=None, )
+    student_id = models.IntegerField(
+        default=None, null=True, blank=True)
+    student_name = models.CharField(
+        max_length=255, db_index=True, default=None, null=True, blank=True)
+
+    student_profile = models.ImageField(
+        upload_to='images/', default=None, null=True, blank=True)
+
+    date = models.CharField(choices=DAYS, default=None,
+                            null=True, max_length=255, blank=True)
+
+    start_time = models.TimeField(default=None,  null=True, blank=True)
+
+    end_time = models.TimeField(default=None,  null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Meetings'

@@ -46,13 +46,29 @@
 <div class=" col-sm-4">     
       <div class="panel panel-primary" style="padding-bottom:5%;">
         <div class="panel-heading">{{object.title}} {{object.firstName}} {{object.lastName}}</div>
-        <div class="panel-body"><img src="{{object.profile.url }}" 
-          class="img-responsive" style="width:30%" alt="Image"></div>
+        <div class="panel-body">
+          {% if object.profile%}
+          <img src="{{object.profile.url }}"   
+          class="img-responsive" style="width:40%;height:30%" alt="Image">
+        
+        {% else %}
+      <!----><img
+        src="{% static 'media/download.png' %}"
+        alt="profile"
+         class="img-responsive" style="width:30%;height:30%" alt="Image"
+      />
+      {% endif %}
+        
+        
+        </div>
         <div class="panel-footer" style="background-color:white;height: 30%;overflow-x:scroll"> {{object.about}}</div>
      <center><a href="#popup_screen" id = "home_img"
 type="button" class="btn btn-info" 
       >View More</a>
       </div>
+      <br>
+      <br><br>
+      <br>
       <br>
       <br>
     </div>
@@ -64,8 +80,13 @@ type="button" class="btn btn-info"
    
     <div id="subtab1">
          <center> 
+           {% if object.profile %}
            <img id="profilenot"  class="a" src="{{object.profile.url }}">
+{% else %}
 
+           <img id="profilenot"  class="a"    src="{% static 'media/download.png' %}">
+
+{% endif %}
         </center>
         <center>
        <i class="fas fa-video" style="padding:5%; color:blue; opacity:0.7;"></i>

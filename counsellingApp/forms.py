@@ -1,7 +1,7 @@
 # Creating our form models
 from django import forms
 from django.forms import ModelForm
-from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login
+from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings
 
 
 class SpecialitiesForm(ModelForm):
@@ -122,3 +122,9 @@ class LoginForm(ModelForm):
             'pin_log': forms.TextInput(attrs={'placeholder': 'PIN', 'class': 'fadeIn third', 'type': 'password'}),
             'option': forms.Select(attrs={'class': 'fadeIn fourth', 'type': 'select'}),
         }
+
+
+class BookingsForm(ModelForm):
+    class Meta:
+        model = Bookings
+        fields = "__all__"

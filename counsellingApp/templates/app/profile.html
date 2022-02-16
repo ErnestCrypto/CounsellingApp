@@ -93,8 +93,14 @@
    
       <div id="subtab1">
          <center> 
+           {% if object.profile %}
            <img id="profile"  class="a" src="{{object.profile.url }}">
+{% else %}
+           <img id="profile"  class="a"  src="{% static 'media/download.png' %}">
 
+       
+
+{% endif %}
           </center>
           <center>
             <i class="fas fa-video" style="padding:5%; color:blue; opacity:0.7;"></i>
@@ -149,7 +155,7 @@
             </div>
           </div>
       </div>
-     <form method="post" action="">
+     <form method="POST" action="">
        {% csrf_token %}
          <div id="subtab3">
                   <center>  

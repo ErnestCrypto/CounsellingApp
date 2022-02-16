@@ -3,8 +3,8 @@ from audioop import reverse
 from django.http import request
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login
-from .forms import CounsellorForm, SuperCounsellorForm, AchievementForm, AvailabilityForm, EducationForm, ExperienceForm, TherapyForm, SpecialitiesForm, LoginForm
+from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings
+from .forms import CounsellorForm, SuperCounsellorForm, AchievementForm, AvailabilityForm, EducationForm, ExperienceForm, TherapyForm, SpecialitiesForm, LoginForm, BookingsForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
@@ -85,6 +85,7 @@ def homePage(request, pk):
     education = EducationForm()
     experience = ExperienceForm()
     therapy = TherapyForm()
+    books = BookingsForm()
     specialities = SpecialitiesForm()
     Supercounsellorform = SuperCounsellorForm()
     objects = Counsellor.objects.all()
@@ -93,11 +94,14 @@ def homePage(request, pk):
     obj_exp = Experience.objects.all()
     obj_the = Therapy.objects.all()
     obj_spe = Specialities.objects.all()
-
+    count = Counsellor.objects.all().count()
+    bookings = Bookings.objects.all().count()
+    meetings = Meetings.objects.all().count()
     request.session['pk'] = pk
 
     if request.method == 'POST':
 
+        books = BookingsForm(request.POST)
         coun = Counsellor.objects.get(user_id=pk)
         counsellor = CounsellorForm(request.POST, request.FILES, instance=coun)
         achievement = AchievementForm(request.POST)
@@ -107,6 +111,10 @@ def homePage(request, pk):
         therapy = TherapyForm(request.POST)
         specialities = SpecialitiesForm(request.POST)
         Supercounsellorform = SuperCounsellorForm(request.POST)
+
+        if books.is_valid():
+            messages.success(request, 'Booking recorded successfully')
+            books.save()
 
         if counsellor.is_valid():
             counsellor.save()
@@ -261,7 +269,9 @@ def homePage(request, pk):
                                              'obj_exp': obj_exp,
                                              'obj_the': obj_the,
                                              'obj_spe': obj_spe,
-
+                                             'count': count,
+                                             'bookings': bookings,
+                                             'meetings': meetings,
                                              }
 
                   )

@@ -1,7 +1,7 @@
 # Registering our models
 from django.contrib import admin
 from django import forms
-from .models import Counsellor,  SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login
+from .models import Counsellor,  SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings
 
 
 class TherapyInline(admin.StackedInline):
@@ -104,4 +104,32 @@ class LoginAdmin(admin.ModelAdmin):
         'pin_log',
         'option',
         'date'
+    ]
+
+
+@admin.register(Bookings)
+class BookingsAdmin(admin.ModelAdmin):
+    list_display = [
+        'counsellor',
+        'student_id',
+        'student_name',
+        'student_profile',
+        'date',
+        'start_time',
+        'end_time',
+        'student_status',
+    ]
+
+
+@admin.register(Meetings)
+class MeetingsAdmin(admin.ModelAdmin):
+    list_display = [
+
+        'counsellor',
+        'student_id',
+        'student_name',
+        'student_profile',
+        'date',
+        'start_time',
+        'end_time',
     ]

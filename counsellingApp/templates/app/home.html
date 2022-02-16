@@ -1,5 +1,5 @@
  {% include 'app/index.html' %} {% include 'app/profile.html' %} {% include 'app/notification.html' %}
- {% include 'app/admin.html' %} {% include 'app/header.html' %}
+ {% include 'app/admin.html' %} {% include 'app/header.html' %}{% include 'app/super.html' %}
 
 
 {% load static%}
@@ -13,7 +13,7 @@
     
     <div id="sectionContainer">
       
-    <section id="section1" >
+    <section id="section1" class = "bg-dark">
  <ul class="bubble-boxes">
 <li></li>
 <li></li>
@@ -42,6 +42,8 @@
 
 
         <div id="tabIcons">   
+<p id="super_admin"><i class="fas fa-user-shield"  aria-hidden="true" id="elementID" type="submit" method="GET"> Admin Dashboard</i></p>
+
 <p id="admin"><i class="fas fa-user-shield"  aria-hidden="true" id="elementID" type="submit" method="GET"> Dashboard</i></p>
 <p id="indexPage"><i class="fa fa-home" aria-hidden="true"  id="elementID" type="submit" method="GET"> Home</i></p>  
 <p id="notificationPage"><i class="fa fa-bell" aria-hidden="true" id="elementID" type="submit" method="GET"> Notifications</i></p>
@@ -71,6 +73,25 @@
     document.getElementById("notificationPage").addEventListener("click", myFunction2)
     document.getElementById("indexPage").addEventListener("click", myFunction3)
     document.getElementById("admin").addEventListener("click", myFunction4)
+    document.getElementById("super_admin").addEventListener("click", myFunction5)
+
+
+function myFunction5(){
+  document.getElementById("section4").style.display = "none";
+    document.getElementById("footer6").style.display = "none";
+
+  document.getElementById("section5").style.display = "none";
+  document.getElementById("section3").style.display = "none";
+  document.getElementById("section6").style.display = "none";
+      document.getElementById("section6container1").style.display = "none";
+      document.getElementById("section6container2").style.display = "none";
+      document.getElementById("section6container3").style.display = "none";
+        document.getElementById("section7").style.display = "block";
+
+
+
+    }
+
 
 
     function myFunction1(){
