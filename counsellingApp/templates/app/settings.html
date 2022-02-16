@@ -2,43 +2,54 @@
 <!---->
 {% load static%}
 
-
-
 <body>
   <section id="section6">
     <div id="section6container2">
-      
       <div class="col">
         <div class="col-sm-12">
-          <h6 >MANAGE BOOKINGS</h6>
-      <hr />
+          <h6>MANAGE BOOKINGS</h6>
+          <hr />
           <table id="table" class="table table-bordered table-striped">
             <thead>
               <tr>
                 <th>Student Profile</th>
                 <th>Student ID</th>
                 <th>Student Name</th>
-                <th>Date</th>
-                <th>Time</th>
+                <th>Date and time Booked</th>
+                <th>Duration</th>
                 <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
+
             <tbody>
+              <!---->
+              {% for studentbook in studentbooks %}
+              <!---->
+              {% if studentbook.counsellor_user_id == pk|add:0%}
               <tr>
                 <td>
                   <center>
+                    {% if studentbook.student_profile %}
+                    <img
+                      id="table_img"
+                      src="{{ studentbook.student_profile.url }}"
+                    />
+                    {% else %}
                     <img
                       id="table_img"
                       src="{% static 'media/download.png' %}"
                     />
+                    {% endif %}
                   </center>
                 </td>
-                <td>10825432</td>
-                <td>Mensah Samuel</td>
-                <td>22nd Feb 2015</td>
-                <td>9:30am</td>
-                  <td>Pending</td>
+                <td>{{studentbook.student_id}}</td>
+                <td>{{ studentbook.student_name }}</td>
+                <td>{{studentbook.date}}</td>
+                <td>
+                  {{ avaistudent.start_time }} - {{ avaistudent.end_time }}
+                </td>
+                <td>{{ studentbook.student_status }}</td>
                 <td>
                   <center>
                     <button
@@ -51,7 +62,9 @@
                       class="btn btn-sm btn-outline-success edit_employee"
                       type="button"
                     >
-                    {% comment %} <a href = "/url in urls.py//{{object.user_id}}"/> {% endcomment %}
+                      {% comment %}
+                      <a href="/url in urls.py//{{object.user_id}}" />
+                      {% endcomment %}
                       <i class="fas fa-check"></i>
                     </button>
 
@@ -63,171 +76,7 @@
                     </button>
                   </center>
                 </td>
-
-                <tr>
-                <td>
-                  <center>
-                    <img
-                      id="table_img"
-                      src="{% static 'media/download.png' %}"
-                    />
-                  </center>
-                </td>
-                <td>10829832</td>
-                <td>Micheal Ansong</td>
-                <td>22nd Jan 2015</td>
-                <td>9:30am</td>
-                  <td>Pending</td>
-                <td>
-                  <center>
-                    <button
-                      class="btn btn-sm btn-outline-warning remove_log"
-                      type="button"
-                    >
-                      <i class="fa fa-eye"></i>
-                    </button>
-                    <button
-                      class="btn btn-sm btn-outline-success edit_employee"
-                      type="button"
-                    >
-                      <i class="fas fa-check"></i>
-                    </button>
-
-                    <button
-                      class="btn btn-sm btn-outline-danger remove_log"
-                      type="button"
-                    >
-                      <i class="fa fa-trash"></i>
-                    </button>
-                  </center>
-                </td>
-              </tr>
-
-
-              <tr>
-                <td>
-                  <center>
-                    <img
-                      id="table_img"
-                      src="{% static 'media/download.png' %}"
-                    />
-                  </center>
-                </td>
-                <td>10818272</td>
-                <td>Annabel Jackson</td>
-                <td>10th Feb 2015</td>
-                <td>9:30am</td>
-                  <td>Pending</td>
-
-                <td>
-                  <center>
-                    <button
-                      class="btn btn-sm btn-outline-warning remove_log"
-                      type="button"
-                    >
-                      <i class="fa fa-eye"></i>
-                    </button>
-                    <button
-                      class="btn btn-sm btn-outline-success edit_employee"
-                      type="button"
-                    >
-                      <i class="fas fa-check"></i>
-                    </button>
-
-                    <button
-                      class="btn btn-sm btn-outline-danger remove_log"
-                      type="button"
-                    >
-                      <i class="fa fa-trash"></i>
-                    </button>
-                  </center>
-                </td>
-              </tr>
-
-
-              <tr>
-                <td>
-                  <center>
-                    <img
-                      id="table_img"
-                      src="{% static 'media/download.png' %}"
-                    />
-                  </center>
-                </td>
-                <td>1082123</td>
-                <td>Abraham oppong</td> 
-                <td>4th Mar 2015</td>
-                <td>12:30am</td>
-                  <td>Pending</td>
-
-                <td>
-                  <center>
-                    <button
-                      class="btn btn-sm btn-outline-warning remove_log"
-                      type="button"
-                    >
-                      <i class="fa fa-eye"></i>
-                    </button>
-                    <button
-                      class="btn btn-sm btn-outline-success edit_employee"
-                      type="button"
-                    >
-                      <i class="fas fa-check"></i>
-                    </button>
-
-                    <button
-                      class="btn btn-sm btn-outline-danger remove_log"
-                      type="button"
-                    >
-                      <i class="fa fa-trash"></i>
-                    </button>
-                  </center>
-                </td>
-              </tr>
-
-
-              <tr>
-                <td>
-                  <center>
-                    <img
-                      id="table_img"
-                      src="{% static 'media/download.png' %}"
-                    />
-                  </center>
-                </td>
-                <td>1088932</td>
-                <td>Nene Fii</td>
-                <td>1st Feb 2015</td>
-                <td>9:00am</td>
-                  <td>Pending</td>
-
-                <td>
-                  <center>
-                    <button
-                      class="btn btn-sm btn-outline-warning remove_log"
-                      type="button"
-                    >
-                      <i class="fa fa-eye"></i>
-                    </button>
-                    <button
-                      class="btn btn-sm btn-outline-success edit_employee"
-                      type="button"
-                    >
-                      <i class="fas fa-check"></i>
-                    </button>
-
-                    <button
-                      class="btn btn-sm btn-outline-danger remove_log"
-                      type="button"
-                    >
-                      <i class="fa fa-trash"></i>
-                    </button>
-                  </center>
-                </td>
-              </tr>
-
-
-              
+                {% else %}{% endif %} {% endfor %}
               </tr>
             </tbody>
           </table>

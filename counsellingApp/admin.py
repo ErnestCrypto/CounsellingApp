@@ -111,6 +111,7 @@ class LoginAdmin(admin.ModelAdmin):
 class BookingsAdmin(admin.ModelAdmin):
     list_display = [
         'counsellor',
+        'counsellor_user_id',
         'student_id',
         'student_name',
         'student_profile',
@@ -125,6 +126,7 @@ class MeetingsAdmin(admin.ModelAdmin):
     list_display = [
 
         'counsellor',
+        'counsellor_user_id',
         'student_id',
         'student_name',
         'student_profile',

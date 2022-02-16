@@ -29,6 +29,11 @@ LOGIN = [
     ('staff', 'Staff'),
 ]
 
+BOOKING = [
+    ('Pending', 'Pending'),
+    ('Approved', 'Approved'),
+]
+
 
 class BaseModel(models.Model):
     title = models.CharField(choices=TITLE, default=None,
@@ -158,6 +163,8 @@ class Login(models.Model):
 class Bookings(models.Model):
     counsellor = models.ForeignKey(
         Counsellor, related_name='bookings', on_delete=models.CASCADE, default=None, )
+    counsellor_user_id = models.IntegerField(
+        default=None, null=True, blank=True)
     student_id = models.IntegerField(
         default=None, null=True, blank=True)
     student_name = models.CharField(
@@ -169,8 +176,8 @@ class Bookings(models.Model):
     date = models.DateTimeField(
         null=True, max_length=255, blank=True, auto_now_add=True, )
 
-    student_status = models.CharField(
-        max_length=255, db_index=True, default='Pending', null=True, blank=True)
+    student_status = models.CharField(choices=BOOKING,
+                                      max_length=255, db_index=True, default='Pending', null=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'Bookings'
@@ -179,6 +186,8 @@ class Bookings(models.Model):
 class Meetings(models.Model):
     counsellor = models.ForeignKey(
         Counsellor, related_name='meetings', on_delete=models.CASCADE, default=None, )
+    counsellor_user_id = models.IntegerField(
+        default=None, null=True, blank=True)
     student_id = models.IntegerField(
         default=None, null=True, blank=True)
     student_name = models.CharField(

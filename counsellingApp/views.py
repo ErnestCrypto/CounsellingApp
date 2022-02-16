@@ -95,9 +95,14 @@ def homePage(request, pk):
     obj_the = Therapy.objects.all()
     obj_spe = Specialities.objects.all()
     count = Counsellor.objects.all().count()
+    bookcount = Bookings.objects.filter(counsellor_user_id=pk).count()
+    meetingcount = Meetings.objects.filter(counsellor_user_id=pk).count()
+
     bookings = Bookings.objects.all().count()
     meetings = Meetings.objects.all().count()
     request.session['pk'] = pk
+    studentbooks = Bookings.objects.all()
+    avaibooks = Availability.objects.all()
 
     if request.method == 'POST':
 
@@ -114,7 +119,9 @@ def homePage(request, pk):
 
         if books.is_valid():
             messages.success(request, 'Booking recorded successfully')
-            books.save()
+            bsave = books.save(commit=False)
+            bsave.cousellor_user_id = pk
+            bsave.save()
 
         if counsellor.is_valid():
             counsellor.save()
@@ -270,8 +277,14 @@ def homePage(request, pk):
                                              'obj_the': obj_the,
                                              'obj_spe': obj_spe,
                                              'count': count,
+                                             'books': books,
                                              'bookings': bookings,
                                              'meetings': meetings,
+                                             'studentbooks': studentbooks,
+                                             'avaibooks': avaibooks,
+                                             'bookcount': bookcount,
+                                             'meetingcount': meetingcount,
+
                                              }
 
                   )

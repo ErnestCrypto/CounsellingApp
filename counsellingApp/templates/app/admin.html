@@ -51,13 +51,13 @@
         <div class="col-lg-3 col-sm-6">
           <div class="card-box bg-blue">
             <div class="inner">
-              <h3>{{ bookings }}</h3>
+              <h3>{{ bookcount }}</h3>
               <p>Total Bookings</p>
             </div>
             <div class="icon">
               <i class="fas fa-book"></i>
             </div>
-            <a href="#" class="card-box-footer"
+            <a href="#" class="card-box-footer" id="settingsPage"
               >View More <i class="fa fa-arrow-circle-right"></i
             ></a>
           </div>
@@ -66,8 +66,8 @@
         <div class="col-lg-3 col-sm-6">
           <div class="card-box bg-green">
             <div class="inner">
-              <h3>185358</h3>
-              <p>Total Students</p>
+              <h3>{{bookings}}</h3>
+              <p>Total Students in the Department</p>
             </div>
             <div class="icon">
               <i class="fa fa-graduation-cap" aria-hidden="true"></i>
@@ -80,7 +80,7 @@
         <div class="col-lg-3 col-sm-6">
           <div class="card-box bg-orange">
             <div class="inner">
-              <h3>{{ meetings }}</h3>
+              <h3>{{ meetingcount }}</h3>
               <p>Total Meetings</p>
             </div>
             <div class="icon">
