@@ -335,3 +335,18 @@ def search(request):
 
         })
     return redirect('counsellingUrls:homePage', pk)
+
+
+def delete(request, pk):
+    pk = request.session['pk']
+    books = Bookings.objects.all()
+    counsellors = Counsellor.objects.all()
+    for counsellor in counsellors:
+        coun_id = counsellor.user_id
+        for book in books:
+            if str(coun_id) == str(pk):
+                student = book.student_id
+                studentbooks = Bookings.objects.filter(student_id=student)
+                messages.success(request, f'{student}')
+                studentbooks.delete()
+    return redirect('counsellingUrls:homePage', pk)

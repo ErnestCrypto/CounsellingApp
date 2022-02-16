@@ -11,6 +11,7 @@ urlpatterns = [
     path('ad/', views.adminPage, name="adminPage"),
     path('profile/', views.profilePage, name="profilePage"),
     path('search/', views.search, name="search"),
+    path('delete/<str:pk>/', views.delete, name="delete"),
 
 ]
 

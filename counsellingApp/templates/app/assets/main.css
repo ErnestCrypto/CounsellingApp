@@ -1547,6 +1547,8 @@ body {
 
 #inputdate {
     padding: 1%;
+    padding-left:5%;
+    width:15%;
     border-radius: 21px;
     border: none;
     outline: none;
