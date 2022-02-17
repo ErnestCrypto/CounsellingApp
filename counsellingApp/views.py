@@ -346,7 +346,8 @@ def delete(request, pk):
         for book in books:
             if str(coun_id) == str(pk):
                 student = book.student_id
+
                 studentbooks = Bookings.objects.filter(student_id=student)
-                messages.success(request, f'{student}')
+                messages.success(request, f'{student}-{pk}')
                 studentbooks.delete()
     return redirect('counsellingUrls:homePage', pk)

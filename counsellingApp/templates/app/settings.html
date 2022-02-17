@@ -68,8 +68,11 @@
                       <i class="fas fa-check"></i>
                     </button>
 
-                    <a href="{% url 'counsellingUrls:delete' 'pk' %}">
+                    <a
+                      href="{% url 'counsellingUrls:delete' 'student_book.id' %}"
+                    >
                       <button
+                        value="{{studentbook.id}}"
                         class="btn btn-sm btn-outline-danger remove_log"
                         type="button"
                         id="trash"

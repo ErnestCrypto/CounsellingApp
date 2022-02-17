@@ -110,6 +110,7 @@ class LoginAdmin(admin.ModelAdmin):
 @admin.register(Bookings)
 class BookingsAdmin(admin.ModelAdmin):
     list_display = [
+        'id',
         'counsellor',
         'counsellor_user_id',
         'student_id',
