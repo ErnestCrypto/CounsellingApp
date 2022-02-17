@@ -49,6 +49,7 @@
                 <td>
                   {{ avaistudent.start_time }} - {{ avaistudent.end_time }}
                 </td>
+
                 <td>{{ studentbook.student_status }}</td>
                 <td>
                   <center>
@@ -58,27 +59,29 @@
                     >
                       <i class="fa fa-eye"></i>
                     </button>
-                    <button
-                      class="btn btn-sm btn-outline-success edit_employee"
-                      type="button"
-                    >
-                      {% comment %}
-                      <a href="/url in urls.py//{{object.user_id}}" />
-                      {% endcomment %}
-                      <i class="fas fa-check"></i>
-                    </button>
-
                     <a
-                      href="{% url 'counsellingUrls:delete' 'student_book.id' %}"
+                      href="{% url 'counsellingUrls:update' studentbook.id  studentbook.student_status  %}"
                     >
                       <button
-                        value="{{studentbook.id}}"
-                        class="btn btn-sm btn-outline-danger remove_log"
+                        class="btn btn-sm btn-outline-success edit_employee"
                         type="button"
+                      >
+                        {% comment %}
+                        <a href="/url in urls.py//{{object.user_id}}" />
+                        {% endcomment %}
+                        <i class="fas fa-check"></i>
+                      </button>
+                    </a>
+
+                    <a href="{% url 'counsellingUrls:delete' studentbook.id %}">
+                      <button
+                        class="btn btn-sm btn-outline-danger remove_log"
+                        type="submit"
                         id="trash"
                       >
-                        <i class="fa fa-trash"></i></button
-                    ></a>
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </a>
                   </center>
                 </td>
                 {% else %}{% endif %} {% endfor %}
@@ -93,6 +96,41 @@
           </script>
         </div>
       </div>
+    </div>
+
+    <div id="footer6">
+      <a href="{% url ''%}" id="adminPage">
+        <i
+          class="fas fa-circle"
+          aria-hidden="true"
+          id="elementID6"
+          type="submit"
+          method="GET"
+        >
+        </i>
+      </a>
+
+      <a href="{% url ''%}" id="settingPage">
+        <i
+          class="fas fa-circle"
+          aria-hidden="true"
+          id="elementID6"
+          type="submit"
+          method="GET"
+        >
+        </i>
+      </a>
+
+      <a href="{% url ''%}" id="dashboardPage">
+        <i
+          class="fas fa-circle"
+          aria-hidden="true"
+          id="elementID6"
+          type="submit"
+          method="GET"
+        >
+        </i>
+      </a>
     </div>
   </section>
 </body>

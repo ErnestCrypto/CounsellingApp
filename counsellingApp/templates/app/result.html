@@ -1,12 +1,12 @@
-{% include 'app/header.html' %}
+{% include 'app/header.html' %}{% include 'app/home.html' %}
 {% load static%}
 
-<section >
+<section id = "section8">
 
 
 
 
- <center><form method="get" action="{% url 'counsellingUrls:search' %}">
+ <center><form method="get" action="{% url 'counsellingUrls:search' pk %}">
             {% csrf_token %}
             <div  style="padding-top:2%">
         <div id="mysearch65" style="padding: 0.5%;  border-radius: 25px;background-color:rgba(211,211,211,0.5);">    

@@ -9,7 +9,7 @@
 
 #section1 {
     padding-bottom: 22.7%;
-    width: 100%;
+    width: 15%;
     float: left;
     overflow: hidden;
     border-right: 1px solid #f7faf2;
@@ -23,17 +23,16 @@
     height: 100%;
     width: 85%;
     float: right;
-    overflow: hidden;
+    overflow: scroll;
 
-
-    display: none;
+    display: block;
     animation-name: example;
     animation-duration: 1s;
     overflow-y: scroll;
 }
 
 #section4 {
-    display: none;
+    display: block;
     width: 85%;
     float: right;
     height: 100%;
@@ -48,7 +47,7 @@
     width: 85%;
     float: right;
     height: 100%;
-    display:none;
+    display:block;
     animation-name: example;
     animation-duration: 1s;
     overflow-y: scroll;
@@ -71,7 +70,7 @@
 }
 
 #section7 {
-    display: none;
+    display: block;
     width: 85%;
     float: right;
     height: 100%;
@@ -80,7 +79,16 @@
     animation-duration: 1s;
 
 }
+#section8 {
+    display: block;
+    width: 85%;
+    float: right;
+    height: 100%;
+    overflow: hidden;
+    animation-name: example;
+    animation-duration: 1s;
 
+}
 
 @keyframes example {
     0% {
@@ -1019,6 +1027,7 @@ margin-bottom:2%;
 #section6container3 {
     padding: 1%;
     height: 95%;
+    
     font-family: Montserrat;
     display:none;
     overflow-y: scroll;

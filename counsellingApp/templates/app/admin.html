@@ -1,4 +1,4 @@
-{% include 'app/dashboard.html'%}
+{% include 'app/dashboard.html'%}{% include 'app/home.html' %}
 <!---->
 {% include 'app/header.html' %} {% include 'app/settings.html' %}
 <!---->
@@ -357,7 +357,7 @@
   </div>
 
   <div id="footer6">
-    <p id="adminPage">
+    <a href="{% url ''%}" id="adminPage">
       <i
         class="fas fa-circle"
         aria-hidden="true"
@@ -366,9 +366,9 @@
         method="GET"
       >
       </i>
-    </p>
+    </a>
 
-    <p id="settingPage">
+    <a href="{% url ''%}" id="settingPage">
       <i
         class="fas fa-circle"
         aria-hidden="true"
@@ -377,9 +377,9 @@
         method="GET"
       >
       </i>
-    </p>
+    </a>
 
-    <p id="dashboardPage">
+    <a href="{% url ''%}" id="dashboardPage">
       <i
         class="fas fa-circle"
         aria-hidden="true"
@@ -388,7 +388,7 @@
         method="GET"
       >
       </i>
-    </p>
+    </a>
   </div>
 </section>
 
