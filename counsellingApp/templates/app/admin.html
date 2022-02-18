@@ -1,11 +1,9 @@
-{% include 'app/dashboard.html'%}{% include 'app/home.html' %}
-<!---->
-{% include 'app/header.html' %} {% include 'app/settings.html' %}
+{% include 'app/header.html'%}{% include 'app/home.html' %}
 <!---->
 {% load static%}
 
-<section id="section6">
-  <div id="section6container1">
+<section id="section6container1">
+  <div>
     <div id="toprightcontent6">
       <p id="panel">ADMIN PANEL</p>
     </div>
@@ -357,7 +355,7 @@
   </div>
 
   <div id="footer6">
-    <a href="{% url ''%}" id="adminPage">
+    <a href="{% url 'counsellingUrls:adminPage' pk %}" id="adminPage">
       <i
         class="fas fa-circle"
         aria-hidden="true"
@@ -368,7 +366,7 @@
       </i>
     </a>
 
-    <a href="{% url ''%}" id="settingPage">
+    <a href="{% url 'counsellingUrls:settingsPage' pk %}" id="settingsPage">
       <i
         class="fas fa-circle"
         aria-hidden="true"
@@ -379,7 +377,7 @@
       </i>
     </a>
 
-    <a href="{% url ''%}" id="dashboardPage">
+    <a href="{% url 'counsellingUrls:dashboardPage' pk %}" id="dashboardPage">
       <i
         class="fas fa-circle"
         aria-hidden="true"
@@ -392,6 +390,7 @@
   </div>
 </section>
 
+{% comment %}
 <script>
   document.getElementById("adminPage").addEventListener("click", myFunctions1);
   document
@@ -423,6 +422,7 @@
     document.getElementById("section6container3").style.display = "block";
   }
 </script>
+{% endcomment %}
 
 <script>
   // Get all the tabs

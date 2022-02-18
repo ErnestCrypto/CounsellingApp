@@ -68,6 +68,48 @@
 
 
 }
+#section6container1 {
+    padding: 1%;
+   
+    width:85%;
+    height:100%;
+    font-family: Montserrat;
+    display:  block;
+    overflow-y: scroll;
+    
+    animation-name: example;
+    animation-duration: 1s;
+
+
+}
+
+#section6container2 {
+    padding: 1%;
+       width:85%;
+    height:100%;
+
+    font-family: Montserrat;
+    display:block;
+    overflow-y: scroll;
+    animation-name: example;
+    animation-duration: 1s;
+}
+
+#section6container3 {
+    padding: 1%;
+       width:85%;
+    height:100%;
+
+    
+    font-family: Montserrat;
+    display:block;
+    overflow-y: scroll;
+    animation-name: example;
+    animation-duration: 1s;
+}
+
+
+
 
 #section7 {
     display: block;
@@ -491,11 +533,13 @@ section {
 
 
 #input1 {
-    height: 5%;
     border: none;
     outline: none;
     opacity: 0.7;
     font-size: 12px;
+    width:500px;
+    padding:2%;
+
 }
 
 #how {
@@ -533,7 +577,66 @@ section {
 
 
 }
+.searcha{
+    display:inline-flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(200,200,200,0.3);
+    border-radius:30px;
+    overflow:hidden;
+    padding:3px;
 
+}
+.searched{
+    padding:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+
+
+}
+button{
+    border : 0px solid transparent;
+    outline : 1px solid transparent;
+
+}
+button::focus{
+    border : 0px solid transparent;
+    outline : 1px solid transparent;
+
+}
+.searchb{
+    padding:15px;
+    border-radius:200px;
+    border:none;
+    background:none;
+    box-shadow:inset 0px 0px 10px white,
+     0px 0px 10px grey;
+    outline:none;
+
+
+
+
+}
+ 
+.searchc{
+    padding:10px;
+    outline:none;
+    border:none;
+    background:none;
+    width:500px;
+
+        animation:stretch 2s ease-in-out;
+
+}
+#mysearch65{
+    width:unset;
+    display:inline-flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
 #top2 {
 
     float: left;
@@ -724,14 +827,18 @@ section {
 }
 
 
-#mysearch65 {
-    
-    width: 50%;
-   float: center;
 
-
+@keyframes stretch{
+    0%{
+       width:50px; 
+       display:flex;
+       
+    }
+ 
+    100%{
+        width:500px;
+    }
 }
-
 
 
 
@@ -1001,41 +1108,6 @@ margin-bottom:2%;
 
 
 /* section6*/
-#section6container1 {
-    padding: 1%;
-    height: 95%;
-    font-family: Montserrat;
-    display:  none;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    animation-name: example;
-    animation-duration: 1s;
-
-
-}
-
-#section6container2 {
-    padding: 1%;
-    height: 95%;
-    font-family: Montserrat;
-    display:block;
-    overflow-y: scroll;
-    animation-name: example;
-    animation-duration: 1s;
-}
-
-#section6container3 {
-    padding: 1%;
-    height: 95%;
-    
-    font-family: Montserrat;
-    display:none;
-    overflow-y: scroll;
-    animation-name: example;
-    animation-duration: 1s;
-}
-
-
 
 
 /*section6*/

@@ -1,4 +1,4 @@
-{% include 'app/header.html' %} {% load static%}
+{% include 'app/header.html' %} {% include 'app/home.html' %}{% load static%}
 <link
   rel="stylesheet"
   type="text/css"
@@ -14,8 +14,8 @@
 {% block body %}{% endblock %}
 
 <body>
-  <section id="section6">
-    <div id="section6container3">
+  <section id="section6container3">
+    <div >
       {% for object in objects%}<!---->
       {% if object.user_id == pk|add:0 %}
       <div class="container text-left">
@@ -717,42 +717,39 @@
       </form>
     </div>
     <div id="footer6">
-      <a href = "{% url ''%}"
-      id="adminPage">
-        <i
-          class="fas fa-circle"
-          aria-hidden="true"
-          id="elementID6"
-          type="submit"
-          method="GET"
-        >
-        </i>
-      </a>
+    <a href="{% url 'counsellingUrls:adminPage' pk %}" id="adminPage">
+      <i
+        class="fas fa-circle"
+        aria-hidden="true"
+        id="elementID6"
+        type="submit"
+        method="GET"
+      >
+      </i>
+    </a>
 
-      <a href = "{% url ''%}"
-      id="settingPage">
-        <i
-          class="fas fa-circle"
-          aria-hidden="true"
-          id="elementID6"
-          type="submit"
-          method="GET"
-        >
-        </i>
-      </a>
+    <a href="{% url 'counsellingUrls:settingsPage' pk %}" id="settingsPage">
+      <i
+        class="fas fa-circle"
+        aria-hidden="true"
+        id="elementID6"
+        type="submit"
+        method="GET"
+      >
+      </i>
+    </a>
 
-      <a href = "{% url ''%}"
-      id="dashboardPage">
-        <i
-          class="fas fa-circle"
-          aria-hidden="true"
-          id="elementID6"
-          type="submit"
-          method="GET"
-        >
-        </i>
-      </a>
-    </div></section>
+    <a href="{% url 'counsellingUrls:dashboardPage' pk %}" id="dashboardPage">
+      <i
+        class="fas fa-circle"
+        aria-hidden="true"
+        id="elementID6"
+        type="submit"
+        method="GET"
+      >
+      </i>
+    </a>
+  </div></section>
 
   <script>
     $(document).ready(function () {

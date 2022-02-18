@@ -1,6 +1,11 @@
 {% include 'app/header.html' %}{% include 'app/home.html' %}
 {% load static%}
 
+<style>
+
+</style>
+
+
 <section id = "section8">
 
 
@@ -8,10 +13,12 @@
 
  <center><form method="get" action="{% url 'counsellingUrls:search' pk %}">
             {% csrf_token %}
-            <div  style="padding-top:2%">
-        <div id="mysearch65" style="padding: 0.5%;  border-radius: 25px;background-color:rgba(211,211,211,0.5);">    
-            <button style="border:none; padding:2%;border-radius:25px; background-color:rgba(211,211,211,0.1)" type="submit"><i  class="fas fa-search" style="opacity:0.5;font-size:12px;"></i></button>
-            <input name="search" id="input1" style="width:90%;background-color:rgba(211,211,211,0.1);" type="search" placeholder="Search"/>
+            <div >
+        <div class="searched">    
+        <div class="searcha">    
+            <button  class="searchb" type="submit"><i  class="fas fa-search" style="opacity:0.5;font-size:12px;"></i></button>
+            <input name="search"  class="searchc" type="search" placeholder="Search"/>
+        </div>
         </div>
         </div>
         </form>
