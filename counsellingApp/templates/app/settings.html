@@ -5,89 +5,96 @@
 <body>
   <section id="section6container2">
     <div class="col">
-      <div class="col-sm-12">
-        <h6>MANAGE BOOKINGS</h6>
-        <hr />
-        <table id="table" class="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>Student Profile</th>
-              <th>Student ID</th>
-              <th>Student Name</th>
-              <th>Date and time Booked</th>
-              <th>Duration</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
+      <div style="height: 95%; overflow-y: scroll">
+        <div class="col-sm-12">
+          <h6>MANAGE BOOKINGS</h6>
+          <hr />
+          <table id="table" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Student Profile</th>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Date and time Booked</th>
+                <th>Duration</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            <!---->
-            {% for studentbook in studentbooks %}
-            <!---->
-            {% if studentbook.counsellor_user_id == pk|add:0%}
-            <tr>
-              <td>
-                <center>
-                  {% if studentbook.student_profile %}
-                  <img
-                    id="table_img"
-                    src="{{ studentbook.student_profile.url }}"
-                  />
-                  {% else %}
-                  <img id="table_img" src="{% static 'media/download.png' %}" />
-                  {% endif %}
-                </center>
-              </td>
-              <td>{{studentbook.student_id}}</td>
-              <td>{{ studentbook.student_name }}</td>
-              <td>{{studentbook.date}}</td>
-              <td>{{ avaistudent.start_time }} - {{ avaistudent.end_time }}</td>
+            <tbody>
+              <!---->
+              {% for studentbook in studentbooks %}
+              <!---->
+              {% if studentbook.counsellor_user_id == pk|add:0%}
+              <tr>
+                <td>
+                  <center>
+                    {% if studentbook.student_profile %}
+                    <img
+                      id="table_img"
+                      src="{{ studentbook.student_profile.url }}"
+                    />
+                    {% else %}
+                    <img
+                      id="table_img"
+                      src="{% static 'media/download.png' %}"
+                    />
+                    {% endif %}
+                  </center>
+                </td>
+                <td>{{studentbook.student_id}}</td>
+                <td>{{ studentbook.student_name }}</td>
+                <td>{{studentbook.date}}</td>
+                <td>
+                  {{ avaistudent.start_time }} - {{ avaistudent.end_time }}
+                </td>
 
-              <td>{{ studentbook.student_status }}</td>
-              <td>
-                <center>
-                  <button
-                    class="btn btn-sm btn-outline-warning remove_log"
-                    type="button"
-                  >
-                    <i class="fa fa-eye"></i>
-                  </button>
-                  <a
-                    href="{% url 'counsellingUrls:update' studentbook.id  studentbook.student_status  %}"
-                  >
+                <td>{{ studentbook.student_status }}</td>
+                <td>
+                  <center>
                     <button
-                      class="btn btn-sm btn-outline-success edit_employee"
+                      class="btn btn-sm btn-outline-warning remove_log"
                       type="button"
                     >
-                      {% comment %}
-                      <a href="/url in urls.py//{{object.user_id}}" />
-                      {% endcomment %}
-                      <i class="fas fa-check"></i>
+                      <i class="fa fa-eye"></i>
                     </button>
-                  </a>
-
-                  <a href="{% url 'counsellingUrls:delete' studentbook.id %}">
-                    <button
-                      class="btn btn-sm btn-outline-danger remove_log"
-                      type="submit"
-                      id="trash"
+                    <a
+                      href="{% url 'counsellingUrls:update' studentbook.id  studentbook.student_status  %}"
                     >
-                      <i class="fa fa-trash"></i>
-                    </button>
-                  </a>
-                </center>
-              </td>
-              {% else %}{% endif %} {% endfor %}
-            </tr>
-          </tbody>
-        </table>
+                      <button
+                        class="btn btn-sm btn-outline-success edit_employee"
+                        type="button"
+                      >
+                        {% comment %}
+                        <a href="/url in urls.py//{{object.user_id}}" />
+                        {% endcomment %}
+                        <i class="fas fa-check"></i>
+                      </button>
+                    </a>
 
-        <script type="text/javascript">
-          $(document).ready(function () {
-            $("#table").DataTable();
-          });
-        </script>
+                    <a href="{% url 'counsellingUrls:delete' studentbook.id %}">
+                      <button
+                        class="btn btn-sm btn-outline-danger remove_log"
+                        type="submit"
+                        id="trash"
+                      >
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </a>
+                  </center>
+                </td>
+                {% else %}{% endif %} {% endfor %}
+              </tr>
+            </tbody>
+          </table>
+
+          <script type="text/javascript">
+            $(document).ready(function () {
+              $("#table").DataTable();
+            });
+          </script>
+        </div>
       </div>
 
       <div id="footer6">
