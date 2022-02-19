@@ -12,7 +12,6 @@ urlpatterns = [
     path('dashboard/<str:pk>/', views.adminPage, name="adminPage"),
     path('edit/<str:pk>/', views.dashboardPage, name="dashboardPage"),
     path('settings/<str:pk>/', views.settingsPage, name="settingsPage"),
-    path('home/<str:pk>/', views.homePage, name="homePage"),
     path('notifications/<str:pk>/',
          views.notificationPage, name="notificationPage"),
     path('index/<str:pk>/',
