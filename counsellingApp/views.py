@@ -72,11 +72,21 @@ def loginPage(request):
 
 def superadminPage(request, pk):
     objects = Counsellor.objects.all()
-    pk = request.session['pk']
+    count = Counsellor.objects.all().count()
+    bookcount = Bookings.objects.filter(counsellor_user_id=pk).count()
+    meetingcount = Meetings.objects.filter(counsellor_user_id=pk).count()
+    bookings = Bookings.objects.all().count()
+    meetings = Meetings.objects.all().count()
+    request.session['pk'] = pk
 
     return render(request, 'app/super.html', {
         'objects': objects,
         'pk': pk,
+        'count': count,
+        'bookings': bookings,
+        'meetings': meetings,
+        'bookcount': bookcount,
+        'meetingcount': meetingcount,
     })
 
 
