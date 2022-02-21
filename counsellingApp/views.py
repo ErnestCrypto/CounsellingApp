@@ -417,21 +417,33 @@ def delete(request, studentbook_id):
 def update(request, studentbook_id, studentbook_status):
     pk = request.session['pk']
     bookings = Bookings.objects.all()
+    book_id = Bookings.objects.get(id=studentbook_id)
+    books = BookingsForm(instance=book_id)
     arr_status = []
 
-    for book in bookings:
-        status = book.student_status
-        arr_status.append(status)
+    if str(book_id) == str(studentbook_id):
 
-    for u in range(len(arr_status)):
-        l_status = arr_status[u]
+        for book in bookings:
+            status = book.student_status
+            arr_status.append(status)
 
-        if str(l_status) == str(studentbook_status):
-            studentbook_status = 'Approved'
+        for u in range(len(arr_status)):
+            l_status = arr_status[u]
+            messages.success(request, 'for')
 
-        else:
-            studentbook_status = 'Pending'
-
+            if str(l_status) == 'Pending':
+                booksave = books.save(commit=False)
+                booksave.student_status = 'Approved'
+                booksave.save()
+                messages.success(request, 'approved')
+            elif str(l_status) == 'Approved':
+                booksave = books.save(commit=False)
+                booksave.student_status = 'Pending'
+                booksave.save()
+                messages.success(request, 'pending')
+    else:
+        messages.error(
+            request, f'std : {studentbook_id} - book : {book_id}')
     return redirect('counsellingUrls:settingsPage', pk)
 
 # http://127.0.0.1:8000/update/78/Pending
