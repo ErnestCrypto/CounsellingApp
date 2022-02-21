@@ -49,8 +49,12 @@
                 <td>
                   {{ avaistudent.start_time }} - {{ avaistudent.end_time }}
                 </td>
-
+                {% if studentbook_status %}
+                <td>{{ studentbook_status }}</td>
+                {% else %}
                 <td>{{ studentbook.student_status }}</td>
+
+                {% endif %}
                 <td>
                   <center>
                     <button

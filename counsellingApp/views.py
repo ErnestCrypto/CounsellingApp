@@ -428,10 +428,10 @@ def update(request, studentbook_id, studentbook_status):
 
         if str(l_status) == str(studentbook_status):
             studentbook_status = 'Approved'
+
         else:
             studentbook_status = 'Pending'
-        render(request, 'app/settings.html',
-               {studentbook_status: studentbook_status})
-    return redirect('counsellingUrls:settingsPage', pk, )
+
+    return redirect('counsellingUrls:settingsPage', pk)
 
 # http://127.0.0.1:8000/update/78/Pending
