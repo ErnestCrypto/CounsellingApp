@@ -416,10 +416,22 @@ def delete(request, studentbook_id):
 
 def update(request, studentbook_id, studentbook_status):
     pk = request.session['pk']
-    book = Bookings.objects.get(id=studentbook_id)
-    if str(book) == str(studentbook_id):
-        status = Bookings.objects.get(student_status=studentbook_status)
-        if str(status) == str(studentbook_status):
-            status = 'Approved'
+    bookings = Bookings.objects.all()
+    arr_status = []
 
-    return redirect('counsellingUrls:settingsPage', pk)
+    for book in bookings:
+        status = book.student_status
+        arr_status.append(status)
+
+    for u in range(len(arr_status)):
+        l_status = arr_status[u]
+
+        if str(l_status) == str(studentbook_status):
+            studentbook_status = 'Approved'
+        else:
+            studentbook_status = 'Pending'
+        render(request, 'app/settings.html',
+               {studentbook_status: studentbook_status})
+    return redirect('counsellingUrls:settingsPage', pk, )
+
+# http://127.0.0.1:8000/update/78/Pending
