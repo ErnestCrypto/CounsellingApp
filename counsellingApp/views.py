@@ -18,6 +18,8 @@ def loginPage(request):
         person_id = request.POST.get('person_id')
         pin_log = request.POST.get('pin_log')
         option = request.POST.get('option')
+        request.session['option'] = option
+
         user = Counsellor.objects.all()
 
         if login.is_valid():
@@ -140,6 +142,23 @@ def dashboardPage(request, pk):
     studentbooks = Bookings.objects.all()
     avaibooks = Availability.objects.all()
 
+    coun = Counsellor.objects.get(user_id=pk)
+    counsellor = CounsellorForm(instance=coun)
+
+    for coun in counsellor:
+        counsellor = CounsellorForm(initial={
+            'user_id': coun.user_id,
+            'firstName': coun.firstName,
+            'lastName': coun.lastName,
+            'email': coun.email,
+            'title': coun.title,
+            'gender': coun.gender,
+            'about': coun.about,
+            'contact': coun.contact,
+            'occupation': coun.occupation,
+            'profile': coun.profile
+        })
+
     if request.method == 'POST':
 
         books = BookingsForm(request.POST)
@@ -254,18 +273,6 @@ def dashboardPage(request, pk):
 
                     messages.success(
                         request, f'id : {l_counsellor_user_id} ')
-                    counsellor = CounsellorForm(initial={
-                        'user_id': l_counsellor_user_id,
-                        'firstName': str(l_counsellor_firstname),
-                        'lastName': str(l_counsellor_lastname),
-                        'email': l_counsellor_email,
-                        'title': l_counsellor_title,
-                        'gender': l_counsellor_gender,
-                        'about': l_counsellor_about,
-                        'contact': l_counsellor_contact,
-                        'occupation': l_counsellor_occupation,
-                        'profile': l_counsellor_profile,
-                    })
 
                     ach_obj.save()
                     avail_obj.save()
@@ -416,34 +423,20 @@ def delete(request, studentbook_id):
 
 def update(request, studentbook_id, studentbook_status):
     pk = request.session['pk']
-    bookings = Bookings.objects.all()
     book_id = Bookings.objects.get(id=studentbook_id)
     books = BookingsForm(instance=book_id)
-    arr_status = []
 
-    if str(book_id) == str(studentbook_id):
+    if str(studentbook_status) == 'Pending':
+        booksave = books.save(commit=False)
+        booksave.student_status = 'Approved'
+        booksave.save()
+        messages.success(request, 'approved')
+    elif str(studentbook_status) == 'Approved':
+        booksave = books.save(commit=False)
+        booksave.student_status = 'Pending'
+        booksave.save()
+        messages.success(request, 'pending')
 
-        for book in bookings:
-            status = book.student_status
-            arr_status.append(status)
-
-        for u in range(len(arr_status)):
-            l_status = arr_status[u]
-            messages.success(request, 'for')
-
-            if str(l_status) == 'Pending':
-                booksave = books.save(commit=False)
-                booksave.student_status = 'Approved'
-                booksave.save()
-                messages.success(request, 'approved')
-            elif str(l_status) == 'Approved':
-                booksave = books.save(commit=False)
-                booksave.student_status = 'Pending'
-                booksave.save()
-                messages.success(request, 'pending')
-    else:
-        messages.error(
-            request, f'std : {studentbook_id} - book : {book_id}')
     return redirect('counsellingUrls:settingsPage', pk)
 
 # http://127.0.0.1:8000/update/78/Pending
