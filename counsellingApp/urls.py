@@ -20,6 +20,10 @@ urlpatterns = [
     path('delete/<str:studentbook_id>/', views.delete, name="delete"),
     path('update/<str:studentbook_id>/<str:studentbook_status>',
          views.update, name="update"),
+    path('availability_del/<str:av_id>',
+         views.availability_del, name="availability_del"),
+    path('availability_add/<str:av_id>',
+         views.availability_add, name="availability_add"),
 
 
 ]

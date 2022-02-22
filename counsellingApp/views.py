@@ -118,6 +118,7 @@ def dashboardPage(request, pk):
     notification = 'app/notification.html'
     index = 'app/index.html'
     counsellor = CounsellorForm()
+    avail = Availability.objects.all()
     achievement = AchievementForm()
     availability = AvailabilityForm()
     education = EducationForm()
@@ -142,22 +143,20 @@ def dashboardPage(request, pk):
     studentbooks = Bookings.objects.all()
     avaibooks = Availability.objects.all()
 
-    coun = Counsellor.objects.get(user_id=pk)
-    counsellor = CounsellorForm(instance=coun)
-
-    for coun in counsellor:
-        counsellor = CounsellorForm(initial={
-            'user_id': coun.user_id,
-            'firstName': coun.firstName,
-            'lastName': coun.lastName,
-            'email': coun.email,
-            'title': coun.title,
-            'gender': coun.gender,
-            'about': coun.about,
-            'contact': coun.contact,
-            'occupation': coun.occupation,
-            'profile': coun.profile
-        })
+    for object in objects:
+        if str(object.user_id) == str(pk):
+            counsellor = CounsellorForm(initial={
+                'user_id': object.user_id,
+                'firstName': object.firstName,
+                'lastName': object.lastName,
+                'email': object.email,
+                'title': object.title,
+                'gender': object.gender,
+                'about': object.about,
+                'contact': object.contact,
+                'occupation': object.occupation,
+                'profile': object.profile,
+            })
 
     if request.method == 'POST':
 
@@ -327,6 +326,7 @@ def dashboardPage(request, pk):
                                                   'avaibooks': avaibooks,
                                                   'bookcount': bookcount,
                                                   'meetingcount': meetingcount,
+                                                  'avail': avail,
 
                                                   }
 
@@ -439,4 +439,15 @@ def update(request, studentbook_id, studentbook_status):
 
     return redirect('counsellingUrls:settingsPage', pk)
 
-# http://127.0.0.1:8000/update/78/Pending
+
+def availability_add(request, av_id):
+    pk = request.session['pk']
+
+    return redirect('counsellingUrls:dashboardPage', pk)
+
+
+def availability_del(request, av_id):
+    pk = request.session['pk']
+    avail = Availability.objects.get(id=av_id)
+    avail.delete()
+    return redirect('counsellingUrls:dashboardPage', pk)

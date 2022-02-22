@@ -508,6 +508,340 @@ HEADER.HTML
 HEADER.HTML
 
 DASHBOARD.HTML
+
+{% comment %} <div class="copies hide">
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ specialities.top_specialities }}
+                  <!---->
+
+                  <input type="text" name="addmore[]" class="form-control" />
+                 
+                  <div class="input-group-btn">
+                    <button
+                      style="font-size: 20px"
+                      class="btn btn-danger remove"
+                      type="button"
+                    >
+                      <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div> {% endcomment %}
+
+            {% comment %} <div class="cop hide">
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ therapy.therapies_offered }}
+                  <input type="text" name="addmore[]" class="form-control" />
+                  
+                  <div class="input-group-btn">
+                    <button
+                      style="font-size: 20px"
+                      class="btn btn-danger remove"
+                      type="button"
+                    >
+                      <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div> {% endcomment %}
+
+            {% comment %} <div class="copy hide">
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ achievement.awards }}
+                  <input type="text" name="addmore[]" class="form-control" />
+                 
+                  <div class="input-group-btn">
+                    <button
+                      style="font-size: 20px"
+                      class="btn btn-danger remove"
+                      type="button"
+                    >
+                      <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div> {% endcomment %}
+
+             {% comment %} <div class="mycopy hide">
+              <div id="rm">
+                <div class="col-sm-5">
+                  <div
+                    class="control-group input-group"
+                    style="margin-bottom: 20px"
+                  >
+                  } {{ education.education_institution }}
+                    <!---->
+                    <input type="text" class="form-control" /> 
+                    <label for="usr">Institution</label>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div
+                    class="control-group input-group"
+                    style="margin-bottom: 20px"
+                  >
+                   {{ education.year_completed }}
+                    <input type="text" class="form-control" /> 
+                    <label for="usr">Year completed</label>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <button
+                    style="font-size: 20px"
+                    class="btn btn-danger remove"
+                    type="button"
+                  >
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button>
+                </div>
+              </div>
+            </div> {% endcomment %}
+
+             {% comment %} <div class="mylast hide">
+              <div id="rmlast">
+                <div class="col-sm-5">
+                  <div
+                    class="control-group input-group"
+                    style="margin-bottom: 20px"
+                  >
+                     {{ experience.experience_institution }}
+                    <!---->
+                    <input type="text" class="form-control" /> 
+                    <label for="usr">Institution</label>
+                  </div>
+                </div>
+                <div class="col-sm-5">
+                  <div
+                    class="control-group input-group"
+                    style="margin-bottom: 20px"
+                  >
+                    {{ experience.experience_position }}
+                    <input type="text" class="form-control" /> 
+                    <label for="usr">Position</label>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <button
+                    style="font-size: 20px"
+                    class="btn btn-danger remove"
+                    type="button"
+                  >
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button>
+                </div>
+              </div>
+            </div> {% endcomment %}
+
+
+            {% comment %} <div class="myfirst hide">
+              <div id="rmfirst" style="width: 100%">
+                <div class="col-sm-3">
+                  <div
+                    class="control-group input-group"
+                    style="margin-bottom: 20px"
+                  >
+                     {{ availability.date }}
+                    <input type="date" class="form-control" /> 
+                    <label for="usr">Day</label>
+                  </div>
+                </div>
+               <div class="col-sm-3">
+                  <div
+                    class="control-group input-group"
+                    style="margin-bottom: 20px"
+                  >
+                    {{ availability.start_time }}
+                    <input type="time" class="form-control" /> 
+                    <label for="usr">Start Time</label>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div
+                    class="control-group input-group"
+                    style="margin-bottom: 20px"
+                  >
+                    {{ availability.end_time }}
+                    <input type="time" class="form-control" /> 
+                    <label for="usr">End Time</label>
+                  </div>
+                </div>
+
+                <div class="col-sm-1">
+                  <button
+                    style="font-size: 20px"
+                    class="btn btn-danger remove"
+                    type="button"
+                  >
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button>
+                </div>
+              </div>
+            </div> {% endcomment %}
+
+            {% comment %}
+                <select
+                  name="sub"
+                  class="form-control"
+                  style="height: 50%"
+                  required
+                >
+                  <option></option>
+                  <option>Mr.</option>
+                  <option>Mrs.</option>
+                  <option>Dr.</option>
+                  <option>Prof.</option>
+                </select>
+                {% endcomment %} {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.title}}"
+                />
+                {% endcomment %}
+
+
+                {% comment %}
+                <input type="text" class="form-control" required /> {%
+                endcomment %} {{counsellor.lastName}}
+                <label for="usr">Last Name</label>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                {% comment %}
+                <select
+                  name="sub"
+                  class="form-control"
+                  style="height: 50%"
+                  required
+                >
+                  <option></option>
+                  <option value="DS">Male</option>
+                  <option value="Algo">Female</option>
+                </select>
+                {% endcomment %} {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.gender}}"
+                />
+                {% endcomment %} 
+
+
+            {% comment %}
+            <div class="col-sm-3">
+              <div class="form-group">
+                <input type="text" class="form-control" required />
+
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.user_id}}"
+                />
+                {{counsellor.user_id}}
+                <label for="usr">ID</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                {{counsellor.profile}}
+                <!---->
+
+                <input type="text" class="form-control" required />
+
+                <label for="usr">Profile Pic</label>
+              </div>
+            </div>
+            {% endcomment %}
+
+{% comment %} 
+  <script>
+    $(document).ready(function () {
+      $(".add-more").click(function () {
+        var html = $(".copy").html();
+        $(".after-add-more").after(html);
+      });
+      $("body").on("click", ".remove", function () {
+        $(this).parents(".control-group").remove();
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $(".add-plus").click(function () {
+        var html = $(".cop").html();
+        $(".after-add-plus").after(html);
+      });
+      $("body").on("click", ".remove", function () {
+        $(this).parents(".control-group").remove();
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $(".add-some").click(function () {
+        var html = $(".copies").html();
+        $(".after-add-some").after(html);
+      });
+      $("body").on("click", ".remove", function () {
+        $(this).parents(".control-group").remove();
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $(".add-much").click(function () {
+        var html = $(".mycopy").html();
+        $(".after-add-much").after(html);
+      });
+      $("body").on("click", ".remove", function () {
+        $(this).parents("#rm").remove();
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $(".add-last").click(function () {
+        var html = $(".mylast").html();
+        $(".after-add-last").after(html);
+      });
+      $("body").on("click", ".remove", function () {
+        $(this).parents("#rmlast").remove();
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $(".add-first").click(function () {
+        var html = $(".myfirst").html();
+        $(".after-add-first").after(html);
+      });
+      $("body").on("click", ".remove", function () {
+        $(this).parents("#rmfirst").remove();
+      });
+    });
+  </script> {% endcomment %}
  {% comment %}
         <div class="container-fluid bg-3 text-left">
           <hr style="margin: 0%" />
