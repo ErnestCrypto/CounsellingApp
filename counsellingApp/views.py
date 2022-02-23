@@ -8,6 +8,25 @@ from .forms import CounsellorForm, SuperCounsellorForm, AchievementForm, Availab
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
+from .serializers import CounsellorSerializer
+from django.http import JsonResponse, HttpResponse
+from rest_framework.parsers import JSONParser
+from django.views.decorators.csrf import csrf_exempt
+
+
+@csrf_exempt
+def Counsellor_list(request):
+    if request.method == 'GET':
+        counsellor = Counsellor.objects.all()
+        serializer = CounsellorSerializer(counsellor, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        serializer = CounsellorSerializer(request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data, status=201)
+        return JsonResponse(serializer.errors, status=400)
 
 
 def loginPage(request):

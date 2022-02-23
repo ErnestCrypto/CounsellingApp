@@ -2,6 +2,7 @@
 from django.urls import path
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from rest_framework.urlpatterns import format_suffix_patterns
 
 app_name = 'counsellingUrls'
 
@@ -44,8 +45,11 @@ urlpatterns = [
          views.speciality_del, name="speciality_del"),
     path('availability_add/<str:av_id>',
          views.speciality_add, name="speciality_add"),
+    path('serializers/counsellors', views.Counsellor_list),
 
 
 ]
 
 urlpatterns += staticfiles_urlpatterns()
+
+urlpatterns = format_suffix_patterns(urlpatterns)
