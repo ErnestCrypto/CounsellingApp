@@ -284,6 +284,7 @@
           <br />
           <br />
           <div class="row">
+            {% for exp in expe%}
             <div class="input-group control-group after-add-last">
               <div class="col-sm-3">
                 <div
@@ -307,25 +308,29 @@
                 </div>
               </div>
               <div class="col-sm-1">
+              <a href ="{% url 'counsellingUrls:experience_del' exp.id %}">
+
                 <button
                   style="font-size: 20px"
                   class="btn btn-success add-last"
                   type="button"
                 >
                   <i class="glyphicon glyphicon-plus"></i>
-                </button>
+                </button></a>
               </div>
                <div class="col-sm-1">
-                  <button
+              <a href ="{% url 'counsellingUrls:experience_del' exp.id %}">
+  
+                <button
                     style="font-size: 20px"
                     class="btn btn-danger remove"
                     type="button"
                   >
                     <i class="glyphicon glyphicon-remove"></i>
-                  </button>
+                  </button></a>
                 </div>
             </div>
-
+            {% endfor %}
            
           </div>
         </div>
@@ -337,6 +342,7 @@
           <br />
           <br />
           <div class="row">
+            {% for ed in edu %}
             <div class="input-group control-group after-add-much">
               <div class="col-sm-3">
                 <div
@@ -360,25 +366,29 @@
                 </div>
               </div>
               <div class="col-sm-1">
+                 <a href ="{% url 'counsellingUrls:education_del' ed.id %}">
+               
                 <button
                   style="font-size: 20px"
                   class="btn btn-success add-much"
                   type="button"
                 >
                   <i class="glyphicon glyphicon-plus"></i>
-                </button>
+                </button></a>
               </div>
                <div class="col-sm-1">
-                  <button
+        <a href ="{% url 'counsellingUrls:education_del' ed.id %}">
+  
+                <button
                     style="font-size: 20px"
                     class="btn btn-danger remove"
                     type="button"
                   >
                     <i class="glyphicon glyphicon-remove"></i>
-                  </button>
+                  </button></a>
                 </div>
             </div>
-
+            {% endfor %}
            
           </div>
         </div>
@@ -390,6 +400,7 @@
           <br />
 
           <div class="row">
+            {% for ach in achieve %}
             <div class="input-group control-group after-add-more">
               <div class="col-sm-4">
                 <div
@@ -405,25 +416,30 @@
                   />
                   {% endcomment %}
                   <div class="input-group-btn">
+                 <a href ="{% url 'counsellingUrls:achievement_del' ach.id %}">
+
                     <button
                       style="font-size: 20px"
                       class="btn btn-success add-more"
                       type="button"
                     >
                       <i class="glyphicon glyphicon-plus"></i>
-                    </button>
+                    </button></a>
                   </div>
                    <div class="col-sm-2">
-                  <button
+                 <a href ="{% url 'counsellingUrls:achievement_del' ach.id %}">
+                  
+                    <button
                     style="font-size: 20px"
                     class="btn btn-danger remove"
                     type="button"
                   >
                     <i class="glyphicon glyphicon-remove"></i>
-                  </button>
+                  </button></a>
                 </div>
                 </div>
-              </div>
+              </div>                {% endfor %}
+
             </div>
           </div>
         </div>
@@ -436,6 +452,7 @@
           <br />
 
           <div class="row">
+            {% for the in ther %}
             <div class="input-group control-group after-add-plus">
               <div class="col-sm-4">
                 <div
@@ -451,25 +468,30 @@
                   />
                   {% endcomment %}
                   <div class="input-group-btn">
+                 <a href ="{% url 'counsellingUrls:therapy_del' the.id %}">
+
                     <button
                       style="font-size: 20px"
                       class="btn btn-success add-plus"
                       type="button"
                     >
                       <i class="glyphicon glyphicon-plus"></i>
-                    </button>
+                    </button></a>
                   </div>
                    <div class="col-sm-2">
-                  <button
+                 <a href ="{% url 'counsellingUrls:therapy_del' the.id %}">
+ 
+                    <button
                     style="font-size: 20px"
                     class="btn btn-danger remove"
                     type="button"
                   >
                     <i class="glyphicon glyphicon-remove"></i>
-                  </button>
+                  </button></a>
                 </div>
                 </div>
-              </div>
+              </div>                {% endfor %}
+
             </div>
 
             
@@ -484,6 +506,7 @@
           <br />
 
           <div class="row">
+            {% for spe in spec %}
             <div class="input-group control-group after-add-some">
               <div class="col-sm-4">
                 <div
@@ -500,25 +523,30 @@
                   />
                   {% endcomment %}
                   <div class="input-group-btn">
+                 <a href ="{% url 'counsellingUrls:speciality_del' spe.id %}">
+
                     <button
                       style="font-size: 20px"
                       class="btn btn-success add-some"
                       type="button"
                     >
                       <i class="glyphicon glyphicon-plus"></i>
-                    </button>
+                    </button></a>
                   </div>
                    <div class="col-sm-2">
-                  <button
+                 <a href ="{% url 'counsellingUrls:speciality_del' spe.id %}">
+
+                    <button
                     style="font-size: 20px"
                     class="btn btn-danger remove"
                     type="button"
                   >
                     <i class="glyphicon glyphicon-remove"></i>
-                  </button>
+                  </button></a>
                 </div>
                 </div>
-              </div>
+              </div>                {% endfor %}
+
             </div>
 
           

@@ -119,6 +119,11 @@ def dashboardPage(request, pk):
     index = 'app/index.html'
     counsellor = CounsellorForm()
     avail = Availability.objects.all()
+    achieve = Achievement.objects.all()
+    edu = Education.objects.all()
+    expe = Experience.objects.all()
+    ther = Therapy.objects.all()
+    spec = Specialities.objects.all()
     achievement = AchievementForm()
     availability = AvailabilityForm()
     education = EducationForm()
@@ -327,6 +332,11 @@ def dashboardPage(request, pk):
                                                   'bookcount': bookcount,
                                                   'meetingcount': meetingcount,
                                                   'avail': avail,
+                                                  'achieve': achieve,
+                                                  'edu': edu,
+                                                  'expe': expe,
+                                                  'ther': ther,
+                                                  'spec': spec,
 
                                                   }
 
@@ -450,4 +460,69 @@ def availability_del(request, av_id):
     pk = request.session['pk']
     avail = Availability.objects.get(id=av_id)
     avail.delete()
+    return redirect('counsellingUrls:dashboardPage', pk)
+
+
+def achievement_add(request, ach_id):
+    pk = request.session['pk']
+
+    return redirect('counsellingUrls:dashboardPage', pk)
+
+
+def achievement_del(request, ach_id):
+    pk = request.session['pk']
+    achieve = Achievement.objects.get(id=ach_id)
+    achieve.delete()
+    return redirect('counsellingUrls:dashboardPage', pk)
+
+
+def education_add(request, ed_id):
+    pk = request.session['pk']
+
+    return redirect('counsellingUrls:dashboardPage', pk)
+
+
+def education_del(request, ed_id):
+    pk = request.session['pk']
+    edu = Education.objects.get(id=ed_id)
+    edu.delete()
+    return redirect('counsellingUrls:dashboardPage', pk)
+
+
+def experience_add(request, exp_id):
+    pk = request.session['pk']
+
+    return redirect('counsellingUrls:dashboardPage', pk)
+
+
+def experience_del(request, exp_id):
+    pk = request.session['pk']
+    expe = Experience.objects.get(id=exp_id)
+    expe.delete()
+    return redirect('counsellingUrls:dashboardPage', pk)
+
+
+def therapy_add(request, the_id):
+    pk = request.session['pk']
+
+    return redirect('counsellingUrls:dashboardPage', pk)
+
+
+def therapy_del(request, the_id):
+    pk = request.session['pk']
+    ther = Therapy.objects.get(id=the_id)
+    ther.delete()
+    return redirect('counsellingUrls:dashboardPage', pk)
+
+
+def speciality_add(request, spe_id):
+    pk = request.session['pk']
+
+    return redirect('counsellingUrls:dashboardPage', pk)
+
+
+def speciality_del(request, spe_id):
+    pk = request.session['pk']
+    spec = Specialities.objects.get(id=spe_id)
+    spec.delete()
     return redirect('counsellingUrls:dashboardPage', pk)
