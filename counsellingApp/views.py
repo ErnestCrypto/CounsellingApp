@@ -15,6 +15,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from django.db.models import Q
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
@@ -448,21 +449,26 @@ def profilePage(request, pk):
 
 def search(request, pk):
     pk = request.session['pk']
-    messages.success(request, f'pk: {pk}')
 
     if request.method == 'GET':
         search = request.GET.get('search')
+        post = Counsellor.objects.filter(
+            Q(firstName__icontains=search) | Q(lastName__icontains=search))
+
         if search:
-            search = request.GET.get('search')
+            search = request.GET.get('search').split(' ')
+            for u in range(len(search)):
+                l_search = search[u]
+
+                post = Counsellor.objects.filter(
+                    Q(firstName__icontains=l_search) | Q(lastName__icontains=l_search))
+
         else:
             search = ''
 
-        post = Counsellor.objects.filter(firstName__contains=search)
-        post2 = Counsellor.objects.filter(lastName__contains=search)
         pk = request.session['pk']
         return render(request, 'app/result.html', {
             'post': post,
-            'post2': post2,
             'search': search,
             'pk': pk,
 
