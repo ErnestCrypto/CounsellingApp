@@ -12,46 +12,48 @@ from .serializers import CounsellorSerializer
 from django.http import JsonResponse, HttpResponse
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 
-@csrf_exempt
+@api_view(['GET', 'PUT', 'DELETE'])
 def Counsellor_details(request, pk):
     try:
         counsellor = Counsellor.objects.get(user_id=pk)
-
-    except Counsellor.DoesNotExist:
-        return HttpResponse(status=404)
+    except counsellor.DoesNotExist:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == 'GET':
         serializer = CounsellorSerializer(counsellor)
-        return JsonResponse(serializer.data)
+        return Response(serializer.data)
 
     elif request.method == 'PUT':
         data = JSONParser().parse(request)
-        serializer = CounsellorSerializer(counsellor, data=data)
+        serializer = CounsellorSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(serializer.data)
-        return JsonResponse(serializer.errors, status=400)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
         counsellor.delete()
-        return HttpResponse(status=204)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-@csrf_exempt
+@api_view(['GET', 'POST'])
 def Counsellor_list(request):
     if request.method == 'GET':
         counsellor = Counsellor.objects.all()
         serializer = CounsellorSerializer(counsellor, many=True)
-        return JsonResponse(serializer.data, safe=False)
+        return Response(serializer.data)
 
     elif request.method == 'POST':
         serializer = CounsellorSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse(serializer.data, status=201)
-        return JsonResponse(serializer.errors, status=400)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 def loginPage(request):
