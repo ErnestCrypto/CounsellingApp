@@ -15,6 +15,31 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 @csrf_exempt
+def Counsellor_details(request, pk):
+    try:
+        counsellor = Counsellor.objects.get(user_id=pk)
+
+    except Counsellor.DoesNotExist:
+        return HttpResponse(status=404)
+
+    if request.method == 'GET':
+        serializer = CounsellorSerializer(counsellor)
+        return JsonResponse(serializer.data)
+
+    elif request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = CounsellorSerializer(counsellor, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data)
+        return JsonResponse(serializer.errors, status=400)
+
+    elif request.method == 'DELETE':
+        counsellor.delete()
+        return HttpResponse(status=204)
+
+
+@csrf_exempt
 def Counsellor_list(request):
     if request.method == 'GET':
         counsellor = Counsellor.objects.all()
@@ -22,7 +47,7 @@ def Counsellor_list(request):
         return JsonResponse(serializer.data, safe=False)
 
     elif request.method == 'POST':
-        serializer = CounsellorSerializer(request.data)
+        serializer = CounsellorSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=201)
