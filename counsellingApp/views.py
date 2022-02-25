@@ -160,7 +160,10 @@ def adminPage(request, pk):
 
 
 def availiablePage(request, pk):
-    return render(request, 'app/availiable.html', {})
+    pk = request.session['pk']
+    return render(request, 'app/availiable.html', {
+        'pk': pk,
+    })
 
 
 def homePage(request, pk):
