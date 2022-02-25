@@ -163,6 +163,19 @@ def availiablePage(request, pk):
     return render(request, 'app/availiable.html', {})
 
 
+def homePage(request, pk):
+    objects = Counsellor.objects.all()
+    request.session['pk'] = pk
+
+    return render(request, 'app/home.html', {
+        'objects': objects,
+        'pk': pk,
+
+    }
+
+    )
+
+
 def dashboardPage(request, pk):
     admin = 'app/admin.html'
     profile = 'app/profile.html'
