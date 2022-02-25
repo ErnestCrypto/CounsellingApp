@@ -415,6 +415,18 @@ def indexPage(request, pk):
     })
 
 
+def popupPage(request, object_user_id):
+    objects = Counsellor.objects.all()
+    pk = request.session['pk']
+    user_id = object_user_id
+
+    return render(request, 'app/popup.html', {
+        'objects': objects,
+        'pk': pk,
+        'user_id': user_id,
+    })
+
+
 def notificationPage(request, pk):
     objects = Counsellor.objects.all()
     request.session['pk'] = pk

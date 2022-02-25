@@ -1,0 +1,124 @@
+{% include 'app/header.html' %}{% include 'app/home.html'%}
+{% load static%}
+
+
+<header>
+  
+    <div class="mask" id="darkscreen" style="background-color: rgba(0, 0, 0, 0.9);">
+
+  <div
+    class="  bg-image" id="longscreen"
+ 
+  >
+      <div class="h-100">
+        <div id="a"  style="background-color: rgba(0, 0, 0, 0.9);">
+          <div id="b">
+            <div  style="background-image: url('https://www.ug.edu.gh/ugmellon/sites/default/files/images/mail3.jpg') ;" id="a1"></div>
+            <div   style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4jxM-gpQ-uuAk4y0k25fyzXSH4DAe3OwzAJzSXZe8Ee4Q3co1LtrTo8yGqHQsHcJuHqU&usqp=CAU') ;" id="a2"></div>
+            <div   style="background-image: url('https://i.pinimg.com/564x/be/3a/37/be3a378a29755f45903a0c8596964848.jpg') ;" id="a3"></div>
+            <div   style="background-image: url('https://admission.ug.edu.gh/applying/sites/default/files/pictures/under_grad_main.jpg') ;" id="a4"></div>
+            <div   style="background-image: url('https://citifmonline.com/wp-content/uploads/2017/12/Legon-Debate-Team.jpg') ;" id="a5"></div>
+         
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% for object in objects %}
+{% if object.user_id == user_id|add:0 %}
+<div id="popup_screen"  >
+      
+  <a href="{% url 'counsellingUrls:indexPage' pk%}" class="cancel"><i class="far fa-times-circle"></i></a>
+  
+  <!---->
+<div id="mypad" style="border-radius:10px;padding-right:1%;padding-left:2%;background:none;">
+   
+    <div id="subtab1">
+         <center> 
+           {% if object.profile %}
+           <img id="profilenot"  class="a" src="{{object.profile.url }}">
+{% else %}
+
+           <img id="profilenot"  class="a"    src="{% static 'media/download.png' %}">
+
+{% endif %}
+        </center>
+        <center>
+       <i class="fas fa-video" style="padding:5%; color:blue; opacity:0.7;"></i>
+    <i class="fas fa-user-friends" style="padding:5%; color:blue; opacity:0.7;"></i>
+   <i class="fas fa-comment-dots"  style="padding:5%; color:blue; opacity:0.7;" ></i>
+        </center>
+      <center> 
+        
+        <p><i class="fas fa-location-arrow" style="color: white;"> 25 km</i></p>
+      
+      </center>
+      </div>
+
+
+    <div id="subtab2">
+      <div>
+        <h1 id="myh2" style="color: white;">{{object.title}} {{object.firstName}} {{object.lastName}}</h1>
+        <p style="color: white;">
+         {{object.occupation}}
+        </p>
+      <div style="padding-top:2%;color: white;height:20%;overflow-x:scroll">
+        {{object.about}}
+        </div>
+<div style="height:20%;">
+  <p id="myh2" style="color: white;"> Therapies Offered</p>
+  <div style="width:100%;">
+    {% if object.therapies_offered%}
+     <center> <p id="label2" style="color: white;"> {{object.therapies_offered}}</p></center>
+  {% else %}
+     <center><p id="label2" style="color: white;"> EMDR</p></center>
+   {% endif %}
+  </div>
+</div>
+<div>
+  <br>
+    <p id="myh2" style="color: white;"> Top Specialities</p>
+<div style="width:100%;">
+  {% if object.top_specialities%}
+     <center> <p id="label3" style="color: white;"> {{object.top_specialities}}</p></center>
+  {% else %}
+     <center><p id="label2" style="color: white;"> Abuse</p></center>
+  {% endif %}
+  </div>
+</div>
+
+      </div>
+    </div>
+     
+    <div id="subtab3">
+    <center>  
+   <div>
+      <p id="filter2" style="color: white;"><i class="fa fa-calendar" aria-hidden="true" style="color:blue"></i>
+ Tomorrow</p>
+        <p style=" font-size: 10px;color: white;">Video Call 50 mins</p>
+
+   </div>
+   {% if object.start_time%}
+    <label id="labels1" href="#" style="color: white;"{{ object.start_time}} - {{ object.end_time }}</label>
+  {% else %}
+      <label  id="labels1" href="#" style="color: white;">No available time</label> 
+  {% endif %}
+   <label  id="labels1" href="#" style="background-color:rgba(0,0,255,0.6);color:white;">Book</label>
+  </center>
+   
+ 
+
+    </div>
+   
+  </div>
+ 
+
+ <!---->
+
+  </div>
+  <div id="cover" >
+  </div>
+{% else %}{% endif %} 
+{% endfor %}

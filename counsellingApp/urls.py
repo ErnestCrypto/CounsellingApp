@@ -17,6 +17,8 @@ urlpatterns = [
          views.notificationPage, name="notificationPage"),
     path('index/<str:pk>/',
          views.indexPage, name="indexPage"),
+    path('popup/<str:object_user_id>/',
+         views.popupPage, name="popupPage"),
     path('profile/<str:pk>/', views.profilePage, name="profilePage"),
     path('delete/<str:studentbook_id>/', views.delete, name="delete"),
     path('update/<str:studentbook_id>/<str:studentbook_status>/',
