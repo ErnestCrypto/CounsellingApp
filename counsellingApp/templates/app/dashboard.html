@@ -51,32 +51,17 @@
 
       {% endif %}
      
-      <div class="col-sm-15" >
-              <div class="form-group">
-                {% comment %}
-                <input
-                  type="text"
-                  class="form-control"
-                  value="{{object.firstName}}"
-                />
-                {% endcomment %} {{counsellor.profile}}
-                <!---->
-                {% comment %}
-                <input type="text" class="form-control" required />
-                {% endcomment %}
-
-                <label for="usr">Update Profile Pic</label>
-              </div>
-            </div>
+      
             </div>
       
       
-      <br />
+     
 
       
         <div class="container-fluid bg-3 text-left" >
           <div class="row" >
-            <div class="col-lg-3">
+            
+            <div class="col-sm-3">
               <div class="form-group">
                  {{counsellor.title }}
                 <label for="usr"> Title </label>
@@ -173,6 +158,23 @@
                 <label for="usr">Contact</label>
               </div>
             </div>
+            <div class="col-sm-5" >
+              <div class="form-group">
+                {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.firstName}}"
+                />
+                {% endcomment %} {{counsellor.profile }}
+                <!---->
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+                <label for="usr">Update Profile Pic</label>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -212,69 +214,11 @@
         <div class="container-fluid bg-3 text-left">
           <h6 style="font-size: 20px">Availability</h6>
           <hr style="margin: 0%" />
+           <br />
+          <a href= "{% url 'counsellingUrls:availiablePage' pk%}" class="btn btn-info add-last">
+            <i class="glyphicon glyphicon-plus"></i>Add Availability </a>
+         
           <br />
-          <br />
-          <div class="row">{% for av in avail %}        
-            <div class="input-group control-group after-add-first">
-              <div class="col-sm-3">
-                <div
-                  class="control-group input-group"
-                  style="margin-bottom: 20px"
-                > 
-                
-               
-                  {{ availability.date }} {% comment %}
-                  <input type="date" class="form-control" /> {% endcomment %}
-                 
-                  <label for="usr">Day</label>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div
-                  class="control-group input-group"
-                  style="margin-bottom: 20px"
-                >
-                  {{ availability.start_time }} {% comment %}
-                  <input type="time" class="form-control" /> {% endcomment %}
-                  <label for="usr">Start Time</label>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div
-                  class="control-group input-group"
-                  style="margin-bottom: 20px"
-                >
-                  {{ availability.end_time }} {% comment %}
-                  <input type="time" class="form-control" /> {% endcomment %}
-                  <label for="usr">End Time</label>
-                </div>
-              </div>
-              <div class="col-sm-1">
-                <a href ="{% url 'counsellingUrls:availability_add' av.id %}" ><button
-                
-                  
-                  style="font-size: 20px"
-                  class="btn btn-success add-first"
-                  type="button"
-                >
-                  <i class="glyphicon glyphicon-plus"></i>
-                </button></a>
-              </div>
-               <div class="col-sm-1">
-                 <a href ="{% url 'counsellingUrls:availability_del' av.id %}">
-                  <button
-                    style="font-size: 20px"
-                    class="btn btn-danger remove"
-                    type="button"
-                  >
-                    <i class="glyphicon glyphicon-remove"></i>
-                  </button></a>
-                </div>
-            </div>
-             {% endfor %}
-            
-           
-          </div>
         </div>
         <!---->
 
@@ -312,7 +256,7 @@
 
                 <button
                   style="font-size: 20px"
-                  class="btn btn-success add-last"
+                  class="btn btn-info add-last"
                   type="button"
                 >
                   <i class="glyphicon glyphicon-plus"></i>
@@ -370,7 +314,7 @@
                
                 <button
                   style="font-size: 20px"
-                  class="btn btn-success add-much"
+                  class="btn btn-info add-much"
                   type="button"
                 >
                   <i class="glyphicon glyphicon-plus"></i>
@@ -420,7 +364,7 @@
 
                     <button
                       style="font-size: 20px"
-                      class="btn btn-success add-more"
+                      class="btn btn-info add-more"
                       type="button"
                     >
                       <i class="glyphicon glyphicon-plus"></i>
@@ -472,7 +416,7 @@
 
                     <button
                       style="font-size: 20px"
-                      class="btn btn-success add-plus"
+                      class="btn btn-info add-plus"
                       type="button"
                     >
                       <i class="glyphicon glyphicon-plus"></i>
@@ -527,7 +471,7 @@
 
                     <button
                       style="font-size: 20px"
-                      class="btn btn-success add-some"
+                      class="btn btn-info add-some"
                       type="button"
                     >
                       <i class="glyphicon glyphicon-plus"></i>

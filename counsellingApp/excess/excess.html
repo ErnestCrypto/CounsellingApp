@@ -577,7 +577,68 @@ HEADER.HTML
 HEADER.HTML
 
 DASHBOARD.HTML
-
+ {% comment %}
+          <div class="row">{% for av in avail %}        
+            <div class="input-group control-group after-add-first">
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                > 
+                
+               
+                  {{ availability.date }} 
+                  <input type="date" class="form-control" /> 
+                 
+                  <label for="usr">Day</label>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ availability.start_time }} 
+                  <input type="time" class="form-control" /> 
+                  <label for="usr">Start Time</label>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div
+                  class="control-group input-group"
+                  style="margin-bottom: 20px"
+                >
+                  {{ availability.end_time }} 
+                  <input type="time" class="form-control" /> 
+                  <label for="usr">End Time</label>
+                </div>
+              </div>
+              <div class="col-sm-1">
+                <a href ="{% url 'counsellingUrls:availability_add' av.id %}" ><button
+                
+                  
+                  style="font-size: 20px"
+                  class="btn btn-success add-first"
+                  type="button"
+                >
+                  <i class="glyphicon glyphicon-plus"></i>
+                </button></a>
+              </div>
+               <div class="col-sm-1">
+                 <a href ="{% url 'counsellingUrls:availability_del' av.id %}">
+                  <button
+                    style="font-size: 20px"
+                    class="btn btn-danger remove"
+                    type="button"
+                  >
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button></a>
+                </div>
+            </div>
+             {% endfor %}
+            
+           
+          </div> {% endcomment %}
 {% comment %} <div class="copies hide">
               <div class="col-sm-3">
                 <div

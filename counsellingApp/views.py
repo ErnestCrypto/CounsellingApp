@@ -159,6 +159,10 @@ def adminPage(request, pk):
     })
 
 
+def availiablePage(request, pk):
+    return render(request, 'app/availiable.html', {})
+
+
 def dashboardPage(request, pk):
     admin = 'app/admin.html'
     profile = 'app/profile.html'
@@ -207,7 +211,7 @@ def dashboardPage(request, pk):
                 'about': object.about,
                 'contact': object.contact,
                 'occupation': object.occupation,
-                'profile': object.profile,
+
             })
 
     if request.method == 'POST':
@@ -464,9 +468,7 @@ def search(request, pk):
 
     if request.method == 'GET':
         search = request.GET.get('search')
-        post = Counsellor.objects.filter(
-            Q(firstName__icontains=search) | Q(lastName__icontains=search))
-
+        post = Counsellor.objects.all()
         if search:
             search = request.GET.get('search').split(' ')
             for u in range(len(search)):

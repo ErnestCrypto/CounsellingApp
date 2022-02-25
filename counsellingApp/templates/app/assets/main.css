@@ -126,7 +126,7 @@
     width: 85%;
     float: right;
     height: 100%;
-    overflow: hidden;
+    overflow-y: scroll;
     animation-name: example;
     animation-duration: 1s;
 
@@ -653,7 +653,7 @@ button::focus{
 #objectsprofile{
   float:left;
   width: 250px;
-  height: 150px;
+  height: 200px;
  
 }
    
