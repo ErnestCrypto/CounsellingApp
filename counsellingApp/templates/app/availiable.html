@@ -27,7 +27,7 @@
     </style>
   </head>
   <body>
-    <div class="colcontent">
+    <div>
       <div class="col-sm-3 sidenav bg-info">
         <center>
           <h3
@@ -40,24 +40,100 @@
             Your Availability
           </h3>
         </center>
+        <form method="post" action="">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-sm-10">
+              <h5 style="color: white">Date in</h5>
+              <input type="date" class="form-control" />
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-sm-5">
+              <h5 style="color: white">Days availiable in the week</h5>
+              <select
+                name="sub"
+                class="form-control"
+                style="height: 50%"
+                required
+              >
+                {% for u in range %}
+                <option>{{u}}</option>
+                {% endfor %}
+              </select>
+            </div>
 
-        <center>
+            <div class="col-sm-5">
+              <h5 style="color: white">Number of hours per session</h5>
+              <select
+                name="sub"
+                class="form-control"
+                style="height: 50%"
+                required
+              >
+                {% for u in rang %}
+                <option>{{u}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <br />
+          <div
+            class="row"
+            style="
+              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+              padding-bottom: 5%;
+            "
+          >
+            <div class="col-sm-6">
+              <h5 style="color: white">Time in</h5>
+              <input type="time" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+              <h5 style="color: white">Time out</h5>
+              <input type="time" class="form-control" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-10">
+              <h5 style="color: white">Date not availiable (optional)</h5>
+              <input type="date" class="form-control" />
+            </div>
+          </div>
+          <br />
+
+          {% comment %}
           <ul class="nav nav-pills nav-stacked">
-            <li class="col-sm-10">
-              <a href="{% url 'counselling:dashboardPage' pk %}">Back</a>
-            </li>
             <li class="col-sm-10"><a href="#">Age</a></li>
             <li class="col-sm-10"><a href="#">Gender</a></li>
             <li class="col-sm-10"><a href="#">Geo</a></li>
+            <li class="col-sm-10">
+              <a href="{% url 'counsellingUrls:dashboardPage' pk %}">Back</a>
+            </li>
           </ul>
-        </center>
+          {% endcomment %}
+          <br />
+          <center>
+            <button
+              style="font-size: 15px"
+              class="btn btn-info add-last"
+              type="submit"
+            >
+              <i class="glyphicon glyphicon-plus"></i> Add Availability
+            </button>
+          </center>
+        </form>
         <br />
       </div>
       <div class="col-lg-9">
         <div class="well bg-info">
-          <h4 style="color: white"><i class="icon-dashboard"></i> Dashboard</h4>
+          <h4 style="color: white">
+            <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+          </h4>
         </div>
-        <div style="height: 80%; width: 100%; overflow-x: scroll">
+        <div>
           <div class="row">
             <div class="col-sm-3">
               <div class="well">

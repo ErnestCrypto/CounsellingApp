@@ -161,8 +161,11 @@ def adminPage(request, pk):
 
 def availiablePage(request, pk):
     pk = request.session['pk']
+
     return render(request, 'app/availiable.html', {
         'pk': pk,
+        'range': range(8),
+        'rang': range(10),
     })
 
 
@@ -481,6 +484,7 @@ def profilePage(request, pk):
 
 def search(request, pk):
     pk = request.session['pk']
+    search = ''
 
     if request.method == 'GET':
         search = request.GET.get('search')
@@ -495,7 +499,6 @@ def search(request, pk):
 
         else:
             search = ''
-
         pk = request.session['pk']
         return render(request, 'app/result.html', {
             'post': post,
