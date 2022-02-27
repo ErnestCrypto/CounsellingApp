@@ -50,8 +50,7 @@ urlpatterns = [
     path('serializers/counsellors/', views.Counsellor_list, name='counsellor_list'),
     path('serializers/counsellors/<int:pk>',
          views.Counsellor_details, name='counsellor_details'),
-    path('availiability/<str:pk>/', views.availiablePage, name='availiablePage')
-
+    path('availiability/<str:pk>/', views.availiablePage, name='availiablePage'),
 
 
 ]
