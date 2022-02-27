@@ -103,6 +103,8 @@ class Availability(models.Model):
     end_time = models.TimeField(default=None,  null=True, blank=True)
     date = models.CharField(default=None,
                             null=True, max_length=255, blank=True)
+    notes = models.TextField(blank=True, null=True)
+
     user_id = models.CharField(
         max_length=255, db_index=True, blank=True, null=True, default=None)
 

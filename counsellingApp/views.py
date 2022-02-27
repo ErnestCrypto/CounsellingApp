@@ -16,6 +16,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.db.models import Q
+import calendar
+from calendar import HTMLCalendar
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
@@ -159,13 +161,19 @@ def adminPage(request, pk):
     })
 
 
-def availiablePage(request, pk):
+def availiablePage(request, pk, year, month):
     pk = request.session['pk']
-
+    month = month.capitalize()
+    month_num = list(calendar.month_name).index(month)
+    month_num = int(month_num)
+    cal = HTMLCalendar().formatmonth(year, month_num)
     return render(request, 'app/availiable.html', {
         'pk': pk,
         'range': range(8),
         'rang': range(10),
+        'year': year,
+        'month': month,
+        'cal': cal,
     })
 
 
