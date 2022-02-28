@@ -1,42 +1,58 @@
 {% load static %}{% include 'app/header.html'%}
+
 <!DOCTYPE html>
-
-<html lang="en-US">
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta name="robots" content="max-image-preview:large" />
+    <style>
+      /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+      .row.content {
+        height: 550px;
+      }
 
-    <link
-      rel="stylesheet"
-      id="hotel-style-css"
-      href="https://coconutgrovehotelsghana.com/regencyhotel/wp-content/plugins/gdlr-hotel/gdlr-hotel.css?ver=5.8.3"
-      type="text/css"
-      media="all"
-    />
+      /* Set gray background color and 100% height */
+      .sidenav {
+        background-color: #f1f1f1;
+        height: 100%;
+      }
 
-    <link
-      rel="stylesheet"
-      id="style-custom-css"
-      href="https://coconutgrovehotelsghana.com/regencyhotel/wp-content/themes/hotelmaster-v2-04/stylesheet/style-custom.css?1636549854&#038;ver=5.8.3"
-      type="text/css"
-      media="all"
-    />
+      /* On small screens, set height to 'auto' for the grid */
+      @media screen and (max-width: 767px) {
+        .row.content {
+          height: auto;
+        }
+      }
+      .tbodycal{
+        padding:10px;
+        background:lightgrey
+      }
+      .tbodycal td{
+        padding:10px;
+        background:lightgrey;
+        border:1px solid whitesmoke;
+      }
+      td a{
+        text-decoration:none;
+        color:black;
+      }
+      .ttop{
+        padding:100px;
+      }
+
+    </style>
+    
   </head>
 
-  <body style="background-color: white">
-    <div
-      class="gdlr-item gdlr-item-start-content"
-      id="gdlr-single-booking-content"
-    >
-      <form
-        class="gdlr-reservation-bar"
-        id="gdlr-reservation-bar"
-        method="POST"
-        action=""
-        style="height: 100%; width: 35%"
-      >
+
+
+
+
+  
+  <body>
+    <div>
+      <div class="col-sm-4 sidenav bg-info">
         <center>
           <h3
             style="
@@ -48,96 +64,16 @@
             Your Availability
           </h3>
         </center>
-        <div
-          class="gdlr-reservation-bar-date-form"
-          id="gdlr-reservation-bar-date-form"
-        >
-          <div class="gdlr-reservation-field gdlr-resv-datepicker">
-            <span class="gdlr-reservation-field-title">Date in</span>
-            <div class="gdlr-datepicker-wrapper">
-              <input
-                style="width: 290px; height: 8%; font-size: 15px"
-                type="text"
-                id="gdlr-check-in"
-                class="gdlr-datepicker"
-                data-current-date="2022-02-28"
-                autocomplete="off"
-                data-dfm="d M yy"
-                data-block="[]"
-                value="2022-02-28"
-              /><input
-                type="hidden"
-                class="gdlr-datepicker-alt"
-                name="gdlr-check-in"
-                autocomplete="off"
-                value="2022-02-28"
-              />
+        <form method="post" action="">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-sm-12">
+              <h5 style="color: white">Date in</h5>
+              <input type="date" class="form-control" />
             </div>
           </div>
-
-          <div
-            class="row"
-            style="
-              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-              padding-bottom: 5%;
-              width: 100%;
-            "
-          >
-            <div class="col-sm-5">
-              <h5 style="color: white">Days availiable in the week</h5>
-              <select
-                name="sub"
-                class="form-control"
-                style="height: 50%"
-                required
-              >
-                {% for u in range %}
-                <option>{{u}}</option>
-                {% endfor %}
-              </select>
-            </div>
-
-            <div class="col-sm-5">
-              <h5 style="color: white">Number of hours per session</h5>
-              <select
-                name="sub"
-                class="form-control"
-                style="height: 50%"
-                required
-              >
-                {% for u in rang %}
-                <option>{{u}}</option>
-                {% endfor %}
-              </select>
-            </div>
-          </div>
-
-          <div style="display: none">
-            <div class="gdlr-datepicker-wrapper">
-              <input
-                type="hidden"
-                style="display: none"
-                id="gdlr-check-out"
-                class="gdlr-datepicker"
-                data-current-date="2022-02-28"
-                autocomplete="off"
-                data-min-night="1"
-                data-dfm="d M yy"
-                data-block="[]"
-                value="2022-03-01"
-              /><input
-                type="hidden"
-                style="display: none"
-                class="gdlr-datepicker-alt"
-                name="gdlr-check-out"
-                autocomplete="off"
-                value="2022-03-01"
-              />
-            </div>
-          </div>
-          <br />
-
-          <div
+         
+           <div
             class="row"
             style="
               border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -152,32 +88,111 @@
               <h5 style="color: white">Time out</h5>
               <input type="time" class="form-control" />
             </div>
+           
+             <div class="col-sm-2">
+              <h5 style="color: white;padding-left:10%"> Add</h5>
 
-            <div class="col-sm-2">
-              <h5 style="color: white; padding-left: 10%">Add</h5>
-
-              <a href="#">
+              <a href ="#">
                 <button
                   style="font-size: 20px"
                   class="btn btn-info add-last"
                   type="button"
                 >
-                  <i class="glyphicon glyphicon-plus"></i></button
-              ></a>
-            </div>
-            <div class="col-sm-2">
-              <h5 style="color: white">Delete</h5>
+                  <i class="glyphicon glyphicon-plus"></i>
+                </button></a>
+              </div>
+               <div class="col-sm-2">
+       <h5 style="color: white">Delete</h5>
 
-              <a href="#">
+              <a href ="#">
                 <button
-                  style="font-size: 20px"
-                  class="btn btn-danger remove"
-                  type="button"
-                >
-                  <i class="glyphicon glyphicon-remove"></i></button
-              ></a>
+                    style="font-size: 20px"
+                    class="btn btn-danger remove"
+                    type="button"
+                  >
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button></a>
+                </div>
+          </div>
+        
+          <div class="row"   style="
+              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+              padding-bottom: 2%;
+            ">
+            <div class="col-sm-6">
+              <h5 style="color: white">Days availiable in the week</h5>
+              <select
+                name="sub"
+                class="form-control"
+                style="height: 50%"
+                required
+              >
+                {% for u in range %}
+                <option>{{u}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="col-sm-6">
+              <h5 style="color: white">Number of hours per session</h5>
+              <select
+                name="sub"
+                class="form-control"
+                style="height: 50%"
+                required
+              >
+                {% for u in rang %}
+                <option>{{u}}</option>
+                {% endfor %}
+              </select>
             </div>
           </div>
+          <br />
+         
+
+          <div class="row">
+            <div class="col-sm-8">
+              <h5 style="color: white">Date not availiable (optional)</h5>
+              <input type="date" class="form-control" />
+            </div>
+               <div class="col-sm-2">
+              <h5 style="color: white;padding-left:10%"> Add</h5>
+
+              <a href ="#">
+                <button
+                  style="font-size: 20px"
+                  class="btn btn-info add-last"
+                  type="button"
+                >
+                  <i class="glyphicon glyphicon-plus"></i>
+                </button></a>
+              </div>
+               <div class="col-sm-2">
+       <h5 style="color: white">Delete</h5>
+
+              <a href ="#">
+                <button
+                    style="font-size: 20px"
+                    class="btn btn-danger remove"
+                    type="button"
+                  >
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button></a>
+                </div>
+
+          </div>
+          <br />
+
+          {% comment %}
+          <ul class="nav nav-pills nav-stacked">
+            <li class="col-sm-10"><a href="#">Age</a></li>
+            <li class="col-sm-10"><a href="#">Gender</a></li>
+            <li class="col-sm-10"><a href="#">Geo</a></li>
+            <li class="col-sm-10">
+              <a href="{% url 'counsellingUrls:dashboardPage' pk %}">Back</a>
+            </li>
+          </ul>
+          {% endcomment %}
           <br />
           <center>
             <button
@@ -188,28 +203,89 @@
               <i class="glyphicon glyphicon-plus"></i> Add Availability
             </button>
           </center>
+        </form>
+        <br />
+      </div>
+      <div class="col-lg-8">
+        <div class="well bg-info">
+          <h4 style="color: white">
+            <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+          </h4>
         </div>
-      </form>
-      <div class="gdlr-booking-content">
-        <div class="gdlr-booking-content-wrapper">
-          <div
-            class="gdlr-booking-content-inner"
-            id="gdlr-booking-content-inner"
-          >
-            <div class="gdlr-datepicker-range-wrapper">
-              <div
-                class="gdlr-datepicker-range"
-                data-current-date="2022-02-28"
-                id="gdlr-datepicker-range"
-                data-dfm="d M yy"
-                data-block="[]"
-              ></div>
+        <div>
+          <div class="row">
+            <div class="col-sm-12">
+              
+              <div class="well">
+          <div id="content-main">
+ 
+  {{ calendar }}
+</div>
+{% comment %} <table class="ui-datepicker-calendar">
+  <thead  class="ttop">
+    <tr><th scope="col">
+      <span title="Monday">M</span>
+    </th><th scope="col"><span title="Tuesday">T</span></th>
+    <th scope="col"><span title="Wednesday">W</span></th>
+    <th scope="col"><span title="Thursday">T</span></th>
+    <th scope="col"><span title="Friday">F</span></th>
+    <th><span title="Saturday">S</span></th>
+    <th><span title="Sunday">S</span></th>
+  </tr></thead><tbody class="tbodycal"><tr>
+    <td >&nbsp;</td>
+    <td ><a href="#">1</a></td>
+    <td ><a href="#">2</a></td>
+    <td ><a href="#">3</a></td>
+    <td ><a href="#">4</a></td>
+    <td ><a href="#">5</a></td>
+    <td ><a href="#">6</a></td>
+  </tr><tr><td ><a href="#">7</a></td>
+    <td ><a href="#">8</a></td
+      ><td ><a href="#">9</a></td>
+      <td ><a href="#">10</a></td>
+      <td ><a href="#">11</a></td>
+      <td ><a href="#">12</a></td>
+      <td ><a href="#">13</a></td>
+    </tr><tr><td ><a href="#">14</a></td>
+      <td ><a href="#">15</a></td>
+      <td ><a href="#">16</a></td>
+      <td ><a href="#">17</a></td>
+      <td ><a href="#">18</a></td>
+      <td ><a href="#">19</a></td>
+      <td ><a href="#">20</a></td>
+    </tr><tr><td ><a href="#">21</a></td>
+      <td ><a href="#">22</a></td>
+      <td ><a href="#">23</a></td>
+      <td ><a href="#">24</a></td>
+      <td ><a href="#">25</a></td>
+      <td ><a href="#">26</a></td>
+      <td ><a href="#">27</a></td></tr><tr>
+      <td ><a href="#">28</a></td>
+      <td ><a href="#">29</a></td>
+      <td ><a href="#">30</a></td>
+      <td ><a href="#">31</a></td>
+      <td >&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td></tr>
+</tbody>
+</table> {% endcomment %}
+
+
+                {% comment %} <h1>{{cal|safe}}<h1> {% endcomment %}
+                
+              </div>
             </div>
+            </div>
+          </div>
+          </div>        
           </div>
         </div>
       </div>
     </div>
 
+
+
+    
     <script type="text/javascript"></script>
     <script
       type="text/javascript"
@@ -439,5 +515,6 @@
       src="https://coconutgrovehotelsghana.com/regencyhotel/wp-includes/js/wp-embed.min.js?ver=5.8.3"
       id="wp-embed-js"
     ></script>
+
   </body>
 </html>
