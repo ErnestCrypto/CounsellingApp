@@ -262,7 +262,6 @@ def dashboardPage(request, pk):
 
         if counsellor.is_valid():
             counsellor.save()
-            messages.success(request, f'pk: {pk}')
             arr_counsellor_id = []
             arr_counsellor_pin = []
             arr_counsellor_user_id = []
@@ -349,9 +348,6 @@ def dashboardPage(request, pk):
                     exp_obj.user_id = pk
                     ther_obj.user_id = pk
                     spec_obj.user_id = pk
-
-                    messages.success(
-                        request, f'id : {l_counsellor_user_id} ')
 
                     ach_obj.save()
 
