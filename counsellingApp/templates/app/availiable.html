@@ -31,7 +31,7 @@
       id="gdlr-single-booking-content"
     >
       <form
-        class="gdlr-reservation-bar"
+        class="gdlr-reservation-bar bg-info"
         id="gdlr-reservation-bar"
         method="POST"
         action=""
@@ -45,6 +45,7 @@
               border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             "
           >
+            <i class="fa-regular fa-clock"></i>
             Your Availability
           </h3>
         </center>
@@ -53,10 +54,10 @@
           id="gdlr-reservation-bar-date-form"
         >
           <div class="gdlr-reservation-field gdlr-resv-datepicker">
-            <span class="gdlr-reservation-field-title">Date in</span>
+              <h5 style="color: white">Date in</h5>
             <div class="gdlr-datepicker-wrapper">
               <input
-                style="width: 290px; height: 8%; font-size: 15px"
+                style="width: 420px; height: 8%; font-size: 15px"
                 type="text"
                 id="gdlr-check-in"
                 class="gdlr-datepicker"
@@ -83,7 +84,7 @@
               width: 100%;
             "
           >
-            <div class="col-sm-5">
+            <div class="col-sm-6">
               <h5 style="color: white">Days availiable in the week</h5>
               <select
                 name="sub"
@@ -97,7 +98,7 @@
               </select>
             </div>
 
-            <div class="col-sm-5">
+            <div class="col-sm-6">
               <h5 style="color: white">Number of hours per session</h5>
               <select
                 name="sub"
@@ -165,7 +166,7 @@
                   <i class="glyphicon glyphicon-plus"></i></button
               ></a>
             </div>
-            <div class="col-sm-2">
+            <div >
               <h5 style="color: white">Delete</h5>
 
               <a href="#">
@@ -190,6 +191,13 @@
           </center>
         </div>
       </form>
+       <div class="col-lg-7">
+        <div class="well bg-info">
+          <h4 style="color: white">
+            <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+          </h4>
+        </div>
+        <div>
       <div class="gdlr-booking-content">
         <div class="gdlr-booking-content-wrapper">
           <div
