@@ -33,7 +33,7 @@ LOGIN = [
     ('admin', 'Admin'),
     ('counsellor', 'Counsellor'),
     ('student', 'Student'),
-    ('staff', 'Staff'),
+
 ]
 
 BOOKING = [

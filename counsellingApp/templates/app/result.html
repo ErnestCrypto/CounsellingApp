@@ -38,8 +38,12 @@
    
       <div id="subtab1">
          <center> 
+           {% if i.profile %}
            <img id="profile"  class="a" src="{{i.profile.url }}">
+{% else %}
+           <img id="profile"  class="a" src="{% static 'media/download.png' %}">
 
+{% endif %}
           </center>
           <center>
             <i class="fas fa-video" style="padding:5%; color:blue; opacity:0.7;"></i>
