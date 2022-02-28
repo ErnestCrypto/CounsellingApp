@@ -2,6 +2,11 @@
 from django.contrib import admin
 from django import forms
 from .models import Counsellor,  SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings
+import datetime
+import calendar
+from django.urls import reverse
+from calendar import HTMLCalendar
+from django.utils.safestring import mark_safe
 
 
 class TherapyInline(admin.StackedInline):
@@ -65,7 +70,7 @@ class AchievementsAdmin(admin.ModelAdmin):
 
 @admin.register(Availability)
 class AvailabilityAdmin(admin.ModelAdmin):
-    list_display = ['id', 'date', 'start_time', 'end_time',
+    list_display = ['id', 'day', 'start_time', 'end_time', 'notes',
                     'user_id', 'counsellor', ]
 
 

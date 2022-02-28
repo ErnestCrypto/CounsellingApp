@@ -20,6 +20,10 @@ import calendar
 from calendar import HTMLCalendar
 
 
+def test(request):
+    return render(request, 'test.html', {})
+
+
 @api_view(['GET', 'PUT', 'DELETE'])
 def Counsellor_details(request, pk):
     try:
@@ -161,8 +165,14 @@ def adminPage(request, pk):
     })
 
 
-def availiablePage(request, pk, year, month):
+def calender(request):
+    return render(request, 'admin/events/change_list.html', {})
+
+
+def availiablePage(request, pk):
     pk = request.session['pk']
+    year = 2010
+    month = 'June'
     month = month.capitalize()
     month_num = list(calendar.month_name).index(month)
     month_num = int(month_num)
