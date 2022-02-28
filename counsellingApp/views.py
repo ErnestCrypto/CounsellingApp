@@ -171,19 +171,12 @@ def calender(request):
 
 def availiablePage(request, pk):
     pk = request.session['pk']
-    year = 2010
-    month = 'June'
-    month = month.capitalize()
-    month_num = list(calendar.month_name).index(month)
-    month_num = int(month_num)
-    cal = HTMLCalendar().formatmonth(year, month_num)
+
     return render(request, 'app/availiable.html', {
         'pk': pk,
         'range': range(8),
         'rang': range(10),
-        'year': year,
-        'month': month,
-        'cal': cal,
+
     })
 
 
@@ -206,14 +199,12 @@ def dashboardPage(request, pk):
     notification = 'app/notification.html'
     index = 'app/index.html'
     counsellor = CounsellorForm()
-    avail = Availability.objects.all()
     achieve = Achievement.objects.all()
     edu = Education.objects.all()
     expe = Experience.objects.all()
     ther = Therapy.objects.all()
     spec = Specialities.objects.all()
     achievement = AchievementForm()
-    availability = AvailabilityForm()
     education = EducationForm()
     experience = ExperienceForm()
     therapy = TherapyForm()
@@ -257,7 +248,6 @@ def dashboardPage(request, pk):
         coun = Counsellor.objects.get(user_id=pk)
         counsellor = CounsellorForm(request.POST, request.FILES, instance=coun)
         achievement = AchievementForm(request.POST)
-        availability = AvailabilityForm(request.POST)
         education = EducationForm(request.POST)
         experience = ExperienceForm(request.POST)
         therapy = TherapyForm(request.POST)
@@ -341,7 +331,6 @@ def dashboardPage(request, pk):
                     # coun.profile = l_counsellor_profile
 
                     ach_obj = achievement.save(commit=False)
-                    avail_obj = availability.save(commit=False)
                     edu_obj = education.save(commit=False)
                     exp_obj = experience.save(commit=False)
                     ther_obj = therapy.save(commit=False)
@@ -350,14 +339,12 @@ def dashboardPage(request, pk):
                         id=l_counsellor_id)
 
                     ach_obj.counsellor = counsellor_inst
-                    avail_obj.counsellor = counsellor_inst
                     edu_obj.counsellor = counsellor_inst
                     exp_obj.counsellor = counsellor_inst
                     ther_obj.counsellor = counsellor_inst
                     spec_obj.counsellor = counsellor_inst
 
                     ach_obj.user_id = pk
-                    avail_obj.user_id = pk
                     edu_obj.user_id = pk
                     exp_obj.user_id = pk
                     ther_obj.user_id = pk
@@ -367,7 +354,7 @@ def dashboardPage(request, pk):
                         request, f'id : {l_counsellor_user_id} ')
 
                     ach_obj.save()
-                    avail_obj.save()
+
                     edu_obj.save()
                     exp_obj.save()
                     ther_obj.save()
@@ -398,7 +385,6 @@ def dashboardPage(request, pk):
                                                   'admin': admin,
                                                   'counsellor':  counsellor,
                                                   'achievement': achievement,
-                                                  'availability': availability,
                                                   'education': education,
                                                   'experience': experience,
                                                   'therapy': therapy,
@@ -419,7 +405,6 @@ def dashboardPage(request, pk):
                                                   'avaibooks': avaibooks,
                                                   'bookcount': bookcount,
                                                   'meetingcount': meetingcount,
-                                                  'avail': avail,
                                                   'achieve': achieve,
                                                   'edu': edu,
                                                   'expe': expe,

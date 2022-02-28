@@ -25,18 +25,21 @@
     />
   </head>
 
-  <body style="background-color: white">
+  <section id = "section9">
     <div
       class="gdlr-item gdlr-item-start-content"
       id="gdlr-single-booking-content"
+      
+     
     >
       <form
         class="gdlr-reservation-bar bg-info"
         id="gdlr-reservation-bar"
         method="POST"
         action=""
-        style="height: 100%; width: 35%"
+        style="height: 120%; width: 35%"
       >
+      {% csrf_token %}
         <center>
           <h3
             style="
@@ -45,11 +48,13 @@
               border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             "
           >
-            <i class="fa-regular fa-clock"></i>
+            <i class="fa fa-calendar" aria-hidden="true"></i>
             Your Availability
           </h3>
         </center>
         <div
+      
+
           class="gdlr-reservation-bar-date-form"
           id="gdlr-reservation-bar-date-form"
         >
@@ -66,7 +71,10 @@
                 data-dfm="d M yy"
                 data-block="[]"
                 value="2022-02-28"
-              /><input
+              />
+             
+              <input
+              
                 type="hidden"
                 class="gdlr-datepicker-alt"
                 name="gdlr-check-in"
@@ -447,5 +455,5 @@
       src="https://coconutgrovehotelsghana.com/regencyhotel/wp-includes/js/wp-embed.min.js?ver=5.8.3"
       id="wp-embed-js"
     ></script>
-  </body>
+  </section>
 </html>

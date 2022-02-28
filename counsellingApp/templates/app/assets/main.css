@@ -132,6 +132,17 @@
 
 }
 
+#section9 {
+    display: block;
+    width: 100%; 
+    height: 100%;
+    overflow:hidden;
+    animation-name: example;
+    animation-duration: 1s;
+    background-color: white;
+
+}
+
 @keyframes example {
     0% {
         opacity: 0;

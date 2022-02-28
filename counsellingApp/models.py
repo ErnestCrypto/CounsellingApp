@@ -10,6 +10,11 @@ TITLE = [
     ('Mrs.', 'Mrs.'),
     ('Dr.', 'Dr.'),
     ('Prof.', 'Prof.'),
+    ('Rev.Dr.', 'Rev.Dr.'),
+    ('Dr.Mr.', 'Dr.Mr.'),
+    ('Dr.Mrs.', 'Dr.Mrs.'),
+    ('Rev.Fr.', 'Rev.Fr.'),
+    ('Rev.Fr.Dr.', 'Rev.Fr.Dr.'),
 ]
 
 GENDER = [
