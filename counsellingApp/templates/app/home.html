@@ -51,7 +51,7 @@
 <a href = "{% url 'counsellingUrls:profilePage' pk %}" 
 id="profilePage"><i class="fa fa-user" aria-hidden="true" id="elementID" type="submit" method="GET"> Profile</i></a>
 <a href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"><i class="fas fa-map-marker-alt" aria-hidden="true" id="elementID" type="submit" method="GET"> UG MAP</i></a>
-{% elif object.status == 'staff' or object.status == 'counsellor'%}
+{% elif  object.status == 'counsellor'%}
 <a  href = "{% url 'counsellingUrls:adminPage' pk %}"  id="admin"><i class="fas fa-user-shield"  aria-hidden="true" id="elementID" type="submit" method="GET"> Dashboard</i></a>
 <a  href = "{% url 'counsellingUrls:indexPage' pk %}"  id="indexPage"><i class="fa fa-home" aria-hidden="true"  id="elementID" type="submit" method="GET"> Home</i></a>  
 <a   href = "{% url 'counsellingUrls:notificationPage' pk %}" id="notificationPage"><i class="fa fa-bell" aria-hidden="true" id="elementID" type="submit" method="GET"> Notifications</i></a>
