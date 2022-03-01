@@ -60,7 +60,41 @@
       
         <div class="container-fluid bg-3 text-left" >
           <div class="row" >
-            
+             <div class="col-sm-3">
+              <div class="form-group">
+                {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.firstName}}"
+                />
+                {% endcomment %} {{counsellor.user_id}}
+                <!---->
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+                <label for="usr">ID</label>
+              </div>
+            </div>
+
+             <div class="col-sm-3">
+              <div class="form-group">
+                {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.firstName}}"
+                />
+                {% endcomment %} {{counsellor.pin}}
+                <!---->
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+                <label for="usr">Pin</label>
+              </div>
+            </div>
             <div class="col-sm-3">
               <div class="form-group">
                  {{counsellor.title }}
@@ -251,6 +285,7 @@
                   <label for="usr">Position</label>
                 </div>
               </div>
+              {{exp.id}}
               <div class="col-sm-1">
               <a href ="{% url 'counsellingUrls:experience_del' exp.id %}">
 
@@ -309,6 +344,7 @@
                   <label for="usr">Year completed</label>
                 </div>
               </div>
+              {{ed.id }}
               <div class="col-sm-1">
                  <a href ="{% url 'counsellingUrls:education_del' ed.id %}">
                
@@ -345,6 +381,8 @@
 
           <div class="row">
             {% for ach in achieve %}
+                              {{ ach.id }}
+
             <div class="input-group control-group after-add-more">
               <div class="col-sm-4">
                 <div
@@ -397,6 +435,8 @@
 
           <div class="row">
             {% for the in ther %}
+                              {{ the.id }}
+
             <div class="input-group control-group after-add-plus">
               <div class="col-sm-4">
                 <div
@@ -451,6 +491,8 @@
 
           <div class="row">
             {% for spe in spec %}
+                  {{ spe.id }}
+
             <div class="input-group control-group after-add-some">
               <div class="col-sm-4">
                 <div
@@ -477,6 +519,7 @@
                       <i class="glyphicon glyphicon-plus"></i>
                     </button></a>
                   </div>
+                  
                    <div class="col-sm-2">
                  <a href ="{% url 'counsellingUrls:speciality_del' spe.id %}">
 
@@ -488,6 +531,7 @@
                     <i class="glyphicon glyphicon-remove"></i>
                   </button></a>
                 </div>
+                
                 </div>
               </div>                {% endfor %}
 

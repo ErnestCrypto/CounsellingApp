@@ -182,8 +182,9 @@ def availiablePage(request, pk):
 
 
 def homePage(request, pk):
-    objects = Counsellor.objects.all()
+
     request.session['pk'] = pk
+    objects = Counsellor.objects.all()
 
     return render(request, 'app/home.html', {
         'objects': objects,
@@ -221,7 +222,6 @@ def dashboardPage(request, pk):
     count = Counsellor.objects.all().count()
     bookcount = Bookings.objects.filter(counsellor_user_id=pk).count()
     meetingcount = Meetings.objects.filter(counsellor_user_id=pk).count()
-
     bookings = Bookings.objects.all().count()
     meetings = Meetings.objects.all().count()
     request.session['pk'] = pk
@@ -232,6 +232,7 @@ def dashboardPage(request, pk):
         if str(object.user_id) == str(pk):
             counsellor = CounsellorForm(initial={
                 'user_id': object.user_id,
+                'pin': object.pin,
                 'firstName': object.firstName,
                 'lastName': object.lastName,
                 'email': object.email,
@@ -349,13 +350,6 @@ def dashboardPage(request, pk):
                     exp_obj.user_id = pk
                     ther_obj.user_id = pk
                     spec_obj.user_id = pk
-
-                    ach_obj.save()
-
-                    edu_obj.save()
-                    exp_obj.save()
-                    ther_obj.save()
-                    spec_obj.save()
 
             # firstname = counsellor.cleaned_data['firstName']
             # lastname = counsellor.cleaned_data['lastName']
@@ -535,21 +529,9 @@ def update(request, studentbook_id, studentbook_status):
     return redirect('counsellingUrls:settingsPage', pk)
 
 
-def availability_add(request, av_id):
-    pk = request.session['pk']
-
-    return redirect('counsellingUrls:dashboardPage', pk)
-
-
-def availability_del(request, av_id):
-    pk = request.session['pk']
-    avail = Availability.objects.get(id=av_id)
-    avail.delete()
-    return redirect('counsellingUrls:dashboardPage', pk)
-
-
 def achievement_add(request, ach_id):
     pk = request.session['pk']
+    achieve = Achievement.objects.get(id=ach_id)
 
     return redirect('counsellingUrls:dashboardPage', pk)
 
@@ -563,6 +545,7 @@ def achievement_del(request, ach_id):
 
 def education_add(request, ed_id):
     pk = request.session['pk']
+    request.session['av_id'] = ed_id
 
     return redirect('counsellingUrls:dashboardPage', pk)
 
@@ -576,6 +559,7 @@ def education_del(request, ed_id):
 
 def experience_add(request, exp_id):
     pk = request.session['pk']
+    request.session['av_id'] = exp_id
 
     return redirect('counsellingUrls:dashboardPage', pk)
 
@@ -589,6 +573,7 @@ def experience_del(request, exp_id):
 
 def therapy_add(request, the_id):
     pk = request.session['pk']
+    request.session['av_id'] = the_id
 
     return redirect('counsellingUrls:dashboardPage', pk)
 
