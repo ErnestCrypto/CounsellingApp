@@ -58,8 +58,8 @@ class BaseModel(models.Model):
     profile = models.ImageField(
         upload_to='images/', default=None, null=True, blank=True)
     pin = models.IntegerField(default=None, null=True, blank=True)
-    user_id = models.CharField(max_length=255,
-                               default=uuid.uuid4, null=True, blank=True)
+    user_id = models.IntegerField(
+        default=None, null=True, blank=True)
     status = models.CharField(
         max_length=255, choices=LOGIN, default='counsellor', null=True, blank=True)
 

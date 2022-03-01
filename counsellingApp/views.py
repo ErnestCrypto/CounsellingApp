@@ -114,7 +114,7 @@ def loginPage(request):
                     obj.person_firstname = l_firstname
                     obj.person_lastname = l_lastname
                     obj.save()
-                    user_id = str(user_id)
+
                     request.session['pk'] = user_id
                     return redirect('counsellingUrls:indexPage', user_id)
 

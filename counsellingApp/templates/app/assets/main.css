@@ -11,6 +11,7 @@
     padding-bottom: 22.7%;
     width: 15%;
     float: left;
+    height: 100%;
     overflow: hidden;
     border-right: 1px solid #f7faf2;
     {% comment %} background-color: #8F00FF; {% endcomment %}
@@ -228,6 +229,7 @@ section {
 
 #tabIcons {
     height: 100%;
+    padding-top:30%;
 
 
 }
