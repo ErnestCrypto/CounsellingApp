@@ -531,7 +531,6 @@ def update(request, studentbook_id, studentbook_status):
 
 def achievement_add(request, ach_id):
     pk = request.session['pk']
-    achieve = Achievement.objects.get(id=ach_id)
 
     return redirect('counsellingUrls:dashboardPage', pk)
 
@@ -545,7 +544,6 @@ def achievement_del(request, ach_id):
 
 def education_add(request, ed_id):
     pk = request.session['pk']
-    request.session['av_id'] = ed_id
 
     return redirect('counsellingUrls:dashboardPage', pk)
 
@@ -559,7 +557,6 @@ def education_del(request, ed_id):
 
 def experience_add(request, exp_id):
     pk = request.session['pk']
-    request.session['av_id'] = exp_id
 
     return redirect('counsellingUrls:dashboardPage', pk)
 
@@ -573,14 +570,13 @@ def experience_del(request, exp_id):
 
 def therapy_add(request, the_id):
     pk = request.session['pk']
-    request.session['av_id'] = the_id
 
     return redirect('counsellingUrls:dashboardPage', pk)
 
 
 def therapy_del(request, the_id):
     pk = request.session['pk']
-    ther = Therapy.objects.get(id=the_id)
+    ther = Therapy.objects.create(id=the_id)
     ther.delete()
     return redirect('counsellingUrls:dashboardPage', pk)
 

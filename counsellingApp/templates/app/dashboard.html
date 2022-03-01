@@ -285,7 +285,6 @@
                   <label for="usr">Position</label>
                 </div>
               </div>
-              {{exp.id}}
               <div class="col-sm-1">
               <a href ="{% url 'counsellingUrls:experience_del' exp.id %}">
 
@@ -344,7 +343,6 @@
                   <label for="usr">Year completed</label>
                 </div>
               </div>
-              {{ed.id }}
               <div class="col-sm-1">
                  <a href ="{% url 'counsellingUrls:education_del' ed.id %}">
                
@@ -381,7 +379,7 @@
 
           <div class="row">
             {% for ach in achieve %}
-                              {{ ach.id }}
+                              
 
             <div class="input-group control-group after-add-more">
               <div class="col-sm-4">
@@ -435,7 +433,7 @@
 
           <div class="row">
             {% for the in ther %}
-                              {{ the.id }}
+                              
 
             <div class="input-group control-group after-add-plus">
               <div class="col-sm-4">
@@ -452,7 +450,7 @@
                   />
                   {% endcomment %}
                   <div class="input-group-btn">
-                 <a href ="{% url 'counsellingUrls:therapy_del' the.id %}">
+                 <a href ="{% url 'counsellingUrls:therapy_add' the.id %}">
 
                     <button
                       style="font-size: 20px"
@@ -491,7 +489,7 @@
 
           <div class="row">
             {% for spe in spec %}
-                  {{ spe.id }}
+                  
 
             <div class="input-group control-group after-add-some">
               <div class="col-sm-4">
@@ -509,7 +507,7 @@
                   />
                   {% endcomment %}
                   <div class="input-group-btn">
-                 <a href ="{% url 'counsellingUrls:speciality_del' spe.id %}">
+                 <a href ="{% url 'counsellingUrls:speciality_add' spe.id %}">
 
                     <button
                       style="font-size: 20px"

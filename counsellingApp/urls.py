@@ -41,7 +41,7 @@ urlpatterns = [
          views.therapy_add, name="therapy_add"),
     path('speciality_del/<str:spe_id>/',
          views.speciality_del, name="speciality_del"),
-    path('speciality_add/<str:av_id>/',
+    path('speciality_add/<str:spe_id>/',
          views.speciality_add, name="speciality_add"),
     path('serializers/counsellors/', views.Counsellor_list, name='counsellor_list'),
     path('serializers/counsellors/<str:pk>/',
