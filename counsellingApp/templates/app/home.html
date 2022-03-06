@@ -1,233 +1,405 @@
- {% comment %} {% include 'app/index.html' %} {% include 'app/profile.html' %} {% include 'app/notification.html' %}
- {% include 'app/admin.html' %} {% include 'app/super.html' %} {% endcomment %}
-{% include 'app/header.html' %}
+{% comment %} {% include 'app/index.html' %} {% include 'app/profile.html' %} {%
+include 'app/notification.html' %} {% include 'app/admin.html' %} {% include
+'app/super.html' %} {% endcomment %} {% include 'app/header.html' %}
+<!---->{% load static%} {% block body %}
 
-{% load static%}
-
-
-
-
-  {% block body %}
-  
 <body ng-app="counsellingApp">
-    
-   
-      
-    <section id="section1" class = "bg-dark">
- <ul class="bubble-boxes">
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ul>
-      <div id="picContainier" >
-        <center>
-        
-         <img id="logo1" src="{% static "media/University.png" %}" 
-         alt="home" />
-        <div id="time">     
-         <p style="margin:0">UG GUIDANCE &</p>
-         <center><p style="margin:0"> COUNSELLING </p> </center>
-         </div>
-        </center>
-      
-      </div>
+  <section id="section1" >
+    <ul class="bubble-boxes">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <div id="picContainier">
+      <center>
+        <img id="logo1" src="{% static "media/University.png" %}" alt="home" />
+        <div id="time">
+          <p style="margin: 0">UG GUIDANCE &</p>
+          <center><p style="margin: 0">COUNSELLING</p></center>
+        </div>
+      </center>
+    </div>
+
+
+<div class="container">
+  <div class="navigation">
+    <ul>
+<li>
+  <a href = "#">
+    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+    <span class="title">Admin</span>
+    <a>
+</li>
+
+<li>
+  <a href = "#">
+    <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
+    <span class="title">Dashboard</span>
+    <a>
+</li>
+
+<li>
+  <a href = "#">
+    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+    <span class="title">Home</span>
+    <a>
+</li>
+
+<li>
+  <a href = "#">
+    <span class="icon"><ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+</span>
+    <span class="title">Notifications</span>
+    <a>
+</li>
+
+<li>
+  <a href = "#">
+    <span class="icon"><ion-icon name="cloud-outline"></ion-icon></span>
+    <span class="title">Profile</span>
+    <a>
+</li>
+
+<li>
+  <a href = "#">
+    <span class="icon"><ion-icon name="navigate-outline"></ion-icon></span>
+    <span class="title">UG MAP</span>
+    <a>
+</li>
+
+
+    </ul>
+
+    </div>
+  </div>
 
 
 
-        <div id="tabIcons"> 
-          {% for object in objects %}
-          {% if object.user_id == pk|add:0 %}
 
+
+
+
+{% comment %}    
+         <div id="tabIcons"> 
+          {% for object in objects %} {% if object.user_id == pk|add:0 %}
+          <!---->
           {% if object.status == 'student'%}
-<a  href = "{% url 'counsellingUrls:indexPage' pk %}"  id="indexPage"><i class="fa fa-home" aria-hidden="true"  id="elementID" type="submit" method="GET"> Home</i></a>  
-<a   href = "{% url 'counsellingUrls:notificationPage' pk %}" id="notificationPage"><i class="fa fa-bell" aria-hidden="true" id="elementID" type="submit" method="GET"> Notifications</i></a>
-<a href = "{% url 'counsellingUrls:profilePage' pk %}" 
-id="profilePage"><i class="fa fa-user" aria-hidden="true" id="elementID" type="submit" method="GET"> Profile</i></a>
-<a href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"><i class="fas fa-map-marker-alt" aria-hidden="true" id="elementID" type="submit" method="GET"> UG MAP</i></a>
-{% elif  object.status == 'counsellor'%}
-<a  href = "{% url 'counsellingUrls:adminPage' pk %}"  id="admin"><i class="fas fa-user-shield"  aria-hidden="true" id="elementID" type="submit" method="GET"> Dashboard</i></a>
-<a  href = "{% url 'counsellingUrls:indexPage' pk %}"  id="indexPage"><i class="fa fa-home" aria-hidden="true"  id="elementID" type="submit" method="GET"> Home</i></a>  
-<a   href = "{% url 'counsellingUrls:notificationPage' pk %}" id="notificationPage"><i class="fa fa-bell" aria-hidden="true" id="elementID" type="submit" method="GET"> Notifications</i></a>
-<a href = "{% url 'counsellingUrls:profilePage' pk %}" 
-id="profilePage"><i class="fa fa-user" aria-hidden="true" id="elementID" type="submit" method="GET"> Profile</i></a>
-<a href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"><i class="fas fa-map-marker-alt" aria-hidden="true" id="elementID" type="submit" method="GET"> UG MAP</i></a>
-{% else %}
-<a  href = "{% url 'counsellingUrls:superadminPage' pk %}" id="super_admin"><i class="fas fa-user-shield"  aria-hidden="true" id="elementID" type="submit" method="GET"> Admin Dashboard</i></a>
-<a  href = "{% url 'counsellingUrls:adminPage' pk %}"  id="admin"><i class="fas fa-user-shield"  aria-hidden="true" id="elementID" type="submit" method="GET"> Dashboard</i></a>
-<a  href = "{% url 'counsellingUrls:indexPage' pk %}"  id="indexPage"><i class="fa fa-home" aria-hidden="true"  id="elementID" type="submit" method="GET"> Home</i></a>  
-<a   href = "{% url 'counsellingUrls:notificationPage' pk %}" id="notificationPage"><i class="fa fa-bell" aria-hidden="true" id="elementID" type="submit" method="GET"> Notifications</i></a>
-<a href = "{% url 'counsellingUrls:profilePage' pk %}" 
-id="profilePage"><i class="fa fa-user" aria-hidden="true" id="elementID" type="submit" method="GET"> Profile</i></a>
-<a href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"><i class="fas fa-map-marker-alt" aria-hidden="true" id="elementID" type="submit" method="GET"> UG MAP</i></a>
+          <a href="{% url 'counsellingUrls:indexPage' pk %}" id="indexPage"
+            ><i
+              class="fa fa-home"
+              aria-hidden="true"
+              id="elementID"
+              type="submit"
+              method="GET"
+            >
+              Home</i
+            ></a
+          >
+          <a
+            href="{% url 'counsellingUrls:notificationPage' pk %}"
+            id="notificationPage"
+            ><i
+              class="fa fa-bell"
+              aria-hidden="true"
+              id="elementID"
+              type="submit"
+              method="GET"
+            >
+              Notifications</i
+            ></a
+          >
+          <a href="{% url 'counsellingUrls:profilePage' pk %}" id="profilePage"
+            ><i
+              class="fa fa-user"
+              aria-hidden="true"
+              id="elementID"
+              type="submit"
+              method="GET"
+            >
+              Profile</i
+            ></a
+          >
+          <a
+            href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"
+            ><i
+              class="fas fa-map-marker-alt"
+              aria-hidden="true"
+              id="elementID"
+              type="submit"
+              method="GET"
+            >
+              UG MAP</i
+            ></a
+          >
+          {% elif object.status == 'counsellor'%}
+           
+              <a href="{% url 'counsellingUrls:adminPage' pk %}" id="admin"  >
+               
+                  <i
+                    class="fas fa-user-shield"
+                    aria-hidden="true"
+                    id="elementID"
+                    type="submit"
+                    method="GET"
+                  > Dashboard</i
+                >
+              
+              </a>
+            
 
-{% endif %}
+            <a href="{% url 'counsellingUrls:indexPage' pk %}" id="indexPage"
+              ><i
+                class="fa fa-home"
+                aria-hidden="true"
+                id="elementID"
+                type="submit"
+                method="GET"
+              >
+                Home</i
+              ></a
+            >
+            <a
+              href="{% url 'counsellingUrls:notificationPage' pk %}"
+              id="notificationPage"
+              ><i
+                class="fa fa-bell"
+                aria-hidden="true"
+                id="elementID"
+                type="submit"
+                method="GET"
+              >
+                Notifications</i
+              ></a
+            >
+            <a
+              href="{% url 'counsellingUrls:profilePage' pk %}"
+              id="profilePage"
+              ><i
+                class="fa fa-user"
+                aria-hidden="true"
+                id="elementID"
+                type="submit"
+                method="GET"
+              >
+                Profile</i
+              ></a
+            >
+            <a
+              href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"
+              ><i
+                class="fas fa-map-marker-alt"
+                aria-hidden="true"
+                id="elementID"
+                type="submit"
+                method="GET"
+              >
+                UG MAP</i
+              ></a
+            >
+         
+          {% else %}
+          <a
+            href="{% url 'counsellingUrls:superadminPage' pk %}"
+            id="super_admin"
+            ><i
+              class="fas fa-user-shield"
+              aria-hidden="true"
+              id="elementID"
+              type="submit"
+              method="GET"
+            >
+              Admin Dashboard</i
+            ></a
+          >
+          <a href="{% url 'counsellingUrls:adminPage' pk %}" id="admin"
+            ><i
+              class="fas fa-user-shield"
+              aria-hidden="true"
+              id="elementID"
+              type="submit"
+              method="GET"
+            >
+              Dashboard</i
+            ></a
+          >
+          <a href="{% url 'counsellingUrls:indexPage' pk %}" id="indexPage"
+            ><i
+              class="fa fa-home"
+              aria-hidden="true"
+              id="elementID"
+              type="submit"
+              method="GET"
+            >
+              Home</i
+            ></a
+          >
+          <a
+            href="{% url 'counsellingUrls:notificationPage' pk %}"
+            id="notificationPage"
+            ><i
+              class="fa fa-bell"
+              aria-hidden="true"
+              id="elementID"
+              type="submit"
+              method="GET"
+            >
+              Notifications</i
+            ></a
+          >
+          <a href="{% url 'counsellingUrls:profilePage' pk %}" id="profilePage"
+            ><i
+              class="fa fa-user"
+              aria-hidden="true"
+              id="elementID"
+              type="submit"
+              method="GET"
+            >
+              Profile</i
+            ></a
+          >
+          <a
+            href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"
+            ><i
+              class="fas fa-map-marker-alt"
+              aria-hidden="true"
+              id="elementID"
+              type="submit"
+              method="GET"
+            >
+              UG MAP</i
+            ></a
+          >
 
+          {% endif %} {% else %}{% endif %}{% endfor %}
 
+          <p class="openbtn" onclick="openNav()">
+            <i class="fas fa-bars" id="collapse"></i>
+          </p>
+        </div>
+         {% endcomment %}
+      </div>
+    </div>
 
-
-{% else %}{% endif %}{% endfor %}
-
-    <p  class="openbtn" onclick="openNav()"> <i class="fas fa-bars" id="collapse" ></i></p>
- 
-
- 
- 
- 
- 
- 
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </section>
 
-
-<!--section 3-->
-   
-
-   
-    
+  <!--section 3-->
 
   <script>
-    document.getElementById("profilePage").addEventListener("click", myFunction1)
-    document.getElementById("notificationPage").addEventListener("click", myFunction2)
-    document.getElementById("indexPage").addEventListener("click", myFunction3)
-    document.getElementById("admin").addEventListener("click", myFunction4)
-    document.getElementById("super_admin").addEventListener("click", myFunction5)
+    document
+      .getElementById("profilePage")
+      .addEventListener("click", myFunction1);
+    document
+      .getElementById("notificationPage")
+      .addEventListener("click", myFunction2);
+    document.getElementById("indexPage").addEventListener("click", myFunction3);
+    document.getElementById("admin").addEventListener("click", myFunction4);
+    document
+      .getElementById("super_admin")
+      .addEventListener("click", myFunction5);
 
+    function myFunction5() {
+      document.getElementById("section4").style.display = "none";
+      document.getElementById("footer6").style.display = "none";
 
-function myFunction5(){
-  document.getElementById("section4").style.display = "none";
-    document.getElementById("footer6").style.display = "none";
-
-  document.getElementById("section5").style.display = "none";
-  document.getElementById("section3").style.display = "none";
-  document.getElementById("section6").style.display = "none";
+      document.getElementById("section5").style.display = "none";
+      document.getElementById("section3").style.display = "none";
+      document.getElementById("section6").style.display = "none";
       document.getElementById("section6container1").style.display = "none";
       document.getElementById("section6container2").style.display = "none";
       document.getElementById("section6container3").style.display = "none";
-        document.getElementById("section7").style.display = "block";
-
-
-
+      document.getElementById("section7").style.display = "block";
     }
 
+    function myFunction1() {
+      document.getElementById("section4").style.display = "none";
+      document.getElementById("footer6").style.display = "none";
 
-
-    function myFunction1(){
-  document.getElementById("section4").style.display = "none";
-    document.getElementById("footer6").style.display = "none";
-
-  document.getElementById("section5").style.display = "none";
-  document.getElementById("section3").style.display = "block";
-  document.getElementById("section6").style.display = "none";
+      document.getElementById("section5").style.display = "none";
+      document.getElementById("section3").style.display = "block";
+      document.getElementById("section6").style.display = "none";
       document.getElementById("section6container1").style.display = "none";
       document.getElementById("section6container2").style.display = "none";
       document.getElementById("section6container3").style.display = "none";
-        document.getElementById("section7").style.display = "none";
-
-
-
+      document.getElementById("section7").style.display = "none";
     }
 
-    function myFunction2(){
-  document.getElementById("section3").style.display = "none";
-  document.getElementById("section4").style.display = "block";
+    function myFunction2() {
+      document.getElementById("section3").style.display = "none";
+      document.getElementById("section4").style.display = "block";
       document.getElementById("footer6").style.display = "none";
 
-  document.getElementById("section5").style.display = "none";
-  document.getElementById("section6").style.display = "none";
- document.getElementById("section6container1").style.display = "none";
+      document.getElementById("section5").style.display = "none";
+      document.getElementById("section6").style.display = "none";
+      document.getElementById("section6container1").style.display = "none";
       document.getElementById("section6container2").style.display = "none";
       document.getElementById("section6container3").style.display = "none";
-              document.getElementById("section7").style.display = "none";
-
+      document.getElementById("section7").style.display = "none";
     }
 
-    function myFunction3(){
-  document.getElementById("section3").style.display = "none";
-  document.getElementById("section4").style.display = "none";
-  document.getElementById("section5").style.display = "block";
+    function myFunction3() {
+      document.getElementById("section3").style.display = "none";
+      document.getElementById("section4").style.display = "none";
+      document.getElementById("section5").style.display = "block";
       document.getElementById("footer6").style.display = "none";
 
-  document.getElementById("section6").style.display = "none";
- document.getElementById("section6container1").style.display = "none";
+      document.getElementById("section6").style.display = "none";
+      document.getElementById("section6container1").style.display = "none";
       document.getElementById("section6container2").style.display = "none";
-      document.getElementById("section6container3").style.display = "none";   
-              document.getElementById("section7").style.display = "none";
+      document.getElementById("section6container3").style.display = "none";
+      document.getElementById("section7").style.display = "none";
+    }
 
-}
-
-  function myFunction4(){
-  document.getElementById("section3").style.display = "none";
-  document.getElementById("section4").style.display = "none";
-  document.getElementById("section5").style.display = "none";
-  document.getElementById("section6").style.display = "block";
-        document.getElementById("footer6").style.display = "flex";
- document.getElementById("section6container1").style.display = "block";
+    function myFunction4() {
+      document.getElementById("section3").style.display = "none";
+      document.getElementById("section4").style.display = "none";
+      document.getElementById("section5").style.display = "none";
+      document.getElementById("section6").style.display = "block";
+      document.getElementById("footer6").style.display = "flex";
+      document.getElementById("section6container1").style.display = "block";
       document.getElementById("section6container2").style.display = "none";
-      document.getElementById("section6container3").style.display = "none"; 
-              document.getElementById("section7").style.display = "none";
- 
-}
-  
-  
+      document.getElementById("section6container3").style.display = "none";
+      document.getElementById("section7").style.display = "none";
+    }
   </script>
 
+  <script>
+    // Get all the tabs
+    const tabs = document.querySelectorAll("#elementID");
 
-
-
-<script>
-// Get all the tabs
-const tabs = document.querySelectorAll('#elementID');
-
-tabs.forEach(clickedTab => {
-    // Add onClick event listener on each tab
-    clickedTab.addEventListener('click', () => {
+    tabs.forEach((clickedTab) => {
+      // Add onClick event listener on each tab
+      clickedTab.addEventListener("click", () => {
         // Remove the active class from all the tabs (this acts as a "hard" reset)
-        tabs.forEach(tab => {
-            tab.classList.remove('active');
+        tabs.forEach((tab) => {
+          tab.classList.remove("active");
         });
 
         // Add the active class on the clicked tab
-        clickedTab.classList.add('active');
+        clickedTab.classList.add("active");
+      });
     });
-});
-</script>
+  </script>
 
+  <script>
+    function openNav() {
+      document.getElementById("section2").style.width = "410px";
+      document.getElementById("section2").style.display = "block";
+    }
 
-
-
-<script>
-function openNav() {
-  document.getElementById("section2").style.width = "410px";
-    document.getElementById("section2").style.display = "block";
-
-}
-
-function closeNav() {
-  document.getElementById("section2").style.width = "0";
-    document.getElementById("section2").style.display = "none";
-
-}
-</script>
-
-
-
-  </body>
-
+    function closeNav() {
+      document.getElementById("section2").style.width = "0";
+      document.getElementById("section2").style.display = "none";
+    }
+  </script>
+</body>
 
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
