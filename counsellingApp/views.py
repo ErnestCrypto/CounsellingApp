@@ -351,6 +351,7 @@ def dashboardPage(request, pk):
                     ther_obj.user_id = pk
                     spec_obj.user_id = pk
 
+                    ach_obj.save()
             # firstname = counsellor.cleaned_data['firstName']
             # lastname = counsellor.cleaned_data['lastName']
 
@@ -531,12 +532,18 @@ def update(request, studentbook_id, studentbook_status):
 
 def achievement_add(request, ach_id):
     pk = request.session['pk']
+    request.session['ach_id'] = ach_id
+
+    achievements = Achievement.objects.all()
+
     achieve = Achievement.objects.filter(id=ach_id)
     if achieve.exists():
         try:
             ach_id = int(ach_id)
             ach_id = ach_id + 1
-            ach = Achievement.objects.create(id=ach_id)
+            Achievement.objects.create(id=ach_id)
+            request.session['ach_id'] = ach_id
+
         except:
             pass
 
