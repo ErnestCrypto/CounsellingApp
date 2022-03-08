@@ -430,7 +430,7 @@ section {
     white-space: nowrap;
 }
 
-.navigation ul li:hover a::after 
+.navigation ul li:hover a::before 
 {
     content: '';
     position: absolute;
