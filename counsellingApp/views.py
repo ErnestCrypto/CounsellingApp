@@ -225,6 +225,7 @@ def dashboardPage(request, pk):
     bookings = Bookings.objects.all().count()
     meetings = Meetings.objects.all().count()
     request.session['pk'] = pk
+    ach_id = request.session['ach_id']
     studentbooks = Bookings.objects.all()
     avaibooks = Availability.objects.all()
 
@@ -351,7 +352,9 @@ def dashboardPage(request, pk):
                     ther_obj.user_id = pk
                     spec_obj.user_id = pk
 
+                    ach_obj.id = ach_id
                     ach_obj.save()
+                    messages.success(request, f'{ach_id}')
             # firstname = counsellor.cleaned_data['firstName']
             # lastname = counsellor.cleaned_data['lastName']
 
