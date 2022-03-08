@@ -356,8 +356,7 @@ section {
 
 .navigation{
     position : fixed;
- border-left:10px solid var(--blue);
-
+border-left: 5px solid transparent;
     top:180;
     width:15%;
     height: 100%;

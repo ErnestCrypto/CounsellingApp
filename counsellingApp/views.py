@@ -531,7 +531,10 @@ def update(request, studentbook_id, studentbook_status):
 
 def achievement_add(request, ach_id):
     pk = request.session['pk']
+    achieve = Achievement.objects.get_or_create(id=ach_id)
+    messages.success(request, f'{achieve}')
 
+    
     return redirect('counsellingUrls:dashboardPage', pk)
 
 

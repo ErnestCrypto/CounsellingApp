@@ -40,6 +40,12 @@
         style="height: 120%; width: 35%"
       >
       {% csrf_token %}
+     
+      <div style = "padding: 5%;width:10%;float:left;">
+       <a href = "{% url 'counsellingUrls:dashboardPage' pk%}">
+<i class="fas fa-arrow-circle-left" aria-hidden="true" style="color: white;margin: 0%;width:50%;float:left ;"></i>
+     </div>
+    <div style ="width:90%;float:right">
         <center>
           <h3
             style="
@@ -52,6 +58,7 @@
             Your Availability
           </h3>
         </center>
+      </div>
         <div
       
 
