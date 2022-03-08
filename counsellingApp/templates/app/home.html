@@ -4,7 +4,7 @@ include 'app/notification.html' %} {% include 'app/admin.html' %} {% include
 <!---->{% load static%} {% block body %}
 
 <body ng-app="counsellingApp">
-  <section id="section1" >
+  <section id="section1">
     <ul class="bubble-boxes">
       <li></li>
       <li></li>
@@ -27,267 +27,349 @@ include 'app/notification.html' %} {% include 'app/admin.html' %} {% include
       </center>
     </div>
 
+    <div class="navigation">
+      {% for object in objects %} {% if object.user_id == pk|add:0 %}
+      <!---->
+      {% if object.status == 'student'%}
 
+      <ul>
+        <li>
+          <a href="{% url 'counsellingUrls:indexPage' pk %}">
+            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+            <span class="title">Home</span>
+          </a>
+        </li>
 
-  <div class="navigation">
-    <ul>
-<li>
-  <a  href="{% url 'counsellingUrls:superadminPage' pk %}">
-    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-    <span class="title">Admin</span>
-    <a>
-</li>
+        <li>
+          <a href="{% url 'counsellingUrls:notificationPage' pk %}">
+            <span class="icon"
+              ><ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+            </span>
+            <span class="title">Notifications</span>
+          </a>
+        </li>
 
-<li>
-  <a href="{% url 'counsellingUrls:adminPage' pk %}" >
-    <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
-    <span class="title">Dashboard</span>
-    <a>
-</li>
+        <li>
+          <a href="{% url 'counsellingUrls:profilePage' pk %}">
+            <span class="icon"><ion-icon name="cloud-outline"></ion-icon></span>
+            <span class="title">Profile</span>
+          </a>
+        </li>
 
-<li>
-  <a  href="{% url 'counsellingUrls:indexPage' pk %}" >
-    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-    <span class="title">Home</span>
-    <a>
-</li>
+        <li>
+          <a
+            href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"
+          >
+            <span class="icon"
+              ><ion-icon name="navigate-outline"></ion-icon
+            ></span>
+            <span class="title">UG MAP</span>
+          </a>
+        </li>
+      </ul>
+      {% elif object.status == 'counsellor'%}
+      <ul>
+        <li>
+          <a href="{% url 'counsellingUrls:adminPage' pk %}">
+            <span class="icon"
+              ><ion-icon name="people-outline"></ion-icon
+            ></span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
 
-<li>
-  <a href="{% url 'counsellingUrls:notificationPage' pk %}">
-    <span class="icon"><ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-</span>
-    <span class="title">Notifications</span>
-    <a>
-</li>
+        <li>
+          <a href="{% url 'counsellingUrls:indexPage' pk %}">
+            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+            <span class="title">Home</span>
+          </a>
+        </li>
 
-<li>
-  <a href="{% url 'counsellingUrls:profilePage' pk %}">
-    <span class="icon"><ion-icon name="cloud-outline"></ion-icon></span>
-    <span class="title">Profile</span>
-    <a>
-</li>
+        <li>
+          <a href="{% url 'counsellingUrls:notificationPage' pk %}">
+            <span class="icon"
+              ><ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+            </span>
+            <span class="title">Notifications</span>
+          </a>
+        </li>
 
-<li>
-  <a href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1">
-    <span class="icon"><ion-icon name="navigate-outline"></ion-icon></span>
-    <span class="title">UG MAP</span>
-    <a>
-</li>
+        <li>
+          <a href="{% url 'counsellingUrls:profilePage' pk %}">
+            <span class="icon"><ion-icon name="cloud-outline"></ion-icon></span>
+            <span class="title">Profile</span>
+          </a>
+        </li>
 
+        <li>
+          <a
+            href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"
+          >
+            <span class="icon"
+              ><ion-icon name="navigate-outline"></ion-icon
+            ></span>
+            <span class="title">UG MAP</span>
+          </a>
+        </li>
+      </ul>
+      {% else %}
+      <ul>
+        <li>
+          <a href="{% url 'counsellingUrls:superadminPage' pk %}">
+            <span class="icon"
+              ><ion-icon name="person-outline"></ion-icon
+            ></span>
+            <span class="title">Admin</span>
+          </a>
+        </li>
 
-    </ul>
+        <li>
+          <a href="{% url 'counsellingUrls:adminPage' pk %}">
+            <span class="icon"
+              ><ion-icon name="people-outline"></ion-icon
+            ></span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
 
+        <li>
+          <a href="{% url 'counsellingUrls:indexPage' pk %}">
+            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+            <span class="title">Home</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'counsellingUrls:notificationPage' pk %}">
+            <span class="icon"
+              ><ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+            </span>
+            <span class="title">Notifications</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'counsellingUrls:profilePage' pk %}">
+            <span class="icon"><ion-icon name="cloud-outline"></ion-icon></span>
+            <span class="title">Profile</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"
+          >
+            <span class="icon"
+              ><ion-icon name="navigate-outline"></ion-icon
+            ></span>
+            <span class="title">UG MAP</span>
+          </a>
+        </li>
+      </ul>
+      {% endif %} {% else %}{% endif %}{% endfor %}
     </div>
 
+    {% comment %}
+    <div id="tabIcons">
+      {% for object in objects %} {% if object.user_id == pk|add:0 %}
+      <!---->
+      {% if object.status == 'student'%}
+      <a href="{% url 'counsellingUrls:indexPage' pk %}" id="indexPage"
+        ><i
+          class="fa fa-home"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          Home</i
+        ></a
+      >
+      <a
+        href="{% url 'counsellingUrls:notificationPage' pk %}"
+        id="notificationPage"
+        ><i
+          class="fa fa-bell"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          Notifications</i
+        ></a
+      >
+      <a href="{% url 'counsellingUrls:profilePage' pk %}" id="profilePage"
+        ><i
+          class="fa fa-user"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          Profile</i
+        ></a
+      >
+      <a
+        href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"
+        ><i
+          class="fas fa-map-marker-alt"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          UG MAP</i
+        ></a
+      >
+      {% elif object.status == 'counsellor'%}
 
+      <a href="{% url 'counsellingUrls:adminPage' pk %}" id="admin">
+        <i
+          class="fas fa-user-shield"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          Dashboard</i
+        >
+      </a>
 
+      <a href="{% url 'counsellingUrls:indexPage' pk %}" id="indexPage"
+        ><i
+          class="fa fa-home"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          Home</i
+        ></a
+      >
+      <a
+        href="{% url 'counsellingUrls:notificationPage' pk %}"
+        id="notificationPage"
+        ><i
+          class="fa fa-bell"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          Notifications</i
+        ></a
+      >
+      <a href="{% url 'counsellingUrls:profilePage' pk %}" id="profilePage"
+        ><i
+          class="fa fa-user"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          Profile</i
+        ></a
+      >
+      <a
+        href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"
+        ><i
+          class="fas fa-map-marker-alt"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          UG MAP</i
+        ></a
+      >
 
+      {% else %}
+      <a href="{% url 'counsellingUrls:superadminPage' pk %}" id="super_admin"
+        ><i
+          class="fas fa-user-shield"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          Admin Dashboard</i
+        ></a
+      >
+      <a href="{% url 'counsellingUrls:adminPage' pk %}" id="admin"
+        ><i
+          class="fas fa-user-shield"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          Dashboard</i
+        ></a
+      >
+      <a href="{% url 'counsellingUrls:indexPage' pk %}" id="indexPage"
+        ><i
+          class="fa fa-home"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          Home</i
+        ></a
+      >
+      <a
+        href="{% url 'counsellingUrls:notificationPage' pk %}"
+        id="notificationPage"
+        ><i
+          class="fa fa-bell"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          Notifications</i
+        ></a
+      >
+      <a href="{% url 'counsellingUrls:profilePage' pk %}" id="profilePage"
+        ><i
+          class="fa fa-user"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          Profile</i
+        ></a
+      >
+      <a
+        href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"
+        ><i
+          class="fas fa-map-marker-alt"
+          aria-hidden="true"
+          id="elementID"
+          type="submit"
+          method="GET"
+        >
+          UG MAP</i
+        ></a
+      >
 
+      {% endif %} {% else %}{% endif %}{% endfor %}
 
+      <p class="openbtn" onclick="openNav()">
+        <i class="fas fa-bars" id="collapse"></i>
+      </p>
+    </div>
+    {% endcomment %}
 
-
-{% comment %}    
-         <div id="tabIcons"> 
-          {% for object in objects %} {% if object.user_id == pk|add:0 %}
-          <!---->
-          {% if object.status == 'student'%}
-          <a href="{% url 'counsellingUrls:indexPage' pk %}" id="indexPage"
-            ><i
-              class="fa fa-home"
-              aria-hidden="true"
-              id="elementID"
-              type="submit"
-              method="GET"
-            >
-              Home</i
-            ></a
-          >
-          <a
-            href="{% url 'counsellingUrls:notificationPage' pk %}"
-            id="notificationPage"
-            ><i
-              class="fa fa-bell"
-              aria-hidden="true"
-              id="elementID"
-              type="submit"
-              method="GET"
-            >
-              Notifications</i
-            ></a
-          >
-          <a href="{% url 'counsellingUrls:profilePage' pk %}" id="profilePage"
-            ><i
-              class="fa fa-user"
-              aria-hidden="true"
-              id="elementID"
-              type="submit"
-              method="GET"
-            >
-              Profile</i
-            ></a
-          >
-          <a
-            href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"
-            ><i
-              class="fas fa-map-marker-alt"
-              aria-hidden="true"
-              id="elementID"
-              type="submit"
-              method="GET"
-            >
-              UG MAP</i
-            ></a
-          >
-          {% elif object.status == 'counsellor'%}
-           
-              <a href="{% url 'counsellingUrls:adminPage' pk %}" id="admin"  >
-               
-                  <i
-                    class="fas fa-user-shield"
-                    aria-hidden="true"
-                    id="elementID"
-                    type="submit"
-                    method="GET"
-                  > Dashboard</i
-                >
-              
-              </a>
-            
-
-            <a href="{% url 'counsellingUrls:indexPage' pk %}" id="indexPage"
-              ><i
-                class="fa fa-home"
-                aria-hidden="true"
-                id="elementID"
-                type="submit"
-                method="GET"
-              >
-                Home</i
-              ></a
-            >
-            <a
-              href="{% url 'counsellingUrls:notificationPage' pk %}"
-              id="notificationPage"
-              ><i
-                class="fa fa-bell"
-                aria-hidden="true"
-                id="elementID"
-                type="submit"
-                method="GET"
-              >
-                Notifications</i
-              ></a
-            >
-            <a
-              href="{% url 'counsellingUrls:profilePage' pk %}"
-              id="profilePage"
-              ><i
-                class="fa fa-user"
-                aria-hidden="true"
-                id="elementID"
-                type="submit"
-                method="GET"
-              >
-                Profile</i
-              ></a
-            >
-            <a
-              href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"
-              ><i
-                class="fas fa-map-marker-alt"
-                aria-hidden="true"
-                id="elementID"
-                type="submit"
-                method="GET"
-              >
-                UG MAP</i
-              ></a
-            >
-         
-          {% else %}
-          <a
-            href="{% url 'counsellingUrls:superadminPage' pk %}"
-            id="super_admin"
-            ><i
-              class="fas fa-user-shield"
-              aria-hidden="true"
-              id="elementID"
-              type="submit"
-              method="GET"
-            >
-              Admin Dashboard</i
-            ></a
-          >
-          <a href="{% url 'counsellingUrls:adminPage' pk %}" id="admin"
-            ><i
-              class="fas fa-user-shield"
-              aria-hidden="true"
-              id="elementID"
-              type="submit"
-              method="GET"
-            >
-              Dashboard</i
-            ></a
-          >
-          <a href="{% url 'counsellingUrls:indexPage' pk %}" id="indexPage"
-            ><i
-              class="fa fa-home"
-              aria-hidden="true"
-              id="elementID"
-              type="submit"
-              method="GET"
-            >
-              Home</i
-            ></a
-          >
-          <a
-            href="{% url 'counsellingUrls:notificationPage' pk %}"
-            id="notificationPage"
-            ><i
-              class="fa fa-bell"
-              aria-hidden="true"
-              id="elementID"
-              type="submit"
-              method="GET"
-            >
-              Notifications</i
-            ></a
-          >
-          <a href="{% url 'counsellingUrls:profilePage' pk %}" id="profilePage"
-            ><i
-              class="fa fa-user"
-              aria-hidden="true"
-              id="elementID"
-              type="submit"
-              method="GET"
-            >
-              Profile</i
-            ></a
-          >
-          <a
-            href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"
-            ><i
-              class="fas fa-map-marker-alt"
-              aria-hidden="true"
-              id="elementID"
-              type="submit"
-              method="GET"
-            >
-              UG MAP</i
-            ></a
-          >
-
-          {% endif %} {% else %}{% endif %}{% endfor %}
-
-          <p class="openbtn" onclick="openNav()">
-            <i class="fas fa-bars" id="collapse"></i>
-          </p>
-        </div>
-         {% endcomment %}
-    
-
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
   </section>
 
   <!--section 3-->

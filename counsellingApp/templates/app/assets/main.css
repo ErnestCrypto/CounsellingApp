@@ -353,6 +353,7 @@ section {
     font-family: 'Ubuntu', sans-serif;
 }
 
+
 .navigation{
     position : fixed;
  border-left:10px solid var(--blue);
@@ -397,7 +398,8 @@ section {
     color: var(--white);
 }
 
-.navigation ul li:hover a {
+.navigation ul li:hover a
+{
     animation: mymove 5s infinite;
 }
 
@@ -430,17 +432,33 @@ section {
     white-space: nowrap;
 }
 
-.navigation ul li:hover a::before 
+.navigation ul li:hover a::before
 {
     content: '';
+    repeat: no-repeat;
     position: absolute;
     right: 0;
     top: -30px;
     width: 30px;
     height: 30px;
-    background:red;
+    background:transparent;
     border-radius: 50%;
-    box-shadow: 15px 13px 0 -1px var(--green);
+    box-shadow: 15px 13px 0 -1px var(--white);
+    pointer-events: none;
+}
+
+.navigation ul li:hover a::after
+{
+    content: '';
+    repeat: no-repeat;
+    position: absolute;
+    right: 0;
+    bottom: -30px;
+    width: 30px;
+    height: 30px;
+    background:transparent;
+    border-radius: 50%;
+    box-shadow: 15px -13px 0 -1px var(--white);
     pointer-events: none;
 }
 
