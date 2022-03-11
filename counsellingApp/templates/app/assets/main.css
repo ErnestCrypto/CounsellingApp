@@ -892,12 +892,38 @@ button::focus{
     width:100%;
     
 }
+
+#headpic{
+    background-image: url("https://wallpaperaccess.com/full/6153772.jpg ");
+ background-size: cover;
+ background-repeat: no-repeat;
+ background-position: center;
+ height: 105%;
+}
+#idpicture{
+    width: 100%;
+    
+}
+
+#subpic{
+    background-color: rgba(255,255,255,0.3);
+    padding: 2%;
+    padding-bottom: 25%;
+}
+#myborder{
+border-left: 3px solid cyan;
+}
+#ugpicture{
+    width: 150%;
+}
+
 #awe{
     opacity: 0.7;
 }
 
 #awe:hover {
     opacity: 1;
+   
 }
 
 
