@@ -169,6 +169,12 @@ include 'app/notification.html' %} {% include 'app/admin.html' %} {% include
       {% endif %} {% else %}{% endif %}{% endfor %}
     </div>
 
+    <div class="col-sm-4" style="padding-top: 400px; padding-left: 40px">
+      <a href="{% url 'counsellingUrls:loginPage' %}">
+        <button class="btn btn-primary">LOGOUT</button></a
+      >
+    </div>
+
     {% comment %}
     <div id="tabIcons">
       {% for object in objects %} {% if object.user_id == pk|add:0 %}

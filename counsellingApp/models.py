@@ -30,9 +30,9 @@ DAYS = [
     ('friday', 'Friday'),
 ]
 LOGIN = [
-    ('admin', 'Admin'),
-    ('counsellor', 'Counsellor'),
-    ('student', 'Student'),
+    ('ADMIN', 'Admin'),
+    ('COUNSELLOR', 'Counsellor'),
+    ('STUDENT', 'Student'),
 
 ]
 

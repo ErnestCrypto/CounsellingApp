@@ -5,10 +5,14 @@
 
 <div id="headpic">
  <div id = "subpic">
-   <div class = "col-sm-8" id="myborder">
+   <div class = "col-sm-10" id="myborder">
      <h4 style="color: white;font-weight: bold;">UG CAREER AND COUNSELLING DEPARTMENT</h4>
       </div>
       <div class="4">
+        {% for object in objects %}
+    {% if object.user_id == pk|add:0 %}
+        <p style="color:white; font-size:15px">{{object.status}} ID: {{object.user_id}}<p>
+        {% else %}{% endif %}  {% endfor %}
     </div>
       <br>
       <div class="col-sm-12">
