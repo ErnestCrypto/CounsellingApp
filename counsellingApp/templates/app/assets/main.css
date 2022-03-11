@@ -892,6 +892,13 @@ button::focus{
     width:100%;
     
 }
+#awe{
+    opacity: 0.7;
+}
+
+#awe:hover {
+    opacity: 1;
+}
 
 
 #profilenot {
