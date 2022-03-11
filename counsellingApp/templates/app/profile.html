@@ -3,7 +3,7 @@
 
 <section id="section3" >
 
-  <div id = "adjust" >
+  {% comment %} <div id = "adjust" >
 
 
     
@@ -44,10 +44,9 @@
         <div id="top1" >
           <center><form method="get" action="{% url 'counsellingUrls:search' pk%}">
             {% csrf_token %} <div id="mysearch"> 
-       {% comment %}style="padding: 0.5%;  border-radius: 25px;background-color:rgba(211,211,211,0.5);"      {% endcomment %}
+       {% comment %}style="padding: 0.5%;  border-radius: 25px;background-color:rgba(211,211,211,0.5);"     
           <button style="border:none; padding:2%;border-radius:25px; background-color:rgba(211,211,211,0.1)" type="submit"><i  class="fas fa-search" style="opacity:0.5;font-size:12px;"></i></button>
-            {% comment %} <input name="search" id="input1" style="width:90%;background-color:rgba(211,211,211,0.1);" type="search" placeholder="Search"/> {% endcomment %}
-        </div>
+             <input name="search" id="input1" style="width:90%;background-color:rgba(211,211,211,0.1);" type="search" placeholder="Search"/> 
         </form>
          </center><br/>
               <h1 id="myh1">Our Therapist</h1>
@@ -78,145 +77,84 @@
 </div>
 </div>
 </div>
-<!---->
-
-{% comment %} 
-
-<!---->
-{% for object in objects%}
-<!---->
-   <!---->
-
-  <div id="mypadtop" >
-
-    <div id="mypad" >
-   
-      <div id="subtab1">
-         <center> 
-           {% if object.profile %}
-           <img id="profile"  class="a" src="{{object.profile.url }}">
-{% else %}
-           <img id="profile"  class="a"  src="{% static 'media/download.png' %}">
-
-       
-
-{% endif %}
-          </center>
-          <center>
-            <i class="fas fa-video" style="padding:5%; color:blue; opacity:0.7;"></i>
-            <i class="fas fa-user-friends" style="padding:5%; color:blue; opacity:0.7;"></i>
-            <i class="fas fa-comment-dots"  style="padding:5%; color:blue; opacity:0.7;" ></i>
-          </center>
-              <center> 
-        
-              <p><i class="fas fa-location-arrow" style="opacity:0.4;"> 25 km</i></p>
-      
-          </center>
-      </div>
-
-
-      <div id="subtab2">
-          <div>
-            <h1 id="myh2">{{ object.title }} {{object.firstName}} {{object.lastName}}</h1>
-            <p style="opacity:0.4">
-              {{ object.occupation }}
-              </p>
-                  <div style="padding-top:2%;opacity:0.9; height:20%;overflow-x:scroll">
-              {{object.about }}
-                </div> 
-            <div style="height:20%;">
-             
-                  <p id="myh2"> Therapies Offered</p>
-              <div style="width:100%; ">
-                {% if obj_the.therapies_offered  %}
-                {% for ob_the in obj_the %}
-                <center> <p id="label2">{{ob_the.therapies_offered}}</p></center>
-                 {% endfor %}
-                {% else %}
-                <center><p id="label2"> EMDR</p></center>
-                {% endif %} 
-               
-              </div>
-             
-            </div>
-            <br><br>
-            <div style="width:100%">
-
-            <p id="myh2" > Top Specialities</p>
-              <div style="width:100%;">
-                            {% if obj_spe.top_specialities  %}
-                            {% for ob_spe in obj_spe %}
-                            <center><p id="label2"> {{ob_spe.top_specialities }}</p></center>
-                           {% endfor %}
-                            {% else %}
-                                <center><p id="label2"> Abuse</p></center>
-                          {% endif %}
-              </div>
-            </div>
-          </div>
-      </div>
-     <form method="POST" action="">
-       {% csrf_token %}
-         <div id="subtab3">
-                  <center>  
-            <div> {% if obj_avai.start_time %}
-              {% for ob_avai in obj_avai %}
-                    <p id="filter2"><i class="fa fa-calendar" aria-hidden="true" style="color:blue"></i>
-             {{ob_avai.date}}</p>
-                      <p style="color: rgba(0,0,0,0.5); font-size: 10px;">Video Call 50 mins</p>
-            </div>
-                     
-                        <label id="labels1" href="#">  {{ ob_avai.start_time}} - {{ ob_avai.end_time }}</label>
-                     {% endfor %}
-                        {% else %}
-                          <label id="labels1" href="#">No available time </label>
-                          {% endif %}
-
-                <button type="submit" id="labels1" href="#" style="background-color:rgba(0,0,255,0.6);color:white;">Book</button>
-                </center>
-                
-          </div>
-          
-    </div>
-  </form>
-
-  </div> 
- 
-
-
-    
-
-{% endfor %}
-
-
-
-
- {% endcomment %}
-
+<!----> {% endcomment %}
 
 
 <div class = "container " style="padding:5%">
 {% for object in objects %}
   <div class="container-fluid" style = "padding-bottom:5%;">
-  <div class = "col-sm-4 bg-dark" style="padding-bottom:5%;">
+ <div class="row">
+    <div class = "col-sm-4 bg-dark" style=" padding:0%;padding-bottom:5%;">
+     
     {% if object.profile %}
-    <div>
-      <img src="{{ object.profile.url }}" alt="profile_image"/>
-      </div>
+      <img src="{{ object.profile.url }}" alt="profile_image" id="profilemine"/>
       {% else %}
-    <img src="{% static 'media/download.png' %}" alt="profile_image"   class="img-thumbnail"/>
-
+    <img src="{% static 'media/download.png' %}" alt="profile_image"    id="profilemine"/>
       {% endif %}
+     
+      <div class = "col-sm-12">
+       <div>
+ <h5 style = "color:white;font-weight: bold;opacity:0.7;">{{object.title}}
+    {{ object.firstName}} 
+   {{ object.lastName}}</h5>
+   <h6 style = "color:white; opacity:0.5;"> {{object.occupation}} </h6>
+   <br>
+   <div class="col-sm-10">
+   <div class="row">
+<i class="fas fa-phone" style="color:white;opacity:0.7;"></i>
+<i class="fa-solid fa-user-plus" style="color:white;opacity:0.7;"></i>
+<i class="fa-solid fa-comment-dots" style="color:white;opacity:0.7;"></i>
+
+
+</div></div>
+         </div>
+         </div>   
+</div>
+         <div class="col-sm-5 bg-primary">
+           <h5 style = "color:white;font-weight: bold;opacity:0.7;">ABOUT</h5>
+           <p style = "color:white;opacity:0.9;"> {{object.about}}</p>
+           <br>
+           <h5 style = "color:white;font-weight: bold;opacity:0.7;">EDUCATION</h5>
+          <br>
+           <h5 style = "color:white;font-weight: bold;opacity:0.7;">EXPERIENCE</h5>
+           <br>
+           <h5 style = "color:white;font-weight: bold;opacity:0.7;">AWARDS</h5>
+           <br>
+           <h5 style = "color:white;font-weight: bold;opacity:0.7;">TOP SPECIALITIES</h5>
+         </div>
+
+         <div class = "col-sm-3 bg-info">
+      <h5 style = "color:white;font-weight: bold;opacity:0.7;">AVAILABILITY</h5>
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+      <button type = "submit" id= "profilebutton" class="bg-primary" > BOOK</button>
+           </div>
+
+
+    
     </div>
-
-
 </div>
 {% endfor %}
   </div>
 
 
 
-
+<script src="https://kit.fontawesome.com/0af606b224.js" crossorigin="anonymous"></script>
 
 
 

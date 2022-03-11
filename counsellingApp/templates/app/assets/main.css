@@ -878,6 +878,20 @@ button::focus{
     float: center;
 }
 
+#profilemine{
+    width: 100%;
+    margin:0%;
+
+}
+
+#profilebutton{
+    padding:5%;
+    border-radius: 10px;
+    outline: none;
+    float:center;
+    width:100%;
+    
+}
 
 
 #profilenot {
