@@ -1,7 +1,7 @@
 # Registering our models
 from django.contrib import admin
 from django import forms
-from .models import Counsellor,  SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings, Notifications
+from .models import Counsellor,  SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings, Notifications, Students
 import datetime
 import calendar
 from django.urls import reverse
@@ -152,4 +152,17 @@ class NotificationsAdmin(admin.ModelAdmin):
         'date',
         'time',
         'text',
+    ]
+
+
+@admin.register(Students)
+class StudentAdmin(admin.ModelAdmin):
+    list_display = [
+        'student_id',
+        'profile',
+        'firstName',
+        'lastName',
+        'age',
+        'contact',
+        'status',
     ]

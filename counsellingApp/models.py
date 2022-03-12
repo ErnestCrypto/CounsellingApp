@@ -61,7 +61,7 @@ class BaseModel(models.Model):
     user_id = models.IntegerField(
         default=None, null=True, blank=True)
     status = models.CharField(
-        max_length=255, choices=LOGIN, default='counsellor', null=True, blank=True)
+        max_length=255, choices=LOGIN, default='COUNSELLOR', null=True, blank=True)
 
     class Meta:
         abstract = True
@@ -250,3 +250,19 @@ class Notifications(models.Model):
     text = models.TextField()
     date = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = "Notifications"
+
+
+class Students(models.Model):
+    student_id = models.IntegerField()
+    firstName = models.CharField(max_length=255)
+    lastName = models.CharField(max_length=255)
+    age = models.IntegerField()
+    status = models.CharField(max_length=255, choices=LOGIN, default='COUNSELLOR')
+    profile = models.ImageField(upload_to='images/')
+    contact = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = "Students"
