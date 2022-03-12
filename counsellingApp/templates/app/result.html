@@ -1,285 +1,194 @@
-{% include 'app/header.html' %}{% include 'app/home.html' %}
-{% load static%}
+{% include 'app/header.html' %}{% include 'app/home.html' %} {% load static%}
 
-<style>
+<style></style>
 
-</style>
-
-
-<section id = "section8">
-
-
-
-
- <center><form method="get" action="{% url 'counsellingUrls:search' pk %}">
-            {% csrf_token %}
-            <div >
-        <div class="searched">    
-        <div class="searcha">    
-            <button  class="searchb" type="submit"><i  class="fas fa-search" style="opacity:0.5;font-size:12px;"></i></button>
-            <input name="search"  class="searchc" type="search" placeholder="Search for counsellors"/>
+<section id="section8">
+  <div id="blind">
+    <center>
+      <form method="get" action="{% url 'counsellingUrls:search' pk %}">
+        {% csrf_token %}
+        <div>
+          <div class="searched">
+            <div class="searcha">
+              <button class="searchb" type="submit">
+                <i
+                  class="fas fa-search"
+                  style="opacity: 0.5; font-size: 12px"
+                ></i>
+              </button>
+              <input
+                name="search"
+                class="searchc"
+                type="search"
+                placeholder="Search for counsellors"
+              />
+            </div>
+          </div>
         </div>
-        </div>
-        </div>
-        </form>
-         </center>
-         <div class="col-sm-2 " id = "minesearch">
-           <a href="{% url 'counsellingUrls:profilePage' pk %}" id = "mysearched"> Back</a>
-         </div>
-         {% comment %} <form method="post" action="">
-{% csrf_token %}
-<button type = "submit" style="background-color:rgba(0,0,255,0.6);color:white;margin-left:5%;padding:1%;border-radius:21px;">Back</button>
-</form> {% endcomment %}
-<br>
-{% if search %}
-{% if post %}
-{% for i in post %}
-<br>
-<div class="col-sm-12">
-  <div class="container-fluid" style="padding-bottom: 5%">
-    <div class="row">
-      <div class="col-sm-4 bg-dark" style="padding: 0%; padding-bottom: 5%">
-        {% if i.profile %}
-        <img
-          src="{{ i.profile.url }}"
-          alt="profile_image"
-          id="profilemine"
-        />
-        {% else %}
-        <img
-          src="{% static 'media/download.png' %}"
-          alt="profile_image"
-          id="profilemine"
-        />
-        {% endif %}
+      </form>
+    </center>
+    <div class="col-sm-2" id="minesearch">
+      <a href="{% url 'counsellingUrls:profilePage' pk %}" id="mysearched">
+        Back</a
+      >
+    </div>
+    {% comment %}
+    <form method="post" action="">
+      {% csrf_token %}
+      <button
+        type="submit"
+        style="
+          background-color: rgba(0, 0, 255, 0.6);
+          color: white;
+          margin-left: 5%;
+          padding: 1%;
+          border-radius: 21px;
+        "
+      >
+        Back
+      </button>
+    </form>
+    {% endcomment %}
+    <br />
+    {% if search %} {% if post %} {% for i in post %}
+    <br />
+    <div class="col-sm-12">
+      <div class="container-fluid" style="padding-bottom: 5%">
+        <div class="row">
+          <div class="col-sm-4 bg-dark" style="padding: 0%; padding-bottom: 5%">
+            {% if i.profile %}
+            <img
+              src="{{ i.profile.url }}"
+              alt="profile_image"
+              id="profilemine"
+            />
+            {% else %}
+            <img
+              src="{% static 'media/download.png' %}"
+              alt="profile_image"
+              id="profilemine"
+            />
+            {% endif %}
 
-        <div class="col-sm-12">
-          <div>
-            <h5 style="color: white; font-weight: bold; opacity: 0.7">
-              {{ i.title}} {{ i.firstName}} {{ i.lastName}}
-            </h5>
-            <h6 style="color: white; opacity: 0.5">{{ i.occupation}}</h6>
+            <div class="col-sm-12">
+              <div>
+                <h5 style="color: white; font-weight: bold; opacity: 0.7">
+                  {{ i.title}} {{ i.firstName}} {{ i.lastName}}
+                </h5>
+                <h6 style="color: white; opacity: 0.5">{{ i.occupation}}</h6>
+                <br />
+                <div class="col-sm-10">
+                  <div class="row">
+                    <i
+                      class="fa-solid fa-phone"
+                      id="awe"
+                      style="
+                        color: white;
+                        opacity: 0.7;
+                        font-size: 15px;
+                        padding: 2%;
+                      "
+                    ></i>
+                    <i
+                      class="fa-solid fa-message"
+                      id="awe"
+                      style="
+                        color: white;
+                        opacity: 0.7;
+                        font-size: 15px;
+                        padding: 2%;
+                      "
+                    ></i>
+                    <i
+                      class="fa-solid fa-users"
+                      id="awe"
+                      style="
+                        color: white;
+                        opacity: 0.7;
+                        font-size: 15px;
+                        padding: 2%;
+                      "
+                    ></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-5 bg-primary">
+            <h5 style="color: white; font-weight: bold; opacity: 0.7">ABOUT</h5>
+            <p style="color: white; opacity: 0.9">{{ i.about}}</p>
             <br />
+            <h5 style="color: white; font-weight: bold; opacity: 0.7">
+              EDUCATION
+            </h5>
+            <br />
+            <h5 style="color: white; font-weight: bold; opacity: 0.7">
+              EXPERIENCE
+            </h5>
+            <br />
+            <h5 style="color: white; font-weight: bold; opacity: 0.7">
+              AWARDS
+            </h5>
+            <br />
+            <h5 style="color: white; font-weight: bold; opacity: 0.7">
+              TOP SPECIALITIES
+            </h5>
+          </div>
+
+          <div class="col-sm-3 bg-info">
             <div class="col-sm-10">
-              <div class="row">
-                <i
-                  class="fa-solid fa-phone"
-                  id="awe"
-                  style="
-                    color: white;
-                    opacity: 0.7;
-                    font-size: 15px;
-                    padding: 2%;
-                  "
-                ></i>
-                <i
-                  class="fa-solid fa-message"
-                  id="awe"
-                  style="
-                    color: white;
-                    opacity: 0.7;
-                    font-size: 15px;
-                    padding: 2%;
-                  "
-                ></i>
-                <i
-                  class="fa-solid fa-users"
-                  id="awe"
-                  style="
-                    color: white;
-                    opacity: 0.7;
-                    font-size: 15px;
-                    padding: 2%;
-                  "
-                ></i>
-              </div>
+              <h5 style="color: white; font-weight: bold; opacity: 0.7">
+                AVAILABILITY
+              </h5>
             </div>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <button type="submit" id="profilebutton" class="bg-primary">
+              BOOK
+            </button>
           </div>
         </div>
       </div>
-      <div class="col-sm-5 bg-primary">
-        <h5 style="color: white; font-weight: bold; opacity: 0.7">ABOUT</h5>
-        <p style="color: white; opacity: 0.9">{{ i.about}}</p>
-        <br />
-        <h5 style="color: white; font-weight: bold; opacity: 0.7">EDUCATION</h5>
-        <br />
-        <h5 style="color: white; font-weight: bold; opacity: 0.7">
-          EXPERIENCE
-        </h5>
-        <br />
-        <h5 style="color: white; font-weight: bold; opacity: 0.7">AWARDS</h5>
-        <br />
-        <h5 style="color: white; font-weight: bold; opacity: 0.7">
-          TOP SPECIALITIES
-        </h5>
+    </div>
+
+    {% endfor %} {% elif post %} {% else %}
+    <center>
+      <img src="{% static 'media/result.png'%}" alt="error" />
+    </center>
+    {% endif %} {% else %}
+    <div class="col-sm-14">
+      <div class="col-sm-6">
+        {% comment %}
+        <h1 id="coun">Discover top counsellors & psychologist</h1>
+        {% endcomment %}
       </div>
 
-      <div class="col-sm-3 bg-info">
-        <div class="col-sm-10">
-          <h5 style="color: white; font-weight: bold; opacity: 0.7">
-            AVAILABILITY
-          </h5>
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <button type="submit" id="profilebutton" class="bg-primary">
-          BOOK
-        </button>
+      <br /><br />
+      <div class="col-sm-6">
+        {% comment %}
+        <p id="con">
+          The Careers and Counselling Centre in a bid to reach out to a larger
+          section of the University community has opened a new satellite office
+          on top of the University of Ghana Bookshop.
+        </p>
+        {% endcomment %}
       </div>
     </div>
+    {% endif %}
   </div>
-</div>
-
-
-
-
-
-
-{% comment %} 
- <div id="mypadtop" >
-
-    <div id="mypad" >
-   
-      <div id="subtab1">
-         <center> 
-           {% if i.profile %}
-           <img id="profile"  class="a" src="{{i.profile.url }}">
-{% else %}
-           <img id="profile"  class="a" src="{% static 'media/download.png' %}">
-
-{% endif %}
-          </center>
-          <center>
-            <i class="fas fa-video" style="padding:5%; color:blue; opacity:0.7;"></i>
-            <i class="fas fa-user-friends" style="padding:5%; color:blue; opacity:0.7;"></i>
-            <i class="fas fa-comment-dots"  style="padding:5%; color:blue; opacity:0.7;" ></i>
-          </center>
-              <center> 
-        
-              <p><i class="fas fa-location-arrow" style="opacity:0.4;"> 25 km</i></p>
-      
-          </center>
-      </div>
-
-
-      <div id="subtab2">
-          <div>
-            <h1 id="myh2">{{ i.title }} {{i.firstName}} {{i.lastName}}</h1>
-            <p style="opacity:0.4">
-              {{ i.occupation }}
-              </p>
-                  <div style="padding-top:2%;opacity:0.9; height:20%;overflow-x:scroll">
-              {{i.about }}
-                </div> 
-            <div style="height:20%;">
-             
-                  <p id="myh2"> Therapies Offered</p>
-              <div style="width:100%; ">
-                {% if obj_the.therapies_offered  %}
-                {% for ob_the in obj_the %}
-                <center> <p id="label2">{{ob_the.therapies_offered}}</p></center>
-                 {% endfor %}
-                {% else %}
-                <center><p id="label2"> EMDR</p></center>
-                {% endif %} 
-               
-              </div>
-             
-            </div>
-            <br><br>
-            <div style="width:100%">
-
-            <p id="myh2" > Top Specialities</p>
-              <div style="width:100%;">
-                            {% if obj_spe.top_specialities  %}
-                            {% for ob_spe in obj_spe %}
-                            <center><p id="label2"> {{ob_spe.top_specialities }}</p></center>
-                           {% endfor %}
-                            {% else %}
-                                <center><p id="label2"> Abuse</p></center>
-                          {% endif %}
-              </div>
-            </div>
-          </div>
-      </div>
-     <form method="post" action="">
-       {% csrf_token %}
-         <div id="subtab3">
-                  <center>  
-            <div> {% if obj_avai.start_time %}
-              {% for ob_avai in obj_avai %}
-                    <p id="filter2"><i class="fa fa-calendar" aria-hidden="true" style="color:blue"></i>
-             {{ob_avai.date}}</p>
-                      <p style="color: rgba(0,0,0,0.5); font-size: 10px;">Video Call 50 mins</p>
-            </div>
-                     
-                        <label id="labels1" href="#">  {{ ob_avai.start_time}} - {{ ob_avai.end_time }}</label>
-                     {% endfor %}
-                        {% else %}
-                          <label id="labels1" href="#">No available time </label>
-                          {% endif %}
-
-                <button type="submit" id="labels1" href="#" style="background-color:rgba(0,0,255,0.6);color:white;">Book</button>
-                </center>
-                
-          </div>
-          
-    </div>
-  </form>
-
-  </div> 
-  {% endcomment %}
-
-{% endfor %}
-
-
-
-
-{% elif post %}
-
-{% else %}
-<center>
-  <p style="font-weight: bold;color:blue">No match...Try searching for names or check your spelling</p>
-
-    <img src="{% static 'media/result.png'%}" alt = "error">
-</center>
-{% endif %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% else %}
-<div class="col-sm-14" >
-  <div class="col-sm-6" >
-<h1 id = "coun">Discover top counsellors & psychologist</h1>
-  </div>
-</div>
-{% endif %}
-
-
 </section>

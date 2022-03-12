@@ -123,11 +123,18 @@
 
 }
 #section8 {
-    background:rgba(229, 233, 230,0.5);
+    {% comment %} background:rgba(229, 233, 230,0.5); {% endcomment %}
+      {% comment %} background-image: linear-gradient(#F0FFFF, white); 
+      https://wallpaperboat.com/wp-content/uploads/2019/05/lion-black-and-white-animal-012.jpg
+      {% endcomment %}
     display: block;
+    background-image: url('https://animalandmind.files.wordpress.com/2018/08/black-or-white.png?w=772');
+    background-size: cover;
+    background-position: center;
     width: 85%;
     float: right;
     height: 100%;
+    padding-bottom:0%;
     overflow-y: scroll;
     animation-name: example;
     animation-duration: 1s;
@@ -481,7 +488,6 @@ display: block;
     border-top-left-radius: 40px;
     border-bottom-left-radius: 40px;
 
-
     color: white;
     width: 100%;
     padding-bottom: 8%;
@@ -720,7 +726,8 @@ display: block;
     align-items:center;
     background:white;
     border-top-right-radius:30px;
-     border-top-left-radius:30px;
+     
+    border-top-left-radius:30px;
      border-bottom-left-radius:30px;
     overflow:hidden;
     padding:3px;
@@ -736,11 +743,25 @@ display: block;
 
 }
 
+#blind{
+    background: rgba(0, 0, 0,0.7);
+    height: 100%;
+    width: 100%;
+}
+
 #coun{
     color: blue;
-    font-size:70px;
+    font-size:60px;
     font-weight:700;
-    text-shadow:30px 30px pink;
+
+
+}
+
+#con{
+    color:rgba(255, 69, 0,0.7);
+        font-size:20px;
+
+
 }
 
 #minesearch{
@@ -748,6 +769,7 @@ display: block;
 }
 
 #mysearched{
+    color:white;
     
 }
 button{
