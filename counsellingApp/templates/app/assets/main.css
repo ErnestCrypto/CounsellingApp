@@ -718,7 +718,7 @@ display: block;
     display:inline-flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(255,255,255,0.3);
+    background:white;
     border-top-right-radius:30px;
      border-top-left-radius:30px;
      border-bottom-left-radius:30px;
@@ -734,6 +734,13 @@ display: block;
     justify-content:center;
     
 
+}
+
+#coun{
+    color: blue;
+    font-size:70px;
+    font-weight:700;
+    text-shadow:30px 30px pink;
 }
 
 #minesearch{

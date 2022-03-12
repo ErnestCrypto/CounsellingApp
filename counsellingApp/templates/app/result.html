@@ -254,9 +254,9 @@
 
 {% else %}
 <center>
-  <p>No match...Try searching for names or check your spelling</p>
+  <p style="font-weight: bold;color:blue">No match...Try searching for names or check your spelling</p>
 
-    <img src="{% static 'media/error.png'%}" alt = "error">
+    <img src="{% static 'media/result.png'%}" alt = "error">
 </center>
 {% endif %}
 
@@ -274,9 +274,11 @@
 
 
 {% else %}
-<center>
-<h1>You haven't searched yet'</h1>
-</center>
+<div class="col-sm-14" >
+  <div class="col-sm-6" >
+<h1 id = "coun">Discover top counsellors & psychologist</h1>
+  </div>
+</div>
 {% endif %}
 
 
