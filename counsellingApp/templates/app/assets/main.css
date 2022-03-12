@@ -774,18 +774,19 @@ display: block;
 }
 button{
     border : 0px solid transparent;
-    outline : 1px solid transparent;
+    outline : none;
 
 }
-button::focus{
-    border : 0px solid transparent;
-    outline : 1px solid transparent;
+button:focus{
+    outline : none;
 
 }
+
+
 .searchb{
     padding:15px;
     border-radius:200px;
-    border:none;
+    outline: none;
     background:none;
     box-shadow:inset 0px 0px 10px white,
      0px 0px 10px grey;
@@ -865,6 +866,7 @@ button::focus{
 }
 
 #button1 {
+
     outline: none;
     inline: none;
     opacity: 0.7;
@@ -1346,6 +1348,7 @@ margin-bottom:2%;
 
 .button {
     width: 150px;
+    outline: none;
     padding: 10px;
     background-color: #FF8C00;
     box-shadow: -8px 8px 10px 3px rgba(0, 0, 0, 0.2);
@@ -2097,7 +2100,7 @@ body {
     }
 
     #button1rep {
-
+        outline: none;
         overflow: hidden;
 
     }
