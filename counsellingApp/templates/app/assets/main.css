@@ -123,6 +123,7 @@
 
 }
 #section8 {
+    background:rgba(229, 233, 230,0.5);
     display: block;
     width: 85%;
     float: right;
@@ -717,10 +718,13 @@ display: block;
     display:inline-flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(200,200,200,0.3);
-    border-radius:30px;
+    background:rgba(255,255,255,0.3);
+    border-top-right-radius:30px;
+     border-top-left-radius:30px;
+     border-bottom-left-radius:30px;
     overflow:hidden;
     padding:3px;
+    box-shadow: 3px 3px 20px -10px;
 
 }
 .searched{
@@ -728,9 +732,16 @@ display: block;
     display:flex;
     align-items:center;
     justify-content:center;
+    
 
+}
 
+#minesearch{
+    
+}
 
+#mysearched{
+    
 }
 button{
     border : 0px solid transparent;
@@ -1324,13 +1335,32 @@ margin-bottom:2%;
     display: none;
 }
 
+#popup_screenS{
+    position: absolute;
+    top: -10%;
+    width: 82%;
+    transform: translate(20%, 30%);
+    justify-self: center;
+    height: 500px;
+    margin: 0 auto;
+    z-index: 10;
+    display:block;
+    backdrop-filter: blur(1rem);
+    box-shadow:inset 0px 0px 50px white;
+    border-radius: 10px;
+    border: 1px solid grey;
+    overflow-y: scroll;
+    animation-name: example;
+    animation-duration: 1s;
+}
+
 #popup_screen {
     position: absolute;
     top: 0;
     width: 82%;
     transform: translate(20%, 30%);
     justify-self: center;
-    height: 450px;
+    height: 400px;
     margin: 0 auto;
     z-index: 10;
     display:block;

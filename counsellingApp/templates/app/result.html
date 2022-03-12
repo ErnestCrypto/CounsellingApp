@@ -23,15 +23,134 @@
         </div>
         </form>
          </center>
-         <form method="post" action="">
+         <div class="col-sm-2 " id = "minesearch">
+           <a href="{% url 'counsellingUrls:profilePage' pk %}" id = "mysearched"> Back</a>
+         </div>
+         {% comment %} <form method="post" action="">
 {% csrf_token %}
 <button type = "submit" style="background-color:rgba(0,0,255,0.6);color:white;margin-left:5%;padding:1%;border-radius:21px;">Back</button>
-</form>
-
+</form> {% endcomment %}
+<br>
 {% if search %}
 {% if post %}
 {% for i in post %}
+<br>
+<div class="col-sm-12">
+  <div class="container-fluid" style="padding-bottom: 5%">
+    <div class="row">
+      <div class="col-sm-4 bg-dark" style="padding: 0%; padding-bottom: 5%">
+        {% if i.profile %}
+        <img
+          src="{{ i.profile.url }}"
+          alt="profile_image"
+          id="profilemine"
+        />
+        {% else %}
+        <img
+          src="{% static 'media/download.png' %}"
+          alt="profile_image"
+          id="profilemine"
+        />
+        {% endif %}
 
+        <div class="col-sm-12">
+          <div>
+            <h5 style="color: white; font-weight: bold; opacity: 0.7">
+              {{ i.title}} {{ i.firstName}} {{ i.lastName}}
+            </h5>
+            <h6 style="color: white; opacity: 0.5">{{ i.occupation}}</h6>
+            <br />
+            <div class="col-sm-10">
+              <div class="row">
+                <i
+                  class="fa-solid fa-phone"
+                  id="awe"
+                  style="
+                    color: white;
+                    opacity: 0.7;
+                    font-size: 15px;
+                    padding: 2%;
+                  "
+                ></i>
+                <i
+                  class="fa-solid fa-message"
+                  id="awe"
+                  style="
+                    color: white;
+                    opacity: 0.7;
+                    font-size: 15px;
+                    padding: 2%;
+                  "
+                ></i>
+                <i
+                  class="fa-solid fa-users"
+                  id="awe"
+                  style="
+                    color: white;
+                    opacity: 0.7;
+                    font-size: 15px;
+                    padding: 2%;
+                  "
+                ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-5 bg-primary">
+        <h5 style="color: white; font-weight: bold; opacity: 0.7">ABOUT</h5>
+        <p style="color: white; opacity: 0.9">{{ i.about}}</p>
+        <br />
+        <h5 style="color: white; font-weight: bold; opacity: 0.7">EDUCATION</h5>
+        <br />
+        <h5 style="color: white; font-weight: bold; opacity: 0.7">
+          EXPERIENCE
+        </h5>
+        <br />
+        <h5 style="color: white; font-weight: bold; opacity: 0.7">AWARDS</h5>
+        <br />
+        <h5 style="color: white; font-weight: bold; opacity: 0.7">
+          TOP SPECIALITIES
+        </h5>
+      </div>
+
+      <div class="col-sm-3 bg-info">
+        <div class="col-sm-10">
+          <h5 style="color: white; font-weight: bold; opacity: 0.7">
+            AVAILABILITY
+          </h5>
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <button type="submit" id="profilebutton" class="bg-primary">
+          BOOK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% comment %} 
  <div id="mypadtop" >
 
     <div id="mypad" >
@@ -124,7 +243,7 @@
   </form>
 
   </div> 
- 
+  {% endcomment %}
 
 {% endfor %}
 

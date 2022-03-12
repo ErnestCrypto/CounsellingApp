@@ -487,6 +487,7 @@ def search(request, pk):
     if request.method == 'GET':
         search = request.GET.get('search')
         post = Counsellor.objects.all()
+        objects = Counsellor.objects.all()
         if search:
             search = request.GET.get('search').split(' ')
             for u in range(len(search)):
@@ -502,6 +503,7 @@ def search(request, pk):
             'post': post,
             'search': search,
             'pk': pk,
+            'objects': objects,
 
         })
     return redirect('counsellingUrls:profilePage', pk)
