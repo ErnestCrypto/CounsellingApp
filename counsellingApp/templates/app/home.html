@@ -23,6 +23,9 @@ include 'app/notification.html' %} {% include 'app/admin.html' %} {% include
         <div id="time">
           <p style="margin: 0">UG GUIDANCE &</p>
           <center><p style="margin: 0">COUNSELLING</p></center>
+          {% for st in students %}
+          <p>{{ st.lastName }}</p>
+          {% endfor %}
         </div>
       </center>
     </div>

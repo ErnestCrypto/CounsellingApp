@@ -152,6 +152,7 @@ def loginPage(request):
                     obj.save()
 
                     request.session['pk'] = user_id_student
+
                     return redirect('counsellingUrls:indexPage', user_id_student)
 
         else:
@@ -227,6 +228,7 @@ def homePage(request, pk):
         'objects': objects,
         'students': students,
         'pk': pk,
+
 
     }
 
