@@ -49,7 +49,9 @@ urlpatterns = [
     path('availiability/<str:pk>/',
          views.availiablePage, name='availiablePage'),
     path('calendar/', views.calender, name='calender'),
-    path('test/', views.test, name='test')
+    path('test/', views.test, name='test'),
+    path('details/<int:studentbook_id>',
+         views.student_detail, name='student_details')
 
 
 ]

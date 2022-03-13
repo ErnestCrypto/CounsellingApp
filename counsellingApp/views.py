@@ -173,6 +173,8 @@ def superadminPage(request, pk):
     meetingcount = Meetings.objects.filter(counsellor_user_id=pk).count()
     bookings = Bookings.objects.all().count()
     meetings = Meetings.objects.all().count()
+    students = Students.objects.all()
+
     request.session['pk'] = pk
 
     return render(request, 'app/super.html', {
@@ -183,6 +185,7 @@ def superadminPage(request, pk):
         'meetings': meetings,
         'bookcount': bookcount,
         'meetingcount': meetingcount,
+        'students': students,
     })
 
 
@@ -193,10 +196,13 @@ def adminPage(request, pk):
     meetingcount = Meetings.objects.filter(counsellor_user_id=pk).count()
     bookings = Bookings.objects.all().count()
     meetings = Meetings.objects.all().count()
+    students = Students.objects.all()
+
     request.session['pk'] = pk
 
     return render(request, 'app/admin.html', {
         'objects': objects,
+        'students': students,
         'pk': pk,
         'count': count,
         'bookings': bookings,
@@ -223,15 +229,11 @@ def availiablePage(request, pk):
 
 def homePage(request, pk):
 
-    request.session['pk'] = pk
-    objects = Counsellor.objects.all()
     students = Students.objects.all()
-
+    request.session['pk'] = pk
     return render(request, 'app/home.html', {
-        'objects': objects,
         'students': students,
         'pk': pk,
-
 
     }
 
@@ -257,6 +259,8 @@ def dashboardPage(request, pk):
     specialities = SpecialitiesForm()
     Supercounsellorform = SuperCounsellorForm()
     objects = Counsellor.objects.all()
+    students = Students.objects.all()
+
     obj_ach = Achievement.objects.all()
     obj_avai = Availability.objects.all()
     obj_exp = Experience.objects.all()
@@ -285,6 +289,7 @@ def dashboardPage(request, pk):
                 'about': object.about,
                 'contact': object.contact,
                 'occupation': object.occupation,
+
 
             })
 
@@ -448,6 +453,7 @@ def dashboardPage(request, pk):
                                                   'expe': expe,
                                                   'ther': ther,
                                                   'spec': spec,
+                                                  'students': students,
 
                                                   }
 
@@ -458,11 +464,13 @@ def settingsPage(request, pk):
     objects = Counsellor.objects.all()
     request.session['pk'] = pk
     studentbooks = Bookings.objects.all()
+    students = Students.objects.all()
 
     return render(request, 'app/settings.html', {
         'objects': objects,
         'pk': pk,
         'studentbooks': studentbooks,
+        'students': students,
 
     }
 
@@ -472,9 +480,11 @@ def settingsPage(request, pk):
 def indexPage(request, pk):
     objects = Counsellor.objects.all()
     request.session['pk'] = pk
+    students = Students.objects.all()
 
     return render(request, 'app/index.html', {
         'objects': objects,
+        'students': students,
         'pk': pk,
     })
 
@@ -483,21 +493,25 @@ def popupPage(request, object_user_id):
     objects = Counsellor.objects.all()
     pk = request.session['pk']
     user_id = object_user_id
+    students = Students.objects.all()
 
     return render(request, 'app/popup.html', {
         'objects': objects,
         'pk': pk,
         'user_id': user_id,
+        'students': students,
     })
 
 
 def notificationPage(request, pk):
     objects = Counsellor.objects.all()
     request.session['pk'] = pk
+    students = Students.objects.all()
 
     return render(request, 'app/notification.html', {
         'objects': objects,
         'pk': pk,
+        'students': students,
     })
 
 
@@ -509,9 +523,10 @@ def profilePage(request, pk):
     obj_the = Therapy.objects.all()
     obj_spe = Specialities.objects.all()
     request.session['pk'] = pk
+    students = Students.objects.all()
 
     return render(request, 'app/profile.html', {
-
+        'students': students,
         'objects': objects,
         'pk': pk,
         'obj_ach': obj_ach,
@@ -523,8 +538,20 @@ def profilePage(request, pk):
     })
 
 
+def student_detail(request, studentbook_id):
+    students = Students.objects.all()
+    objects = Counsellor.objects.all()
+
+    return render(request, 'app/student.html', {
+        'students': students,
+        'objects': objects,
+    })
+
+
 def search(request, pk):
     pk = request.session['pk']
+    students = Students.objects.all()
+
     search = ''
 
     if request.method == 'GET':
@@ -547,6 +574,7 @@ def search(request, pk):
             'search': search,
             'pk': pk,
             'objects': objects,
+            'students': students,
 
         })
     return redirect('counsellingUrls:profilePage', pk)

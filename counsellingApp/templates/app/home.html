@@ -1,7 +1,5 @@
-{% comment %} {% include 'app/index.html' %} {% include 'app/profile.html' %} {%
-include 'app/notification.html' %} {% include 'app/admin.html' %} {% include
-'app/super.html' %} {% endcomment %} {% include 'app/header.html' %}
-<!---->{% load static%} {% block body %}
+{% include 'app/header.html' %}
+<!---->{% load static %} {% block body %}
 
 <body ng-app="counsellingApp">
   <section id="section1">
@@ -23,9 +21,6 @@ include 'app/notification.html' %} {% include 'app/admin.html' %} {% include
         <div id="time">
           <p style="margin: 0">UG GUIDANCE &</p>
           <center><p style="margin: 0">COUNSELLING</p></center>
-          {% for st in students %}
-          <p>{{ st.lastName }}</p>
-          {% endfor %}
         </div>
       </center>
     </div>
@@ -215,7 +210,108 @@ include 'app/notification.html' %} {% include 'app/admin.html' %} {% include
         </li>
       </ul>
 
-      {% else %} {% endif %} {% else %} {% endif %} {% endfor %}
+      {% elif student.status == 'COUNSELLOR' %}
+
+      <ul>
+        <li>
+          <a href="{% url 'counsellingUrls:adminPage' pk %}">
+            <span class="icon"
+              ><ion-icon name="people-outline"></ion-icon
+            ></span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'counsellingUrls:indexPage' pk %}">
+            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+            <span class="title">Home</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'counsellingUrls:notificationPage' pk %}">
+            <span class="icon"
+              ><ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+            </span>
+            <span class="title">Notifications</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'counsellingUrls:profilePage' pk %}">
+            <span class="icon"><ion-icon name="cloud-outline"></ion-icon></span>
+            <span class="title">Profile</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"
+          >
+            <span class="icon"
+              ><ion-icon name="navigate-outline"></ion-icon
+            ></span>
+            <span class="title">UG MAP</span>
+          </a>
+        </li>
+      </ul>
+
+      {% else %}
+
+      <ul>
+        <li>
+          <a href="{% url 'counsellingUrls:superadminPage' pk %}">
+            <span class="icon"
+              ><ion-icon name="person-outline"></ion-icon
+            ></span>
+            <span class="title">Admin</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'counsellingUrls:adminPage' pk %}">
+            <span class="icon"
+              ><ion-icon name="people-outline"></ion-icon
+            ></span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'counsellingUrls:indexPage' pk %}">
+            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+            <span class="title">Home</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'counsellingUrls:notificationPage' pk %}">
+            <span class="icon"
+              ><ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+            </span>
+            <span class="title">Notifications</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'counsellingUrls:profilePage' pk %}">
+            <span class="icon"><ion-icon name="cloud-outline"></ion-icon></span>
+            <span class="title">Profile</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://maps.google.com/maps/ms?ie=UTF8&hl=en&msa=0&ll=5.651967,-0.188441&spn=0.005466,0.010042&t=h&z=17&om=1&msid=114140572394999445956.000441bd2615d34504d68&mid=1333430664&showlabs=1"
+          >
+            <span class="icon"
+              ><ion-icon name="navigate-outline"></ion-icon
+            ></span>
+            <span class="title">UG MAP</span>
+          </a>
+        </li>
+      </ul>
+
+      {% endif %} {% else %} {% endif %} {% endfor %}
     </div>
 
     {% comment %} <br />

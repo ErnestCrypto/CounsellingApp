@@ -57,12 +57,14 @@
                 {% endif %}
                 <td>
                   <center>
+                    <a href = {% url 'counsellingUrls:student_details' studentbook.id%}>
                     <button
                       class="btn btn-sm btn-outline-warning remove_log"
                       type="button"
                     >
                       <i class="fa fa-eye"></i>
                     </button>
+                  </a>
                     <a
                       href="{% url 'counsellingUrls:update' studentbook.id  studentbook.student_status  %}"
                     >

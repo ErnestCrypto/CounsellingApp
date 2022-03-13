@@ -158,6 +158,7 @@ class NotificationsAdmin(admin.ModelAdmin):
 @admin.register(Students)
 class StudentAdmin(admin.ModelAdmin):
     list_display = [
+        'id',
         'student_id',
         'pin',
         'profile',
