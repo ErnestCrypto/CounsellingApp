@@ -3,7 +3,7 @@ from audioop import reverse
 from django.http import request
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings
+from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings, Students
 from .forms import CounsellorForm, SuperCounsellorForm, AchievementForm, AvailabilityForm, EducationForm, ExperienceForm, TherapyForm, SpecialitiesForm, LoginForm, BookingsForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -74,6 +74,7 @@ def loginPage(request):
         request.session['option'] = option
 
         user = Counsellor.objects.all()
+        student = Students.objects.all()
 
         if login.is_valid():
             messages.success(request, 'Welcome to UGCounselling')
@@ -83,6 +84,12 @@ def loginPage(request):
             arr_user_id = []
             arr_pin = []
             arr_status = []
+
+            arr_firstname_student = []
+            arr_lastname_student = []
+            arr_user_id_student = []
+            arr_pin_student = []
+            arr_status_student = []
 
             for use in user:
                 title = use.title
@@ -98,6 +105,18 @@ def loginPage(request):
                 arr_pin.append(pin)
                 arr_status.append(status)
 
+            for stud in student:
+                firstName_student = stud.firstName
+                lastname_student = stud.lastName
+                user_id_student = stud.student_id
+                pin_student = stud.pin
+                status_student = stud.status
+                arr_firstname_student.append(firstName_student)
+                arr_lastname_student.append(lastname_student)
+                arr_user_id_student.append(user_id_student)
+                arr_pin_student.append(pin_student)
+                arr_status_student.append(status_student)
+
             for u in range(len(arr_user_id)):
                 l_title = arr_title[u]
                 l_firstname = arr_firstname[u]
@@ -105,6 +124,11 @@ def loginPage(request):
                 l_user = arr_user_id[u]
                 l_pin = arr_pin[u]
                 l_status = arr_status[u]
+                l_firstname_student = arr_firstname_student[u]
+                l_lastname_student = arr_lastname_student[u]
+                l_user_student = arr_user_id_student[u]
+                l_pin_student = arr_pin_student[u]
+                l_status_student = arr_status_student[u]
 
                 if str(l_user) == str(person_id) and str(l_pin) == str(pin_log) and str(l_status) == str(option):
                     user_id = l_user
@@ -117,6 +141,18 @@ def loginPage(request):
 
                     request.session['pk'] = user_id
                     return redirect('counsellingUrls:indexPage', user_id)
+
+                elif str(l_user_student) == str(person_id) and str(l_pin_student) == str(pin_log) and str(l_status_student) == str(option):
+                    user_id = l_user
+                    messages.success(
+                        request, f' { l_firstname_student}  {l_lastname_student} ')
+                    obj = login.save(commit=False)
+                    obj.person_firstname = l_firstname_student
+                    obj.person_lastname = l_lastname_student
+                    obj.save()
+
+                    request.session['pk'] = user_id_student
+                    return redirect('counsellingUrls:indexPage', user_id_student)
 
         else:
             messages.error(request, '-- Please check your credentials --')
@@ -185,9 +221,11 @@ def homePage(request, pk):
 
     request.session['pk'] = pk
     objects = Counsellor.objects.all()
+    students = Students.objects.all()
 
     return render(request, 'app/home.html', {
         'objects': objects,
+        'students': students,
         'pk': pk,
 
     }

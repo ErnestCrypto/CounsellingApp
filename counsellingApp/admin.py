@@ -159,6 +159,7 @@ class NotificationsAdmin(admin.ModelAdmin):
 class StudentAdmin(admin.ModelAdmin):
     list_display = [
         'student_id',
+        'pin',
         'profile',
         'firstName',
         'lastName',

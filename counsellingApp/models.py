@@ -198,8 +198,8 @@ class Login(models.Model):
 
 
 class Bookings(models.Model):
-    counsellor = models.ForeignKey(
-        Counsellor, related_name='bookings', on_delete=models.CASCADE, default=None, )
+    counsellor = models.CharField(
+        max_length=255, null=True, blank=True, default=None)
     counsellor_user_id = models.IntegerField(
         default=None, null=True, blank=True)
     student_id = models.IntegerField(
@@ -260,9 +260,11 @@ class Students(models.Model):
     firstName = models.CharField(max_length=255)
     lastName = models.CharField(max_length=255)
     age = models.IntegerField()
-    status = models.CharField(max_length=255, choices=LOGIN, default='COUNSELLOR')
-    profile = models.ImageField(upload_to='images/')
+    status = models.CharField(
+        max_length=255, choices=LOGIN, default='STUDENT')
+    profile = models.ImageField(upload_to='images/', blank=True, null=True)
     contact = models.IntegerField()
+    pin = models.IntegerField(default=None, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Students"
