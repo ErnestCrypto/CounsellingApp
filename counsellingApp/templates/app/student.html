@@ -1,7 +1,31 @@
 {% include 'app/header.html' %}{% include 'app/home.html'%} {% load static%}
   <body>
-      <section id = "10">
+      <section id ="section10">
           <div class = "col-sm-12">
+              {% for student in students %}
+                {% if student.student_id == studentbook_student_id|add:0%}
+                <div class="row">
+                <div class = "col-sm-3">
+                    {% if student.profile %}
+                    <img src ="{student.profile.url}" alt="profile" id="profilemine"/>
+                    {% else %}
+                    <img src ="{% static 'media/download.png' %}" alt="profile" id="profilemine"/>
+                    {% endif %}
+                </div>
+            <div>
+                <center>
+            <p>{{ student.firstName}} {{ student.lastName}}</p>
+            <p>{{ student.age}}</p>
+             <p>{{ student.contact}}</p>
+            <p>{{ student.email}}</p>
+            <p>{{ student.age}}</p>
+
+
+                </center>
+                </div>
+                </div>
+                {% else %}{% endif %}
+              {% endfor %}
 
           </div>
       </section>

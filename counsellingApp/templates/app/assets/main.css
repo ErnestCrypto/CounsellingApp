@@ -155,12 +155,12 @@
 
 #section10{
  display: block;
-    width: 100%; 
+    width: 85%;
+    float: right;
     height: 100%;
-    overflow:hidden;
+    overflow: hidden;
     animation-name: example;
     animation-duration: 1s;
-    background-color: white;
 }
 
 

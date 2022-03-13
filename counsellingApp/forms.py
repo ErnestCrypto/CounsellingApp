@@ -138,6 +138,8 @@ class NotificationsForm(ModelForm):
             'student_id': forms.TextInput(attrs={'class': 'form-control'}),
             'firstName': forms.TextInput(attrs={'class': 'form-control'}),
             'lastName': forms.TextInput(attrs={'class': 'form-control'}),
+            'contact': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.TextInput(attrs={'class': 'form-'}),
             'age': forms.TextInput(attrs={'class': 'form-control'}),
             'status': forms.TextInput(attrs={'class': 'form-control'}),
             'profile': forms.ClearableFileInput(attrs={'class': 'image_profile', 'type': 'file'}),

@@ -4,7 +4,7 @@ from django.http import request
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings, Students
-from .forms import CounsellorForm, SuperCounsellorForm, AchievementForm, AvailabilityForm, EducationForm, ExperienceForm, TherapyForm, SpecialitiesForm, LoginForm, BookingsForm
+from .forms import CounsellorForm, SuperCounsellorForm, AchievementForm, AvailabilityForm, EducationForm, ExperienceForm, TherapyForm, SpecialitiesForm, LoginForm, BookingsForm, NotificationsForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
@@ -542,11 +542,13 @@ def student_detail(request, studentbook_student_id):
     students = Students.objects.all()
     objects = Counsellor.objects.all()
     pk = request.session['pk']
-
+    notifications = NotificationsForm()
+    studentbook_student_id = studentbook_student_id
     return render(request, 'app/student.html', {
         'students': students,
         'objects': objects,
         'pk': pk,
+        'studentbook_student_id': studentbook_student_id,
     })
 
 
