@@ -117,7 +117,7 @@ def loginPage(request):
                 arr_pin_student.append(pin_student)
                 arr_status_student.append(status_student)
 
-            for u in range(len(arr_user_id)):
+            for u in range(len(arr_user_id_student)):
                 l_title = arr_title[u]
                 l_firstname = arr_firstname[u]
                 l_lastname = arr_lastname[u]
