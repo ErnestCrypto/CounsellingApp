@@ -265,6 +265,10 @@ class Students(models.Model):
     profile = models.ImageField(upload_to='images/', blank=True, null=True)
     contact = models.IntegerField()
     pin = models.IntegerField(default=None, null=True, blank=True)
+    course = models.CharField(
+        max_length=255, db_index=True, default=None, null=True, blank=True)
+    level = models.CharField(
+        max_length=255, db_index=True, default=None, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "Students"

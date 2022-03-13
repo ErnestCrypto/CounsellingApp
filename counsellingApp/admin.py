@@ -164,6 +164,9 @@ class StudentAdmin(admin.ModelAdmin):
         'profile',
         'firstName',
         'lastName',
+        'course',
+        'level',
+
         'age',
         'contact',
         'status',

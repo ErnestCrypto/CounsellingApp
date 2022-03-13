@@ -11,18 +11,20 @@
                     {% else %}
                     <img src ="{% static 'media/download.png' %}" alt="profile" id="profilemine"/>
                     {% endif %}
-                </div>
-            <div>
-                <center>
-            <p>{{ student.firstName}} {{ student.lastName}}</p>
-            <p>{{ student.age}}</p>
-             <p>{{ student.contact}}</p>
-            <p>{{ student.email}}</p>
-            <p>{{ student.age}}</p>
+                    <div>
+                
+            <p>NAME: {{ student.firstName}} {{ student.lastName}}</p>
+            <p>COURSE: {{ student.course}}</p>
+            <p>LEVEL: {{ student.level}}</p>
+            <p>AGE: {{ student.age}}</p>
+             <p>CONTACT: 0{{ student.contact}}</p>
+            <p>EMAIL: {{ student.email}}</p>
 
 
-                </center>
+               
                 </div>
+                </div>
+            
                 </div>
                 {% else %}{% endif %}
               {% endfor %}

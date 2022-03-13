@@ -139,6 +139,8 @@ class NotificationsForm(ModelForm):
             'firstName': forms.TextInput(attrs={'class': 'form-control'}),
             'lastName': forms.TextInput(attrs={'class': 'form-control'}),
             'contact': forms.TextInput(attrs={'class': 'form-control'}),
+            'course': forms.TextInput(attrs={'class': 'form-control'}),
+            'level': forms.TextInput(attrs={'class': 'form-control'}),
             'email': forms.TextInput(attrs={'class': 'form-'}),
             'age': forms.TextInput(attrs={'class': 'form-control'}),
             'status': forms.TextInput(attrs={'class': 'form-control'}),
