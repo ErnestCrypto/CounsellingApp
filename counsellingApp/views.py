@@ -538,13 +538,15 @@ def profilePage(request, pk):
     })
 
 
-def student_detail(request, studentbook_id):
+def student_detail(request, studentbook_student_id):
     students = Students.objects.all()
     objects = Counsellor.objects.all()
+    pk = request.session['pk']
 
     return render(request, 'app/student.html', {
         'students': students,
         'objects': objects,
+        'pk': pk,
     })
 
 

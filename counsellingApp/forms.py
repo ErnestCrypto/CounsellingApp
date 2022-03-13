@@ -1,7 +1,7 @@
 # Creating our form models
 from django import forms
 from django.forms import ModelForm
-from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings
+from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Notifications
 
 
 class SpecialitiesForm(ModelForm):
@@ -103,7 +103,7 @@ class SuperCounsellorForm(ModelForm):
             'lastName': forms.TextInput(attrs={'class': 'form-control'}),
             'email': forms.TextInput(attrs={'class': 'form-control'}),
             'user_id': forms.TextInput(attrs={'class': 'form-control', 'readOnly': 'false'}),
-
+            'profile': forms.ClearableFileInput(attrs={'class': 'image_profile', 'type': 'file'}),
             'occupation': forms.TextInput(attrs={'class': 'form-control'}),
             'contact': forms.TextInput(attrs={'class': 'form-control'}),
             'gender': forms.Select(attrs={'class': 'form-control'}),
@@ -128,3 +128,18 @@ class BookingsForm(ModelForm):
     class Meta:
         model = Bookings
         fields = "__all__"
+
+
+class NotificationsForm(ModelForm):
+    class Meta:
+        model = Notifications
+        fields = "__all__"
+        widget = {
+            'student_id': forms.TextInput(attrs={'class': 'form-control'}),
+            'firstName': forms.TextInput(attrs={'class': 'form-control'}),
+            'lastName': forms.TextInput(attrs={'class': 'form-control'}),
+            'age': forms.TextInput(attrs={'class': 'form-control'}),
+            'status': forms.TextInput(attrs={'class': 'form-control'}),
+            'profile': forms.ClearableFileInput(attrs={'class': 'image_profile', 'type': 'file'}),
+
+        }

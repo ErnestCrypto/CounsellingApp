@@ -50,7 +50,7 @@ urlpatterns = [
          views.availiablePage, name='availiablePage'),
     path('calendar/', views.calender, name='calender'),
     path('test/', views.test, name='test'),
-    path('details/<int:studentbook_id>',
+    path('details/<int:studentbook_student_id>',
          views.student_detail, name='student_details')
 
 
