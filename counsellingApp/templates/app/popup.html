@@ -47,7 +47,7 @@
   </div>
 </header>
 
-{% for object in objects %} {% if object.user_id == user_id|add:0 %}
+{% for object in objects %} {% if object.id == user_id|add:0 %}
 
 <div id="popup_screens">
   <div class="container-fluid" style="padding-bottom: 5%">

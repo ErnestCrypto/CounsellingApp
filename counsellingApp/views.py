@@ -117,18 +117,13 @@ def loginPage(request):
                 arr_pin_student.append(pin_student)
                 arr_status_student.append(status_student)
 
-            for u in range(len(arr_user_id_student)):
+            for u in range(len(arr_user_id)):
                 l_title = arr_title[u]
                 l_firstname = arr_firstname[u]
                 l_lastname = arr_lastname[u]
                 l_user = arr_user_id[u]
                 l_pin = arr_pin[u]
                 l_status = arr_status[u]
-                l_firstname_student = arr_firstname_student[u]
-                l_lastname_student = arr_lastname_student[u]
-                l_user_student = arr_user_id_student[u]
-                l_pin_student = arr_pin_student[u]
-                l_status_student = arr_status_student[u]
 
                 if str(l_user) == str(person_id) and str(l_pin) == str(pin_log) and str(l_status) == str(option):
                     user_id = l_user
@@ -142,8 +137,16 @@ def loginPage(request):
                     request.session['pk'] = user_id
                     return redirect('counsellingUrls:indexPage', user_id)
 
-                elif str(l_user_student) == str(person_id) and str(l_pin_student) == str(pin_log) and str(l_status_student) == str(option):
-                    user_id = l_user
+            for u in range(len(arr_user_id_student)):
+
+                l_firstname_student = arr_firstname_student[u]
+                l_lastname_student = arr_lastname_student[u]
+                l_user_student = arr_user_id_student[u]
+                l_pin_student = arr_pin_student[u]
+                l_status_student = arr_status_student[u]
+
+                if str(l_user_student) == str(person_id) and str(l_pin_student) == str(pin_log) and str(l_status_student) == str(option):
+                    user_id_student = l_user_student
                     messages.success(
                         request, f' { l_firstname_student}  {l_lastname_student} ')
                     obj = login.save(commit=False)
