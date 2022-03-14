@@ -544,6 +544,10 @@ def student_detail(request, studentbook_student_id):
     pk = request.session['pk']
     notifications = NotificationsForm()
     studentbook_student_id = studentbook_student_id
+
+    if request.method == 'POST':
+        notifications = NotificationsForm(request.POST)
+
     return render(request, 'app/student.html', {
         'students': students,
         'objects': objects,

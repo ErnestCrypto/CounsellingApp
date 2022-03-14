@@ -161,10 +161,13 @@
     overflow: hidden;
     animation-name: example;
     animation-duration: 1s;
+    padding:2%;
 }
 
 
 #mystudent{
+    
+    font-size: 17px;
     
 }
 

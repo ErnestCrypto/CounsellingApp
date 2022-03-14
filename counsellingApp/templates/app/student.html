@@ -3,31 +3,39 @@
       <section id ="section10">
           <div class = "col-sm-12">
               {% for student in students %}
-                {% if student.student_id == studentbook_student_id|add:0%}
-                <div class="row">
-                <div class = "col-sm-3">
+              <div class="row">
+                {% if student.student_id == studentbook_student_id|add:0%}      
+                <div class = "col-sm-4 bg-light-gray" style="height:100%;">
+                    <div class="col-sm-8">
                     {% if student.profile %}
                     <img src ="{student.profile.url}" alt="profile" id="profilemine"/>
                     {% else %}
                     <img src ="{% static 'media/download.png' %}" alt="profile" id="profilemine"/>
                     {% endif %}
-                    <div>
-                
+                    </div>
+                    <div class="col-sm-12 ">
             <p id = "mystudent">NAME: {{ student.firstName}} {{ student.lastName}}</p>
             <p id = "mystudent">COURSE: {{ student.course}}</p>
             <p id = "mystudent">LEVEL: {{ student.level}}</p>
             <p id = "mystudent">AGE: {{ student.age}}</p>
              <p id = "mystudent">CONTACT: 0{{ student.contact}}</p>
             <p id = "mystudent">EMAIL: {{ student.email}}</p>
-
-
-               
-                </div>
-                </div>
-            
+            </div>
                 </div>
                 {% else %}{% endif %}
               {% endfor %}
+
+             <div class = "col-sm-12">
+                 <div class = "col-sm-12">
+               <form method = "POST" action ="">
+                   {% csrf_token %}
+                <center>
+                   <button type = "submit" class = "btn btn-primary">SEND</buton>
+                   </center>
+               </form>
+            </div>
+            </div>
+                </div>
 
           </div>
       </section>
