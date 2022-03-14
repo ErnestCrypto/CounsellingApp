@@ -247,7 +247,7 @@ class Notifications(models.Model):
     counsellor_firstName = models.CharField(max_length=255, default=None,)
     counsellor_lastName = models.CharField(max_length=255, default=None)
     student_id = models.CharField(max_length=255)
-    text = models.TextField()
+    text = models.TextField(blank=True, default=None, null=True)
     date = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now=True)
 

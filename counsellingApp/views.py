@@ -544,10 +544,12 @@ def student_detail(request, studentbook_student_id):
     pk = request.session['pk']
     notifications = NotificationsForm()
     studentbook_student_id = studentbook_student_id
-    messages.success(request, 'yes I am ')
+    messages.success(request, f'yes I am {request.method}')
 
     if request.method == 'POST':
         notifications = NotificationsForm(request.POST)
+        messages.success(request, f'yes my {request.method}')
+
         if notifications.is_valid():
             for object in objects:
                 c_user_id = object.user_id
@@ -564,6 +566,8 @@ def student_detail(request, studentbook_student_id):
                     messages.success(request, 'yes')
 
             messages.success(request, 'yes')
+        else:
+            messages.error(request, 'notmine')
     else:
         messages.error(request, 'no')
     return render(request, 'app/student.html', {
