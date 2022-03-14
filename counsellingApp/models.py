@@ -241,11 +241,14 @@ class Meetings(models.Model):
 
 
 class Notifications(models.Model):
-    counsellor_id = models.CharField(max_length=255)
-    counsellor_title = models.CharField(max_length=255, default=None,)
-    counsellor_firstName = models.CharField(max_length=255, default=None,)
-    counsellor_lastName = models.CharField(max_length=255, default=None)
-    student_id = models.CharField(max_length=255)
+    counsellor_id = models.CharField(max_length=255, null=True, blank=True)
+    counsellor_title = models.CharField(
+        max_length=255, default=None, null=True, blank=True)
+    counsellor_firstName = models.CharField(
+        max_length=255, default=None, null=True, blank=True)
+    counsellor_lastName = models.CharField(
+        max_length=255, default=None, null=True, blank=True)
+    student_id = models.CharField(max_length=255, null=True, blank=True)
     text = models.TextField(default=None)
     subject = models.CharField(max_length=255, default=None)
 

@@ -57,7 +57,7 @@
                 {% endif %}
                 <td>
                   <center>
-                    <a href = {% url 'counsellingUrls:student_details' studentbook.student_id %}>
+                    <a href = {% url 'counsellingUrls:student_details' studentbook.student_id %} id="minelinks">
                     <button
                       class="btn btn-sm btn-outline-warning remove_log"
                       type="button"
@@ -65,9 +65,10 @@
                       <i class="fa fa-eye"></i>
                     </button>
                   </a>
+                  {% if studentbook.student_status == 'Pending'%}
                     <a
                       href="{% url 'counsellingUrls:update' studentbook.id  studentbook.student_status  %}"
-                    >
+                    id="minelinks">
                       <button
                         class="btn btn-sm btn-outline-success edit_employee"
                         type="button"
@@ -78,8 +79,22 @@
                         <i class="fas fa-check"></i>
                       </button>
                     </a>
-
-                    <a href="{% url 'counsellingUrls:delete' studentbook.id %}">
+                    {% else %}
+                    <a
+                      href="{% url 'counsellingUrls:update' studentbook.id  studentbook.student_status  %}"
+                    id="minelinks">
+                      <button
+                        class="btn btn-sm btn-outline-info edit_employee"
+                        type="button"
+                      >
+                        {% comment %}
+                        <a href="/url in urls.py//{{object.user_id}}" />
+                        {% endcomment %}
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </a>
+                    {% endif %}
+                    <a href="{% url 'counsellingUrls:delete' studentbook.id %}" id="minelinks">
                       <button
                         class="btn btn-sm btn-outline-danger remove_log"
                         type="submit"

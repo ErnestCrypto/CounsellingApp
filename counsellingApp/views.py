@@ -551,11 +551,10 @@ def student_detail(request, studentbook_student_id):
         notifications = NotificationsForm(request.POST)
         ob = CounsellorForm(request.POST)
 
-        messages.success(request, f'yes my {request.method}')
-
         if notifications.is_valid():
             messages.success(request, 'yes')
             for object in objects:
+                c_title = object.title
                 c_user_id = object.user_id
                 c_firstName = object.firstName
                 c_lastName = object.lastName
@@ -566,11 +565,12 @@ def student_detail(request, studentbook_student_id):
                     notify. counsellor_firstName = c_firstName
                     notify.counsellor_lastName = c_lastName
                     notify.student_id = studentbook_student_id
+                    notify.counsellor_title = c_title
                     notify.save()
-                    messages.success(request, 'yes')
+                    messages.success(request, 'Message delivered sussessfully')
 
         else:
-            messages.error(request, 'notmine')
+            pass
     else:
         notifications = NotificationsForm()
 
