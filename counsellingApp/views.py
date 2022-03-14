@@ -569,6 +569,8 @@ def student_detail(request, studentbook_student_id):
         else:
             messages.error(request, 'notmine')
     else:
+        notifications = NotificationsForm()
+
         messages.error(request, 'no')
     return render(request, 'app/student.html', {
         'students': students,
