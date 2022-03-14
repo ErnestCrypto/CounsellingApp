@@ -158,7 +158,7 @@
     width: 85%;
     float: right;
     height: 100%;
-    overflow: hidden;
+    overflow-y: scroll;
     animation-name: example;
     animation-duration: 1s;
     padding:2%;
@@ -171,6 +171,25 @@
     
 }
 
+
+#fontstudent{
+    position: relative;
+                      font-size: 20px;
+                      margin-bottom: 20px;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      height: 30px;
+                      
+                      opacity: 0.5;
+                      width: 30px;
+                      border-radius: 50px;
+                      border: 1px solid black;
+}
+
+#fontstudent:hover {
+    opacity: 0.9;
+}
 
 @keyframes example {
     0% {

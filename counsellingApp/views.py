@@ -544,14 +544,33 @@ def student_detail(request, studentbook_student_id):
     pk = request.session['pk']
     notifications = NotificationsForm()
     studentbook_student_id = studentbook_student_id
+    messages.success(request, 'yes I am ')
 
     if request.method == 'POST':
         notifications = NotificationsForm(request.POST)
+        if notifications.is_valid():
+            for object in objects:
+                c_user_id = object.user_id
+                c_firstName = object.firstName
+                c_lastName = object.lastName
 
+                if str(c_user_id) == str(pk):
+                    notify = notifications.save(commit=True)
+                    notify.counsellor_id = pk
+                    notify. counsellor_firstName = c_firstName
+                    notify.counsellor_lastName = c_lastName
+                    notify.student_id = studentbook_student_id
+                    notify.save()
+                    messages.success(request, 'yes')
+
+            messages.success(request, 'yes')
+    else:
+        messages.error(request, 'no')
     return render(request, 'app/student.html', {
         'students': students,
         'objects': objects,
         'pk': pk,
+        'notifications': notifications,
         'studentbook_student_id': studentbook_student_id,
     })
 

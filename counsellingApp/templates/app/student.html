@@ -2,6 +2,8 @@
   <body>
       <section id ="section10">
           <div class = "col-sm-12">
+              <a href ="{% url  'counsellingUrls:settingsPage' pk%}">
+                  <i class = "fa fa-angle-left" id="fontstudent" ></i></a>
               {% for student in students %}
               <div class="row">
                 {% if student.student_id == studentbook_student_id|add:0%}      
@@ -22,19 +24,22 @@
             <p id = "mystudent">EMAIL: {{ student.email}}</p>
             </div>
                 </div>
-                {% else %}{% endif %}
-              {% endfor %}
+              
 
-             <div class = "col-sm-12">
+             <div class = "col-sm-8">
                  <div class = "col-sm-12">
-               <form method = "POST" action ="">
+               <form method = "post" action ="">
                    {% csrf_token %}
-                <center>
+              <p>Send a message to {{ student.firstName}} {{ student.lastName}} </p>
+               {{ notifications.text }}
+
                    <button type = "submit" class = "btn btn-primary">SEND</buton>
-                   </center>
+                   
                </form>
             </div>
             </div>
+              {% else %}{% endif %}
+              {% endfor %}
                 </div>
 
           </div>

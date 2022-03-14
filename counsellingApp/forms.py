@@ -1,7 +1,7 @@
 # Creating our form models
 from django import forms
 from django.forms import ModelForm
-from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Notifications
+from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Notifications, Students
 
 
 class SpecialitiesForm(ModelForm):
@@ -130,9 +130,9 @@ class BookingsForm(ModelForm):
         fields = "__all__"
 
 
-class NotificationsForm(ModelForm):
+class StudentForm(ModelForm):
     class Meta:
-        model = Notifications
+        model = Students
         fields = "__all__"
         widget = {
             'student_id': forms.TextInput(attrs={'class': 'form-control'}),
@@ -146,4 +146,20 @@ class NotificationsForm(ModelForm):
             'status': forms.TextInput(attrs={'class': 'form-control'}),
             'profile': forms.ClearableFileInput(attrs={'class': 'image_profile', 'type': 'file'}),
 
+        }
+
+
+class NotificationsForm(ModelForm):
+    class Meta:
+        model = Notifications
+        fields = "__all__"
+        widgets = {
+            'text': forms.Textarea(attrs={'class': 'form-control'}),
+            ' counsellor_id ': forms.TextInput(attrs={'class': 'form-control'}),
+            'counsellor_title': forms.TextInput(attrs={'class': 'form-control'}),
+            'counsellor_firstName': forms.TextInput(attrs={'class': 'form-control'}),
+            'counsellor_lastName': forms.TextInput(attrs={'class': 'form-control'}),
+            'student_id': forms.TextInput(attrs={'class': 'form-control'}),
+            'date': forms.TextInput(attrs={'class': 'form-control'}),
+            'time': forms.TextInput(attrs={'class': 'form-control'}),
         }
