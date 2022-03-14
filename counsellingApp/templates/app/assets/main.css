@@ -170,6 +170,10 @@
     font-size: 17px;
     
 }
+#minelinks{
+  text-decoration: none;
+
+}
 
 
 #fontstudent{
@@ -180,11 +184,11 @@
                       justify-content: center;
                       align-items: center;
                       height: 30px;
-                      
+                      color:blue;
                       opacity: 0.5;
                       width: 30px;
                       border-radius: 50px;
-                      border: 1px solid black;
+                      border: 1px solid blue;
 }
 
 #fontstudent:hover {
@@ -540,7 +544,7 @@ display: block;
     color: blue;
         background: var(--white);
 
-    animation: mymove 5s infinite;
+    animation: mymove 2s infinite;
 
 }
 

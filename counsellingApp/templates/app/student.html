@@ -2,8 +2,11 @@
   <body>
       <section id ="section10">
           <div class = "col-sm-12">
-              <a href ="{% url  'counsellingUrls:settingsPage' pk%}">
+              <div class="col-sm-12">
+                  <div class="col-sm-1">
+              <a href ="{% url  'counsellingUrls:settingsPage' pk%}" id="minelinks">
                   <i class = "fa fa-angle-left" id="fontstudent" ></i></a>
+                  </div></div>
               {% for student in students %}
               <div class="row">
                 {% if student.student_id == studentbook_student_id|add:0%}      
@@ -30,6 +33,8 @@
                  <div class = "col-sm-12">
                <form method = "post" action ="">
                    {% csrf_token %}
+                   <p>Add a subject</p>
+                   {{ notifications.subject}}
               <p>Send a message to {{ student.firstName}} {{ student.lastName}} </p>
                {{ notifications.text }}
 

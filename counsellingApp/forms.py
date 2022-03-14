@@ -155,7 +155,8 @@ class NotificationsForm(ModelForm):
         fields = "__all__"
         widgets = {
             'text': forms.Textarea(attrs={'class': 'form-control'}),
-            ' counsellor_id ': forms.TextInput(attrs={'class': 'form-control'}),
+            'subject': forms.TextInput(attrs={'class': 'form-control'}),
+            'counsellor_id ': forms.TextInput(attrs={'class': 'form-control'}),
             'counsellor_title': forms.TextInput(attrs={'class': 'form-control'}),
             'counsellor_firstName': forms.TextInput(attrs={'class': 'form-control'}),
             'counsellor_lastName': forms.TextInput(attrs={'class': 'form-control'}),

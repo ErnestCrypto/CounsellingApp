@@ -541,6 +541,7 @@ def profilePage(request, pk):
 def student_detail(request, studentbook_student_id):
     students = Students.objects.all()
     objects = Counsellor.objects.all()
+    ob = CounsellorForm()
     pk = request.session['pk']
     notifications = NotificationsForm()
     studentbook_student_id = studentbook_student_id
@@ -548,9 +549,12 @@ def student_detail(request, studentbook_student_id):
 
     if request.method == 'POST':
         notifications = NotificationsForm(request.POST)
+        ob = CounsellorForm(request.POST)
+
         messages.success(request, f'yes my {request.method}')
 
         if notifications.is_valid():
+            messages.success(request, 'yes')
             for object in objects:
                 c_user_id = object.user_id
                 c_firstName = object.firstName
@@ -565,7 +569,6 @@ def student_detail(request, studentbook_student_id):
                     notify.save()
                     messages.success(request, 'yes')
 
-            messages.success(request, 'yes')
         else:
             messages.error(request, 'notmine')
     else:
