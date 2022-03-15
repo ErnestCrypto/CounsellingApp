@@ -595,14 +595,14 @@ def student_detail(request, studentbook_student_id):
                                 subject,
                                 text,
                                 c_email,
-                                [s_id],
+                                [s_mail],
                                 connection=connection,
                             )
                             email1.send()
                             connection.close()
 
                     messages.success(
-                        request, f'{subject} Message delivered sussessfully')
+                        request, f' my {s_mail} {c_email} Message delivered sussessfully')
 
         else:
             pass
