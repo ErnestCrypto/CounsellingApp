@@ -152,7 +152,7 @@ class NotificationsAdmin(admin.ModelAdmin):
         'student_id',
         'date',
         'time',
-
+        'date_time',
     ]
 
 

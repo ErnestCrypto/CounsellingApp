@@ -255,6 +255,7 @@ class Notifications(models.Model):
         upload_to='images/', default=None, blank=True, null=True)
     date = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now=True)
+    date_time = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Notifications"

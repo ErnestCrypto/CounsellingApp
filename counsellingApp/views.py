@@ -507,7 +507,7 @@ def notificationPage(request, pk):
     objects = Counsellor.objects.all()
     request.session['pk'] = pk
     students = Students.objects.all()
-    notification = Notifications.objects.all()
+    notification = Notifications.objects.all().order_by('-id')
 
     return render(request, 'app/notification.html', {
         'objects': objects,
