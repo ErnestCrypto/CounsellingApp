@@ -558,6 +558,7 @@ def student_detail(request, studentbook_student_id):
                 c_user_id = object.user_id
                 c_firstName = object.firstName
                 c_lastName = object.lastName
+                c_profile = object.profile
 
                 if str(c_user_id) == str(pk):
                     notify = notifications.save(commit=True)
@@ -566,6 +567,7 @@ def student_detail(request, studentbook_student_id):
                     notify.counsellor_lastName = c_lastName
                     notify.student_id = studentbook_student_id
                     notify.counsellor_title = c_title
+                    notify.counsellor_profile = c_profile
                     notify.save()
                     messages.success(request, 'Message delivered sussessfully')
 
@@ -574,7 +576,6 @@ def student_detail(request, studentbook_student_id):
     else:
         notifications = NotificationsForm()
 
-        messages.error(request, 'no')
     return render(request, 'app/student.html', {
         'students': students,
         'objects': objects,

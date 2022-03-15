@@ -14,10 +14,24 @@
       {% for notificate in notification %}<!---->
       {% if notificate.student_id == pk%}
       <div id="mybox4">
-        <img id="imgnotification" src="{% static "media/University.png"%}"
-        alt="profile image"/>
+        {% if notificate.counsellor_profile %}
+        <img
+          id="imgnotification"
+          src="{{ notificate.counsellor_profile.url }}"
+          alt="profile image"
+        />
+        {% else %}
+        <img
+          id="imgnotification"
+          src="{% static 'media/download.png' %}"
+          alt="profile image"
+        />
+        {% endif %}
         <div id="unique">
-          <p id="notname">{{ notificate.counsellor_firstName}}</p>
+          <p id="notname">
+            {{notificate.counsellor_title}} {{ notificate.counsellor_firstName}}
+            {{notificate.counsellor_lastName}}
+          </p>
           <p id="notnamesub">{{ notificate.subject}}.</p>
         </div>
         <div id="uni">
