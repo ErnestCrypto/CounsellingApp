@@ -591,14 +591,14 @@ def student_detail(request, studentbook_student_id):
                             # )
 
                             connection.open()
-                            email1 = mail.EmailMessage(
+                            email = mail.EmailMessage(
                                 subject,
                                 text,
                                 c_email,
                                 [s_mail],
                                 connection=connection,
                             )
-                            email1.send()
+                            email.send()
                             connection.close()
 
                     messages.success(
