@@ -145,6 +145,7 @@ class MeetingsAdmin(admin.ModelAdmin):
 class NotificationsAdmin(admin.ModelAdmin):
     list_display = [
         'counsellor_id',
+        'counsellor_profile',
         'counsellor_title',
         'counsellor_firstName',
         'counsellor_lastName',

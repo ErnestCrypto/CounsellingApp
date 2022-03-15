@@ -3,7 +3,7 @@ from audioop import reverse
 from django.http import request
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings, Students,Notifications
+from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings, Students, Notifications
 from .forms import CounsellorForm, SuperCounsellorForm, AchievementForm, AvailabilityForm, EducationForm, ExperienceForm, TherapyForm, SpecialitiesForm, LoginForm, BookingsForm, NotificationsForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -513,7 +513,7 @@ def notificationPage(request, pk):
         'objects': objects,
         'pk': pk,
         'students': students,
-        'notification':notification,
+        'notification': notification,
     })
 
 
@@ -553,7 +553,6 @@ def student_detail(request, studentbook_student_id):
         ob = CounsellorForm(request.POST)
 
         if notifications.is_valid():
-            messages.success(request, 'yes')
             for object in objects:
                 c_title = object.title
                 c_user_id = object.user_id

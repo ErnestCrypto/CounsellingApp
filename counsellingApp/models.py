@@ -251,7 +251,8 @@ class Notifications(models.Model):
     student_id = models.CharField(max_length=255, null=True, blank=True)
     text = models.TextField(default=None)
     subject = models.CharField(max_length=255, default=None)
-
+    counsellor_profile = models.ImageField(
+        upload_to='images/', default=None, blank=True, null=True)
     date = models.DateField(auto_now_add=True)
     time = models.TimeField(auto_now=True)
 
