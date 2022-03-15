@@ -18,6 +18,9 @@ from rest_framework.decorators import api_view
 from django.db.models import Q
 import calendar
 from calendar import HTMLCalendar
+from django.core.mail import send_mail
+from django.core import mail
+connection = mail.get_connection()
 
 
 def test(request):
@@ -559,6 +562,7 @@ def student_detail(request, studentbook_student_id):
                 c_firstName = object.firstName
                 c_lastName = object.lastName
                 c_profile = object.profile
+                c_email = object.email
 
                 if str(c_user_id) == str(pk):
                     notify = notifications.save(commit=True)
@@ -569,7 +573,36 @@ def student_detail(request, studentbook_student_id):
                     notify.counsellor_title = c_title
                     notify.counsellor_profile = c_profile
                     notify.save()
-                    messages.success(request, 'Message delivered sussessfully')
+
+                    subject = notifications.cleaned_data['subject']
+                    text = notifications.cleaned_data['text']
+
+                    for stud in students:
+                        s_mail = stud.email
+                        s_id = stud.student_id
+
+                        if str(s_id) == str(studentbook_student_id):
+                            # send_mail(
+                            #     subject,
+                            #     text,
+                            #     c_email,
+                            #     [s_id],
+                            #     fail_silently=False,
+                            # )
+
+                            connection.open()
+                            email1 = mail.EmailMessage(
+                                subject,
+                                text,
+                                c_email,
+                                [s_id],
+                                connection=connection,
+                            )
+                            email1.send()
+                            connection.close()
+
+                    messages.success(
+                        request, f'{subject} Message delivered sussessfully')
 
         else:
             pass
