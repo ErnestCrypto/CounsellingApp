@@ -20,7 +20,6 @@ import calendar
 from calendar import HTMLCalendar
 from django.core.mail import send_mail
 from django.core import mail
-connection = mail.get_connection()
 
 
 def test(request):
@@ -589,6 +588,7 @@ def student_detail(request, studentbook_student_id):
                             #     [s_id],
                             #     fail_silently=False,
                             # )
+                            connection = mail.get_connection()
 
                             connection.open()
                             email = mail.EmailMessage(
@@ -599,7 +599,10 @@ def student_detail(request, studentbook_student_id):
                                 connection=connection,
                             )
                             email.send()
-                            connection.close()
+                            print(email)
+                            if email.send():
+                                messages.success(
+                                    request, f'{connection}')
 
                     messages.success(
                         request, f' my {s_mail} {c_email} Message delivered sussessfully')
