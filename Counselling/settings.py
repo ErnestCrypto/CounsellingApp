@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import environ
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-21#@wwn+1ti3y=y4ys-w2hb4b$j_=+0l$wmn=c99%$--@6a4lr'
-
+SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -85,7 +87,9 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USER'),
+        'PASSWORD': env('DATABASE_PASS'),
 
 
 
@@ -154,7 +158,3 @@ EMAIL_HOST_USER = 'akotobamfo.eab@gmail.com'
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 # EMAIL_USE_SSL = False
-
-
-env = environ.Env()
-environ.Env.read_env()
