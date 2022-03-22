@@ -581,13 +581,7 @@ def student_detail(request, studentbook_student_id):
                         s_id = stud.student_id
 
                         if str(s_id) == str(studentbook_student_id):
-                            send_mail(
-                                subject,  # subject
-                                text,  # message
-                                s_mail,  # from email
-                                [c_email],  # to email
-                                # fail_silently=False,
-                            )
+                            pass
 
         else:
             pass
