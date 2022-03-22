@@ -10,7 +10,7 @@
 #section1 {
     background: var(--blue);
     padding-bottom: 22.7%;
-    width: 15%;
+    {% comment %} width: 15%; {% endcomment %}
     float: left;
     height: 100%;
     overflow: hidden;
@@ -22,7 +22,7 @@
 
 #section3 {
     height: 100%;
-    width: 85%;
+    {% comment %} width: 85%; {% endcomment %}
     float: right;
     overflow: scroll;
 
@@ -34,7 +34,7 @@
 
 #section4 {
     display: block;
-    width: 85%;
+    {% comment %} width: 85%; {% endcomment %}
     float: right;
     height: 100%;
 
@@ -45,7 +45,7 @@
 
 #section5 {
 
-    width: 85%;
+    {% comment %} width: 85%; {% endcomment %}
     float: right;
     height: 100%;
     display:block;
@@ -58,7 +58,7 @@
 
 
 #section6 {
-    width: 85%;
+    {% comment %} width: 85%; {% endcomment %}
     float: right;
     padding: 0%;
     display: block;
@@ -72,7 +72,7 @@
 #section6container1 {
     padding: 1%;
    
-    width:85%;
+    {% comment %} width:85%; {% endcomment %}
     height:100%;
     font-family: Montserrat;
     display:  block;
@@ -86,7 +86,7 @@
 
 #section6container2 {
     padding: 1%;
-       width:85%;
+       {% comment %} width:85%; {% endcomment %}
     height:100%;
 
     font-family: Montserrat;
@@ -98,13 +98,13 @@
 
 #section6container3 {
     padding: 1%;
-       width:85%;
+       width:83%;
     height:100%;
 
     
     font-family: Montserrat;
     display:block;
-    overflow-y: scroll;
+    overflow: hidden;
     animation-name: example;
     animation-duration: 1s;
 }
@@ -114,7 +114,7 @@
 
 #section7 {
     display: block;
-    width: 85%;
+    {% comment %} width: 85%; {% endcomment %}
     float: right;
     height: 100%;
     overflow: hidden;
@@ -131,7 +131,7 @@
     background-image: url('https://animalandmind.files.wordpress.com/2018/08/black-or-white.png?w=772');
     background-size: cover;
     background-position: center;
-    width: 85%;
+    width: 83.3%;
     float: right;
     height: 100%;
     padding-bottom:0%;
@@ -155,7 +155,7 @@
 
 #section10{
  display: block;
-    width: 85%;
+    {% comment %} width: 85%; {% endcomment %}
     float: right;
     height: 100%;
     overflow-y: scroll;
@@ -404,12 +404,17 @@ section {
     font-family: 'Ubuntu', sans-serif;
 }
 
+#out{
+    padding-top: 400px; 
+    padding-left: 40px;
+}
+
 
 .navigation{
     position : fixed;
 border-left: 5px solid transparent;
     top:180;
-    width:15%;
+    width:15.6%;
     height: 100%;
     transition: 0.5s;
     overflow: hidden;
@@ -1424,7 +1429,8 @@ margin-bottom:2%;
 #popup_screenS{
     position: absolute;
     top: -10%;
-    width: 82%;
+    left: 8%;
+    width: 72%;
     transform: translate(20%, 30%);
     justify-self: center;
     height: 500px;
@@ -2012,7 +2018,7 @@ body {
 @media only screen and (max-width: 600px) {
     #section1 {
         width: 100%;
-        postion: absolute;
+        
         padding: 10%;
         padding-left: 2%;
 
@@ -2032,6 +2038,116 @@ body {
         height: 100%;
         postion: relative;
     }
+
+    #section8 {
+        width: 100%;
+        height: 100%;
+       
+        postion: relative;
+    }
+#blind {
+        width: 100%;
+        height: 100%;
+        overflow-x:scroll;
+        postion: relative;
+    }
+
+ /*bubbles*/
+
+.bubble-boxes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1%;
+    height: 40%;
+}
+
+.bubble-boxes li {
+    position: absolute;
+    list-style: none;
+    display: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, .2);
+    animation: animate 25s linear infinite;
+    bottom: -800px;
+}
+
+.bubble-boxes li:nth-child(1) {
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0;
+}
+
+.bubble-boxes li:nth-child(2) {
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.bubble-boxes li:nth-child(3) {
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.bubble-boxes li:nth-child(4) {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.bubble-boxes li:nth-child(5) {
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.bubble-boxes li:nth-child(6) {
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.bubble-boxes li:nth-child(7) {
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.bubble-boxes li:nth-child(8) {
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.bubble-boxes li:nth-child(9) {
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.bubble-boxes li:nth-child(10) {
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 12s;
+}
+
 
     #collapse {
         display: block;
@@ -2057,7 +2173,7 @@ body {
 
     #tabIcons {
         overflow: hidden;
-        postion: relative;
+        position: relative;
         padding-left: 15%;
         width: 90%;
         padding-top: 10px;
@@ -2065,7 +2181,7 @@ body {
     }
 
     #elementID {
-
+       position:relation;
         font-size: 20px;
         float: left;
         width: 5%;
@@ -2073,8 +2189,20 @@ body {
         padding-left: 10%;
         padding-right: 18%;
 
+    }   
+    .navigation{
+        position:relative;
+        border-left: 5px solid transparent;
+        top:80;
+        width:15.6%;
+        height: 100%;
+        transition: 0.5s;
+        overflow: hidden;
     }
-
+#out{
+padding-top: 4px; 
+padding-left: 40px
+}
     #elementID.active {
 
         border: none;

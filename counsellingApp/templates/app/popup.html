@@ -1,6 +1,5 @@
 {% include 'app/header.html' %}{% include 'app/home.html'%} {% load static%}
 
-<header>
   <div
     class="mask"
     id="darkscreen"
@@ -49,7 +48,7 @@
 
 {% for object in objects %} {% if object.id == user_id|add:0 %}
 
-<div id="popup_screens">
+<div id="popup_screens" >
   <div class="container-fluid" style="padding-bottom: 5%">
     <div class="row">
       <div class="col-sm-4" style="padding: 0%; padding-bottom: 5%">

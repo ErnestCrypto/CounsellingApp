@@ -2,7 +2,7 @@
 <!---->{% load static %} {% block body %}
 
 <body ng-app="counsellingApp">
-  <section id="section1">
+  <section id="section1" class="col-sm-2">
     <ul class="bubble-boxes">
       <li></li>
       <li></li>
@@ -327,7 +327,8 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
-    <div class="col-sm-4" style="padding-top: 400px; padding-left: 40px">
+
+    <div class="col-sm-4" id="out">
       <a href="{% url 'counsellingUrls:loginPage' %}">
         <button class="btn btn-primary">LOGOUT</button></a
       >
