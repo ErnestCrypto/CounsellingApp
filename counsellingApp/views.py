@@ -1,5 +1,6 @@
 # creating views
 from audioop import reverse
+from django import views
 from django.http import request
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
@@ -48,6 +49,20 @@ def Counsellor_details(request, pk):
     elif request.method == 'DELETE':
         counsellor.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class CounsellorList(views.View):
+    def get(self, request):
+        counsellor = Counsellor.objects.all()
+        serializer = CounsellorSerializer(counsellor, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = CounsellorSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET', 'POST'])

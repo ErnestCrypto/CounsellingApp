@@ -51,8 +51,9 @@ urlpatterns = [
     path('calendar/', views.calender, name='calender'),
     path('test/', views.test, name='test'),
     path('details/<int:studentbook_student_id>',
-         views.student_detail, name='student_details')
+         views.student_detail, name='student_details'),
 
+    path("/dfadf/", views.CounsellorList.as_view(), name="kldjfad")
 
 ]
 

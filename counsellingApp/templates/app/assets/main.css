@@ -6,6 +6,11 @@
     overflow: hidden;
 
 }
+ 
+#able{
+     text-decoration: none;
+     padding:2%;
+}
 
 #section1 {
     background: var(--blue);
@@ -98,7 +103,7 @@
 
 #section6container3 {
     padding: 1%;
-       width:100%;
+       width:83.3%;
     height:100%;
 
     
