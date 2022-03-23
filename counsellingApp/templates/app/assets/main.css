@@ -98,7 +98,7 @@
 
 #section6container3 {
     padding: 1%;
-       width:83%;
+       width:100%;
     height:100%;
 
     
@@ -2169,7 +2169,7 @@ box-shadow:
         postion: relative;
     }
 
-    #popup_screenS{
+    #popup_screens{
     position: relative;
     top: -120%;
     left: -15%;
