@@ -2095,6 +2095,20 @@ body {
         postion: relative;
     }
 
+
+    #section6container3 {
+    padding: 1%;
+      
+    height:100%;
+
+    
+    font-family: Montserrat;
+    display:block;
+    overflow: hidden;
+    animation-name: example;
+    animation-duration: 1s;
+}
+
 #darkscreen{
      overflow: hidden;
      height:100%;
@@ -2140,7 +2154,7 @@ box-shadow:
 
 .dropdown-content {
     display: none;
-  left:-12;
+     left:-12;
     background-color: white;
     font-size: 12px;
     min-width: 160px;
