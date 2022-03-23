@@ -22,7 +22,7 @@
 
 #section3 {
     height: 100%;
-    {% comment %} width: 85%; {% endcomment %}
+    width: 83.3%;
     float: right;
     overflow: scroll;
 
@@ -45,7 +45,7 @@
 
 #section5 {
 
-    {% comment %} width: 85%; {% endcomment %}
+    width: 83.3%;
     float: right;
     height: 100%;
     display:block;
@@ -135,7 +135,8 @@
     float: right;
     height: 100%;
     padding-bottom:0%;
-    overflow-y: scroll;
+    padding:0%;
+    overflow:hidden;
     animation-name: example;
     animation-duration: 1s;
 
@@ -795,6 +796,7 @@ display: block;
     background: rgba(0, 0, 0,0.7);
     height: 100%;
     width: 100%;
+    overflow-y:scroll;
 }
 
 #coun{
@@ -2033,6 +2035,12 @@ body {
         padding-bottom: 35%;
     }
 
+     #section5 {
+        width: 100%;
+        postion: relative;
+        padding-bottom: 35%;
+    }
+
     #section3 {
         width: 100%;
         height: 100%;
@@ -2191,17 +2199,25 @@ body {
 
     }   
     .navigation{
+       
         position:relative;
         border-left: 5px solid transparent;
-        top:80;
-        width:15.6%;
-        height: 100%;
+        top:60;
+        width:1000px;
+        height: 50%;
         transition: 0.5s;
         overflow: hidden;
     }
+
+
+
+
+
+
 #out{
-padding-top: 4px; 
+padding-top: 70px; 
 padding-left: 40px
+
 }
     #elementID.active {
 

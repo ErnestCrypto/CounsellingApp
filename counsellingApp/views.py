@@ -613,7 +613,7 @@ def search(request, pk):
                 l_search = search[u]
 
                 post = Counsellor.objects.filter(
-                    Q(firstName__icontains=l_search) | Q(lastName__icontains=l_search))
+                    Q(firstName__icontains=l_search) | Q(lastName__icontains=l_search) | Q(title__icontains=l_search))
 
         else:
             search = ''
