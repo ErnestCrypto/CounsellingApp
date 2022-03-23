@@ -249,7 +249,11 @@ section {
 }
 
 
-
+#what{
+    width:30%;
+    height:20%;
+    border-radius:35px;
+}
 
 
 
@@ -2039,6 +2043,12 @@ body {
         width: 100%;
         postion: relative;
         padding-bottom: 35%;
+    }
+    #what{
+        width:30%;
+    height:20%;
+    border-radius:35px;
+
     }
 
     #section3 {
