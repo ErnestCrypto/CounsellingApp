@@ -9,7 +9,7 @@
  
 #able{
      text-decoration: none;
-     padding:2%;
+     padding:2%
 }
 
 #section1 {
@@ -161,7 +161,7 @@
 
 #section10{
  display: block;
-    {% comment %} width: 85%; {% endcomment %}
+    width: 83.3%;
     float: right;
     height: 100%;
     overflow-y: scroll;
@@ -1966,12 +1966,11 @@ body {
 
 #inputdate {
     padding: 1%;
-    padding-left:5%;
+   
     width:15%;
     border-radius: 21px;
     border: none;
     outline: none;
-    background-color: rgba(211, 211, 211, 0.3);
 }
 
 #footer6 {
@@ -2099,11 +2098,22 @@ body {
         overflow: hidden; 
         postion: relative;
     }
+     #section10 {
+        width: 100%;
+        height: 100%;
+       
+        padding:0%;
+        background-size:cover;
+        background-position:center;
+        float:center;
+        overflow: scroll; 
+        postion: relative;
+    }
 
 
     #section6container3 {
     padding: 1%;
-      
+     
     height:100%;
 
     
