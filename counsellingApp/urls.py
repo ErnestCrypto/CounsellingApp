@@ -45,7 +45,7 @@ urlpatterns = [
          views.speciality_add, name="speciality_add"),
     path('serializers/counsellors/', views.Counsellor_list, name='counsellor_list'),
     path('serializers/counsellors/<str:pk>/',
-         views.Counsellor_details, name='counsellor_details'),
+         views.counsellor_details, name='counsellor_details'),
     path('availiability/<str:pk>/',
          views.availiablePage, name='availiablePage'),
     path('calendar/', views.calender, name='calender'),
