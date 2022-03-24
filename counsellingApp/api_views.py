@@ -6,11 +6,12 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings, Students, Notifications
+from .models import Counsellor
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def counsellor_details(request, pk):
+
     try:
         counsellor = Counsellor.objects.get(user_id=pk)
     except counsellor.DoesNotExist:
@@ -33,20 +34,6 @@ def counsellor_details(request, pk):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class CounsellorList(views.View):
-    def get(self, request):
-        counsellor = Counsellor.objects.all()
-        serializer = CounsellorSerializer(counsellor, many=True)
-        return Response(serializer.data)
-
-    def post(self, request):
-        serializer = CounsellorSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
 @api_view(['GET', 'POST'])
 def counsellor_list(request):
     if request.method == 'GET':
@@ -60,3 +47,17 @@ def counsellor_list(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# class CounsellorList(views.View):
+#     def get(self, request):
+#         counsellor = Counsellor.objects.all()
+#         serializer = CounsellorSerializer(counsellor, many=True)
+#         return Response(serializer.data)
+
+#     def post(self, request):
+#         serializer = CounsellorSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

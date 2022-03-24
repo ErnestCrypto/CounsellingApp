@@ -3,7 +3,7 @@ from django.urls import path
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from rest_framework.urlpatterns import format_suffix_patterns
-
+from . import api_views
 app_name = 'counsellingUrls'
 
 urlpatterns = [
@@ -43,9 +43,7 @@ urlpatterns = [
          views.speciality_del, name="speciality_del"),
     path('speciality_add/<str:spe_id>/',
          views.speciality_add, name="speciality_add"),
-    path('serializers/counsellors/', views.Counsellor_list, name='counsellor_list'),
-    path('serializers/counsellors/<str:pk>/',
-         views.counsellor_details, name='counsellor_details'),
+
     path('availiability/<str:pk>/',
          views.availiablePage, name='availiablePage'),
     path('calendar/', views.calender, name='calender'),
@@ -53,9 +51,19 @@ urlpatterns = [
     path('details/<int:studentbook_student_id>',
          views.student_detail, name='student_details'),
 
-    path("/dfadf/", views.CounsellorList.as_view(), name="kldjfad")
+    #     path("/dfadf/", views.CounsellorList.as_view(), name="kldjfad")
 
 ]
+
+
+urlpatterns += [
+    path('serializers/counsellors/',
+         api_views.counsellor_list, name='counsellor_list'),
+    path('serializers/counsellors/<str:pk>/',
+         api_views.counsellor_details, name='counsellor_details'),
+
+]
+
 
 urlpatterns += staticfiles_urlpatterns()
 
