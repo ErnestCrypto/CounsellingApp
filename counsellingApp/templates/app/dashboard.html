@@ -15,8 +15,8 @@
 
 <body>
   <section id="section6container3" >
-    <div style="height:98%;">
-    <div >
+    <div style="height:98%;" >
+    <div class ="col-sm-12">
       {% for object in objects%}<!---->
       {% if object.user_id == pk|add:0 %}
       <div class="container text-left">
@@ -27,6 +27,7 @@
         </div>
       </div>
    
+    
      <div class="col-lg-3">
        
       <!--id="objectsprofile" -->
@@ -54,7 +55,8 @@
       
             </div>
       
-            
+         <div>
+         </div>
       
         <div class="container-fluid bg-3 text-left" >
           <div class="row" >
@@ -284,7 +286,7 @@
                 </div>
               </div>
               <div class="col-sm-1">
-              <a href ="{% url 'counsellingUrls:experience_del' exp.id %}">
+              <a href ="{% url 'counsellingUrls:experience_add' exp.id %}">
 
                 <button
                   style="font-size: 20px"
@@ -342,7 +344,7 @@
                 </div>
               </div>
               <div class="col-sm-1">
-                 <a href ="{% url 'counsellingUrls:education_del' ed.id %}">
+                 <a href ="{% url 'counsellingUrls:education_add' ed.id %}">
                
                 <button
                   style="font-size: 20px"
@@ -404,7 +406,7 @@
                       <i class="glyphicon glyphicon-plus"></i>
                     </button></a>
                   </div>
-                   <div class="col-sm-2">
+                   <div class="input-group-btn">
                  <a href ="{% url 'counsellingUrls:achievement_del' ach.id %}">
                   
                     <button
@@ -458,7 +460,7 @@
                       <i class="glyphicon glyphicon-plus"></i>
                     </button></a>
                   </div>
-                   <div class="col-sm-2">
+                   <div class="input-group-btn">
                  <a href ="{% url 'counsellingUrls:therapy_del' the.id %}">
  
                     <button
@@ -516,7 +518,7 @@
                     </button></a>
                   </div>
                   
-                   <div class="col-sm-2">
+                   <div class="input-group-btn">
                  <a href ="{% url 'counsellingUrls:speciality_del' spe.id %}">
 
                     <button
