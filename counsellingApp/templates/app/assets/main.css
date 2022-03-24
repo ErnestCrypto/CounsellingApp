@@ -109,7 +109,8 @@
     
     font-family: Montserrat;
     display:block;
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x:hidden;
     animation-name: example;
     animation-duration: 1s;
 }
@@ -2120,6 +2121,7 @@ body {
     font-family: Montserrat;
     display:block;
     overflow: hidden;
+    overflow-y:scroll;
     animation-name: example;
     animation-duration: 1s;
 }
