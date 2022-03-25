@@ -4,7 +4,13 @@
   charset="utf-8"
 ></script>
 <script src="{% static '/static/dajax/jquery.dajax.core.js' %}"></script>
-
+<script>
+  function send_form() {
+    Dajaxice.myapp.send_form(Dajax.process, {
+      form: $("#my_form").serialize(true),
+    });
+  }
+</script>
 <html>
   <head></head>
   <body>

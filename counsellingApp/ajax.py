@@ -2,6 +2,7 @@ from dajaxice.utils import deserialize_form
 from .forms import DreamrealForm
 from dajax.core import Dajax
 from .models import Dreamreal
+from dajaxice import Dajaxice, dajaxice_autodiscover
 
 
 @dajaxice_register
