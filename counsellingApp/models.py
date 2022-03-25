@@ -106,14 +106,11 @@ class Achievement(models.Model):
 class Availability(models.Model):
     counsellor = models.ForeignKey(
         Counsellor, related_name='availability', on_delete=models.CASCADE, blank=True, default=None, null=True)
-    start_time = models.TimeField(default=None,  null=True, blank=True)
-    end_time = models.TimeField(default=None,  null=True, blank=True)
-    day = models.DateField(default=None,
-                           null=True, max_length=255, blank=True)
-    notes = models.TextField(blank=True, null=True)
-
     user_id = models.CharField(
         max_length=255, db_index=True, blank=True, null=True, default=None)
+
+    day = models.DateField(default=None,
+                           null=True, max_length=255, blank=True)
 
     class Meta:
         verbose_name_plural = "availabilities"
@@ -280,10 +277,3 @@ class Students(models.Model):
 
     class Meta:
         verbose_name_plural = "Students"
-
-
-class Dreamreal(models.Model):
-    website = models.CharField(max_length=100)
-    name = models.CharField(max_length=100)
-    phonenumber = models.CharField(max_length=50)
-    email = models.CharField(max_length=100)

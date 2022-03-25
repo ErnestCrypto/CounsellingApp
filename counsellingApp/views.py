@@ -5,7 +5,7 @@ from django.http import request
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings, Students, Notifications
-from .forms import CounsellorForm, SuperCounsellorForm, AchievementForm, AvailabilityForm, EducationForm, ExperienceForm, TherapyForm, SpecialitiesForm, LoginForm, BookingsForm, NotificationsForm, DreamrealForm
+from .forms import CounsellorForm, SuperCounsellorForm, AchievementForm, AvailabilityForm, EducationForm, ExperienceForm, TherapyForm, SpecialitiesForm, LoginForm, BookingsForm, NotificationsForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models.functions import Lower
@@ -14,11 +14,6 @@ import calendar
 from calendar import HTMLCalendar
 from django.core.mail import send_mail
 from django.core import mail
-
-
-def dreamreal(request):
-    form = DreamrealForm()
-    return render(request, 'app/dreamreal.html', locals())
 
 
 def test(request):

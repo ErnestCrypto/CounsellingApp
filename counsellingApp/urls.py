@@ -50,7 +50,6 @@ urlpatterns = [
     path('test/', views.test, name='test'),
     path('details/<int:studentbook_student_id>',
          views.student_detail, name='student_details'),
-    path('dreamreal', views.dreamreal, name='dreamreal'),
     #     path("/dfadf/", views.CounsellorList.as_view(), name="kldjfad")
 
 ]

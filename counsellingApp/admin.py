@@ -1,7 +1,7 @@
 # Registering our models
 from django.contrib import admin
 from django import forms
-from .models import Dreamreal, Counsellor,  SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings, Notifications, Students
+from .models import Counsellor,  SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings, Notifications, Students
 import datetime
 import calendar
 from django.urls import reverse
@@ -70,8 +70,8 @@ class AchievementsAdmin(admin.ModelAdmin):
 
 @admin.register(Availability)
 class AvailabilityAdmin(admin.ModelAdmin):
-    list_display = ['id', 'day', 'start_time', 'end_time', 'notes',
-                    'user_id', 'counsellor', ]
+    list_display = ['id', 'user_id', 'counsellor', 'day',
+                     ]
 
 
 @admin.register(Counsellor)
@@ -171,14 +171,4 @@ class StudentAdmin(admin.ModelAdmin):
         'contact',
         'email',
         'status',
-    ]
-
-
-@admin.register(Dreamreal)
-class DreamrealAdmin(admin.ModelAdmin):
-    list_display = [
-        'website',
-        'name',
-        'phonenumber',
-        'email',
     ]
