@@ -19,7 +19,8 @@ if settings.DEBUG:
                           document_root=settings.MEDIA_ROOT)
 
 
-urlpatterns += path('',
-                    re_path(r'^%s/' % settings.DAJAXICE_MEDIA_PREFIX, include('dajaxice.urls')),)
+urlpatterns += [re_path(r'^%s/' %
+                        settings.DAJAXICE_MEDIA_PREFIX, include('dajaxice.urls')),
+                ]
 
 urlpatterns += staticfiles_urlpatterns()
