@@ -108,9 +108,11 @@ class Availability(models.Model):
         Counsellor, related_name='availability', on_delete=models.CASCADE, blank=True, default=None, null=True)
     user_id = models.CharField(
         max_length=255, db_index=True, blank=True, null=True, default=None)
-
     day = models.DateField(default=None,
                            null=True, max_length=255, blank=True)
+    slots = models.IntegerField(default=None, null=True, blank=True)
+    hours = models.IntegerField(default=None, null=True, blank=True)
+    minutes = models.IntegerField(default=None, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "availabilities"
