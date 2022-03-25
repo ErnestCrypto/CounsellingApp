@@ -1,4 +1,47 @@
 {% include 'app/header.html'%}
+<style>
+
+
+#avapad{
+    height:95%;
+    box-shadow: 1px 1px 12px -5px;
+    border-radius:10px;
+}
+
+
+#able{
+     text-decoration: none;
+     padding:5%;
+     display:flex;  
+     
+}
+
+#able:hover {
+  background-color: white;
+  border-radius:10px;
+}
+
+#able:hover #ables{
+  color:blue;
+}
+
+#able:hover #ableicon{
+  color:yellow;
+}
+
+
+
+#ables{
+  color: white; 
+}
+
+#ableicon{
+  font-size: 21px;
+  color:white;
+}
+
+
+</style>
 
 <section id="section12">
   <div class="row" style="height: 100%">
@@ -6,20 +49,18 @@
       class="col-sm-2"
       style="background: rgb(143, 0, 255); height: 100%; padding-left: 2%"
     >
-      <div class="col-sm-12" style="border-bottom: 2px solid cyan">
+      <div class="col-sm-12" style="border-bottom: 2px solid cyan;">
         <h4 style="color: white">Days of the week</h4>
       </div>
-      <br />
-      <br />
-      <br />
-      <div class="col-sm-12">
-        <a href="#" id="able"> <p style="color: white">MONDAY</p></a>
-        <a href="#" id="able"><p style="color: white">TUESDAY</p></a>
-        <a href="#" id="able"><p style="color: white">WEDNESDAY</p></a>
-        <a href="#" id="able"><p style="color: white">THRUSDAY</p></a>
-        <a href="#" id="able"><p style="color: white">FRIDAY</p></a>
-        <a href="#" id="able"><p style="color: white">SATURDAY</p></a>
-        <a href="#" id="able"><p style="color: white">SUNDAY</p></a>
+     
+      <div class="col-sm-12" style="padding-top:20%;">
+        <a href="#" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> MONDAY</span></a><br />
+        <a href="#" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> TUESDAY</span></a><br />
+        <a href="#" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> WEDNESDAY</span></a><br />
+        <a href="#" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> THRUSDAY</span></a><br />
+        <a href="#" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> FRIDAY</span></a><br />
+        <a href="#" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> SATURDAY</span></a><br />
+        <a href="#" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> SUNDAY</span></a><br />
       </div>
     </div>
 
