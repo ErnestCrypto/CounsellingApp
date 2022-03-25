@@ -32,8 +32,6 @@ def loginPage(request):
         login = LoginForm(request.POST)
         person_id = request.POST.get('person_id')
         pin_log = request.POST.get('pin_log')
-        option = request.POST.get('option')
-        request.session['option'] = option
 
         user = Counsellor.objects.all()
         student = Students.objects.all()
@@ -87,13 +85,14 @@ def loginPage(request):
                 l_pin = arr_pin[u]
                 l_status = arr_status[u]
 
-                if str(l_user) == str(person_id) and str(l_pin) == str(pin_log) and str(l_status) == str(option):
+                if str(l_user) == str(person_id) and str(l_pin) == str(pin_log):
                     user_id = l_user
                     messages.success(
                         request, f'{l_title} { l_firstname}  {l_lastname} ')
                     obj = login.save(commit=False)
                     obj.person_firstname = l_firstname
                     obj.person_lastname = l_lastname
+                    obj.option = l_status
                     obj.save()
 
                     request.session['pk'] = user_id
@@ -107,13 +106,14 @@ def loginPage(request):
                 l_pin_student = arr_pin_student[u]
                 l_status_student = arr_status_student[u]
 
-                if str(l_user_student) == str(person_id) and str(l_pin_student) == str(pin_log) and str(l_status_student) == str(option):
+                if str(l_user_student) == str(person_id) and str(l_pin_student) == str(pin_log):
                     user_id_student = l_user_student
                     messages.success(
                         request, f' { l_firstname_student}  {l_lastname_student} ')
                     obj = login.save(commit=False)
                     obj.person_firstname = l_firstname_student
                     obj.person_lastname = l_lastname_student
+                    obj.status = l_status_student
                     obj.save()
 
                     request.session['pk'] = user_id_student

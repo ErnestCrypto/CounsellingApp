@@ -56,7 +56,9 @@
     display:block;
     animation-name: example;
     animation-duration: 1s;
+    overflow:hidden;
     overflow-y: scroll;
+
 
 }
 

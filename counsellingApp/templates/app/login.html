@@ -16,7 +16,7 @@
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  overflow-y : scroll;
+  overflow : hidden;
 }
 
 a {
@@ -48,6 +48,7 @@ h2 {
   width: 100%;
   min-height: 100%;
   padding: 20px;
+
 }
 
 #formContent {
@@ -55,7 +56,7 @@ h2 {
   border-radius: 10px 10px 10px 10px;
   background: #fff;
   padding: 30px;
-  width: 90%;
+  width: 100%;
   max-width: 450px;
   position: relative;
   padding: 0px;
@@ -274,7 +275,7 @@ select:placeholder {
 } 
 
 #icon {
-  width:60%;
+  width:40%;
 }
 
 
@@ -323,7 +324,7 @@ select:placeholder {
     {{ log.person_id }}
     {{ log.pin_log }}
     
-    {{log.option }}
+    {% comment %} {{log.option }} {% endcomment %}
    
 
 
