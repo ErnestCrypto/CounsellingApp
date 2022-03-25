@@ -20,15 +20,14 @@
       {% for object in objects%}<!---->
       {% if object.user_id == pk|add:0 %}
       <div class="container text-left">
-        <div class="row">
-          <form method="POST" action="" enctype="multipart/form-data">
-        {% csrf_token %}
+        <div class="col-sm-3">
           <h6 style="font-size: 20px">My Dashboard - {{object.user_id}}</h6>
         </div>
       </div>
    
-    
-     <div class="col-lg-3">
+     <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+     <div class="col-sm-3">
        
       <!--id="objectsprofile" -->
       {% if object.profile %}
