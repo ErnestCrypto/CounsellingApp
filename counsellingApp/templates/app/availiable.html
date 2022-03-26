@@ -22,11 +22,11 @@
 }
 
 #able:hover #ables{
-  color:blue;
+  color:#0000CD;
 }
 
 #able:hover #ableicon{
-  color:yellow;
+  color:#FFFF00;
 }
 
 
@@ -40,6 +40,13 @@
   color:white;
 }
 
+#day{
+    font-size: 18px;
+    font-weight:bold;
+    color:white;
+      text-shadow: 2px 2px 2px blue;
+
+}
 
 </style>
 
@@ -49,6 +56,7 @@
       class="col-sm-2"
       style="background: rgb(143, 0, 255); height: 100%; padding-left: 2%"
     >
+
       <div class="col-sm-12" style="border-bottom: 2px solid cyan;">
         <h4 style="color: white">Days of the week</h4>
       </div>
@@ -65,7 +73,46 @@
     </div>
 
     <div class="col-sm-10" style="padding: 2%; padding-right: 3%">
-      <div class="col-sm-12" id="avapad"></div>
+      <div class="col-sm-12" id="avapad">
+     <div class = "col-sm-12" style="padding: 2%;">
+       <p id = "day">MONDAY</p>
+       <hr>
+     </div>
+     <div class = "row">
+<div class="col-sm-3">
+<div class="form-group">
+  <input
+                  type="text"
+                  class="form-control"
+                />
+                <label for="usr"> Slots </label>
+
+</div>
+</div>
+<div class="col-sm-3">
+<div class="form-group">
+  <input
+                  type="text"
+                  class="form-control"
+                />
+                <label for="usr"> Hours </label>
+
+</div>
+</div>
+<div class="col-sm-3">
+<div class="form-group">
+  <input
+                  type="text"
+                  class="form-control"
+                />
+                <label for="usr"> Minutes </label>
+
+</div>
+</div>
+
+     </div>
+
+      </div>
     </div>
   </div>
 </section>
