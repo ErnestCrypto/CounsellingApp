@@ -66,33 +66,38 @@
       </div>
      
       <div class="col-sm-12" style="padding-top:20%;">
-        <a href="#" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> MONDAY</span></a><br />
-        <a href="#" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> TUESDAY</span></a><br />
-        <a href="#" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> WEDNESDAY</span></a><br />
-        <a href="#" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> THRUSDAY</span></a><br />
-        <a href="#" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> FRIDAY</span></a><br />
-        <a href="#" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> SATURDAY</span></a><br />
-        <a href="#" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> SUNDAY</span></a><br />
+        <a href="{% url 'counsellingUrls:days' 'MONDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> MONDAY</span></a><br />
+        <a href="{% url 'counsellingUrls:days' 'TUESDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> TUESDAY</span></a><br />
+        <a href="{% url 'counsellingUrls:days' 'WEDNESDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> WEDNESDAY</span></a><br />
+        <a href="{% url 'counsellingUrls:days' 'THRUSDAY' %}" id = "able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> THRUSDAY</span></a><br />
+        <a href="{% url 'counsellingUrls:days' 'FRIDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> FRIDAY</span></a><br />
+        <a href="{% url 'counsellingUrls:days' 'SATURDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> SATURDAY</span></a><br />
+        <a href="{% url 'counsellingUrls:days' 'SUNDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> SUNDAY</span></a><br />
       </div>
     </div>
 
     <div class="col-sm-10" style="padding: 2%; padding-right: 3%">
-      <div class="col-sm-12" id="avapad">
-     <div class = "col-sm-12" style="padding: 2%;">
-       <p id = "day">MONDAY</p>
+      <form action = "" method = "post">
+    <div class="col-sm-12" id="avapad">
+          <div class = "col-sm-12" style="padding: 2%;">
+       {% if day%}
+       <p id = "day">{{day}}</p>
+       {% else %}
+      <p id = "day">Please choose a day from the menu</p>
+       {% endif%}
        <hr>
      </div>
      <div class = "row">
-<div class="col-sm-3">
-<div class="form-group">
-  <input
+      <div class="col-sm-3">
+      <div class="form-group">
+        <input
                   type="text"
                   class="form-control"
                 />
                 <label for="usr"> Slots </label>
 
-</div>
-</div>
+                    </div>
+                    </div>
 <div class="col-sm-3">
 <div class="form-group">
   <input
@@ -124,6 +129,9 @@
   </div>
 </div>
       </div>
+       </form>
+
     </div>
+
   </div>
 </section>

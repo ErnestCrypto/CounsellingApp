@@ -175,12 +175,24 @@ def calender(request):
 
 def availiablePage(request, pk):
     pk = request.session['pk']
+    monday = "Monday"
 
     return render(request, 'app/availiable.html', {
         'pk': pk,
         'range': range(8),
         'rang': range(10),
+        'monday': monday,
 
+    })
+
+
+def days(request, day):
+    day = day
+    avail = Availability(day=day)
+    avail.save()
+
+    return render(request, 'app/availiable.html', {
+        'day': day,
     })
 
 
