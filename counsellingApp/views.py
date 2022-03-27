@@ -91,6 +91,7 @@ def loginPage(request):
                     obj.save()
 
                     request.session['pk'] = user_id
+                    request.session['counsellor'] = l_lastname
                     return redirect('counsellingUrls:indexPage', user_id)
 
             for u in range(len(arr_user_id_student)):
@@ -112,6 +113,7 @@ def loginPage(request):
                     obj.save()
 
                     request.session['pk'] = user_id_student
+                    request.session['counsellor'] = l_lastname
 
                     return redirect('counsellingUrls:indexPage', user_id_student)
 
@@ -188,7 +190,10 @@ def availiablePage(request, pk):
 
 def days(request, day):
     day = day
-    avail = Availability(day=day)
+    pk = request.session['pk']
+    counsellor_inst = Counsellor.objects.get(
+        user_id=pk)
+    avail = Availability(day=day, user_id=pk, counsellor=counsellor_inst)
     avail.save()
 
     return render(request, 'app/availiable.html', {
