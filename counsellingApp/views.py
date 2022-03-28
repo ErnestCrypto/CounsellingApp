@@ -193,8 +193,8 @@ def availiablePage(request, pk):
 def days(request, day):
     day = day
     availiable = AchievementForm()
-
     pk = request.session['pk']
+    object = Counsellor.objects.get(user_id=pk)
     counsellor_inst = Counsellor.objects.get(
         user_id=pk)
     avail = Availability(day=day, user_id=pk, counsellor=counsellor_inst)
@@ -203,6 +203,7 @@ def days(request, day):
     return render(request, 'app/availiable.html', {
         'day': day,
         'availiable': availiable,
+        'object': object,
 
     })
 
