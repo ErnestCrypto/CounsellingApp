@@ -196,8 +196,10 @@ def days(request, day):
     avail = Availability(day=day, user_id=pk, counsellor=counsellor_inst)
     avail.save()
 
+    availiable = AchievementForm()
     return render(request, 'app/availiable.html', {
         'day': day,
+        'availiable': availiable,
     })
 
 
