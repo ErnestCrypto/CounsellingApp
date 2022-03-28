@@ -6,6 +6,7 @@
     height:95%;
     box-shadow: 1px 1px 12px -5px;
     border-radius:10px;
+    overflow:scroll;
 }
 
 
@@ -90,7 +91,7 @@
      </div>
 
      {% for avail in availiable%}
-     <div class = "row">
+     <div class = "row" >
       <div class="col-sm-3">
       <div class="form-group">
         <input
@@ -98,7 +99,7 @@
                   class="form-control"
                 />
                 <label for="usr"> Slots </label>
-                
+               {{ avail.slot }}
 
                     </div>
                     </div>
@@ -143,8 +144,9 @@
 <!---->
 
   </div>
+        {% endfor %}
+
 </div>
-      {% endfor %}
 
       </div>
        </form>

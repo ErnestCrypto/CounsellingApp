@@ -178,28 +178,32 @@ def calender(request):
 def availiablePage(request, pk):
     pk = request.session['pk']
     monday = "Monday"
+    availiable = AchievementForm()
 
     return render(request, 'app/availiable.html', {
         'pk': pk,
         'range': range(8),
         'rang': range(10),
         'monday': monday,
+        'availiable': availiable,
 
     })
 
 
 def days(request, day):
     day = day
+    availiable = AchievementForm()
+
     pk = request.session['pk']
     counsellor_inst = Counsellor.objects.get(
         user_id=pk)
     avail = Availability(day=day, user_id=pk, counsellor=counsellor_inst)
     avail.save()
 
-    availiable = AchievementForm()
     return render(request, 'app/availiable.html', {
         'day': day,
         'availiable': availiable,
+
     })
 
 
