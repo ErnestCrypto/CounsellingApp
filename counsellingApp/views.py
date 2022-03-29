@@ -194,13 +194,18 @@ def days(request, day):
     pk = request.session['pk']
     counsellor_inst = Counsellor.objects.get(
         user_id=pk)
-    avail = Availability(day=day, user_id=pk, counsellor=counsellor_inst)
-    avail.save()
 
+    if request.method == "POST":
+        availiable = AvailabilityForm(request.POST)
+        if availiable.is_valid():
+            avails = availiable.save(commit=False)
+            avails.day = day
+            avails.user_id = pk
+            avails.counsellor = counsellor_inst
+            avails.save()
     return render(request, 'app/availiable.html', {
         'day': day,
         'availiable': availiable,
-        'range': range(8),
 
 
     })

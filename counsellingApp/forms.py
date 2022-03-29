@@ -64,8 +64,8 @@ class AvailabilityForm(ModelForm):
         exclude = ['counsellor', ]
         fields = "__all__"
         widgets = {
-            'minutes': forms.NumberInput(attrs={'class': 'form-control', 'type': 'text'}),
-            'hours': forms.NumberInput(attrs={'class': 'form-control', 'type': 'text'}),
+            'minutes': forms.Select(attrs={'class': 'form-control', 'id': 'focusid', }),
+            'hours': forms.Select(attrs={'class': 'form-control', 'id': 'focusid', }),
             'slots': forms.Select(attrs={'class': 'form-control', 'id': 'focusid'}),
             'day': forms.TextInput(attrs={'class': 'form-control',  'type': 'text'}),
 

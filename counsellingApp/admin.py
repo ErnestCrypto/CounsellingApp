@@ -70,8 +70,8 @@ class AchievementsAdmin(admin.ModelAdmin):
 
 @admin.register(Availability)
 class AvailabilityAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user_id', 'counsellor', 'day',
-                     ]
+    list_display = ['id', 'user_id', 'counsellor', 'day', 'slots', 'hours', 'minutes',
+                    ]
 
 
 @admin.register(Counsellor)

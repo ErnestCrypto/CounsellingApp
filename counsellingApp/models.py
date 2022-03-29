@@ -42,6 +42,7 @@ BOOKING = [
 ]
 
 SLOTS = [
+    ('0', '0'),
     ('1', '1'),
     ('2', '2'),
     ('3', '3'),
@@ -52,6 +53,21 @@ SLOTS = [
     ('8', '8'),
     ('9', '9'),
 
+]
+
+MINUTES = [
+    ('0', '0'),
+    ('5', '5'),
+    ('10', '10'),
+    ('15', '15'),
+    ('20', '20'),
+    ('25', '25'),
+    ('30', '30'),
+    ('35', '35'),
+    ('40', '40'),
+    ('45', '45'),
+    ('50', '50'),
+    ('55', '55'),
 ]
 
 
@@ -123,41 +139,43 @@ class Availability(models.Model):
         max_length=255, db_index=True, blank=True, null=True, default=None)
     day = models.CharField(default=None,
                            null=True, max_length=255, blank=True)
-    slots = models.IntegerField(choices = SLOTS, default=None, null=True, blank=True)
-    hours = models.IntegerField(
-        choices=SLOTS, default=None, null=True, blank=True)
-    minutes = models.IntegerField(default=None, null=True, blank=True)
+    slots = models.CharField(max_length=255,
+                             choices=SLOTS, default=None, null=True, blank=True)
+    hours = models.CharField(max_length=255,
+                             choices=SLOTS, default=None, null=True, blank=True)
+    minutes = models.CharField(max_length=255,
+                               choices=MINUTES, default=None, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "availabilities"
 
-    def check_overlap(self, fixed_start, fixed_end, new_start, new_end):
-        overlap = False
-        if new_start == fixed_end or new_end == fixed_start:  # edge case
-            overlap = False
-        elif (new_start >= fixed_start and new_start <= fixed_end) or (new_end >= fixed_start and new_end <= fixed_end):  # innner limits
-            overlap = True
-        elif new_start <= fixed_start and new_end >= fixed_end:  # outter limits
-            overlap = True
+    # def check_overlap(self, fixed_start, fixed_end, new_start, new_end):
+    #     overlap = False
+    #     if new_start == fixed_end or new_end == fixed_start:  # edge case
+    #         overlap = False
+    #     elif (new_start >= fixed_start and new_start <= fixed_end) or (new_end >= fixed_start and new_end <= fixed_end):  # innner limits
+    #         overlap = True
+    #     elif new_start <= fixed_start and new_end >= fixed_end:  # outter limits
+    #         overlap = True
 
-        return overlap
+    #     return overlap
 
-    def get_absolute_url(self):
-        url = reverse('admin:%s_%s_change' % (
-            self._meta.app_label, self._meta.model_name), args=[self.id])
-        return u'<a href="%s">%s</a>' % (url, str(self.start_time))
+    # def get_absolute_url(self):
+    #     url = reverse('admin:%s_%s_change' % (
+    #         self._meta.app_label, self._meta.model_name), args=[self.id])
+    #     return u'<a href="%s">%s</a>' % (url, str(self.start_time))
 
-    def clean(self):
-        if self.end_time <= self.start_time:
-            raise ValidationError('Ending times must after starting times')
+    # def clean(self):
+    #     if self.end_time <= self.start_time:
+    #         raise ValidationError('Ending times must after starting times')
 
-        events = Availability.objects.filter(day=self.day)
-        if events.exists():
-            for event in events:
-                if self.check_overlap(event.start_time, event.end_time, self.start_time, self.end_time):
-                    raise ValidationError(
-                        'There is an overlap with another event: ' + str(event.day) + ', ' + str(
-                            event.start_time) + '-' + str(event.end_time))
+    #     events = Availability.objects.filter(day=self.day)
+    #     if events.exists():
+    #         for event in events:
+    #             if self.check_overlap(event.start_time, event.end_time, self.start_time, self.end_time):
+    #                 raise ValidationError(
+    #                     'There is an overlap with another event: ' + str(event.day) + ', ' + str(
+    #                         event.start_time) + '-' + str(event.end_time))
 
 
 class Experience(models.Model):
