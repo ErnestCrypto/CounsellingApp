@@ -80,6 +80,7 @@
 
     <div class="col-sm-10" style="padding: 2%; padding-right: 3%">
       <form action = "" method = "post">
+        {% csrf_token %}
     <div class="col-sm-12" id="avapad">
           <div class = "col-sm-12" style="padding: 2%;">
        {% if day%}
@@ -91,34 +92,24 @@
      </div>
 
      <div class = "row" >
-            {% for avail in availiable%}
 
       <div class="col-sm-3">
       <div class="form-group">
-        <input
-                  type="text"
-                  class="form-control"
-                />
-                <label for="usr"> Slots </label>  
+        {{ availiable.slots }}
 
+                <label for="usr"> Slots </label>  
                     </div>
                     </div>
             <div class="col-sm-3">
             <div class="form-group">
-              <input
-                  type="text"
-                  class="form-control"
-                />
+             {{availiable.hours}}
                 <label for="usr"> Hours </label>
 
                 </div>
                 </div>
                 <div class="col-sm-3">
                 <div class="form-group">
-                  <input
-                  type="text"
-                  class="form-control"
-                />
+                  {{availiable.minutes}}
                 <label for="usr"> Minutes </label>
 
                     </div>
@@ -144,9 +135,9 @@
                             <!---->
 
                               </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
 
                           </div>
-       {% endfor %}
 
       </div>
        </form>
