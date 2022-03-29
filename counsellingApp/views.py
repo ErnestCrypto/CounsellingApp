@@ -183,7 +183,6 @@ def availiablePage(request, pk):
         'pk': pk,
         'range': range(8),
         'rang': range(10),
-
         'availiable': availiable,
 
     })
@@ -201,6 +200,8 @@ def days(request, day):
     return render(request, 'app/availiable.html', {
         'day': day,
         'availiable': availiable,
+        'range': range(8),
+
 
     })
 

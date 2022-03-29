@@ -41,6 +41,19 @@ BOOKING = [
     ('Approved', 'Approved'),
 ]
 
+SLOTS = [
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
+    ('4', '4'),
+    ('5', '5'),
+    ('6', '6'),
+    ('7', '7'),
+    ('8', '8'),
+    ('9', '9'),
+
+]
+
 
 class BaseModel(models.Model):
     title = models.CharField(choices=TITLE, default=None,
@@ -110,8 +123,9 @@ class Availability(models.Model):
         max_length=255, db_index=True, blank=True, null=True, default=None)
     day = models.CharField(default=None,
                            null=True, max_length=255, blank=True)
-    slots = models.IntegerField(default=None, null=True, blank=True)
-    hours = models.IntegerField(default=None, null=True, blank=True)
+    slots = models.IntegerField(choices = SLOTS, default=None, null=True, blank=True)
+    hours = models.IntegerField(
+        choices=SLOTS, default=None, null=True, blank=True)
     minutes = models.IntegerField(default=None, null=True, blank=True)
 
     class Meta:
