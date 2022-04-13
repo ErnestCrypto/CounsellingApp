@@ -38,10 +38,10 @@
 <div class="container">    
   <div class="row">
    {% for object in objects %}
-<div class=" col-sm-3">     
+<div class=" col-sm-5">     
       <div class="panel panel-warning" style="padding-bottom:3%;">
         <div class="panel-heading">{{object.title}} {{object.firstName}} {{object.lastName}}</div>
-        <div class="panel-body">
+        <div >
           {% if object.profile%}
           <img src="{{object.profile.url }}"   
           class="img-responsive" id = "what" alt="Image">
@@ -49,8 +49,9 @@
         {% else %}
       <!----><img
         src="{% static 'media/download.png' %}"
-        alt="profile"
-         class="img-responsive" style="width:30%;height:20%" alt="Image"
+        alt="profile" 
+        id = "what"
+         class="img-responsive" alt="Image"
       />
       {% endif %}
         

@@ -67,6 +67,7 @@
 
 #ables{
   color: white; 
+  font-family:Century Gothic;
 }
 
 #ableicon{
@@ -97,11 +98,11 @@
       style="background: rgb(143, 0, 255); height: 100%; padding-left: 2%"
     >
 
-      <div class="col-sm-12" style="border-bottom: 2px solid cyan;">
+      <div class="col-sm-12" style="border-bottom: 2px solid cyan;font-family:Times New Roman;">
         <h4 style="color: white">Days of the week</h4>
       </div>
      
-      <div class="col-sm-12" style="padding-top:20%;">
+      <div class="col-sm-12" style="padding-top:20%;font-family:Times New Roman;">
         <a href="{% url 'counsellingUrls:days' 'MONDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> MONDAY</span></a><br />
         <a href="{% url 'counsellingUrls:days' 'TUESDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> TUESDAY</span></a><br />
         <a href="{% url 'counsellingUrls:days' 'WEDNESDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> WEDNESDAY</span></a><br />
