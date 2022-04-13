@@ -36,8 +36,9 @@
           </p>
           <!---->
           {% else%}{% endif%} {% endfor%}
-        <div class="col-sm-3">
+        <div style="width:10%;">
           <div class="dropdown-content">
+            
             <a href="{% url 'counsellingUrls:loginPage'%}">LOGOUT</a>
           </div>
         </div>
@@ -115,9 +116,10 @@
 
       <div>
         <div class="container">
-          <p id="inputdate" />
+         <p id="inputdate" />
           <br />
           <hr />
+          <div class="col-sm-12">
           <div class="timetable-img text-center">
             <img src="img/content/timetable.png" alt="" />
           </div>
@@ -356,6 +358,7 @@
                 </tr>
               </tbody>
             </table>
+          </div>
           </div>
         </div>
       </div>

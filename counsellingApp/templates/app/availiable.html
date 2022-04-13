@@ -14,13 +14,44 @@
      text-decoration: none;
      padding:5%;
      display:flex;  
-     
+    
 }
 
 #able:hover {
   background-color: white;
   border-radius:10px;
+    animation: fadeIn 2s;
+  -webkit-animation: fadeIn 2s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
 }
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
 
 #able:hover #ables{
   color:#0000CD;
@@ -77,7 +108,11 @@
         <a href="{% url 'counsellingUrls:days' 'SATURDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> SATURDAY</span></a><br />
         <a href="{% url 'counsellingUrls:days' 'SUNDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> SUNDAY</span></a><br />
       </div>
+      <div>
+      <a href= "{% url 'counsellingUrls:dashboardPage' pk %} " style="color:white;">Back</a>
     </div>
+    </div>
+    
 
     <div class="col-sm-10" style="padding: 2%; padding-right: 3%">
       <form action = "" method = "post">
