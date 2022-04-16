@@ -50,7 +50,9 @@ urlpatterns = [
     path('test/', views.test, name='test'),
     path('details/<int:studentbook_student_id>',
          views.student_detail, name='student_details'),
-    path('days/<str:day>/', views.days, name='days'),
+    path('availiability/<str:pk>/<str:day>/', views.days, name='days'),
+    path('availiability/<str:pk>/<str:day>/time', views.time, name='time'),
+
     #     path("/dfadf/", views.CounsellorList.as_view(), name="kldjfad")
 
 ]

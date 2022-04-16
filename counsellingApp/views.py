@@ -188,7 +188,7 @@ def availiablePage(request, pk):
     })
 
 
-def days(request, day):
+def days(request, pk, day):
     day = day
     availiable = AvailabilityForm()
     pk = request.session['pk']
@@ -208,6 +208,17 @@ def days(request, day):
         'availiable': availiable,
         'pk': pk,
 
+
+    })
+
+
+def time(request, pk, day):
+    availiable = AvailabilityForm()
+
+    if request.method == 'POST':
+        availiable = AvailabilityForm(request.POST)
+        messages.success(request, "f{request.POST}")
+    return render(request, 'app/availiable.html', {
 
     })
 
