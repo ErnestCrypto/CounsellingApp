@@ -178,12 +178,14 @@ def calender(request):
 def availiablePage(request, pk):
     pk = request.session['pk']
     availiable = AchievementForm()
+    day = "Please choose a day from the menu"
 
     return render(request, 'app/availiable.html', {
         'pk': pk,
         'range': range(8),
         'rang': range(10),
         'availiable': availiable,
+        'day': day,
 
     })
 
@@ -216,9 +218,18 @@ def times(request, pk, day):
     hours = request.POST.get('hours')
     slots = request.POST.get('slots')
     minutes = request.POST.get('minutes')
-    messages.success(
-        request, f'{request.POST}-{slots}-{hours}-{minutes}-{day}')
-    return redirect('counsellingUrls:days', pk, day)
+    availiable = AvailabilityForm()
+    pk = request.session['pk']
+    if request.method == 'POST':
+        availiable = AvailabilityForm(request.POST)
+        if availiable.is_valid():
+            time = "time"
+
+    return render(request, 'app/availiable.html', {'time': time,
+                                                   'pk': pk,
+                                                   'day': day,
+                                                   'availiable': availiable,
+                                                   })
 
 
 def homePage(request, pk):

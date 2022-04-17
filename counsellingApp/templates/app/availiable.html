@@ -130,7 +130,12 @@
       <p id = "day">Please choose a day from the menu</p>
        {% endif%}
        <hr>
-     </div>
+       {% if time%}
+       <p> worked</p>
+       {% else %}
+<p> didn't work </p>
+{% endif%}
+      </div>
  <form action = "{% url 'counsellingUrls:times' pk day%}" method = "post">
         {% csrf_token %}
      <div class = "row" >
