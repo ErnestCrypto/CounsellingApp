@@ -131,7 +131,7 @@
        {% endif%}
        <hr>
      </div>
- <form action = "{% url 'counsellingUrls:time' pk day%}" method = "post">
+ <form action = "{% url 'counsellingUrls:times' pk day%}" method = "post">
         {% csrf_token %}
      <div class = "row" >
 

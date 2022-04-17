@@ -212,15 +212,13 @@ def days(request, pk, day):
     })
 
 
-def time(request, pk, day):
-    availiable = AvailabilityForm()
-
-    if request.method == 'POST':
-        availiable = AvailabilityForm(request.POST)
-        messages.success(request, "f{request.POST}")
-    return render(request, 'app/availiable.html', {
-
-    })
+def times(request, pk, day):
+    hours = request.POST.get('hours')
+    slots = request.POST.get('slots')
+    minutes = request.POST.get('minutes')
+    messages.success(
+        request, f'{request.POST}-{slots}-{hours}-{minutes}-{day}')
+    return redirect('counsellingUrls:days', pk, day)
 
 
 def homePage(request, pk):

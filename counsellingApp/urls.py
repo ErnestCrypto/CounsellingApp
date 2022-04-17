@@ -51,8 +51,7 @@ urlpatterns = [
     path('details/<int:studentbook_student_id>',
          views.student_detail, name='student_details'),
     path('availiability/<str:pk>/<str:day>/', views.days, name='days'),
-    path('availiability/<str:pk>/<str:day>/time', views.time, name='time'),
-
+    path('availiability/<str:pk>/<str:day>/times', views.times, name='times'),
     #     path("/dfadf/", views.CounsellorList.as_view(), name="kldjfad")
 
 ]
