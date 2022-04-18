@@ -177,7 +177,7 @@ def calender(request):
 
 def availiablePage(request, pk):
     pk = request.session['pk']
-    availiable = AchievementForm()
+    availiable = AvailabilityForm()
     day = "Please choose a day from the menu"
 
     return render(request, 'app/availiable.html', {
@@ -224,7 +224,8 @@ def times(request, pk, day):
         availiable = AvailabilityForm(request.POST)
         if availiable.is_valid():
             time = "time"
-
+    messages.success(
+        request, f'{request.POST}-{hours}-{slots}-{minutes}-{day}')
     return render(request, 'app/availiable.html', {'time': time,
                                                    'pk': pk,
                                                    'day': day,
