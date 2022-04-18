@@ -230,14 +230,14 @@ def times(request, pk, day):
     minutes_sec = minutes*60
     chosen_time = hours_sec + minutes_sec
     final = interval/chosen_time
-    finals = math.floor(final)
+    final_floor = math.floor(final)
 
     if request.method == 'POST':
         availiable = AvailabilityForm(request.POST)
         if availiable.is_valid():
 
             messages.success(
-                request, f'{request.POST}-{finals}-{slots}-{hours}-{minutes}-{day}')
+                request, f'{request.POST}-{final_floor}-{slots}-{hours}-{minutes}-{day}')
     return render(request, 'app/availiable.html', {
         'pk': pk,
         'day': day,
