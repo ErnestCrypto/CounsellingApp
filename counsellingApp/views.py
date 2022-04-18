@@ -14,6 +14,7 @@ import calendar
 from calendar import HTMLCalendar
 from django.core.mail import send_mail
 from django.core import mail
+import math
 
 
 def test(request):
@@ -179,23 +180,24 @@ def availiablePage(request, pk):
     pk = request.session['pk']
     availiable = AvailabilityForm()
     day = "MONDAY"
-
+    instruction = "instruction"
     return render(request, 'app/availiable.html', {
         'pk': pk,
         'range': range(8),
         'rang': range(10),
         'availiable': availiable,
         'day': day,
+        'instruction': instruction,
 
     })
 
 
 def days(request, pk, day):
-    day = day
     availiable = AvailabilityForm()
     pk = request.session['pk']
     counsellor_inst = Counsellor.objects.get(
         user_id=pk)
+    instruction = "instruction"
 
     if request.method == "POST":
         availiable = AvailabilityForm(request.POST)
@@ -209,6 +211,7 @@ def days(request, pk, day):
         'day': day,
         'availiable': availiable,
         'pk': pk,
+        'instruction': instruction,
 
 
     })
@@ -220,20 +223,25 @@ def times(request, pk, day):
     minutes = int(request.POST.get('minutes'))
     availiable = AvailabilityForm()
     pk = request.session['pk']
-    start = 420  # time in minutes for 7:00 am
-    end = 1140  # time in minutes for 7:00 pm
-    hours_min = hours*60
-    chosen_time = hours_min + minutes
+    start = 25200  # time in seconds for 7:00 am
+    end = 68400  # time in seconds for 7:00 pm
+    interval = start - end
+    hours_sec = hours*3600
+    minutes_sec = minutes*60
+    chosen_time = hours_sec + minutes_sec
+    final = interval/chosen_time
+    finals = math.floor(final)
 
     if request.method == 'POST':
         availiable = AvailabilityForm(request.POST)
         if availiable.is_valid():
 
             messages.success(
-                request, f'{request.POST}-{chosen_time}-{slots}-{minutes}-{day}')
+                request, f'{request.POST}-{finals}-{slots}-{hours}-{minutes}-{day}')
     return render(request, 'app/availiable.html', {
         'pk': pk,
         'day': day,
+        'ran': range(10),
         'availiable': availiable,
     })
 

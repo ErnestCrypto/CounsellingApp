@@ -79,7 +79,7 @@
     font-size: 18px;
     font-weight:bold;
     color:white;
-      text-shadow: 2px 2px 2px blue;
+      text-shadow: 2px 2px 2px red;
 
 }
 
@@ -90,12 +90,13 @@
 
 
 </style>
-
+{% comment %} background: rgb(143, 0, 255);  {% endcomment %}
 <section id="section12">
   <div class="row" style="height: 100%">
     <div
       class="col-sm-2"
-      style="background: rgb(143, 0, 255); height: 100%; padding-left: 2%"
+      style="background:var(--red);
+      height: 100%; padding-left: 2%"
     >
 
       <div class="col-sm-12" style="border-bottom: 2px solid cyan;font-family:Times New Roman;">
@@ -159,7 +160,7 @@
                     </div>
                     </div>
                    <div class="col-sm-3">
-     <button type="submit" class="btn btn-success">
+     <button type="submit" class="btn btn-danger">
        <i class="fa fa-clock"></i> 
        Generate time</button>
                    </div>
@@ -173,12 +174,23 @@
                       <div class="col-sm-12" >
                         <p id = "period">Periods</p>
                         <hr>
+                        {% if instruction %}
+                        <p>After selecting a day,kindly select your prefered slot number, number of hours 
+                          and the corresponding 
+                          minutes you would like to spend in your meeting for that particular day
+                           after which you can click on the generate time button to generate your 
+                           availiable time intervals for that day.
+                        </p>
+                        {% else %}{% endif %}
                          
                             <div class ="row">
                           <!---->
+                          {% for n in ran %}
                       <div class = "col-sm-4" 
                       style="border-right: 1px solid rgba(0, 0, 0, 0.1);
-                      border-bottom: 1px solid rgba(0, 0, 0, 0.1);padding-top:1%;padding-bottom:1%;">
+                      border-bottom: 1px solid rgba(0, 0, 0, 0.1);padding-top:1%;padding-bottom:1%;
+                      border:1px solid rgba(0, 0, 0, 0.1);
+                      ">
                                <div class = "col-sm-5">
                               
                   {{availiable.startime}}
@@ -195,13 +207,14 @@
                                  {{availiable.not_availiable}} Not availiable
                               </div>
                            </div>
+                           {% endfor %}
                           <!---->
                           
                             <!---->
                               </div> 
                               <br><br>
                               <div style = "padding-bottom:2%;">
-      <button type="submit" class="btn btn-primary" >Submit</button>
+      <button type="submit" class="btn btn-danger" >Submit</button>
       </div>
 </div>
                           </div>
