@@ -70,7 +70,7 @@ class AvailabilityForm(ModelForm):
             'day': forms.TextInput(attrs={'class': 'form-control',  'type': 'text'}),
             'startime': forms.TextInput(attrs={'class': 'form-control',  'type': 'text'}),
             'endtime': forms.TextInput(attrs={'class': 'form-control',  'type': 'text'}),
-            'not_availiable': forms.CheckboxInput(attrs={'class': ' checkbox form-control', }),
+            'not_availiable': forms.CheckboxInput(attrs={}),
 
 
         }
