@@ -178,7 +178,7 @@ def calender(request):
 def availiablePage(request, pk):
     pk = request.session['pk']
     availiable = AvailabilityForm()
-    day = "Please choose a day from the menu"
+    day = "MONDAY"
 
     return render(request, 'app/availiable.html', {
         'pk': pk,
@@ -215,22 +215,27 @@ def days(request, pk, day):
 
 
 def times(request, pk, day):
-    hours = request.POST.get('hours')
-    slots = request.POST.get('slots')
-    minutes = request.POST.get('minutes')
+    hours = int(request.POST.get('hours'))
+    slots = int(request.POST.get('slots'))
+    minutes = int(request.POST.get('minutes'))
     availiable = AvailabilityForm()
     pk = request.session['pk']
+    start = 420  # time in minutes for 7:00 am
+    end = 1140  # time in minutes for 7:00 pm
+    hours_min = hours*60
+    chosen_time = hours_min + minutes
+
     if request.method == 'POST':
         availiable = AvailabilityForm(request.POST)
         if availiable.is_valid():
-            time = "time"
-    messages.success(
-        request, f'{request.POST}-{hours}-{slots}-{minutes}-{day}')
-    return render(request, 'app/availiable.html', {'time': time,
-                                                   'pk': pk,
-                                                   'day': day,
-                                                   'availiable': availiable,
-                                                   })
+
+            messages.success(
+                request, f'{request.POST}-{chosen_time}-{slots}-{minutes}-{day}')
+    return render(request, 'app/availiable.html', {
+        'pk': pk,
+        'day': day,
+        'availiable': availiable,
+    })
 
 
 def homePage(request, pk):

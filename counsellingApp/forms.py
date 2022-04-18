@@ -66,8 +66,12 @@ class AvailabilityForm(ModelForm):
         widgets = {
             'minutes': forms.Select(attrs={'class': 'form-control', 'id': 'focusid', }),
             'hours': forms.Select(attrs={'class': 'form-control', 'id': 'focusid', }),
-            'slots': forms.Select(attrs={'class': 'form-control', 'id': 'focusid'}),
+            'slots': forms.Select(attrs={'class': 'form-control', 'id': 'focusid', }),
             'day': forms.TextInput(attrs={'class': 'form-control',  'type': 'text'}),
+            'startime': forms.TextInput(attrs={'class': 'form-control',  'type': 'text'}),
+            'endtime': forms.TextInput(attrs={'class': 'form-control',  'type': 'text'}),
+            'not_availiable': forms.CheckboxInput(attrs={'class': ' checkbox form-control', }),
+
 
         }
 

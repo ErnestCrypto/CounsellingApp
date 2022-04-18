@@ -140,11 +140,16 @@ class Availability(models.Model):
     day = models.CharField(default=None,
                            null=True, max_length=255, blank=True)
     slots = models.CharField(max_length=255,
-                             choices=SLOTS, default=None, null=True, blank=True)
+                             choices=SLOTS, default='0', null=True, blank=True)
     hours = models.CharField(max_length=255,
-                             choices=SLOTS, default=None, null=True, blank=True)
+                             choices=SLOTS, default='0', null=True, blank=True)
     minutes = models.CharField(max_length=255,
-                               choices=MINUTES, default=None, null=True, blank=True)
+                               choices=MINUTES, default='0', null=True, blank=True)
+    startime = models.CharField(
+        max_length=255, default=None, null=True, blank=True)
+    endtime = models.CharField(
+        max_length=255, default=None, null=True, blank=True)
+    not_availiable = models.BooleanField(default=None, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "availabilities"
