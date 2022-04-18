@@ -223,25 +223,26 @@ def times(request, pk, day):
     minutes = int(request.POST.get('minutes'))
     availiable = AvailabilityForm()
     pk = request.session['pk']
-    start = 25200  # time in seconds for 7:00 am
-    end = 68400  # time in seconds for 7:00 pm
-    interval = start - end
-    hours_sec = hours*3600
-    minutes_sec = minutes*60
-    chosen_time = hours_sec + minutes_sec
-    final = interval/chosen_time
-    final_floor = math.floor(final)
 
     if request.method == 'POST':
         availiable = AvailabilityForm(request.POST)
         if availiable.is_valid():
+            start = 25200  # time in seconds for 7:00 am
+            end = 68400  # time in seconds for 7:00 pm
+            interval = start - end
+            hours_sec = hours*3600
+            minutes_sec = minutes*60
+            chosen_time = hours_sec + minutes_sec
+            final = interval/chosen_time
+            final_floor = int(math.floor(final))
+            ran = range(-final_floor)
 
             messages.success(
-                request, f'{request.POST}-{final_floor}-{slots}-{hours}-{minutes}-{day}')
+                request, f'{request.POST}-{final_floor}-{ran}-{slots}-{hours}-{minutes}-{day}')
     return render(request, 'app/availiable.html', {
         'pk': pk,
         'day': day,
-        'ran': range(10),
+        'ran': ran,
         'availiable': availiable,
     })
 
