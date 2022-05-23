@@ -84,6 +84,7 @@ class CounsellorForm(ModelForm):
         fields = "__all__"
         widgets = {
             'title': forms.Select(attrs={'class': 'form-control', 'id': 'focusid', }),
+            'status': forms.Select(attrs={'class': 'form-control', 'id': 'focusid', }),
             'firstName': forms.TextInput(attrs={'class': 'form-control'}),
             'lastName': forms.TextInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'class': 'form-control'}),

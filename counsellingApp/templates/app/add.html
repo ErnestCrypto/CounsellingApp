@@ -1,0 +1,206 @@
+{% include 'app/header.html' %} {% include 'app/home.html' %}{% load static%}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+{% block body %}{% endblock %}
+
+<body>
+  <section id="section6container3" >
+    <div style="height:98%;" >
+    <div class ="col-sm-12">
+      {% for object in objects%}<!---->
+      {% if object.user_id == pk|add:0 %}
+      <div class="container text-left">
+        <div class="col-sm-3">
+          <h6 style="font-size: 20px">Create new counsellor </h6>
+          
+        </div>
+      </div>
+   
+     <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+     <div class="col-sm-3">
+       
+      <!--id="objectsprofile" -->
+      {% if object.profile %}
+     
+        <!----><img
+          src="{{object.profile.url}}"
+          alt="profile"
+          class="img-thumbnail"
+          id="objectsprofile"
+          
+        />
+        
+     
+      {% else %}
+      <!----><img
+        src="{% static 'media/download.png' %}"
+        alt="profile"
+        class="img-thumbnail"
+        id="objectsprofile"
+      />
+
+      {% endif %}
+     
+      
+            </div>
+      
+         <div>
+         </div>
+      
+        <div class="container-fluid bg-3 text-left" >
+          <div class="row" >
+            
+
+             
+        
+            <div class="col-sm-3">
+              <div class="form-group">
+                 {{counsellor.title }}
+                <label for="usr"> Title </label>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.firstName}}"
+                />
+                {% endcomment %} {{counsellor.firstName}}
+                <!---->
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+                <label for="usr">First Name</label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.lastName}}"
+                />
+                {% endcomment %} {{counsellor.lastName}}
+                <!---->
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+                <label for="usr">Last Name</label>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                {{counsellor.gender}}
+                <label for="usr">Gender</label>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %} {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.email}}"
+                />
+                {% endcomment %} {{counsellor.email}}
+                <label for="usr">Email</label>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.occupation}}"
+                />
+                {% endcomment %} {{counsellor.occupation}}
+                <!---->
+
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+                <label for="usr">Occupation</label>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %} {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.contact}}"
+                />
+                {% endcomment %} {{counsellor.contact}}
+                <label for="usr">Contact</label>
+              </div>
+            </div>
+             <div class="col-sm-3">
+              <div class="form-group">
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %} {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.contact}}"
+                />
+                {% endcomment %} {{counsellor.status}}
+                <label for="usr">status</label>
+              </div>
+            </div>
+            <div class="col-sm-5" >
+              <div class="form-group">
+                {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.firstName}}"
+                />
+                {% endcomment %} {{counsellor.profile }}
+                <!---->
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+                <label for="usr">Update Profile Pic</label>
+              </div>
+            </div>
+          </div>
+        </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+{% else%}
+{% endif %}
+{% endfor %}        <!---->
+        <!---->
+   </section>
+
+</body>

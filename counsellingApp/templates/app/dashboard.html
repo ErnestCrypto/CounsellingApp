@@ -21,7 +21,7 @@
       {% if object.user_id == pk|add:0 %}
       <div class="container text-left">
         <div class="col-sm-3">
-          <h6 style="font-size: 20px">My Dashboard - {{object.user_id}}</h6>
+          <h6 style="font-size: 20px">{{object.firstName}} Profile - {{object.user_id}}</h6>
           
         </div>
       </div>
@@ -551,7 +551,7 @@
     </div>
   </diV>
     <div id="footer6">
-    <a href="{% url 'counsellingUrls:adminPage' pk %}" id="adminPage">
+    <a href="{% url 'counsellingUrls:adminPage' pk 'dashboard' %}" id="adminPage">
       <i
         class="fas fa-circle"
         aria-hidden="true"

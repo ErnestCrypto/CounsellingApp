@@ -2,15 +2,16 @@
 <!---->
 {% load static%}
 
-<section id="section6container1">
-  <div style="height: 98%; overflow-x: hidden; overflow-y: scroll">
-    <div>
+<section id="section6container1" class="col-sm-10">
+  <div>
+    <div> {% for object in objects%}<!---->
+       {% if object.user_id == pk|add:0 %}  
       <div id="toprightcontent6">
-        <p id="panel">ADMIN PANEL</p>
+        <p id="panel">{{object.firstName}} PANEL</p>
       </div>
       <div id="topleftcontent6">
-        {% for object in objects%}<!---->
-        {% if object.user_id == pk|add:0 %}
+       
+       
         <!---->
         {% if object.profile %}
         <img
@@ -36,16 +37,18 @@
           </p>
           <!---->
           {% else%}{% endif%} {% endfor%}
-
+        <div style="width:10%;">
           <div class="dropdown-content">
+            
             <a href="{% url 'counsellingUrls:loginPage'%}">LOGOUT</a>
           </div>
+        </div>
         </div>
       </div>
       <div id="midcontent6">
         <p id="midtext">Profile</p>
       </div>
-      <div class="container">
+      <div class="col-sm-12">
         <div class="row">
           <div class="col-lg-3 col-sm-6">
             <div class="card-box bg-blue">
@@ -56,7 +59,10 @@
               <div class="icon">
                 <i class="fas fa-book"></i>
               </div>
-              <a href="#" class="card-box-footer" id="settingsPage"
+              <a
+                href="{% url 'counsellingUrls:settingsPage' pk %}"
+                class="card-box-footer"
+                id="settingsPage"
                 >View More <i class="fa fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -65,22 +71,24 @@
           <div class="col-lg-3 col-sm-6">
             <div class="card-box bg-green">
               <div class="inner">
-                <h3>{{bookings}}</h3>
-                <p>Total Students</p>
+                <h3>{{pk}}</h3>
+                <p>Profile</p>
               </div>
               <div class="icon">
                 <i class="fa fa-graduation-cap" aria-hidden="true"></i>
               </div>
-              <a href="#" class="card-box-footer"
-                >View More <i class="fa fa-arrow-circle-right"></i
+              <a
+                href="{% url 'counsellingUrls:dashboardPage' pk %}"
+                class="card-box-footer"
+                >Edit profile <i class="fa fa-arrow-circle-right"></i
               ></a>
             </div>
           </div>
           <div class="col-lg-3 col-sm-6">
             <div class="card-box bg-orange">
               <div class="inner">
-                <h3>{{ meetingcount }}</h3>
-                <p>Total Meetings</p>
+                <h3>{{ count }}</h3>
+                 <p>Total Counsellors</p>
               </div>
               <div class="icon">
                 <i class="fa fa-handshake" aria-hidden="true"></i>
@@ -93,13 +101,13 @@
           <div class="col-lg-3 col-sm-6">
             <div class="card-box bg-red">
               <div class="inner">
-                <h3>{{ count }}</h3>
-                <p>Total Counsellors</p>
+                <h3>Add <i class="fa fa-plus"></i></h3>
+                <p>Counsellor</p>
               </div>
               <div class="icon">
                 <i class="fa fa-users"></i>
               </div>
-              <a href="#" class="card-box-footer"
+              <a href="{% url 'counsellingUrls:addcounsellor' pk%}" class="card-box-footer"
                 >View More <i class="fa fa-arrow-circle-right"></i
               ></a>
             </div>
@@ -109,321 +117,16 @@
 
       <div>
         <div class="container">
-          <p id="inputdate" />
+         <p id="inputdate" />
           <br />
           <hr />
-          <div class="timetable-img text-center">
-            <img src="img/content/timetable.png" alt="" />
-          </div>
-          <div class="table-responsive">
-            <table class="table table-bordered text-center">
-              <thead>
-                <tr class="bg-light-gray">
-                  <th class="text-uppercase">Time</th>
-                  <th class="text-uppercase">Monday</th>
-                  <th class="text-uppercase">Tuesday</th>
-                  <th class="text-uppercase">Wednesday</th>
-                  <th class="text-uppercase">Thursday</th>
-                  <th class="text-uppercase">Friday</th>
-                  <th class="text-uppercase">Saturday</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="align-middle">09:00am</td>
-                  <td>
-                    <span
-                      class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Dance</span
-                    >
-                    <div class="margin-10px-top font-size14">9:00-10:00</div>
-                    <div class="font-size13 text-light-gray">Ivana Wong</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Yoga</span
-                    >
-                    <div class="margin-10px-top font-size14">9:00-10:00</div>
-                    <div class="font-size13 text-light-gray">Marta Healy</div>
-                  </td>
-
-                  <td>
-                    <span
-                      class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Music</span
-                    >
-                    <div class="margin-10px-top font-size14">9:00-10:00</div>
-                    <div class="font-size13 text-light-gray">Ivana Wong</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Dance</span
-                    >
-                    <div class="margin-10px-top font-size14">9:00-10:00</div>
-                    <div class="font-size13 text-light-gray">Ivana Wong</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Art</span
-                    >
-                    <div class="margin-10px-top font-size14">9:00-10:00</div>
-                    <div class="font-size13 text-light-gray">Kate Alley</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >English</span
-                    >
-                    <div class="margin-10px-top font-size14">9:00-10:00</div>
-                    <div class="font-size13 text-light-gray">James Smith</div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="align-middle">10:00am</td>
-                  <td>
-                    <span
-                      class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Music</span
-                    >
-                    <div class="margin-10px-top font-size14">10:00-11:00</div>
-                    <div class="font-size13 text-light-gray">Ivana Wong</div>
-                  </td>
-                  <td class="bg-light-gray"></td>
-                  <td>
-                    <span
-                      class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Art</span
-                    >
-                    <div class="margin-10px-top font-size14">10:00-11:00</div>
-                    <div class="font-size13 text-light-gray">Kate Alley</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Yoga</span
-                    >
-                    <div class="margin-10px-top font-size14">10:00-11:00</div>
-                    <div class="font-size13 text-light-gray">Marta Healy</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >English</span
-                    >
-                    <div class="margin-10px-top font-size14">10:00-11:00</div>
-                    <div class="font-size13 text-light-gray">James Smith</div>
-                  </td>
-                  <td class="bg-light-gray"></td>
-                </tr>
-
-                <tr>
-                  <td class="align-middle">11:00am</td>
-                  <td>
-                    <span
-                      class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Break</span
-                    >
-                    <div class="margin-10px-top font-size14">11:00-12:00</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Break</span
-                    >
-                    <div class="margin-10px-top font-size14">11:00-12:00</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Break</span
-                    >
-                    <div class="margin-10px-top font-size14">11:00-12:00</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Break</span
-                    >
-                    <div class="margin-10px-top font-size14">11:00-12:00</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Break</span
-                    >
-                    <div class="margin-10px-top font-size14">11:00-12:00</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-lightred padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Break</span
-                    >
-                    <div class="margin-10px-top font-size14">11:00-12:00</div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="align-middle">12:00pm</td>
-                  <td class="bg-light-gray"></td>
-                  <td>
-                    <span
-                      class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Art</span
-                    >
-                    <div class="margin-10px-top font-size14">12:00-1:00</div>
-                    <div class="font-size13 text-light-gray">Kate Alley</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-sky padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Dance</span
-                    >
-                    <div class="margin-10px-top font-size14">12:00-1:00</div>
-                    <div class="font-size13 text-light-gray">Ivana Wong</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Music</span
-                    >
-                    <div class="margin-10px-top font-size14">12:00-1:00</div>
-                    <div class="font-size13 text-light-gray">Ivana Wong</div>
-                  </td>
-                  <td class="bg-light-gray"></td>
-                  <td>
-                    <span
-                      class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Yoga</span
-                    >
-                    <div class="margin-10px-top font-size14">12:00-1:00</div>
-                    <div class="font-size13 text-light-gray">Marta Healy</div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="align-middle">01:00pm</td>
-                  <td>
-                    <span
-                      class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >English</span
-                    >
-                    <div class="margin-10px-top font-size14">1:00-2:00</div>
-                    <div class="font-size13 text-light-gray">James Smith</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Music</span
-                    >
-                    <div class="margin-10px-top font-size14">1:00-2:00</div>
-                    <div class="font-size13 text-light-gray">Ivana Wong</div>
-                  </td>
-                  <td class="bg-light-gray"></td>
-                  <td>
-                    <span
-                      class="bg-pink padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >English</span
-                    >
-                    <div class="margin-10px-top font-size14">1:00-2:00</div>
-                    <div class="font-size13 text-light-gray">James Smith</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Yoga</span
-                    >
-                    <div class="margin-10px-top font-size14">1:00-2:00</div>
-                    <div class="font-size13 text-light-gray">Marta Healy</div>
-                  </td>
-                  <td>
-                    <span
-                      class="bg-yellow padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white font-size16 xs-font-size13"
-                      >Music</span
-                    >
-                    <div class="margin-10px-top font-size14">1:00-2:00</div>
-                    <div class="font-size13 text-light-gray">Ivana Wong</div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          
         </div>
       </div>
     </div>
   </div>
-  <div id="footer6">
-    <a href="{% url 'counsellingUrls:adminPage' pk %}" id="adminPage">
-      <i
-        class="fas fa-circle"
-        aria-hidden="true"
-        id="elementID6"
-        type="submit"
-        method="GET"
-      >
-      </i>
-    </a>
-
-    <a href="{% url 'counsellingUrls:settingsPage' pk %}" id="settingsPage">
-      <i
-        class="fas fa-circle"
-        aria-hidden="true"
-        id="elementID6"
-        type="submit"
-        method="GET"
-      >
-      </i>
-    </a>
-
-    <a href="{% url 'counsellingUrls:dashboardPage' pk %}" id="dashboardPage">
-      <i
-        class="fas fa-circle"
-        aria-hidden="true"
-        id="elementID6"
-        type="submit"
-        method="GET"
-      >
-      </i>
-    </a>
-  </div>
+ 
 </section>
-
-{% comment %}
-<script>
-  document.getElementById("adminPage").addEventListener("click", myFunctions1);
-  document
-    .getElementById("settingsPage")
-    .addEventListener("click", myFunctions2);
-  document
-    .getElementById("settingPage")
-    .addEventListener("click", myFunctions2);
-
-  document
-    .getElementById("dashboardPage")
-    .addEventListener("click", myFunctions3);
-
-  function myFunctions1() {
-    document.getElementById("section6container1").style.display = "block";
-    document.getElementById("section6container2").style.display = "none";
-    document.getElementById("section6container3").style.display = "none";
-  }
-
-  function myFunctions2() {
-    document.getElementById("section6container1").style.display = "none";
-    document.getElementById("section6container2").style.display = "block";
-    document.getElementById("section6container3").style.display = "none";
-  }
-
-  function myFunctions3() {
-    document.getElementById("section6container1").style.display = "none";
-    document.getElementById("section6container2").style.display = "none";
-    document.getElementById("section6container3").style.display = "block";
-  }
-</script>
-{% endcomment %}
 
 <script>
   // Get all the tabs

@@ -192,19 +192,22 @@
                       border:1px solid rgba(0, 0, 0, 0.1);
                       ">
                                <div class = "col-sm-5">
-                              
-                  {{availiable.startime}}
+        <input class = "form-control" type= "text" name= "start_time" value="7:00"/>
+                  {% comment %} {{availiable.startime}} {% endcomment %}
                               </div>
                                <div class = "col-sm-1">
                               -
                               </div>
                                <div class = "col-sm-5">
-                              
-                           {{availiable.endtime}}
+      <input class = "form-control" type= "text" name= "end_time" value="7:00"/>
+
+                           {% comment %} {{availiable.endtime}} {% endcomment %}
 
                           </div>
                               <div class = "col-sm-3">
-                                 {{availiable.not_availiable}} Not availiable
+ <input  type= "checkbox" name= "checkbox"/> Not available
+
+                                 {% comment %} {{availiable.not_availiable}} Not availiable {% endcomment %}
                               </div>
                            </div>
                            {% endfor %}

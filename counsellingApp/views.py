@@ -93,7 +93,8 @@ def loginPage(request):
 
                     request.session['pk'] = user_id
                     request.session['counsellor'] = l_lastname
-                    return redirect('counsellingUrls:indexPage', user_id)
+                    home = 'red'
+                    return redirect('counsellingUrls:indexPage', user_id, home)
 
             for u in range(len(arr_user_id_student)):
 
@@ -126,7 +127,7 @@ def loginPage(request):
     })
 
 
-def superadminPage(request, pk):
+def superadminPage(request, pk, admin):
     objects = Counsellor.objects.all()
     count = Counsellor.objects.all().count()
     bookcount = Bookings.objects.filter(counsellor_user_id=pk).count()
@@ -136,10 +137,11 @@ def superadminPage(request, pk):
     students = Students.objects.all()
 
     request.session['pk'] = pk
-
+    admin = 'red'
     return render(request, 'app/super.html', {
         'objects': objects,
         'pk': pk,
+        'admin': admin,
         'count': count,
         'bookings': bookings,
         'meetings': meetings,
@@ -149,7 +151,50 @@ def superadminPage(request, pk):
     })
 
 
-def adminPage(request, pk):
+def addcounsellor(request, pk):
+    red = 'red'
+    admin = 'app/admin.html'
+    profile = 'app/profile.html'
+    notification = 'app/notification.html'
+    index = 'app/index.html'
+    counsellor = CounsellorForm()
+    objects = Counsellor.objects.all()
+    request.session['pk'] = pk
+
+    if request.method == 'POST':
+
+        counsellor = CounsellorForm(request.POST, request.FILES)
+
+        if counsellor.is_valid():
+            counsellor.save()
+
+            messages.success(
+                request, 'Counsellor has been created successfully')
+
+        else:
+            counsellor = CounsellorForm()
+
+            messages.error(
+                request, 'Failed to create counsellor account, please check your details')
+
+    return render(request, 'app/add.html', {'profile': profile,
+                                            'notification': notification,
+                                            'index': index,
+                                            'admin': admin,
+                                            'counsellor':  counsellor,
+
+                                            'Counsellor': counsellor,
+                                            'objects': objects,
+                                            'pk': pk,
+
+
+                                            'admin': red,
+                                            }
+
+                  )
+
+
+def adminPage(request, pk, dashboard):
     objects = Counsellor.objects.all()
     count = Counsellor.objects.all().count()
     bookcount = Bookings.objects.filter(counsellor_user_id=pk).count()
@@ -157,13 +202,14 @@ def adminPage(request, pk):
     bookings = Bookings.objects.all().count()
     meetings = Meetings.objects.all().count()
     students = Students.objects.all()
-
+    dashboard = 'red'
     request.session['pk'] = pk
 
     return render(request, 'app/admin.html', {
         'objects': objects,
         'students': students,
         'pk': pk,
+        'dashboard': dashboard,
         'count': count,
         'bookings': bookings,
         'meetings': meetings,
@@ -261,6 +307,7 @@ def homePage(request, pk):
 
 
 def dashboardPage(request, pk):
+    dashboard = 'red'
     admin = 'app/admin.html'
     profile = 'app/profile.html'
     notification = 'app/notification.html'
@@ -474,7 +521,7 @@ def dashboardPage(request, pk):
                                                   'ther': ther,
                                                   'spec': spec,
                                                   'students': students,
-
+                                                  'dashboard': dashboard,
                                                   }
 
                   )
@@ -485,27 +532,29 @@ def settingsPage(request, pk):
     request.session['pk'] = pk
     studentbooks = Bookings.objects.all()
     students = Students.objects.all()
-
+    dashboard = 'red'
     return render(request, 'app/settings.html', {
         'objects': objects,
         'pk': pk,
         'studentbooks': studentbooks,
         'students': students,
+        'dashboard': dashboard,
 
     }
 
     )
 
 
-def indexPage(request, pk):
+def indexPage(request, pk, home):
     objects = Counsellor.objects.all()
     request.session['pk'] = pk
     students = Students.objects.all()
-
+    home = 'red'
     return render(request, 'app/index.html', {
         'objects': objects,
         'students': students,
         'pk': pk,
+        'home': home,
     })
 
 
@@ -514,30 +563,32 @@ def popupPage(request, object_user_id):
     pk = request.session['pk']
     user_id = object_user_id
     students = Students.objects.all()
-
+    home = 'red'
     return render(request, 'app/popup.html', {
         'objects': objects,
         'pk': pk,
+        'home': home,
         'user_id': user_id,
         'students': students,
     })
 
 
-def notificationPage(request, pk):
+def notificationPage(request, pk, notify):
     objects = Counsellor.objects.all()
     request.session['pk'] = pk
     students = Students.objects.all()
     notification = Notifications.objects.all().order_by('-id')
-
+    notify = 'red'
     return render(request, 'app/notification.html', {
         'objects': objects,
         'pk': pk,
+        'notify': notify,
         'students': students,
         'notification': notification,
     })
 
 
-def profilePage(request, pk):
+def profilePage(request, pk, profile):
     objects = Counsellor.objects.all()
     obj_ach = Achievement.objects.all()
     obj_avai = Availability.objects.all()
@@ -546,11 +597,12 @@ def profilePage(request, pk):
     obj_spe = Specialities.objects.all()
     request.session['pk'] = pk
     students = Students.objects.all()
-
+    profile = 'red'
     return render(request, 'app/profile.html', {
         'students': students,
         'objects': objects,
         'pk': pk,
+        'profile': profile,
         'obj_ach': obj_ach,
         'obj_avai': obj_avai,
         'obj_exp': obj_exp,
@@ -567,7 +619,7 @@ def student_detail(request, studentbook_student_id):
     pk = request.session['pk']
     notifications = NotificationsForm()
     studentbook_student_id = studentbook_student_id
-
+    dashboard = 'red'
     if request.method == 'POST':
         notifications = NotificationsForm(request.POST)
         ob = CounsellorForm(request.POST)
@@ -609,6 +661,7 @@ def student_detail(request, studentbook_student_id):
     return render(request, 'app/student.html', {
         'students': students,
         'objects': objects,
+        'dashboard': dashboard,
         'pk': pk,
         'notifications': notifications,
         'studentbook_student_id': studentbook_student_id,
@@ -616,6 +669,7 @@ def student_detail(request, studentbook_student_id):
 
 
 def search(request, pk):
+    profile = 'red'
     pk = request.session['pk']
     students = Students.objects.all()
 
@@ -640,6 +694,7 @@ def search(request, pk):
             'post': post,
             'search': search,
             'pk': pk,
+            'profile': profile,
             'objects': objects,
             'students': students,
 
