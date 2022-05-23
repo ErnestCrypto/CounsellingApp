@@ -21,7 +21,7 @@
       {% if object.user_id == pk|add:0 %}
       <div class="container text-left">
         <div class="col-sm-3">
-          <h6 style="font-size: 20px">Create new counsellor </h6>
+          <h6 style="font-size: 20px">Create a new counsellor </h6>
           
         </div>
       </div>
@@ -194,8 +194,8 @@
             </div>
           </div>
         </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-
+        <a href = "{% url 'counsellingUrls:superadminPage' pk 'admin'%}">Back</a>
+     <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 {% else%}
 {% endif %}
