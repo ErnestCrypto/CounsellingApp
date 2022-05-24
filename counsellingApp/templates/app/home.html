@@ -32,15 +32,15 @@
 
       <ul>
         <li>
-          <a href="{% url 'counsellingUrls:indexPage' pk %}">
-            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+          <a href="{% url 'counsellingUrls:indexPage' pk 'home' %}">
+            <span class="icon" style = "color:{{home}}"><ion-icon name="home-outline"></ion-icon></span>
             <span class="title">Home</span>
           </a>
         </li>
 
         <li>
-          <a href="{% url 'counsellingUrls:notificationPage' pk %}">
-            <span class="icon"
+          <a href="{% url 'counsellingUrls:notificationPage' pk 'notify'%}">
+            <span class="icon" style = "color:{{notify}}"
               ><ion-icon name="chatbubble-ellipses-outline"></ion-icon>
             </span>
             <span class="title">Notifications</span>
@@ -48,9 +48,20 @@
         </li>
 
         <li>
-          <a href="{% url 'counsellingUrls:profilePage' pk %}">
-            <span class="icon"><ion-icon name="cloud-outline"></ion-icon></span>
+          <a href="{% url 'counsellingUrls:profilePage' pk 'profile' %}">
+            <span class="icon" style = "color:{{profile}}"><ion-icon name="cloud-outline"></ion-icon></span>
             <span class="title">Profile</span>
+          </a>
+        </li>
+
+         <li>
+          <a
+            href="www.universtyofghana.com"
+          >
+            <span class="icon"
+              ><ion-icon name="cloud-outline"></ion-icon></ion-icon
+            ></span>
+            <span class="title">UG WEBSITE</span>
           </a>
         </li>
 
@@ -68,8 +79,8 @@
       {% elif object.status == 'COUNSELLOR'%}
       <ul>
         <li>
-          <a href="{% url 'counsellingUrls:adminPage' pk %}">
-            <span class="icon"
+          <a href="{% url 'counsellingUrls:adminPage' pk 'dashboard'%}">
+            <span class="icon" style = "color:{{dashboard}}"
               ><ion-icon name="people-outline"></ion-icon
             ></span>
             <span class="title">Dashboard</span>
@@ -77,15 +88,15 @@
         </li>
 
         <li>
-          <a href="{% url 'counsellingUrls:indexPage' pk %}">
-            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+          <a href="{% url 'counsellingUrls:indexPage' pk 'home'%}">
+            <span class="icon" style = "color:{{home}}" ><ion-icon name="home-outline"></ion-icon></span>
             <span class="title">Home</span>
           </a>
         </li>
 
         <li>
-          <a href="{% url 'counsellingUrls:notificationPage' pk %}">
-            <span class="icon"
+          <a href="{% url 'counsellingUrls:notificationPage' pk 'notify'%}">
+            <span class="icon" style = "color:{{notify}}"
               ><ion-icon name="chatbubble-ellipses-outline"></ion-icon>
             </span>
             <span class="title">Notifications</span>
@@ -93,8 +104,8 @@
         </li>
 
         <li>
-          <a href="{% url 'counsellingUrls:profilePage' pk %}">
-            <span class="icon"><ion-icon name="cloud-outline"></ion-icon></span>
+          <a href="{% url 'counsellingUrls:profilePage' pk 'profile'%}">
+            <span class="icon" style = "color:{{profile}}"><ion-icon name="cloud-outline"></ion-icon></span>
             <span class="title">Profile</span>
           </a>
         </li>
@@ -178,15 +189,15 @@
 
       <ul>
         <li>
-          <a href="{% url 'counsellingUrls:indexPage' pk %}">
-            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+          <a href="{% url 'counsellingUrls:indexPage' pk 'home' %}">
+            <span class="icon" style = "color:{{home}}" ><ion-icon name="home-outline"></ion-icon></span>
             <span class="title">Home</span>
           </a>
         </li>
 
         <li>
-          <a href="{% url 'counsellingUrls:notificationPage' pk %}">
-            <span class="icon"
+          <a href="{% url 'counsellingUrls:notificationPage' pk 'notify'%}">
+            <span class="icon" style = "color:{{notify}}"
               ><ion-icon name="chatbubble-ellipses-outline"></ion-icon>
             </span>
             <span class="title">Notifications</span>
@@ -194,9 +205,20 @@
         </li>
 
         <li>
-          <a href="{% url 'counsellingUrls:profilePage' pk %}">
-            <span class="icon"><ion-icon name="cloud-outline"></ion-icon></span>
+          <a href="{% url 'counsellingUrls:profilePage' pk 'profile'%}">
+            <span class="icon" style = "color:{{profile}}"><ion-icon name="cloud-outline"></ion-icon></span>
             <span class="title">Profile</span>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="www.universtyofghana.com"
+          >
+            <span class="icon"
+              ><ion-icon name="cloud-outline"></ion-icon
+            ></span>
+            <span class="title">UG WEBSITE</span>
           </a>
         </li>
 

@@ -23,6 +23,7 @@ def test(request):
 
 def loginPage(request):
     login = LoginForm()
+    home = 'red'
 
     if request.method == "POST":
         login = LoginForm(request.POST)
@@ -83,8 +84,7 @@ def loginPage(request):
 
                 if str(l_user) == str(person_id) and str(l_pin) == str(pin_log):
                     user_id = l_user
-                    messages.success(
-                        request, f'{l_title} { l_firstname}  {l_lastname} ')
+
                     obj = login.save(commit=False)
                     obj.person_firstname = l_firstname
                     obj.person_lastname = l_lastname
@@ -106,8 +106,7 @@ def loginPage(request):
 
                 if str(l_user_student) == str(person_id) and str(l_pin_student) == str(pin_log):
                     user_id_student = l_user_student
-                    messages.success(
-                        request, f' { l_firstname_student}  {l_lastname_student} ')
+
                     obj = login.save(commit=False)
                     obj.person_firstname = l_firstname_student
                     obj.person_lastname = l_lastname_student
@@ -117,7 +116,7 @@ def loginPage(request):
                     request.session['pk'] = user_id_student
                     request.session['counsellor'] = l_lastname
 
-                    return redirect('counsellingUrls:indexPage', user_id_student)
+                    return redirect('counsellingUrls:indexPage', user_id_student, home)
 
         else:
             messages.error(request, '-- Please check your credentials --')
@@ -315,8 +314,6 @@ def times(request, pk, day):
             final_floor = int(math.floor(final))
             ran = range(-final_floor)
 
-            messages.success(
-                request, f'{request.POST}-{final_floor}-{ran}-{slots}-{hours}-{minutes}-{day}')
     return render(request, 'app/availiable.html', {
         'pk': pk,
         'day': day,
