@@ -9,8 +9,15 @@ app_name = 'counsellingUrls'
 urlpatterns = [
     path('', views.loginPage, name="loginPage"),
     path('search/<str:pk>', views.search, name="search"),
+    path('del/<str:object_id>',
+         views.del_counsellor, name="del_counsellor"),
+    path('all_counsellors/<str:pk>',
+         views.counsellor_list, name="all_counsellors"),
+
     path('admindashboard/<str:pk>/<str:admin>/',
          views.superadminPage, name="superadminPage"),
+    path('list/<str:pk>/',
+         views.list, name="list"),
     path('counsellors/<str:pk>/', views.addcounsellor, name="addcounsellor"),
     path('dashboard/<str:pk>/<str:dashboard>/',
          views.adminPage, name="adminPage"),

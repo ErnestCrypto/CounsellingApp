@@ -195,11 +195,32 @@
 
 }
 
+#section13{
+     display: block;
+    width: 83.3%;
+    float: right;
+    height: 100%;
+    overflow-y: scroll;
+    animation-name: example;
+    animation-duration: 1s;
+   padding:2%;
+   margin:0%;
+}
 
 
+#listpic{
+    
+    width:10%;
+    height:100%;
+    float:left;
+}
 
-
-
+#deletelist{
+    width: 10%;
+    text-decoration:none;
+    float:right;
+    
+}
 
 
 

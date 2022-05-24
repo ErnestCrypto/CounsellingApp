@@ -1,0 +1,41 @@
+{% load static %} {% include 'app/header.html'%} {% include 'app/home.html'%}
+<section id = "section13">
+<h3>Total counsellors - {{count}}</h3>
+<hr>
+{% for object in objects%}
+
+<div style =" height:15%">
+        {% if object.profile %}
+<img
+src="{{ object.profile.url}}" 
+class="img-thumbnail"
+id = "listpic"
+alt="profile"
+        />
+{% else %}
+ <img
+src="{% static 'media/download.png' %}" 
+id = "listpic"
+class="img-thumbnail"
+alt="profile"
+        />
+{% endif %}
+
+<div style= "width:80%;padding-left:5%;float:left;">
+<div class = "col-sm-3" ><p style="font-weight:bold;margin:0%;width:35%;float:left;">Title:</p> {{ object.title}}</div>
+<div class = "col-sm-3" ><p style="font-weight:bold;margin:0%;width:45%;float:left;">Firstname:</p> {{ object.firstName}}</div>
+<div class = "col-sm-3" ><p style="font-weight:bold;margin:0%;width:45%;float:left;">Lastname:</p> {{ object.lastName}}</div>
+<div class = "col-sm-3" ><p style="font-weight:bold;margin:0%;width:35%;float:left;">Gender:</p> {{ object.gender}}</div>
+<div class = "col-sm-3" ><p style="font-weight:bold;margin:0%;width:35%;float:left;">Contact:</p> {{ object.contact}}</div>
+<div class = "col-sm-3" ><p style="font-weight:bold;margin:0%;width:35%;float:left;">Status:</p> {{ object.status}}</div>
+<div class = "col-sm-5" ><p style="font-weight:bold;margin:0%;width:19.8%;float:left;">Email:</p> {{ object.email}}</div>
+<div class = "col-sm-7" ><p style="font-weight:bold;margin:0%;width:20%;float:left;">Occupation:</p> {{ object.occupation}}</div>
+</div>
+
+<a href="{% url 'counsellingUrls:del_counsellor' object.id %}" id = "deletelink" class = "btn btn-danger"> Delete </a>
+</div>
+
+<hr>
+{% endfor %}
+        </div>
+</section>

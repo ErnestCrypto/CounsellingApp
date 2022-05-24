@@ -151,6 +151,38 @@ def superadminPage(request, pk, admin):
     })
 
 
+def list(request, pk):
+    admin = 'red'
+    count = Counsellor.objects.all().count()
+    objects = Counsellor.objects.all()
+    return render(request, 'app/list.html', {
+        'objects': objects,
+        'pk': pk,
+        'admin': admin,
+        'count': count,
+
+    })
+
+
+def del_counsellor(request, object_id):
+    pk = request.session['pk']
+    counsellor = Counsellor.objects.get(id=object_id)
+    counsellor.delete()
+    return redirect('counsellingUrls:list', pk)
+
+
+def counsellor_list(request, pk):
+    dashboard = 'red'
+    count = Counsellor.objects.all().count()
+    objects = Counsellor.objects.all()
+    return render(request, 'app/counsellors.html', {
+        'objects': objects,
+        'pk': pk,
+        'dashboard': dashboard,
+        'count': count,
+    })
+
+
 def addcounsellor(request, pk):
     red = 'red'
     admin = 'app/admin.html'
