@@ -120,9 +120,9 @@
          <p id="inputdate" />
           <br />
           <hr />
-              
+             
           
-          <div id="chartDiv" style="width:50%; height:300px; margin:0 auto;">
+          <div id="chartDiv" style="width:50%; height:250px;">
 
             
           </div>
@@ -131,7 +131,10 @@
       </div>
     </div>
   </div>
- 
+  {% for book in books %}
+ {{ book.student_name}}
+  {{ book.student_name.all.count}}
+ {% endfor %}
 </section>
 
 <script>
@@ -159,4 +162,21 @@
   day = date.getDate();
   document.getElementById("inputdate").innerHTML =
     month + "/" + day + "/" + year;
+</script>
+
+<script>
+  JSC.Chart('chartDiv', {
+   type: 'horizontal column',
+   series: [
+      {
+        
+         points: [
+         {% for book in books %}
+            {x: {{ book.student_name }}, y: {{ book.student_name }} },
+            {% endfor %}
+         ]
+      }
+   ]
+});
+
 </script>

@@ -313,3 +313,13 @@ class Students(models.Model):
 
     class Meta:
         verbose_name_plural = "Students"
+
+
+"""
+KA PMB 36 KIA Accra, Ghana
+
+ Digital Address: GL – 125 – 6946
+
++233 (0) 302 550 612
+
+"""

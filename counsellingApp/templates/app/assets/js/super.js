@@ -1,5 +1,4 @@
 
-<script>
   JSC.Chart('chartDiv', {
    type: 'horizontal column',
    series: [
@@ -12,4 +11,3 @@
    ]
 });
 
-</script>

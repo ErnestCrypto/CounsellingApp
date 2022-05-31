@@ -132,6 +132,7 @@ def superadminPage(request, pk, admin):
     bookcount = Bookings.objects.filter(counsellor_user_id=pk).count()
     meetingcount = Meetings.objects.filter(counsellor_user_id=pk).count()
     bookings = Bookings.objects.all().count()
+    books = Bookings.objects.all()
     meetings = Meetings.objects.all().count()
     students = Students.objects.all()
 
@@ -140,6 +141,7 @@ def superadminPage(request, pk, admin):
     return render(request, 'app/super.html', {
         'objects': objects,
         'pk': pk,
+        'books': books,
         'admin': admin,
         'count': count,
         'bookings': bookings,
