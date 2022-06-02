@@ -302,6 +302,8 @@ def times(request, pk, day):
     minutes = int(request.POST.get('minutes'))
     availiable = AvailabilityForm()
     pk = request.session['pk']
+    start_time = "7:00"
+    end_time = "7:00"
 
     if request.method == 'POST':
         availiable = AvailabilityForm(request.POST)
@@ -321,6 +323,8 @@ def times(request, pk, day):
         'day': day,
         'ran': ran,
         'availiable': availiable,
+        'start_time': start_time,
+        'end_time': end_time,
     })
 
 
