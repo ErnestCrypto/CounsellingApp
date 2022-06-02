@@ -9,7 +9,8 @@
  
 
 #section1 {
-    background: var(--blue);
+      background:var(--blue);  
+{% comment %} background : url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUejKV4EHprHXPL4kE9vySjpkinshfTxCrNOIReRWz2m4mQaQpXq5yJXLjXfYGhpBgZsU&usqp=CAU");    {% endcomment %}
     padding-bottom: 22.7%;
     {% comment %} width: 15%; {% endcomment %}
     float: left;
@@ -19,9 +20,19 @@
 
 }
 
+#poly{
+    background : url("https://halftonepro.com/images/rednoise.png");   
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+   
+}
 
 
 #section3 {
+    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 100%;
     width: 83.3%;
     float: right;
@@ -34,6 +45,9 @@
 }
 
 #section4 {
+    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    background-size: cover;
+    background-repeat: no-repeat;
     display: block;
     {% comment %} width: 85%; {% endcomment %}
     float: right;
@@ -45,6 +59,9 @@
 }
 
 #section5 {
+    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    background-size: cover;
+    background-repeat: no-repeat;
 
     width: 83.3%;
     float: right;
@@ -61,6 +78,9 @@
 
 
 #section6 {
+    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    background-size: cover;
+    background-repeat: no-repeat;
     {% comment %} width: 85%; {% endcomment %}
     float: right;
     padding: 0%;
@@ -73,6 +93,10 @@
 
 }
 #section6container1 {
+    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+        background-size: cover;
+
+    background-repeat: no-repeat;
     padding: 1%;
    
     {% comment %} width:85%; {% endcomment %}
@@ -89,6 +113,9 @@
 }
 
 #section6container2 {
+    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 1%;
        {% comment %} width:85%; {% endcomment %}
     height:100%;
@@ -101,6 +128,9 @@
 }
 
 #section6container3 {
+    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 1%;
        width:83.3%;
     height:100%;
@@ -118,10 +148,13 @@
 
 
 #section7 {
+    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    background-size: cover;
+    background-repeat: no-repeat;
     display: block;
     {% comment %} width: 85%; {% endcomment %}
     float: right;
-    height: 100%;
+    height:100%;
     overflow: hidden;
     animation-name: example;
     animation-duration: 1s;
@@ -148,9 +181,12 @@
 }
 
 #section9 {
+    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    background-size: cover;
+    background-repeat: no-repeat;
     display: block;
     width: 100%; 
-    height: 100%;
+    height:100%;
     overflow:hidden;
     animation-name: example;
     animation-duration: 1s;
@@ -160,6 +196,9 @@
 
 
 #section10{
+    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    background-size: cover;
+    background-repeat: no-repeat;
  display: block;
     width: 83.3%;
     float: right;
@@ -171,6 +210,9 @@
 }
 
 #section11{
+    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    background-size: cover;
+    background-repeat: no-repeat;
     display: block;
     width: 83.3%;
     float: right;
@@ -184,6 +226,9 @@
 
 
 #section12{
+    background : url("https://static.vecteezy.com/system/resources/previews/003/367/750/original/free-abstract-low-poly-crystal-background-abstract-polygonal-free-vector.jpg");   
+    background-size: cover;
+    background-repeat: no-repeat;
    display: block;
     width: 100%;
     float: right;
@@ -196,6 +241,9 @@
 }
 
 #section13{
+    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    background-size: cover;
+    background-repeat: no-repeat;
      display: block;
     width: 83.3%;
     float: right;
