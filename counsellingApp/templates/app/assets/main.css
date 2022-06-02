@@ -6,10 +6,36 @@
     overflow: hidden;
 
 }
+@keyframes bgcolor {
+    0% {
+        background-color: #D98880 
+    }
+
+    30% {
+        background-color: #A569BD 
+    }
+
+    60% {
+        background-color: #85C1E9 
+    }
+
+    90% {
+        background-color:  #3498DB
+    }
+
+    100% {
+        background-color: #1F618D 
+    }
+}
  
 
-#section1 {
-      background:var(--blue);  
+#section1 { 
+     -webkit-animation: bgcolor 20s infinite;
+    animation: bgcolor 50s infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+
+      {% comment %} background:var(--blue);   {% endcomment %}
 {% comment %} background : url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUejKV4EHprHXPL4kE9vySjpkinshfTxCrNOIReRWz2m4mQaQpXq5yJXLjXfYGhpBgZsU&usqp=CAU");    {% endcomment %}
     padding-bottom: 22.7%;
     {% comment %} width: 15%; {% endcomment %}
@@ -1941,6 +1967,7 @@ body {
     margin: 0;
     font-weight: bold;
     font-family: Montserrat;
+    color:rgba(255,255,255,0.9);
 }
 
 #profilepic6 {
