@@ -308,7 +308,7 @@ def times(request, pk, day):
     if request.method == 'POST':
         availiable = AvailabilityForm(request.POST)
         if availiable.is_valid():
-            start = 25200  # time in seconds for 7:00 am
+            start = 28800  # time in seconds for 7:00 am
             end = 68400  # time in seconds for 7:00 pm
             interval = start - end
             hours_sec = hours*3600
@@ -317,14 +317,39 @@ def times(request, pk, day):
             final = interval/chosen_time
             final_floor = int(math.floor(final))
             ran = range(-final_floor)
+            d_ran = final_floor * 2
+            d_ran = range(-d_ran)
+            break_time = 600
+            t_time = chosen_time - break_time
 
+            arr_start_time = []
+            arr_end_time = []
+
+            # for i in ran:
+            #     arr_start_time.append(t_time)
+            for i in d_ran:
+                f_start = int(math.floor(start/3600))
+                rm = start - f_start
+                m_start = int(rm % 3600)
+                if f_start <= 12:
+                    f_start = f_start
+                else:
+                    f_start = f_start - 12
+
+                starts = str(f_start) + \
+                    ":" + str(m_start)
+                arr_start_time.append(starts)
+                start = start + chosen_time
+
+            for u in range(len(arr_start_time)):
+                l_start = arr_start_time[u]
+                messages.success(request, f"{l_start}")
     return render(request, 'app/availiable.html', {
         'pk': pk,
         'day': day,
         'ran': ran,
         'availiable': availiable,
-        'start_time': start_time,
-        'end_time': end_time,
+        'start_time': l_start,
     })
 
 

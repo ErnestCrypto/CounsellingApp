@@ -172,7 +172,9 @@
                     <form action = "{% url 'counsellingUrls:days' pk day%}" method = "POST">
                       {% csrf_token %}
                       <div class="col-sm-12" >
-                        <p id = "period">Periods</p>
+                        <p id = "period">Periods - Please note that office hours are
+                          between 8:00 am and 7:00 pm
+                        </p>
                         <hr>
                         {% if instruction %}
                         <p>After selecting a day,kindly select your prefered slot number, number of hours 
@@ -185,6 +187,7 @@
                          
                             <div class ="row">
                           <!---->
+                          
                           {% for n in ran %}
                       <div class = "col-sm-4" 
                       style="border-right: 1px solid rgba(0, 0, 0, 0.1);
@@ -199,7 +202,7 @@
                               -
                               </div>
                                <div class = "col-sm-5">
-      <input class = "form-control" type= "text" name= "end_time" value="{{end_time}}"/>
+      <input class = "form-control" type= "text" name= "end_time" value="{{start_time}}"/>
 
                            {% comment %} {{availiable.endtime}} {% endcomment %}
 
