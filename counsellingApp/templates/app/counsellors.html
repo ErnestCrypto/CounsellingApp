@@ -1,6 +1,6 @@
 {% load static %} {% include 'app/header.html'%} {% include 'app/home.html'%}
 <section id = "section13">
-<h3>Total counsellors - {{count}}</h3>
+<h3 style ="color: white;">Total counsellors - {{count}}</h3>
 <hr>
 {% for object in objects%}
 
@@ -22,8 +22,11 @@ alt="profile"
 {% endif %}
 
 <div style= "width:80%;padding-left:5%;float:left;">
+<div style= "width:100%;height:100%;float:left; background:rgba(255,255,255,0.8);border-radius:5px;">
+
 <div class = "col-sm-3" ><p style="font-weight:bold;margin:0%;width:35%;float:left;">Title:</p> {{ object.title}}</div>
 <div class = "col-sm-3" ><p style="font-weight:bold;margin:0%;width:45%;float:left;">Firstname:</p> {{ object.firstName}}</div>
+      
 <div class = "col-sm-3" ><p style="font-weight:bold;margin:0%;width:45%;float:left;">Lastname:</p> {{ object.lastName}}</div>
 <div class = "col-sm-3" ><p style="font-weight:bold;margin:0%;width:35%;float:left;">Gender:</p> {{ object.gender}}</div>
 <div class = "col-sm-3" ><p style="font-weight:bold;margin:0%;width:35%;float:left;">Contact:</p> {{ object.contact}}</div>
@@ -31,7 +34,7 @@ alt="profile"
 <div class = "col-sm-5" ><p style="font-weight:bold;margin:0%;width:19.8%;float:left;">Email:</p> {{ object.email}}</div>
 <div class = "col-sm-7" ><p style="font-weight:bold;margin:0%;width:20%;float:left;">Occupation:</p> {{ object.occupation}}</div>
 </div>
-
+</div>
 </div>
 
 <hr>
