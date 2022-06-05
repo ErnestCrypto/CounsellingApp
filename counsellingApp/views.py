@@ -312,7 +312,7 @@ def times(request, pk, day):
             end = 68400  # time in seconds for 7:00 pm
             interval = end - start
             hours_sec = hours*3600
-            minutes_sec = 0
+            minutes_sec = minutes * 60
             chosen_time = hours_sec + minutes_sec
             final = interval/chosen_time
             if hours == 5:
@@ -320,7 +320,7 @@ def times(request, pk, day):
             else:
                 final_floor = int(math.floor(final))
             ran = range(final_floor)
-            d_ran = (final_floor * 2)+1
+            d_ran = final_floor * 2
             d_ran = range(d_ran)
             break_time = 600
             t_time = chosen_time - break_time
