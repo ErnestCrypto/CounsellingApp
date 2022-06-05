@@ -21,7 +21,7 @@
       {% if object.user_id == pk|add:0 %}
       <div class="container text-left">
         <div class="col-sm-3">
-          <h6 style="font-size: 20px">{{object.firstName}} Profile - {{object.user_id}}</h6>
+          <h6 style="font-size: 20px;color:white;">{{object.firstName}} Profile - {{object.user_id}}</h6>
           
         </div>
       </div>
@@ -216,7 +216,7 @@
         <!---->
 
         <div class="container-fluid bg-3 text-left">
-          <h6 style="font-size: 20px">About</h6>
+          <h6 style="font-size: 20px;color:white;">About</h6>
           <hr style="margin: 0%" />
           <br />
 
@@ -246,7 +246,7 @@
         <br />
         <!---->
         <div class="container-fluid bg-3 text-left">
-          <h6 style="font-size: 20px">Availability</h6>
+          <h6 style="font-size: 20px;color:white;">Availability</h6>
           <hr style="margin: 0%" />
            <br />
           <a href= "{% url 'counsellingUrls:availiablePage' pk  %}" class="btn btn-info add-last">
@@ -257,7 +257,7 @@
         <!---->
 
         <div class="container-fluid bg-3 text-left">
-          <h6 style="font-size: 20px">Experience</h6>
+          <h6 style="font-size: 20px;color:white;">Experience</h6>
           <hr style="margin: 0%" />
           <br />
           <br />
@@ -272,7 +272,7 @@
                   {{ experience.experience_institution }}
                   <!---->{% comment %}
                   <input type="text" class="form-control" /> {% endcomment %}
-                  <label for="usr">Institution</label>
+                  <label for="usr" style="background-color: white;padding:2%;">Institution</label>
                 </div>
               </div>
               <div class="col-sm-3">
@@ -282,7 +282,7 @@
                 >
                   {{experience.experience_position}} {% comment %}
                   <input type="text" class="form-control" /> {% endcomment %}
-                  <label for="usr">Position</label>
+                  <label for="usr" style="background-color: white;padding:2%;">Position</label>
                 </div>
               </div>
               <div class="col-sm-1">
@@ -315,7 +315,7 @@
         <!---->
         <!---->
         <div class="container-fluid bg-3 text-left">
-          <h6 style="font-size: 20px">Education</h6>
+          <h6 style="font-size: 20px;color:white;">Education</h6>
           <hr style="margin: 0%" />
           <br />
           <br />
@@ -330,7 +330,7 @@
                   {{ education.education_institution }}
                   <!---->{% comment %}
                   <input type="text" class="form-control" /> {% endcomment %}
-                  <label for="usr">Institution</label>
+                  <label for="usr" style="background-color: white;padding:2%;">Institution</label>
                 </div>
               </div>
               <div class="col-sm-3">
@@ -340,7 +340,7 @@
                 >
                   {{ education.year_completed }} {% comment %}
                   <input type="text" class="form-control" /> {% endcomment %}
-                  <label for="usr">Year completed</label>
+                  <label for="usr" style="background-color: white;padding:2%;">Year completed</label>
                 </div>
               </div>
               <div class="col-sm-1">
@@ -373,7 +373,7 @@
         <!---->
         <!---->
         <div class="container-fluid bg-3 text-left">
-          <h6 style="font-size: 20px">Achievements</h6>
+          <h6 style="font-size: 20px;color:white;">Achievements</h6>
           <hr style="margin: 0%" />
           <br />
 
@@ -396,7 +396,7 @@
                   />
                   {% endcomment %}
                   <div class="input-group-btn">
-                 <a href ="{% url 'counsellingUrls:achievement_add' ach.id %}">
+                 <a href ="#">
 
                     <button
                       style="font-size: 20px"
@@ -407,7 +407,7 @@
                     </button></a>
                   </div>
                    <div class="input-group-btn">
-                 <a href ="{% url 'counsellingUrls:achievement_del' ach.id %}">
+                 <a href ="#">
                   
                     <button
                     style="font-size: 20px"
@@ -427,7 +427,7 @@
 
         <!---->
         <div class="container-fluid bg-3 text-left">
-          <h6 style="font-size: 20px">Therapies Offered</h6>
+          <h6 style="font-size: 20px;color:white;">Therapies Offered</h6>
           <hr style="margin: 0%" />
           <br />
 
@@ -483,7 +483,7 @@
 
         <!---->
         <div class="container-fluid bg-3 text-left">
-          <h6 style="font-size: 20px">Top Specialities</h6>
+          <h6 style="font-size: 20px;color:white;">Top Specialities</h6>
           <hr style="margin: 0%" />
           <br />
 

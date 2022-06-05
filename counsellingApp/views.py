@@ -315,9 +315,17 @@ def times(request, pk, day):
             minutes_sec = minutes * 60
             chosen_time = hours_sec + minutes_sec
             final = interval/chosen_time
-            if hours == 5:
+            if (hours == 0):
                 final_floor = int(math.ceil(final))
-            else:
+            elif (hours == 1):
+                final_floor = int(math.ceil(final))
+            elif(hours == 2):
+                final_floor = int(math.floor(final))
+            elif(hours == 3):
+                final_floor = int(math.floor(final))
+            elif(hours == 4):
+                final_floor = int(math.floor(final))
+            elif(hours == 5):
                 final_floor = int(math.floor(final))
             ran = range(final_floor)
             d_ran = final_floor * 2
@@ -359,7 +367,7 @@ def times(request, pk, day):
                 mine = add.append('END')
 
             subTime = [add[n:n+2] for n in range(0, len(add), 2)]
-            messages.success(request, f"{time} ")
+            messages.success(request, f"{final_floor} ")
 
             # mylist_n = [j for i in subTime for j in i]
             # some = []

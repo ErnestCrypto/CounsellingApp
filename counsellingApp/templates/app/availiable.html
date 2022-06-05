@@ -11,15 +11,17 @@
 
 
 #able{
+  font-family: Times New Roman;
+
     
      text-decoration: none;
      padding:5%;
      display:flex;
-     font-family: Helvetica;  
     
 }
 
 #able:hover {
+
   background-color: white;
   border-radius:10px;
     animation: fadeIn 2s;
@@ -67,7 +69,7 @@
 
 #ables{
   color: white; 
-  font-family:Century Gothic;
+font-family: "Open Sans", sans-serif;
 }
 
 #ableicon{
@@ -80,12 +82,15 @@
     font-weight:bold;
     color:white;
       text-shadow: 2px 2px 2px red;
+      font-family: "Open Sans", sans-serif;
+
 
 }
 
 #period{
   font-size:15px;
-  color:rgba(0,0,0,0.5);
+  color:white;
+font-family: "Open Sans", sans-serif;
 }
 
 
@@ -103,7 +108,7 @@
         <h4 style="color: white">Days of the week</h4>
       </div>
      
-      <div class="col-sm-12" style="padding-top:20%;font-family:Times New Roman;">
+      <div class="col-sm-12" style="padding-top:20%;">
         <a href="{% url 'counsellingUrls:days' pk 'MONDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> MONDAY</span></a><br />
         <a href="{% url 'counsellingUrls:days' pk 'TUESDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> TUESDAY</span></a><br />
         <a href="{% url 'counsellingUrls:days' pk 'WEDNESDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> WEDNESDAY</span></a><br />
@@ -173,8 +178,9 @@
                       {% csrf_token %}
                       <div class="col-sm-12" >
                         <p id = "period">Periods - Please note that office hours are
-                          between 8:00 am and 7:00 pm
+                          between 8:00 am and 7:00 pm.
                         </p>
+                        <p id = "period">NB: END is the end of the time period for the day<p>
                         <hr>
                         {% if instruction %}
                         <p>After selecting a day,kindly select your prefered slot number, number of hours 
