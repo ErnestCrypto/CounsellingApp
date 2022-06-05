@@ -188,32 +188,29 @@
                             <div class ="row">
                           <!---->
                           
-                          {% for n in ran %}
+                          {% for n,u in time   %}
+                          
+                          
                       <div class = "col-sm-4" 
                       style="border-right: 1px solid rgba(0, 0, 0, 0.1);
                       border-bottom: 1px solid rgba(0, 0, 0, 0.1);padding-top:1%;padding-bottom:1%;
                       border:1px solid rgba(0, 0, 0, 0.1);
                       ">
                                <div class = "col-sm-5">
-        <input class = "form-control" type= "text" name= "start_time" value="{{start_time}}"/>
-                  {% comment %} {{availiable.startime}} {% endcomment %}
+        <input class = "form-control" type= "text" name= "start_time" value="{{n}}"/>
                               </div>
                                <div class = "col-sm-1">
                               -
                               </div>
-                               <div class = "col-sm-5">
-      <input class = "form-control" type= "text" name= "end_time" value="{{start_time}}"/>
-
-                           {% comment %} {{availiable.endtime}} {% endcomment %}
-
-                          </div>
+                                <div class = "col-sm-5">
+      <input class = "form-control" type= "text" name= "end_time" value="{{u}}"/>
+                          </div> 
                               <div class = "col-sm-3">
  <input  type= "checkbox" name= "checkbox"/> Not available
-
-                                 {% comment %} {{availiable.not_availiable}} Not availiable {% endcomment %}
                               </div>
                            </div>
-                           {% endfor %}
+                           
+                          {% endfor %} 
                           <!---->
                           
                             <!---->

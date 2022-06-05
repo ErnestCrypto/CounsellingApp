@@ -308,48 +308,81 @@ def times(request, pk, day):
     if request.method == 'POST':
         availiable = AvailabilityForm(request.POST)
         if availiable.is_valid():
-            start = 28800  # time in seconds for 7:00 am
+            start = 28800  # time in seconds for 8:00 am
             end = 68400  # time in seconds for 7:00 pm
-            interval = start - end
+            interval = end - start
             hours_sec = hours*3600
-            minutes_sec = minutes*60
+            minutes_sec = 0
             chosen_time = hours_sec + minutes_sec
             final = interval/chosen_time
-            final_floor = int(math.floor(final))
-            ran = range(-final_floor)
-            d_ran = final_floor * 2
-            d_ran = range(-d_ran)
+            if hours == 5:
+                final_floor = int(math.ceil(final))
+            else:
+                final_floor = int(math.floor(final))
+            ran = range(final_floor)
+            d_ran = (final_floor * 2)+1
+            d_ran = range(d_ran)
             break_time = 600
             t_time = chosen_time - break_time
 
-            arr_start_time = []
-            arr_end_time = []
+            time = []
 
             # for i in ran:
             #     arr_start_time.append(t_time)
             for i in d_ran:
                 f_start = int(math.floor(start/3600))
-                rm = start - f_start
-                m_start = int(rm % 3600)
-                if f_start <= 12:
-                    f_start = f_start
-                else:
+                if f_start < 10:
+                    f_start = str(f_start)
+                    f_start = "0" + f_start
+                if int(f_start) > 12:
                     f_start = f_start - 12
 
-                starts = str(f_start) + \
-                    ":" + str(m_start)
-                arr_start_time.append(starts)
-                start = start + chosen_time
+                m_start = int(start % 3600)
+                if m_start == 0:
+                    m_start = "00"
+                start = start + hours_sec
+                minutes_sec = minutes*60
+                minutes = minutes + minutes
 
-            for u in range(len(arr_start_time)):
-                l_start = arr_start_time[u]
-                messages.success(request, f"{l_start}")
+                started = str(f_start) + \
+                    ":" + str(m_start)
+                time.append(started)
+            e_time = time[1:]
+            add = time + e_time
+            add.sort()
+            lim = len(add)
+            lim = int(lim)
+
+            if (lim % 2) == 0:
+                my = add
+            else:
+                mine = add.append('END')
+
+            subTime = [add[n:n+2] for n in range(0, len(add), 2)]
+            messages.success(request, f"{time} ")
+
+            # mylist_n = [j for i in subTime for j in i]
+            # some = []
+            # for u in range(len(subTime)):
+            #     l_time = subTime[u]
+            #     res = l_time[-1]
+            #     ser = l_time[0]
+            #     some.extend([l_time, ser, res])
+
+            # for u in range(len(some)):
+            #     if (u % 2) == 0:
+            #         f_time = some[u]
+            #     else:
+            #         g_time = some[u]
+            #         mylist_n.append(g_time)
+
     return render(request, 'app/availiable.html', {
         'pk': pk,
         'day': day,
         'ran': ran,
         'availiable': availiable,
-        'start_time': l_start,
+        'time': subTime,
+
     })
 
 
