@@ -299,17 +299,17 @@ def days(request, pk, day):
 def times(request, pk, day):
     hours = int(request.POST.get('hours'))
     slots = int(request.POST.get('slots'))
+    breaks = int(request.POST.get('breaks'))
     minutes = int(request.POST.get('minutes'))
     availiable = AvailabilityForm()
     pk = request.session['pk']
-    start_time = "7:00"
-    end_time = "7:00"
 
     if request.method == 'POST':
         availiable = AvailabilityForm(request.POST)
         if availiable.is_valid():
             start = 28800  # time in seconds for 8:00 am
             end = 68400  # time in seconds for 7:00 pm
+            breaks = breaks * 60
             interval = end - start
             hours_sec = hours*3600
             minutes_sec = minutes * 60
@@ -338,23 +338,29 @@ def times(request, pk, day):
             # for i in ran:
             #     arr_start_time.append(t_time)
             for i in d_ran:
-                f_start = int(math.floor(start/3600))
-                if f_start < 10:
-                    f_start = str(f_start)
-                    f_start = "0" + f_start
-                if int(f_start) > 12:
-                    f_start = f_start - 12
+                if start < end:
+                    time_in_hours = start/3600
+                    h, d = divmod(time_in_hours, 1)
 
-                m_start = int(start % 3600)
-                if m_start == 0:
-                    m_start = "00"
-                start = start + hours_sec
-                minutes_sec = minutes*60
-                minutes = minutes + minutes
+                    f_start = int(h)
+                    if f_start < 10:
+                        f_start = str(f_start)
+                        f_start = "0" + f_start
 
-                started = str(f_start) + \
-                    ":" + str(m_start)
-                time.append(started)
+                    if int(f_start) > 12:
+                        f_start = f_start - 12
+
+                    time_in_minutes = int(d*60)
+                    s, m = divmod(time_in_minutes, 1)
+                    m_start = int(s)
+                    if m_start < 10:
+                        m_start = "0" + str(m_start)
+                    started = str(f_start) + \
+                        ":" + str(m_start)
+                    time.append(started)
+                    messages.success(request, f"{time_in_minutes} ")
+                start = start + chosen_time
+
             e_time = time[1:]
             add = time + e_time
             add.sort()
@@ -364,10 +370,9 @@ def times(request, pk, day):
             if (lim % 2) == 0:
                 my = add
             else:
-                mine = add.append('END')
+                mine = add.append('7:00')
 
             subTime = [add[n:n+2] for n in range(0, len(add), 2)]
-            messages.success(request, f"{final_floor} ")
 
             # mylist_n = [j for i in subTime for j in i]
             # some = []

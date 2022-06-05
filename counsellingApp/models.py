@@ -142,6 +142,8 @@ class Availability(models.Model):
                              choices=SLOTS, default='0', null=True, blank=True)
     minutes = models.CharField(max_length=255,
                                choices=MINUTES, default='5', null=True, blank=True)
+    breaks = models.CharField(max_length=255,
+                              choices=MINUTES, default='5', null=True, blank=True)
     startime = models.CharField(
         max_length=255, default=None, null=True, blank=True)
     endtime = models.CharField(
