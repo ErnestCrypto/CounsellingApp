@@ -299,7 +299,8 @@ def days(request, pk, day):
 def times(request, pk, day):
     hours = int(request.POST.get('hours'))
     slots = int(request.POST.get('slots'))
-    breaks = int(request.POST.get('breaks'))
+    request.session['day'] = day
+    # breaks = int(request.POST.get('breaks'))
     minutes = int(request.POST.get('minutes'))
     availiable = AvailabilityForm()
     pk = request.session['pk']
@@ -309,12 +310,15 @@ def times(request, pk, day):
         if availiable.is_valid():
             start = 28800  # time in seconds for 8:00 am
             end = 68400  # time in seconds for 7:00 pm
-            breaks = breaks * 60
+            # breaks = breaks * 60
             interval = end - start
             hours_sec = hours*3600
             minutes_sec = minutes * 60
             chosen_time = hours_sec + minutes_sec
-            final = interval/chosen_time
+            if chosen_time == 0:
+                final = 0
+            else:
+                final = interval/chosen_time
             if (hours == 0):
                 final_floor = int(math.ceil(final))
             elif (hours == 1):
@@ -358,7 +362,7 @@ def times(request, pk, day):
                     started = str(f_start) + \
                         ":" + str(m_start)
                     time.append(started)
-                    messages.success(request, f"{time_in_minutes} ")
+
                 start = start + chosen_time
 
             e_time = time[1:]
@@ -397,6 +401,13 @@ def times(request, pk, day):
         'time': subTime,
 
     })
+
+
+def schedule(request, pk):
+    start = request.POST.get('start_time')
+    messages.success(request, f"{start}")
+    day = request.session['day']
+    return redirect('counsellingUrls:days', pk, day)
 
 
 def homePage(request, pk):

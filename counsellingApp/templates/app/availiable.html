@@ -166,13 +166,13 @@ font-family: "Open Sans", sans-serif;
 
                     </div>
                     </div>
-                    <div class="col-sm-3">
+                    {% comment %} <div class="col-sm-3">
                 <div class="form-group">
                   {{availiable.breaks}}
                 <label for="usr"> Break </label>
 
                     </div>
-                    </div>
+                    </div> {% endcomment %}
                    <div class="col-sm-3" style="padding-bottom:2%;">
      <button type="submit" class="btn btn-danger">
        <i class="fa fa-clock"></i> 
@@ -183,13 +183,11 @@ font-family: "Open Sans", sans-serif;
                                </form>
 
                     <!---->
-                    <form action = "{% url 'counsellingUrls:days' pk day%}" method = "POST">
-                      {% csrf_token %}
+                    
                       <div class="col-sm-12" >
                         <p id = "period">Periods - Please note that office hours are
                           between 8:00 am and 7:00 pm.
                         </p>
-                        <p id = "period">NB: END is the end of the time period for the day<p>
                         <hr>
                         {% if instruction %}
                         <p>After selecting a day,kindly select your prefered slot number, number of hours 
@@ -199,12 +197,13 @@ font-family: "Open Sans", sans-serif;
                            availiable time intervals for that day.
                         </p>
                         {% else %}{% endif %}
-                         
+                                                   
+                <form action = "{% url 'counsellingUrls:schedule' pk %}" method = "POST">
+                    {% csrf_token %}
                             <div class ="row">
                           <!---->
                           
                           {% for n,u in time   %}
-                          
                           
                       <div class = "col-sm-4" 
                       style="border-right: 1px solid rgba(0, 0, 0, 0.1);
@@ -234,9 +233,9 @@ font-family: "Open Sans", sans-serif;
                               <div style = "padding-bottom:2%;">
       <button type="submit" class="btn btn-danger" >Submit</button>
       </div>
-</div>
+    </form>
                           </div>
-                        </form>
+                      
 
       </div>
 
