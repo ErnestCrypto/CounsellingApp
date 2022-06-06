@@ -93,6 +93,20 @@ font-family: "Open Sans", sans-serif;
 font-family: "Open Sans", sans-serif;
 }
 
+.fade-in-image {
+  animation: fadeIn 5s;
+  
+}
+
+@keyframes fadeIn {
+  0% {
+transform: scale(1, 1);
+}
+50% {
+transform: scale(1.1, 1.1);
+}
+
+}
 
 </style>
 {% comment %} background: rgb(143, 0, 255);  {% endcomment %}
@@ -190,16 +204,16 @@ font-family: "Open Sans", sans-serif;
                         </p>
                         <hr>
                         {% if instruction == 2  %}
-                        <p>After selecting a day,kindly select your prefered slot number, number of hours 
+                        <p class = "alert alert-info">After selecting a day,kindly select your prefered slot number, number of hours 
                           and the corresponding 
                           minutes you would like to spend in your meeting for that particular day
                            after which you can click on the generate time button to generate your 
                            availiable time intervals for that day.
                         </p>
                         {% elif instruction == 1 %}
-                       <div style = "width:100%;padding-left:30%;padding-right:5%">
+                       <div class = "fade-in-image" style = "width:100%;padding-left:30%;padding-right:5%">
                         <div class = "col-sm-8">
-                 <p class = "alert alert-success"> Your time shedule has been recorderd successfully.</p>
+                 <p class = "alert alert-success"> Your time shedule has been recorded successfully.</p>
                         </div> 
                         </div> 
                         
