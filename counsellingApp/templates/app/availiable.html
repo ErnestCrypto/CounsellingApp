@@ -189,20 +189,28 @@ font-family: "Open Sans", sans-serif;
                           between 8:00 am and 7:00 pm.
                         </p>
                         <hr>
-                        {% if instruction %}
+                        {% if instruction == 2  %}
                         <p>After selecting a day,kindly select your prefered slot number, number of hours 
                           and the corresponding 
                           minutes you would like to spend in your meeting for that particular day
                            after which you can click on the generate time button to generate your 
                            availiable time intervals for that day.
                         </p>
-                        {% else %}{% endif %}
+                        {% elif instruction == 1 %}
+                       <div style = "width:100%;padding-left:30%;padding-right:5%">
+                        <div class = "col-sm-8">
+                 <p class = "alert alert-success"> Your time shedule has been recorderd successfully.</p>
+                        </div> 
+                        </div> 
+                        
+                       {% endif %}
                                                    
-                <form action = "{% url 'counsellingUrls:schedule' pk %}" method = "POST">
+                <form action = "{% url 'counsellingUrls:schedule' pk day %}" method = "POST">
                     {% csrf_token %}
                             <div class ="row">
                           <!---->
-                          
+                          <br>
+                          <br>
                           {% for n,u in time   %}
                           
                       <div class = "col-sm-4" 

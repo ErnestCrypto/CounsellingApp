@@ -259,7 +259,7 @@ def availiablePage(request, pk):
     pk = request.session['pk']
     availiable = AvailabilityForm()
     day = "MONDAY"
-    instruction = "instruction"
+    instruction = 2
     return render(request, 'app/availiable.html', {
         'pk': pk,
         'range': range(8),
@@ -274,9 +274,10 @@ def availiablePage(request, pk):
 def days(request, pk, day):
     availiable = AvailabilityForm()
     pk = request.session['pk']
+    request.session['day'] = day
     counsellor_inst = Counsellor.objects.get(
         user_id=pk)
-    instruction = "instruction"
+    instruction = 2
 
     if request.method == "POST":
         availiable = AvailabilityForm(request.POST)
@@ -403,11 +404,19 @@ def times(request, pk, day):
     })
 
 
-def schedule(request, pk):
-    start = request.POST.get('start_time')
-    messages.success(request, f"{start}")
-    day = request.session['day']
-    return redirect('counsellingUrls:days', pk, day)
+def schedule(request, pk, day):
+    if request.method == 'POST':
+        start = request.POST.get('start_time')
+        messages.success(request, f"{start}")
+        day = request.session['day']
+        availiable = AvailabilityForm()
+        instruction = 1
+    return render(request, 'app/availiable.html', {
+        'day': day,
+        'pk': pk,
+        'availiable': availiable,
+        'instruction': instruction,
+    })
 
 
 def homePage(request, pk):

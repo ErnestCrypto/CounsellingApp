@@ -9,7 +9,7 @@ app_name = 'counsellingUrls'
 urlpatterns = [
     path('', views.loginPage, name="loginPage"),
     path('search/<str:pk>', views.search, name="search"),
-    path('schedule/<str:pk>', views.schedule, name="schedule"),
+    path('schedule/<str:pk>/<str:day>', views.schedule, name="schedule"),
     path('del/<str:object_id>',
          views.del_counsellor, name="del_counsellor"),
     path('all_counsellors/<str:pk>',
