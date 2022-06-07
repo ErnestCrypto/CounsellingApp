@@ -417,18 +417,24 @@ def schedule(request, pk, day):
         minutes = request.session['minutes']
         availiable = AvailabilityForm(request.POST)
         user = Counsellor.objects.get(user_id=pk)
-        for s, t in subTime:
-            if availiable.is_valid():
-                myTime = availiable.save(commit=False)
-                # availiable.availiable_start = s
-                # availiable.availiable_end = t
+
+        if availiable.is_valid():
+            myTime = availiable.save(commit=False)
+            if hours or minutes:
+                myStart = []
+                myEnd = []
+                for s, t in subTime:
+                    myStart.append(s)
+                    myEnd.append(t)
+                myTime.startime = myStart
+                myTime.endtime = myEnd
                 myTime.counsellor = user
                 myTime.user_id = pk
                 myTime.hours = hours
                 myTime.minutes = minutes
                 myTime.day = day
                 myTime.save()
-                messages.success(request, f"{s}--{t}")
+                messages.success(request, f"{myStart}--{myEnd}")
                 instruction = 1
             else:
                 instruction = 3

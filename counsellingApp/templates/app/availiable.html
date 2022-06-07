@@ -201,7 +201,7 @@ transform: scale(1.1, 1.1);
                       <div class="col-sm-12" >
                         <p id = "period">Periods - Please note that office hours are
                           between 8:00 am and 7:00 pm. Kindly generate your time before clicking on the submit button
-                        for maximum user experience</p>
+                        for maximum user experience.</p>
                         </p>
                         <hr>
                         {% if instruction == 2  %}
@@ -214,15 +214,18 @@ transform: scale(1.1, 1.1);
                         {% elif instruction == 1 %}
                        <div class = "fade-in-image" style = "width:100%;padding-left:30%;padding-right:5%">
                         <div class = "col-sm-8">
+                          <center>
                  <p class = "alert alert-success"> Your time shedule has been recorded successfully.</p>
-                        </div> 
+                          </center>       
+                </div> 
                         </div> 
 
                         {% elif instruction == 3 %}
-                       <div class = "fade-in-image" style = "width:100%;padding-left:30%;padding-right:5%">
-                        <div class = "col-sm-10">
+                       <div class = "fade-in-image" style = "width:100%;padding-left:25%;padding-right:10%">
+                        <div class = "col-sm-9">
+                          <center>
                  <p class = "alert alert-danger"> Sorry. An error is keeping us from saving your time schedule</p>
-                        </div> 
+                          </center></div> 
                         </div> 
                         
                        {% endif %}
