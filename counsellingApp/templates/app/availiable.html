@@ -159,7 +159,11 @@ transform: scale(1.1, 1.1);
 
       <div class="col-sm-3">
       <div class="form-group">
-        {{ availiable.slots }}
+        <select class="form-control" id = 'focusid' name="slots">
+                    {% for i,t in  s_option %}
+                    <option value = {{i}}>{{t}}</option>
+                      {% endfor %}
+                    </select>
 
                 <label for="usr"> Slots </label>  
                     </div>
@@ -168,14 +172,23 @@ transform: scale(1.1, 1.1);
                  
             <div class="col-sm-3">
             <div class="form-group">
-             {{availiable.hours}}
+            <select class="form-control" id = 'focusid' name="hours">
+                    {% for i,t in  s_option %}
+                    <option value = {{i}}>{{t}}</option>
+                      {% endfor %}
+                    </select>
                 <label for="usr"> Hours </label>
 
                 </div>
                 </div>
                 <div class="col-sm-3">
                 <div class="form-group">
-                  {{availiable.minutes}}
+                  {% comment %} {{availiable.minutes}} {% endcomment %}
+                  <select class="form-control" id = 'focusid' name="minutes">
+                    {% for i,t in  m_option %}
+                    <option value = {{i}}>{{t}}</option>
+                      {% endfor %}
+                    </select>
                 <label for="usr"> Minutes </label>
 
                     </div>

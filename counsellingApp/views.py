@@ -4,7 +4,7 @@ from django import views
 from django.http import request
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
-from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings, Students, Notifications
+from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings, Students, Notifications, SLOTS, MINUTES
 from .forms import CounsellorForm, SuperCounsellorForm, AchievementForm, AvailabilityForm, EducationForm, ExperienceForm, TherapyForm, SpecialitiesForm, LoginForm, BookingsForm, NotificationsForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -267,6 +267,8 @@ def availiablePage(request, pk):
         'availiable': availiable,
         'day': day,
         'instruction': instruction,
+        'm_option': MINUTES,
+        's_option': SLOTS,
 
     })
 
@@ -292,6 +294,8 @@ def days(request, pk, day):
         'availiable': availiable,
         'pk': pk,
         'instruction': instruction,
+        'm_option': MINUTES,
+        's_option': SLOTS,
 
 
     })
@@ -404,6 +408,8 @@ def times(request, pk, day):
         'ran': ran,
         'availiable': availiable,
         'time': subTime,
+        'm_option': MINUTES,
+        's_option': SLOTS,
 
     })
 
@@ -446,6 +452,8 @@ def schedule(request, pk, day):
         'pk': pk,
         'availiable': availiable,
         'instruction': instruction,
+        'm_option': MINUTES,
+        's_option': SLOTS,
     })
 
 
