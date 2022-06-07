@@ -305,6 +305,9 @@ def times(request, pk, day):
     minutes = int(request.POST.get('minutes'))
     availiable = AvailabilityForm()
     pk = request.session['pk']
+    request.session['hours'] = hours
+    request.session['minutes'] = minutes
+    request.session['slots'] = slots
 
     if request.method == 'POST':
         availiable = AvailabilityForm(request.POST)
@@ -378,6 +381,7 @@ def times(request, pk, day):
                 mine = add.append('7:00')
 
             subTime = [add[n:n+2] for n in range(0, len(add), 2)]
+            request.session['subTime'] = subTime
 
             # mylist_n = [j for i in subTime for j in i]
             # some = []
@@ -407,10 +411,30 @@ def times(request, pk, day):
 def schedule(request, pk, day):
     if request.method == 'POST':
         start = request.POST.get('start_time')
-        messages.success(request, f"{start}")
+        end = request.POST.get('end_time')
+        subTime = request.session['subTime']
+        hours = request.session['hours']
+        minutes = request.session['minutes']
+        availiable = AvailabilityForm(request.POST)
+        user = Counsellor.objects.get(user_id=pk)
+        for s, t in subTime:
+            if availiable.is_valid():
+                myTime = availiable.save(commit=False)
+                # availiable.availiable_start = s
+                # availiable.availiable_end = t
+                myTime.counsellor = user
+                myTime.user_id = pk
+                myTime.hours = hours
+                myTime.minutes = minutes
+                myTime.day = day
+                myTime.save()
+                messages.success(request, f"{s}--{t}")
+                instruction = 1
+            else:
+                instruction = 3
+
         day = request.session['day']
-        availiable = AvailabilityForm()
-        instruction = 1
+
     return render(request, 'app/availiable.html', {
         'day': day,
         'pk': pk,

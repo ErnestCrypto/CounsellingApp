@@ -4,7 +4,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.urls import reverse
 import uuid
-
+from django.contrib.postgres.fields import ArrayField
 TITLE = [
     ('Mr.', 'Mr.'),
     ('Mrs.', 'Mrs.'),
@@ -149,6 +149,10 @@ class Availability(models.Model):
     endtime = models.CharField(
         max_length=255, default=None, null=True, blank=True)
     not_availiable = models.BooleanField(default=None, null=True, blank=True)
+    # availiable_start = ArrayField(
+    #     ArrayField(models.CharField(max_length=255)), null=True, blank=True)
+    # availiable_end = ArrayField(ArrayField(
+    #     models.CharField(max_length=255)), null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "availabilities"

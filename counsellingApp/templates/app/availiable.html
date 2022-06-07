@@ -99,7 +99,7 @@ font-family: "Open Sans", sans-serif;
 }
 
 @keyframes fadeIn {
-  0% {
+  50% {
 transform: scale(1, 1);
 }
 50% {
@@ -200,7 +200,8 @@ transform: scale(1.1, 1.1);
                     
                       <div class="col-sm-12" >
                         <p id = "period">Periods - Please note that office hours are
-                          between 8:00 am and 7:00 pm.
+                          between 8:00 am and 7:00 pm. Kindly generate your time before clicking on the submit button
+                        for maximum user experience</p>
                         </p>
                         <hr>
                         {% if instruction == 2  %}
@@ -214,6 +215,13 @@ transform: scale(1.1, 1.1);
                        <div class = "fade-in-image" style = "width:100%;padding-left:30%;padding-right:5%">
                         <div class = "col-sm-8">
                  <p class = "alert alert-success"> Your time shedule has been recorded successfully.</p>
+                        </div> 
+                        </div> 
+
+                        {% elif instruction == 3 %}
+                       <div class = "fade-in-image" style = "width:100%;padding-left:30%;padding-right:5%">
+                        <div class = "col-sm-10">
+                 <p class = "alert alert-danger"> Sorry. An error is keeping us from saving your time schedule</p>
                         </div> 
                         </div> 
                         
