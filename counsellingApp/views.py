@@ -304,6 +304,7 @@ def days(request, pk, day):
 def times(request, pk, day):
     hours = int(request.POST.get('hours'))
     slots = int(request.POST.get('slots'))
+
     request.session['day'] = day
     # breaks = int(request.POST.get('breaks'))
     minutes = int(request.POST.get('minutes'))
@@ -421,6 +422,9 @@ def schedule(request, pk, day):
         subTime = request.session['subTime']
         hours = request.session['hours']
         minutes = request.session['minutes']
+        checked = request.POST.get('checkbox')
+        messages.success(request, f"{checked}")
+
         availiable = AvailabilityForm(request.POST)
         user = Counsellor.objects.get(user_id=pk)
 
@@ -440,8 +444,9 @@ def schedule(request, pk, day):
                 myTime.minutes = minutes
                 myTime.day = day
                 myTime.save()
-                messages.success(request, f"{myStart}--{myEnd}")
+
                 instruction = 1
+
             else:
                 instruction = 3
 

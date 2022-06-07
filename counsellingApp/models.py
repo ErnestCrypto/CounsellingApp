@@ -148,7 +148,7 @@ class Availability(models.Model):
         default=None, null=True, blank=True)
     endtime = models.TextField(
         default=None, null=True, blank=True)
-    not_availiable = models.BooleanField(default=None, null=True, blank=True)
+    availiable = models.BooleanField(default=None, null=True, blank=True)
     # availiable_start = ArrayField(
     #     ArrayField(models.CharField(max_length=255)), null=True, blank=True)
     # availiable_end = ArrayField(ArrayField(
