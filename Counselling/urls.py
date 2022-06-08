@@ -9,7 +9,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('counsellingApp.urls', namespace='counsellingUrls')),
+    path('', include('bookingApp.urls', namespace='bookingUrls')),
+    path('counsellors/', include('counsellingApp.urls', namespace='counsellingUrls')),
 
 ]
 

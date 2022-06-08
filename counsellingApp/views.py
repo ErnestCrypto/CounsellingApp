@@ -302,19 +302,27 @@ def days(request, pk, day):
 
 
 def times(request, pk, day):
-    hours = int(request.POST.get('hours'))
-    slots = int(request.POST.get('slots'))
+    if request.method == 'POST':
+        hours = int(request.POST.get('hours'))
+        slots = int(request.POST.get('slots'))
+        minutes = int(request.POST.get('minutes'))
+        checked = "white"
+
+    else:
+        hours = request.session['hours']
+        minutes = request.session['minutes']
+        slots = request.session['slots']
+        checked = request.session['checked']
 
     request.session['day'] = day
     # breaks = int(request.POST.get('breaks'))
-    minutes = int(request.POST.get('minutes'))
     availiable = AvailabilityForm()
     pk = request.session['pk']
     request.session['hours'] = hours
     request.session['minutes'] = minutes
     request.session['slots'] = slots
 
-    if request.method == 'POST':
+    if request.method == 'POST' or request.method == 'GET':
         availiable = AvailabilityForm(request.POST)
         if availiable.is_valid():
             start = 28800  # time in seconds for 8:00 am
@@ -411,6 +419,7 @@ def times(request, pk, day):
         'time': subTime,
         'm_option': MINUTES,
         's_option': SLOTS,
+        'checked': checked,
 
     })
 
@@ -422,8 +431,7 @@ def schedule(request, pk, day):
         subTime = request.session['subTime']
         hours = request.session['hours']
         minutes = request.session['minutes']
-        checked = request.POST.get('checkbox')
-        messages.success(request, f"{checked}")
+        request.session['day'] = day
 
         availiable = AvailabilityForm(request.POST)
         user = Counsellor.objects.get(user_id=pk)
@@ -460,6 +468,22 @@ def schedule(request, pk, day):
         'm_option': MINUTES,
         's_option': SLOTS,
     })
+
+
+def add_period(request, n, u):
+    day = request.session['day']
+    pk = request.session['pk']
+    request.session['checked'] = 'lightgreen'
+    messages.success(request, f"{n}--{u}")
+
+    return redirect('counsellingUrls:times', pk, day)
+
+
+def del_period(request, n, u):
+    day = request.session['day']
+    pk = request.session['pk']
+    request.session['checked'] = 'white'
+    return redirect('counsellingUrls:times', pk, day)
 
 
 def homePage(request, pk):

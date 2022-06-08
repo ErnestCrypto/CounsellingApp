@@ -7,6 +7,7 @@
     box-shadow: 1px 1px 12px -5px;
     border-radius:10px;
     overflow-y:scroll;
+    background:white;
 }
 
 
@@ -81,7 +82,7 @@ font-family: "Open Sans", sans-serif;
     font-size: 18px;
     font-weight:bold;
     color:white;
-      text-shadow: 2px 2px 2px red;
+      text-shadow: 2px 2px 2px #281564;
       font-family: "Open Sans", sans-serif;
 
 
@@ -89,7 +90,7 @@ font-family: "Open Sans", sans-serif;
 
 #period{
   font-size:15px;
-  color:white;
+  color:black;
 font-family: "Open Sans", sans-serif;
 }
 
@@ -114,7 +115,7 @@ transform: scale(1.1, 1.1);
   <div class="row" style="height: 100%">
     <div
       class="col-sm-2"
-      style="background: var(--red)  ;
+      style="background:#281564  ;
       height: 100%; padding-left: 2%"
     >
 
@@ -201,7 +202,7 @@ transform: scale(1.1, 1.1);
                     </div>
                     </div> {% endcomment %}
                    <div class="col-sm-3" style="padding-bottom:2%;">
-     <button type="submit" class="btn btn-danger">
+     <button type="submit" class="btn btn-primary">
        <i class="fa fa-clock"></i> 
        Generate time</button>
                    </div>
@@ -249,27 +250,33 @@ transform: scale(1.1, 1.1);
                           <!---->
                           <br>
                           <br>
+                          
                           {% for n,u in time   %}
                           
                       <div class = "col-sm-4" 
                       style="border-right: 1px solid rgba(0, 0, 0, 0.1);
                       border-bottom: 1px solid rgba(0, 0, 0, 0.1);padding-top:1%;padding-bottom:1%;
-                      border:1px solid rgba(0, 0, 0, 0.1);
-                      ">
+                      border:1px solid rgba(0, 0, 0, 0.1);background:{{checked}}">
+                      
                                <div class = "col-sm-5">
         <input class = "form-control" type= "text" name= "start_time" value="{{n}}"/>
                               </div>
-                               <div class = "col-sm-1">
+                               <div class = "col-sm-1" >
                               -
                               </div>
                                 <div class = "col-sm-5">
       <input class = "form-control" type= "text" name= "end_time" value="{{u}}"/>
                           </div> 
+                          <br><br>
                               <div class = "col-sm-3">
-                  <input  type= "checkbox" name= "checkbox" value="yes"/> I'm available
+      <a href="{% url 'counsellingUrls:add_period' n u %}" class="btn btn-success" ><i class="fa fa-check"></i></a>
                               </div>
+                               <div class = "col-sm-3">
+      <a href ="{% url 'counsellingUrls:del_period' n u %}" class="btn btn-danger" ><i class="fa fa-times"></i></a>
+                              </div>
+                               
                            </div>
-                           
+                         
                           {% endfor %} 
                           <!---->
                           
@@ -277,7 +284,7 @@ transform: scale(1.1, 1.1);
                               </div> 
                               <br><br>
                               <div style = "padding-bottom:2%;">
-      <button type="submit" class="btn btn-danger" >Submit</button>
+      <button type="submit" class="btn btn-primary" >Submit</button>
       </div>
     </form>
                           </div>

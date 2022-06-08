@@ -10,6 +10,8 @@ urlpatterns = [
     path('', views.loginPage, name="loginPage"),
     path('search/<str:pk>', views.search, name="search"),
     path('schedule/<str:pk>/<str:day>', views.schedule, name="schedule"),
+    path('addPeriod/<str:n>/<str:u>', views.add_period, name="add_period"),
+    path('delPeriod/<str:n>/<str:u>', views.del_period, name="del_period"),
     path('del/<str:object_id>',
          views.del_counsellor, name="del_counsellor"),
     path('all_counsellors/<str:pk>',

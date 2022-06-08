@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'counsellingApp.apps.CounsellingappConfig',
+    'bookingApp.apps.BookingappConfig',
     'rest_framework',
     'crispy_forms',
 
