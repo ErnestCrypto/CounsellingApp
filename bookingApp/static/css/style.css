@@ -8499,7 +8499,7 @@ h1, h2, h3, h4, h5,
   .intro.color-1 {
     background: rgba(040,021,100,0.8); }
   .intro.color-2 {
-    background:rgba(040,021,100,0.6);; }
+    background:rgba(040,021,100,0.);; }
   .intro .icon {
     margin-right: 20px; }
     .intro .icon span {
