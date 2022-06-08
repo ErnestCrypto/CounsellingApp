@@ -52,10 +52,10 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
           <li class="nav-item"><a href="{% url 'bookingUrls:indexPage'%}" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="{% url 'bookingUrls:aboutPage'%}" class="nav-link">About</a></li>
+          {% comment %} <li class="nav-item"><a href="{% url 'bookingUrls:aboutPage'%}" class="nav-link">About</a></li> {% endcomment %}
           <li class="nav-item"><a href="{% url 'bookingUrls:counselorPage'%}" class="nav-link">Counselors</a></li>
-          <li class="nav-item"><a href="{% url 'bookingUrls:servicesPage'%}" class="nav-link">Services</a></li>
-          <li class="nav-item"><a href="{% url 'bookingUrls:blogPage'%}" class="nav-link">Blog</a></li>
+          {% comment %} <li class="nav-item"><a href="{% url 'bookingUrls:servicesPage'%}" class="nav-link">Services</a></li> {% endcomment %}
+          {% comment %} <li class="nav-item"><a href="{% url 'bookingUrls:blogPage'%}" class="nav-link">Blog</a></li> {% endcomment %}
           <li class="nav-item"><a href="{% url 'bookingUrls:contactPage'%}" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
