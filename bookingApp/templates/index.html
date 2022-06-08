@@ -257,7 +257,8 @@
     		<div class="row">
     			<div class="col-md-6 half ftco-animate">
     				<h2 class="mb-4">Send a Message &amp; Get in touch!</h2>
-    				<form action="#" class="appointment">
+    				<form action="#"  method = "POST" class="appointment">
+						{% csrf_token %}
     					<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
@@ -311,7 +312,7 @@
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry justify-content-end">
               <div class="text text-center">
-              	<a href="blog-single.html" class="block-20 img" style="background-image: url({% static 'images/image_1.jpg'%});">
+              	<a href="#" class="block-20 img" style="background-image: url({% static 'images/image_1.jpg'%});">
 	              </a>
 	              <div class="meta text-center mb-2 d-flex align-items-center justify-content-center">
                 	<div>
@@ -320,8 +321,8 @@
                 		<span class="yr">2020</span>
                 	</div>
                 </div>
-                <h3 class="heading mb-3"><a href="#"></a></h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <h3 class="heading mb-3"></h3>
+                <p></p>
               </div>
             </div>
           </div>

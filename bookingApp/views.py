@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from counsellingApp.models import Counsellor
 
 
 def index(request):
@@ -22,7 +23,10 @@ def contact(request):
 
 
 def counselor(request):
-    return render(request, 'counselor.html', {})
+    objects = Counsellor.objects.all()
+    return render(request, 'counselor.html', {
+        'objects': objects,
+    })
 
 
 def services(request):

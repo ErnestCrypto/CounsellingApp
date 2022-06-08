@@ -11,34 +11,44 @@
           </div>
         </div>
       </div>
+
     </section>
 
     <section class="ftco-section bg-light">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-lg-3 ftco-animate">
-						<div class="staff">
+					{% for object in objects %}
+					<div class="col-md-6 col-lg-4 ftco-animate">
+						<div class="staff" >
 							<div class="img-wrap d-flex align-items-stretch">
-								<div class="img align-self-stretch" style="background-image: url({% static 'images/staff-1.jpg' %} );"></div>
+								{% if object.profile %}
+					<div class="img align-self-stretch" style="background-image: url({{object.profile.url}});"></div>
+									{% else %}
+			<div class="img align-self-stretch" style="background-image: url({% static 'media/download.png' %} );"></div>
+							{% endif %}
 							</div>
-							<div class="text pt-3 px-3 pb-4 text-center">
-								<h3>Lloyd Wilson</h3>
-								<span class="position mb-2">Counselor</span>
-								<div class="faded">
-									<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+							<div class="text pt-3 px-3 pb-4 text-center" >
+								<h3>{{object.firstName}}</h3>
+								<span class="position mb-2">{{object.status}}</span>
+								<div class="faded" >
+									
+									<p>{{object.occupation}}</p>
+									
 									<ul class="ftco-social text-center">
-		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a></li>
+		                <li class="ftco-animate"><a href="tel://{{object.contact}}" class="d-flex align-items-center justify-content-center"><span class="fa fa-phone"></span></a></li>
 		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
 		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-google"></span></a></li>
 		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
 		              </ul>
 	              </div>
-							</div>
+				 <button type="button" class="btn btn-primary">BOOK</button>
+				
+				</div>
+				  	
 						</div>
+					
 					</div>
-					
-					
-					
+					{% endfor %}
 
 					
 					
