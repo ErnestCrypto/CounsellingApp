@@ -115,8 +115,8 @@ def loginPage(request):
 
                     request.session['pk'] = user_id_student
                     request.session['counsellor'] = l_lastname
-
-                    return redirect('counsellingUrls:indexPage', user_id_student, home)
+                    pk = request.session['pk']
+                    return redirect('bookingUrls:indexPage', pk)
 
         else:
             messages.error(request, '-- Please check your credentials --')
@@ -999,3 +999,8 @@ def speciality_del(request, spe_id):
     spec = Specialities.objects.get(id=spe_id)
     spec.delete()
     return redirect('counsellingUrls:dashboardPage', pk)
+
+
+def website(request):
+    pk = request.session['pk']
+    return redirect('bookingUrls:indexPage', pk)

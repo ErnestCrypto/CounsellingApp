@@ -2,12 +2,15 @@ from django.urls import path
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from rest_framework.urlpatterns import format_suffix_patterns
+from counsellingApp import views as coun_views
 
 app_name = 'bookingUrls'
 
 
 urlpatterns = [
-    path('', views.index, name='indexPage'),
+    path('', coun_views.loginPage, name='loginPage'),
+    path('logout/<int:pk>/', views.logout, name='logout'),
+    path('index/<int:pk>/', views.index, name='indexPage'),
     path('counselor/<int:object_id>/', views.details, name="details"),
     path('about/', views.about, name='aboutPage'),
     path('blog_single/', views.blog_single, name='blog_singlePage'),

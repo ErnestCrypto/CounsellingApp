@@ -8,6 +8,7 @@ app_name = 'counsellingUrls'
 
 urlpatterns = [
     path('', views.loginPage, name="loginPage"),
+    path('ugcounselling/', views.website, name="website"),
     path('search/<str:pk>', views.search, name="search"),
     path('schedule/<str:pk>/<str:day>', views.schedule, name="schedule"),
     path('addPeriod/<str:n>/<str:u>', views.add_period, name="add_period"),
