@@ -1,13 +1,13 @@
 {% extends 'base.html' %}{% load static %}
 {% block content %}
     
-<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_5.jpg' %});" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/university-of-ghana-students-portal.jpg' %});" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
           <div class="col-md-9 ftco-animate mb-5 text-center">
           	<p class="breadcrumbs mb-0"><span class="mr-2"><a href="{% url 'bookingUrls:indexPage'%}">Home <i class="fa fa-chevron-right"></i></a></span> <span>Counselor <i class="fa fa-chevron-right"></i></span></p>
-            <h1 class="mb-0 bread">Book A UG Counselor</h1>
+            <h1 class="mb-0 bread">Pick a UG Counselor</h1>
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@
 		                <li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
 		              </ul>
 	              </div>
-				 <button type="button" class="btn btn-primary">BOOK</button>
+				 <a href="{% url 'bookingUrls:details' object.user_id %}" class="btn btn-primary">View</a>
 				</center>
 				</div>
 				  	

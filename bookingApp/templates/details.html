@@ -1,0 +1,76 @@
+{% extends 'base.html' %}{% load static %}
+
+{% block content %}
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/pfd-llb-admission.jpg' %});" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate mb-5 text-center">
+          	<p class="breadcrumbs mb-0"><span class="mr-2"><a href="{% url 'bookingUrls:indexPage'%}">Home <i class="fa fa-chevron-right"></i></a></span> <span><a href="{% url 'bookingUrls:counselorPage'%}">Counselor <i class="fa fa-chevron-right"></i></a> <span>Details <i class="fa fa-chevron-right"></i></span></p>
+            <h1 class="mb-0 bread">Book A UG Counselor</h1>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="ftco-section bg-light">
+			<div class="container">
+				<div class="row">
+					{% for object in objects %}
+					{% if object.user_id == counselor|add:0 %}
+					<form action = "" method="post" style="width:100%;">
+						{% csrf_token %}
+					<div class="ftco-animate" style="width: 100%;">
+						<div class="staff" >
+							<div class="img-wrap d-flex align-items-stretch" style="height: 500px;width: 30%;float: left;">
+								{% if object.profile %}
+					<div class="img align-self-stretch" style="background-image: url({{object.profile.url}});height: 100%;width:100%;" ></div>
+									{% else %}
+			<div class="img align-self-stretch" style="background-image: url({% static 'media/download.png' %} );height: 70%;width:100%;" >
+				
+			</div>
+							{% endif %}
+							
+							</div>
+							
+							<div class="text pt-3 px-3 pb-4 text-center"  style = "height: 500px;width:70%;float:right; overflow-y:scroll;" >
+								<center>
+								<h3>{{object.firstName}} {{object.lastName}}</h3>
+								<span class="position mb-2">{{object.status}}</span>
+								<div class="faded" >
+									<p>{{object.occupation}}</p>			
+	              </div>
+				  <div class="row">
+					  <div class ="col-sm-6" style="border-right:1px solid rgba(0,0,0,0.3)">
+						<p>About:<p>
+						<p>{{object.about}}</p>  
+					  </div>
+							  <div class="col-sm-6">
+								  <p>Available Times<p>
+							  </div>
+					  </div>
+					  <br><br>
+				 <button type="submit" class="btn btn-primary">Book</button>
+				</center>
+				</div>
+			
+						</div>
+					
+					</div>
+				</form>
+					{% else%}
+					{% endif %}
+					{% endfor %}
+
+					
+					
+				</div>
+			</div>
+		</section>
+
+
+
+
+{% endblock %}
