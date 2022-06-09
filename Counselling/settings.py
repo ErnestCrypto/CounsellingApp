@@ -87,10 +87,10 @@ WSGI_APPLICATION = 'Counselling.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'LaptopChampion@123',
-        'HOST': 'localhost',
+        'NAME': 'd9egv0brihld04',
+        'USER': 'clborzwapydpio',
+        'PASSWORD': '4db356f3cd605ab4efc9cf6fab0a3310af479b0f044b64ebfd66c84292d88c13',
+        'HOST': 'ec2-34-231-221-151.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
