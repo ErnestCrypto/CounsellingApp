@@ -96,7 +96,7 @@ def send(request, pk):
         email = EmailMessage(
             f'Mail',  # subject
             f'Name: {name}, Email: {email_input}, Message: {msg}, Service: {services}',
-            settings.EMAIL_HOST_USER,  # sender
+            settings.EMAIL_HOST_USER,  # sender email
             ['itservices@ug.edu.gh'],  # receiver email
         )
 
