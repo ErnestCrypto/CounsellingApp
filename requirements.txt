@@ -84,12 +84,16 @@ Pygments==2.11.2
 PyJWT==1.7.1
 PyNaCl==1.5.0
 pyotp==2.6.0
+PyQt5==5.15.6
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.10.1
 python-dateutil==2.8.2
 python-decouple==3.5
 python-engineio==4.3.2
 python-socketio==5.6.0
 pytz==2021.3
 pywinpty==1.1.6
+PyYAML==6.0
 qrcode==7.3.1
 requests==2.25.1
 s3transfer==0.5.2
@@ -101,6 +105,7 @@ SQLAlchemy==1.4.37
 sqlparse==0.4.2
 sshtunnel==0.4.0
 toml==0.10.2
+turtle==0.0.1
 tzdata==2022.1
 ua-parser==0.10.0
 uritemplate==4.1.1
