@@ -97,7 +97,7 @@ def send(request, pk):
             f'Mail',  # subject
             f'Name: {name}, Email: {email_input}, Message: {msg}, Service: {services}',
             settings.EMAIL_HOST_USER,  # sender
-            ['itservices@ug.edu.gh'],  # receiver
+            ['itservices@ug.edu.gh'],  # receiver email
         )
 
         email.fail_silently = True
