@@ -103,6 +103,6 @@ def send(request, pk):
         email.fail_silently = True
         email.send()
 
-    return render(request, 'sent.html', {
-        'pk': pk,
-    })
+        return render(request, 'sent.html', {
+            'pk': pk,
+        })
