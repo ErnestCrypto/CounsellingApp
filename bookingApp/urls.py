@@ -9,6 +9,7 @@ app_name = 'bookingUrls'
 
 urlpatterns = [
     path('', coun_views.loginPage, name='loginPage'),
+    path('send/<int:pk>/', views.send, name='send'),
     path('logout/<int:pk>/', views.logout, name='logout'),
     path('index/<int:pk>/', views.index, name='indexPage'),
     path('counselor/<int:object_id>/', views.details, name="details"),

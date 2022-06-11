@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from counsellingApp.models import Counsellor, Students
 from django.contrib import messages
+from django.core.mail import EmailMessage
+from django.conf import settings
 
 
 def index(request, pk):
@@ -83,3 +85,24 @@ def services(request):
 
 def logout(request, pk):
     return redirect('counsellingUrls:loginPage')
+
+
+def send(request, pk):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email_input = request.POST.get('email')
+        msg = request.POST.get('msg')
+        services = request.POST.get('services')
+        email = EmailMessage(
+            f'Mail',  # subject
+            f'Name: {name}, Email: {email_input}, Message: {msg}, Service: {services}',
+            settings.EMAIL_HOST_USER,  # sender
+            ['itservices@ug.edu.gh'],  # receiver
+        )
+
+        email.fail_silently = True
+        email.send()
+
+    return render(request, 'sent.html', {
+        'pk': pk,
+    })

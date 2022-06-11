@@ -256,17 +256,17 @@
     		<div class="row">
     			<div class="col-md-6 half ftco-animate">
     				<h2 class="mb-4">Send a Message &amp; Get in touch!</h2>
-    				<form action="#"  method = "POST" class="appointment">
+    				<form action="{% url 'bookingUrls:send' pk %}"  method = "POST" class="appointment">
 						{% csrf_token %}
     					<div class="row">
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<div class="form-group">
-			              <input type="text" class="form-control" placeholder="Your Name">
+			              <input type="text" class="form-control" placeholder="Your Name" name="name">
 			            </div>
 								</div>
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<div class="form-group">
-			              <input type="text" class="form-control" placeholder="Email">
+			              <input type="text" class="form-control" placeholder="Email" name="email">
 			            </div>
 								</div>
 								<div class="col-md-12">
@@ -274,7 +274,7 @@
 			    					<div class="form-field">
 	          					<div class="select-wrap">
 	                      <div class="icon"><span class="fa fa-chevron-down"></span></div>
-	                      <select name="" id="" class="form-control">
+	                      <select name="" id="" class="form-control" name="service">
 	                      	<option value="">Services</option>
 	                        <option value="">Relation Problem</option>
 	                        <option value="">Couple Counseling</option>
@@ -289,7 +289,7 @@
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-			              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+			              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message" name="msg"></textarea>
 			            </div>
 								</div>
 								<div class="col-md-12">
