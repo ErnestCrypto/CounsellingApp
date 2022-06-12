@@ -304,11 +304,11 @@ class Students(models.Model):
     student_id = models.IntegerField()
     firstName = models.CharField(max_length=255)
     lastName = models.CharField(max_length=255)
-    age = models.IntegerField()
+    age = models.IntegerField(default=None, null=True, blank=True)
     status = models.CharField(
         max_length=255, choices=LOGIN, default='STUDENT')
     profile = models.ImageField(upload_to='images/', blank=True, null=True)
-    contact = models.IntegerField()
+    contact = models.IntegerField(default=None, null=True, blank=True)
     pin = models.IntegerField(default=None, null=True, blank=True)
     email = models.CharField(
         max_length=255, db_index=True, default=None, null=True, blank=True)
