@@ -90,10 +90,10 @@ WSGI_APPLICATION = 'Counselling.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd9egv0brihld04',
-        'USER': 'clborzwapydpio',
-        'PASSWORD': '4db356f3cd605ab4efc9cf6fab0a3310af479b0f044b64ebfd66c84292d88c13',
-        'HOST': 'ec2-34-231-221-151.compute-1.amazonaws.com',
+        'NAME': 'dam58mlbgd4nu1',
+        'USER': 'jdxfdlpkwernas',
+        'PASSWORD': '24fff4e366c1758abf7cc8672585cee3dcd03d5adb64fc9635fa311a72d779d1',
+        'HOST': 'ec2-34-225-159-178.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
