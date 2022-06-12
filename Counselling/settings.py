@@ -161,8 +161,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ugevoting1@ug.edu.gh'
 EMAIL_HOST_PASSWORD = 'Legon@21'
-RECIPIENT_ADDRESS = 'itservices@ug.edu.gh'
-
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# RECIPIENT_ADDRESS = 'itservices@ug.edu.gh'
 # EMAIL_HOST = env('EMAIL_HOST')
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True

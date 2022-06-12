@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from counsellingApp.models import Counsellor, Students
 from django.contrib import messages
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, send_mail
 from django.conf import settings
 
 
@@ -92,16 +92,27 @@ def send(request, pk):
         name = request.POST.get('name')
         email_input = request.POST.get('email')
         msg = request.POST.get('msg')
-        services = request.POST.get('services')
-        email = EmailMessage(
-            f'Mail',  # subject
-            f'Name: {name}, Email: {email_input}, Message: {msg}, Service: {services}',
-            settings.EMAIL_HOST_USER,  # sender email
-            ['itservices@ug.edu.gh'],  # receiver email
+        subject = request.POST.get('subject')
+        message = f'NAME: {name}, EMAIL:{email_input}, SERVICE:{subject}, MESSAGE: {msg}'
+
+        send_mail(
+            'contact form',
+            message,
+            settings.EMAIL_HOST_USER,
+            ['itservices@ug.edu.gh'],
+            fail_silently=False,
+
         )
 
-        email.fail_silently = True
-        email.send()
+        # email = EmailMessage(
+        #     f'Mail',  # subject
+        #     f'Name: {name}, Email: {email_input}, Message: {msg}, Service: {services}',
+        #     settings.EMAIL_HOST_USER,  # sender email
+        #     ['itservices@ug.edu.gh'],  # receiver email
+        # )
+
+        # email.fail_silently = True
+        # email.send()
 
         return render(request, 'sent.html', {
             'pk': pk,
