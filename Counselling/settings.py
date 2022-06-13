@@ -79,7 +79,7 @@ TEMPLATES = [
             ],
             'libraries': {
                 'filter_tags': 'counsellingApp.filters',
-                'remove_substr': 'counsellingApp.filters'
+                'filter_tags': 'counsellingApp.filters'
             }
         },
     },
@@ -162,7 +162,7 @@ django_heroku.settings(locals())
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.office365.com'
 EMAIL_HOST_USER = 'ugevoting1@ug.edu.gh'
 EMAIL_HOST_PASSWORD = 'Legon@21'
 EMAIL_PORT = 587

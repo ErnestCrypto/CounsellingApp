@@ -114,7 +114,7 @@ def send(request, pk):
         email_input = request.POST.get('email')
         msg = request.POST.get('msg')
         subject = request.POST.get('subject')
-        message = f'NAME: {name}, EMAIL:{email_input}, SERVICE:{subject}, MESSAGE: {msg}'
+        message = f'NAME: {name}, EMAIL: {email_input}, SERVICE: {subject}, MESSAGE: {msg}'
 
         send_mail(
             'contact form',

@@ -324,13 +324,7 @@ select:placeholder {
     {{ log.person_id }}
     {{ log.pin_log }}
     
-    {% comment %} {{log.option }} {% endcomment %}
-   
-
-
-      {% comment %} <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password"> 
-      <br> {% endcomment %}
+    
       <input type="submit" class="fadeIn fourth" value="Log In">
 
 
@@ -348,93 +342,3 @@ select:placeholder {
 
 
 
-
-
- {% comment %} <link
-
-
-  href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-  rel="stylesheet"
-  id="bootstrap-css"
-/>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<link
-  rel="stylesheet"
-  href="https://use.
-  fontawesome.com/releases/v5.0.8/css/all.css"
-/>
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-/>  
- {% endcomment %}
-
-
-
-{% comment %} <div class="container" >
-  <br />
-  <p>UNIVERSITY OF GHANA</p>
-  <hr />
-  
-  <div class="card bg-light">
-    <article class="card-body mx-auto" style="max-width: 400px">
-      <form method="POST" action="">
-        {% csrf_token %}
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-user" aria-hidden="true"></i>
-          </span>
-          </div>
-           
-          <input type = "text" placeholder="ID"/>
-          <div class = "form-group">
-        {{login.user_id}} 
-        </div>
-
-        <!-- form-group end.// -->
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-          </div>
-                    <input type = "text" placeholder="PIN"/>
-      
-          {{login.pin}} 
-        </div>
-        <!-- form-group// -->
-
-        <!-- form-group// -->
-        <div class="col-sm-3">
-              <div class="form-group">   
-          {{ login.option}} 
-         
-           <input type = "radio"  > Admin</input>
-         <input type = "radio"> Counsellor</input>
-        <input type = "radio" > Student</input>
-         <input type = "radio"> Stuff</input>
-     
-      </div>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-block">Login</button>
-      
-      
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}> 
-     
-      {{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-
-      </form>
-    </article>
-  </div>
-</div>
-</div>
- {% endcomment %}
