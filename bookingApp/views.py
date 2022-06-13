@@ -125,16 +125,6 @@ def send(request, pk):
 
         )
 
-        # email = EmailMessage(
-        #     f'Mail',  # subject
-        #     f'Name: {name}, Email: {email_input}, Message: {msg}, Service: {services}',
-        #     settings.EMAIL_HOST_USER,  # sender email
-        #     ['itservices@ug.edu.gh'],  # receiver email
-        # )
-
-        # email.fail_silently = True
-        # email.send()
-
         return render(request, 'sent.html', {
             'pk': pk,
         })
