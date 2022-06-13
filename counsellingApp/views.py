@@ -310,14 +310,12 @@ def times(request, pk, day):
         slots = int(request.POST.get('slots'))
         minutes = int(request.POST.get('minutes'))
         checked = "white"
-        counter = request.session['counter']
 
     else:
         hours = request.session['hours']
         minutes = request.session['minutes']
         slots = request.session['slots']
         checked = request.session['checked']
-        counter = request.session['counter']
 
     request.session['day'] = day
     # breaks = int(request.POST.get('breaks'))
@@ -425,7 +423,6 @@ def times(request, pk, day):
         'm_option': MINUTES,
         's_option': SLOTS,
         'checked': checked,
-        'unique': counter,
 
     })
 
