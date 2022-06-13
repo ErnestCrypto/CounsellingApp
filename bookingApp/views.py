@@ -109,6 +109,9 @@ def logout(request, pk):
 
 
 def send(request, pk):
+    pk = request.session['pk']
+    students = Students.objects.all()
+    counsellors = Counsellor.objects.all()
     if request.method == 'POST':
         name = request.POST.get('name')
         email_input = request.POST.get('email')
@@ -127,13 +130,19 @@ def send(request, pk):
 
         return render(request, 'sent.html', {
             'pk': pk,
+            'students': students,
+            'counsellors': counsellors,
         })
 
 
 def book(request, pk, object_user_id):
-
+    pk = request.session['pk']
     counsellor = Counsellor.objects.get(user_id=object_user_id)
     student = Students.objects.get(student_id=pk)
+    students = Students.objects.all()
+    counsellors = Counsellor.objects.all()
+    time = request.POST.get('radio')
+    timeDay = time.split('_')
 
     stud_name = student.firstName + ' ' + student.lastName
 
@@ -145,8 +154,25 @@ def book(request, pk, object_user_id):
             book.counsellor_user_id = counsellor.user_id
             book.student_id = student.student_id
             book.student_name = stud_name
+            book.time = timeDay[1]
+            book.day = timeDay[0]
             book.save()
 
     return render(request, 'book.html', {
         'pk': pk,
+        'students': students,
+        'counsellors': counsellors,
+    })
+
+
+def bookings(request, pk):
+    students = Students.objects.all()
+    counsellors = Counsellor.objects.all()
+    pk = request.session['pk']
+    bookings = Bookings.objects.all()
+    return render(request, 'bookings.html', {
+        'pk': pk,
+        'students': students,
+        'counsellors': counsellors,
+        'bookings': bookings,
     })

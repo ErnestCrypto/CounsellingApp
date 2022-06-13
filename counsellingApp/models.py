@@ -223,6 +223,10 @@ class Bookings(models.Model):
 
     student_status = models.CharField(choices=BOOKING,
                                       max_length=255, db_index=True, default='Pending', null=True, blank=True)
+    time = models.CharField(max_length=255, db_index=True,
+                            default=None, null=True, blank=True)
+    day = models.CharField(max_length=255, db_index=True,
+                           default=None, null=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'Bookings'

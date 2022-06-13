@@ -1,0 +1,1 @@
+openssl req -config ugcounsellingapp.herokuapp.com.conf -new -x509 -sha256 -newkey rsa:2048 -nodes -keyout ugcounsellingapp.herokuapp.com.key.pem -days 365 -out ugcounsellingapp.herokuapp.com.cert.pem

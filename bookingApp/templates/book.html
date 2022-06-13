@@ -1,8 +1,12 @@
 {% extends 'base.html' %}{% load static %}
 {% block content %}
-<div class="container" style="padding:30%;">
-    <div class = "background:bg-success">
-<p >Book recorded successfully</p>
+<div class="container" style="padding:20%;">
+    <div class = "alert alert-success">
+        <center>
+            <a href="{% url 'bookingUrls:bookings' pk %}">
+<p >Book recorded successfully. Click to view</p>
+        </center>
+    </a>
 </div>
 </div>
 {% endblock %}
