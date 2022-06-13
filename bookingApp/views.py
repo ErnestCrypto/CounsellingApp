@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from counsellingApp.models import Counsellor, Students
+from counsellingApp.models import Counsellor, Students, Availability, Bookings
+from counsellingApp.forms import BookingsForm
 from django.contrib import messages
 from django.core.mail import EmailMessage, send_mail
 from django.conf import settings
@@ -66,11 +67,14 @@ def details(request, object_id):
     counselor = object_id
     pk = request.session['pk']
     students = Students.objects.all()
+    coun = Counsellor.objects.get(user_id=object_id)
+    availables = Availability.objects.filter(counsellor=coun)
     return render(request, 'details.html', {
         'objects': objects,
         'counselor': counselor,
         'pk': pk,
         'students': students,
+        'availables': availables,
     })
 
 
@@ -117,3 +121,24 @@ def send(request, pk):
         return render(request, 'sent.html', {
             'pk': pk,
         })
+
+
+def book(request, pk, object_user_id):
+
+    counsellor = Counsellor.objects.get(user_id=object_user_id)
+    student = Students.objects.get(student_id=pk)
+
+    stud_name = student.firstName + ' ' + student.lastName
+
+    if request.method == 'POST':
+        book = BookingsForm(request.POST)
+        if book.is_valid():
+            book = book.save(commit=False)
+            book.counsellor = counsellor
+            book.counsellor_user_id = counsellor.user_id
+            book.student_id = student.student_id
+            book.student_name = stud_name
+
+    return render(request, 'book.html', {
+        'pk': pk
+    })

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{% load static %}
+{% extends 'base.html' %}{% load static %}{% load filter_tags %}{% load remove_substr %}
 
 {% block content %}
 
@@ -20,7 +20,7 @@
 				<div class="row">
 					{% for object in objects %}
 					{% if object.user_id == counselor|add:0 %}
-					<form action = "" method="post" style="width:100%;">
+					<form action = "{% url 'bookingUrls:book' pk object.user_id %}" method="post" style="width:100%;">
 						{% csrf_token %}
 					<div class="ftco-animate" style="width: 100%;">
 						<div class="staff" >
@@ -47,22 +47,53 @@
 						<p>About:<p>
 						<p>{{object.about}}</p>  
 					  </div>
-							  <div class="col-sm-6">
-								  <p>Available Times<p>
-							  </div>
-					  </div>
-					  <br><br>
-				 <button type="submit" class="btn btn-primary">Book</button>
-				</center>
-				</div>
-			
-						</div>
-					
-					</div>
-				</form>
-					{% else%}
+					  {% else%}
 					{% endif %}
 					{% endfor %}
+
+					
+					
+							  <div class="col-sm-6">
+								  <p>Available Times<p>
+				
+						{% for available in availables %}
+						
+						{% if counselor|divisibleby:available.user_id %}
+				 <p style = "color:orange">{{available.day}}<p>
+					{% with available.availabletime|split:"," as times %}
+					 {% for time in times %}
+					{% with time|remove_substr:"[" as tim %}
+                {% with tim|remove_substr:"]" as t %}
+				 <p>{{t|remove_substr:"'"}}<p>
+					{% endwith %}
+					{% endwith %}
+					 {% endfor %}
+					{% endwith %}
+					{% else %}
+					
+					{% endif %}
+                    {% endfor %}
+							  </div>
+					  </div>
+					 
+					  <br><br>
+					 
+				</center>
+					
+
+				</div>
+				<center>
+					<div class="col-sm-6" >
+			 <button type="submit" class="btn btn-primary" style="width: 100%;margin-top:2%;margin-bottom:2%;">Book</button>
+					</div>	
+			</center>
+						</div>
+
+		
+					</div>
+
+				</form>
+					 
 
 					
 					
