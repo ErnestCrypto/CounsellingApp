@@ -77,6 +77,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
 
             ],
+            'libraries': {
+                'filter_tags': 'counsellingApp.filters',
+                'remove_substr': 'counsellingApp.filters'
+            }
         },
     },
 ]

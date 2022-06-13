@@ -237,6 +237,8 @@ def adminPage(request, pk, dashboard):
     students = Students.objects.all()
     dashboard = 'red'
     request.session['pk'] = pk
+    counselor = Counsellor.objects.get(user_id=pk)
+    myTimes = Availability.objects.filter(counsellor=counselor)
 
     return render(request, 'app/admin.html', {
         'objects': objects,
@@ -248,6 +250,7 @@ def adminPage(request, pk, dashboard):
         'meetings': meetings,
         'bookcount': bookcount,
         'meetingcount': meetingcount,
+        'myTimes': myTimes,
     })
 
 
