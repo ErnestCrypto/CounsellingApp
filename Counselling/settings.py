@@ -79,7 +79,7 @@ TEMPLATES = [
             ],
             'libraries': {
                 'filter_tags': 'counsellingApp.filters',
-                'filter_tags': 'counsellingApp.filters'
+                'remove_substr': 'counsellingApp.filters',
             }
         },
     },
