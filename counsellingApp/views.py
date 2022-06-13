@@ -307,12 +307,14 @@ def times(request, pk, day):
         slots = int(request.POST.get('slots'))
         minutes = int(request.POST.get('minutes'))
         checked = "white"
+        counter = request.session['counter']
 
     else:
         hours = request.session['hours']
         minutes = request.session['minutes']
         slots = request.session['slots']
         checked = request.session['checked']
+        counter = request.session['counter']
 
     request.session['day'] = day
     # breaks = int(request.POST.get('breaks'))
@@ -420,43 +422,62 @@ def times(request, pk, day):
         'm_option': MINUTES,
         's_option': SLOTS,
         'checked': checked,
+        'unique': counter,
 
     })
 
 
 def schedule(request, pk, day):
     if request.method == 'POST':
-        start = request.POST.get('start_time')
-        end = request.POST.get('end_time')
+        start = request.POST.getlist('start_time')
+        end = request.POST.getlist('end_time')
+        box = request.POST.getlist('checkbox')
         subTime = request.session['subTime']
         hours = request.session['hours']
         minutes = request.session['minutes']
         request.session['day'] = day
-
+        messages.success(request, f"{box}")
         availiable = AvailabilityForm(request.POST)
         user = Counsellor.objects.get(user_id=pk)
+        already = Availability.objects.filter(counsellor=user, day=day).first()
 
-        if availiable.is_valid():
-            myTime = availiable.save(commit=False)
-            if hours or minutes:
-                myStart = []
-                myEnd = []
-                for s, t in subTime:
-                    myStart.append(s)
-                    myEnd.append(t)
-                myTime.startime = myStart
-                myTime.endtime = myEnd
-                myTime.counsellor = user
-                myTime.user_id = pk
-                myTime.hours = hours
-                myTime.minutes = minutes
-                myTime.day = day
-                myTime.save()
+        if already:
+            availiable = AvailabilityForm(request.POST, instance=already)
 
-                instruction = 1
+            if availiable.is_valid():
+                myTime = availiable.save(commit=False)
+                if hours or minutes:
+                    myTime.availabletime = box
+                    myTime.startime = start
+                    myTime.endtime = end
+                    myTime.counsellor = user
+                    myTime.user_id = pk
+                    myTime.hours = hours
+                    myTime.minutes = minutes
+                    myTime.day = day
+                    myTime.save()
+                    instruction = 1
+                else:
+                    instruction = 3
 
-            else:
-                instruction = 3
+        else:
+            availiable = AvailabilityForm(request.POST)
+            if availiable.is_valid():
+                myTime = availiable.save(commit=False)
+                if hours or minutes:
+                    myTime.availabletime = box
+                    myTime.startime = start
+                    myTime.endtime = end
+                    myTime.counsellor = user
+                    myTime.user_id = pk
+                    myTime.hours = hours
+                    myTime.minutes = minutes
+                    myTime.day = day
+                    myTime.save()
+                    instruction = 1
+
+                else:
+                    instruction = 3
 
         day = request.session['day']
 
@@ -470,19 +491,23 @@ def schedule(request, pk, day):
     })
 
 
-def add_period(request, n, u):
+def add_period(request, n, u, counter):
     day = request.session['day']
     pk = request.session['pk']
     request.session['checked'] = 'lightgreen'
-    messages.success(request, f"{n}--{u}")
+    request.session['counter'] = counter
+    counsellor = Counsellor.objects.get(user_id=pk)
+    if request.method == 'POST':
+        availiable = Availability.save(commit=False)
 
     return redirect('counsellingUrls:times', pk, day)
 
 
-def del_period(request, n, u):
+def del_period(request, n, u, counter):
     day = request.session['day']
     pk = request.session['pk']
     request.session['checked'] = 'white'
+    request.session['counter'] = counter
     return redirect('counsellingUrls:times', pk, day)
 
 

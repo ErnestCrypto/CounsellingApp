@@ -5,7 +5,7 @@
 #avapad{
     height:95%;
     box-shadow: 1px 1px 12px -5px;
-    border-radius:10px;
+    
     overflow-y:scroll;
     background:white;
 }
@@ -202,7 +202,7 @@ transform: scale(1.1, 1.1);
                     </div>
                     </div> {% endcomment %}
                    <div class="col-sm-3" style="padding-bottom:2%;">
-     <button type="submit" class="btn btn-primary">
+     <button type="submit" class="btn " style="background:#281564;color:white;">
        <i class="fa fa-clock"></i> 
        Generate time</button>
                    </div>
@@ -246,46 +246,45 @@ transform: scale(1.1, 1.1);
                                                    
                 <form action = "{% url 'counsellingUrls:schedule' pk day %}" method = "POST">
                     {% csrf_token %}
-                            <div class ="row">
-                          <!---->
-                          <br>
-                          <br>
-                          
+                            <div class = "row">
+                          <!---->                        
                           {% for n,u in time   %}
-                          
+                          {% with counter=forloop.counter  %}
                       <div class = "col-sm-4" 
                       style="border-right: 1px solid rgba(0, 0, 0, 0.1);
                       border-bottom: 1px solid rgba(0, 0, 0, 0.1);padding-top:1%;padding-bottom:1%;
-                      border:1px solid rgba(0, 0, 0, 0.1);background:{{checked}}">
-                      
+                      border:1px solid rgba(0, 0, 0, 0.1);
+                      background:white" name = "box_{{counter}}">
                                <div class = "col-sm-5">
         <input class = "form-control" type= "text" name= "start_time" value="{{n}}"/>
                               </div>
                                <div class = "col-sm-1" >
-                              -
+                              - 
                               </div>
                                 <div class = "col-sm-5">
       <input class = "form-control" type= "text" name= "end_time" value="{{u}}"/>
                           </div> 
-                          <br><br>
-                              <div class = "col-sm-3">
-      <a href="{% url 'counsellingUrls:add_period' n u %}" class="btn btn-success" ><i class="fa fa-check"></i></a>
-                              </div>
-                               <div class = "col-sm-3">
-      <a href ="{% url 'counsellingUrls:del_period' n u %}" class="btn btn-danger" ><i class="fa fa-times"></i></a>
-                              </div>
-                               
+                          <div class = "col-sm-5" >
+      <input type= "checkbox" name= "checkbox" id = "{{n}}-{{u}}" value="{{n}}-{{u}}">
+      I'm available
+      </input>
+
+                            </div>
+                           
                            </div>
-                         
+                          <br><br>
+
+                         {% endwith %}
                           {% endfor %} 
                           <!---->
                           
                             <!---->
                               </div> 
                               <br><br>
-                              <div style = "padding-bottom:2%;">
-      <button type="submit" class="btn btn-primary" >Submit</button>
+                              <div style = "padding-bottom:5%;">
       </div>
+          <button class="btn btn-success" type="submit">submit</button>
+
     </form>
                           </div>
                       
