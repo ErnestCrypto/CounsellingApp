@@ -1,24 +1,9 @@
 # creating views
-from audioop import reverse
-from django import views
-from django.http import request
-from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from .models import Counsellor, SuperCounsellor, Achievement, Availability, Education, Experience, Therapy, Specialities, Login, Bookings, Meetings, Students, Notifications, SLOTS, MINUTES
 from .forms import CounsellorForm, SuperCounsellorForm, AchievementForm, AvailabilityForm, EducationForm, ExperienceForm, TherapyForm, SpecialitiesForm, LoginForm, BookingsForm, NotificationsForm
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.db.models.functions import Lower
-from django.db.models import Q
-import calendar
-from calendar import HTMLCalendar
-from django.core.mail import send_mail
-from django.core import mail
 import math
-
-
-def test(request):
-    return render(request, 'test.html', {})
 
 
 def loginPage(request):
@@ -93,8 +78,8 @@ def loginPage(request):
 
                     request.session['pk'] = user_id
                     request.session['counsellor'] = l_lastname
-                    home = 'red'
-                    return redirect('counsellingUrls:indexPage', user_id, home)
+                    profile = 'red'
+                    return redirect('counsellingUrls:dashboardPage', user_id, profile)
 
             for u in range(len(arr_user_id_student)):
 
@@ -118,8 +103,6 @@ def loginPage(request):
                     pk = request.session['pk']
                     return redirect('bookingUrls:indexPage', pk)
 
-        else:
-            messages.error(request, '-- Please check your credentials --')
     return render(request, 'app/login.html', {
         'log': login
 
@@ -254,10 +237,6 @@ def adminPage(request, pk, dashboard):
     })
 
 
-def calender(request):
-    return render(request, 'admin/events/change_list.html', {})
-
-
 def availiablePage(request, pk):
     pk = request.session['pk']
     availiable = AvailabilityForm()
@@ -318,7 +297,7 @@ def times(request, pk, day):
         checked = request.session['checked']
 
     request.session['day'] = day
-    # breaks = int(request.POST.get('breaks'))
+
     availiable = AvailabilityForm()
     pk = request.session['pk']
     request.session['hours'] = hours
@@ -330,7 +309,7 @@ def times(request, pk, day):
         if availiable.is_valid():
             start = 28800  # time in seconds for 8:00 am
             end = 68400  # time in seconds for 7:00 pm
-            # breaks = breaks * 60
+
             interval = end - start
             hours_sec = hours*3600
             minutes_sec = minutes * 60
@@ -359,8 +338,6 @@ def times(request, pk, day):
 
             time = []
 
-            # for i in ran:
-            #     arr_start_time.append(t_time)
             for i in d_ran:
                 if start < end:
                     time_in_hours = start/3600
@@ -398,21 +375,6 @@ def times(request, pk, day):
 
             subTime = [add[n:n+2] for n in range(0, len(add), 2)]
             request.session['subTime'] = subTime
-
-            # mylist_n = [j for i in subTime for j in i]
-            # some = []
-            # for u in range(len(subTime)):
-            #     l_time = subTime[u]
-            #     res = l_time[-1]
-            #     ser = l_time[0]
-            #     some.extend([l_time, ser, res])
-
-            # for u in range(len(some)):
-            #     if (u % 2) == 0:
-            #         f_time = some[u]
-            #     else:
-            #         g_time = some[u]
-            #         mylist_n.append(g_time)
 
     return render(request, 'app/availiable.html', {
         'pk': pk,
@@ -524,42 +486,14 @@ def homePage(request, pk):
     )
 
 
-def dashboardPage(request, pk):
-    dashboard = 'red'
-    admin = 'app/admin.html'
-    profile = 'app/profile.html'
+def dashboardPage(request, pk, profile):
+    profile = 'red'
     notification = 'app/notification.html'
-    index = 'app/index.html'
     counsellor = CounsellorForm()
-    achieve = Achievement.objects.all()
-    edu = Education.objects.all()
-    expe = Experience.objects.all()
-    ther = Therapy.objects.all()
-    spec = Specialities.objects.all()
-    achievement = AchievementForm()
-    education = EducationForm()
-    experience = ExperienceForm()
-    therapy = TherapyForm()
-    books = BookingsForm()
-    specialities = SpecialitiesForm()
-    Supercounsellorform = SuperCounsellorForm()
     objects = Counsellor.objects.all()
     students = Students.objects.all()
-
-    obj_ach = Achievement.objects.all()
-    obj_avai = Availability.objects.all()
-    obj_exp = Experience.objects.all()
-    obj_the = Therapy.objects.all()
-    obj_spe = Specialities.objects.all()
     count = Counsellor.objects.all().count()
-    bookcount = Bookings.objects.filter(counsellor_user_id=pk).count()
-    meetingcount = Meetings.objects.filter(counsellor_user_id=pk).count()
-    bookings = Bookings.objects.all().count()
-    meetings = Meetings.objects.all().count()
     request.session['pk'] = pk
-    # ach_id = request.session['ach_id']
-    studentbooks = Bookings.objects.all()
-    avaibooks = Availability.objects.all()
 
     for object in objects:
         if str(object.user_id) == str(pk):
@@ -579,23 +513,8 @@ def dashboardPage(request, pk):
             })
 
     if request.method == 'POST':
-
-        books = BookingsForm(request.POST)
         coun = Counsellor.objects.get(user_id=pk)
         counsellor = CounsellorForm(request.POST, request.FILES, instance=coun)
-        achievement = AchievementForm(request.POST)
-        education = EducationForm(request.POST)
-        experience = ExperienceForm(request.POST)
-        therapy = TherapyForm(request.POST)
-        specialities = SpecialitiesForm(request.POST)
-        Supercounsellorform = SuperCounsellorForm(request.POST)
-
-        if books.is_valid():
-            messages.success(request, 'Booking recorded successfully')
-            bsave = books.save(commit=False)
-            bsave.cousellor_user_id = pk
-            bsave.save()
-
         if counsellor.is_valid():
             counsellor.save()
             arr_counsellor_id = []
@@ -653,142 +572,42 @@ def dashboardPage(request, pk):
                 l_counsellor_occupation = arr_counsellor_occupation[u]
 
                 if str(l_counsellor_user_id) == str(pk):
-
-                    # coun.user_id = pk
-                    # coun.about = l_counsellor_about
-                    # coun.title = l_counsellor_title
-                    # coun.firstName = l_counsellor_firstname
-                    # coun.lastName = l_counsellor_lastname
-                    # coun.gender = l_counsellor_gender
-                    # coun.occupation = l_counsellor_occupation
-                    # coun.contact = l_counsellor_contact
-                    # coun.email = l_counsellor_email
-                    # coun.profile = l_counsellor_profile
-
-                    ach_obj = achievement.save(commit=False)
-                    edu_obj = education.save(commit=False)
-                    exp_obj = experience.save(commit=False)
-                    ther_obj = therapy.save(commit=False)
-                    spec_obj = specialities.save(commit=False)
                     counsellor_inst = Counsellor.objects.get(
                         id=l_counsellor_id)
 
-                    ach_obj.counsellor = counsellor_inst
-                    edu_obj.counsellor = counsellor_inst
-                    exp_obj.counsellor = counsellor_inst
-                    ther_obj.counsellor = counsellor_inst
-                    spec_obj.counsellor = counsellor_inst
-
-                    ach_obj.user_id = pk
-                    edu_obj.user_id = pk
-                    exp_obj.user_id = pk
-                    ther_obj.user_id = pk
-                    spec_obj.user_id = pk
-
-                    # ach_obj.id = ach_id
-                    ach_obj.save()
-                    messages.success(request, f'hi')
-            # firstname = counsellor.cleaned_data['firstName']
-            # lastname = counsellor.cleaned_data['lastName']
-
-            messages.success(
-                request, 'Your account has been updated successfully.')
-
         else:
             counsellor = CounsellorForm()
-            achievement = AchievementForm()
-            availability = AvailabilityForm()
-
-            education = EducationForm()
-            experience = ExperienceForm()
-            therapy = TherapyForm()
-            specialities = SpecialitiesForm()
-
-            messages.error(
-                request, 'Failed to create your account, please check your details')
 
     return render(request, 'app/dashboard.html', {'profile': profile,
                                                   'notification': notification,
-                                                  'index': index,
-                                                  'admin': admin,
                                                   'counsellor':  counsellor,
-                                                  'achievement': achievement,
-                                                  'education': education,
-                                                  'experience': experience,
-                                                  'therapy': therapy,
-                                                  'specialities': specialities,
                                                   'Counsellor': counsellor,
                                                   'objects': objects,
                                                   'pk': pk,
-                                                  'obj_ach': obj_ach,
-                                                  'obj_avai': obj_avai,
-                                                  'obj_exp': obj_exp,
-                                                  'obj_the': obj_the,
-                                                  'obj_spe': obj_spe,
                                                   'count': count,
-                                                  'books': books,
-                                                  'bookings': bookings,
-                                                  'meetings': meetings,
-                                                  'studentbooks': studentbooks,
-                                                  'avaibooks': avaibooks,
-                                                  'bookcount': bookcount,
-                                                  'meetingcount': meetingcount,
-                                                  'achieve': achieve,
-                                                  'edu': edu,
-                                                  'expe': expe,
-                                                  'ther': ther,
-                                                  'spec': spec,
                                                   'students': students,
-                                                  'dashboard': dashboard,
+
                                                   }
 
                   )
 
 
-def settingsPage(request, pk):
+def settingsPage(request, pk, settings):
     objects = Counsellor.objects.all()
     request.session['pk'] = pk
     studentbooks = Bookings.objects.all()
     students = Students.objects.all()
-    dashboard = 'red'
+    settings = 'red'
     return render(request, 'app/settings.html', {
         'objects': objects,
         'pk': pk,
         'studentbooks': studentbooks,
         'students': students,
-        'dashboard': dashboard,
+        'settings': settings,
 
     }
 
     )
-
-
-def indexPage(request, pk, home):
-    objects = Counsellor.objects.all()
-    request.session['pk'] = pk
-    students = Students.objects.all()
-    home = 'red'
-    return render(request, 'app/index.html', {
-        'objects': objects,
-        'students': students,
-        'pk': pk,
-        'home': home,
-    })
-
-
-def popupPage(request, object_user_id):
-    objects = Counsellor.objects.all()
-    pk = request.session['pk']
-    user_id = object_user_id
-    students = Students.objects.all()
-    home = 'red'
-    return render(request, 'app/popup.html', {
-        'objects': objects,
-        'pk': pk,
-        'home': home,
-        'user_id': user_id,
-        'students': students,
-    })
 
 
 def notificationPage(request, pk, notify):
@@ -803,30 +622,6 @@ def notificationPage(request, pk, notify):
         'notify': notify,
         'students': students,
         'notification': notification,
-    })
-
-
-def profilePage(request, pk, profile):
-    objects = Counsellor.objects.all()
-    obj_ach = Achievement.objects.all()
-    obj_avai = Availability.objects.all()
-    obj_exp = Experience.objects.all()
-    obj_the = Therapy.objects.all()
-    obj_spe = Specialities.objects.all()
-    request.session['pk'] = pk
-    students = Students.objects.all()
-    profile = 'red'
-    return render(request, 'app/profile.html', {
-        'students': students,
-        'objects': objects,
-        'pk': pk,
-        'profile': profile,
-        'obj_ach': obj_ach,
-        'obj_avai': obj_avai,
-        'obj_exp': obj_exp,
-        'obj_the': obj_the,
-        'obj_spe': obj_spe,
-
     })
 
 
@@ -886,40 +681,6 @@ def student_detail(request, studentbook_student_id):
     })
 
 
-def search(request, pk):
-    profile = 'red'
-    pk = request.session['pk']
-    students = Students.objects.all()
-
-    search = ''
-
-    if request.method == 'GET':
-        search = request.GET.get('search')
-        post = Counsellor.objects.all()
-        objects = Counsellor.objects.all()
-        if search:
-            search = request.GET.get('search').split(' ')
-            for u in range(len(search)):
-                l_search = search[u]
-
-                post = Counsellor.objects.filter(
-                    Q(firstName__icontains=l_search) | Q(lastName__icontains=l_search) | Q(title__icontains=l_search))
-
-        else:
-            search = ''
-        pk = request.session['pk']
-        return render(request, 'app/result.html', {
-            'post': post,
-            'search': search,
-            'pk': pk,
-            'profile': profile,
-            'objects': objects,
-            'students': students,
-
-        })
-    return redirect('counsellingUrls:profilePage', pk)
-
-
 def delete(request, studentbook_id):
     pk = request.session['pk']
     book = Bookings.objects.get(id=studentbook_id)
@@ -930,100 +691,23 @@ def delete(request, studentbook_id):
 def update(request, studentbook_id, studentbook_status):
     pk = request.session['pk']
     book_id = Bookings.objects.get(id=studentbook_id)
+    bookings = Bookings.objects.all()
     books = BookingsForm(instance=book_id)
 
-    if str(studentbook_status) == 'Pending':
-        booksave = books.save(commit=False)
-        booksave.student_status = 'Approved'
-        booksave.save()
-        messages.success(request, 'approved')
-    elif str(studentbook_status) == 'Approved':
-        booksave = books.save(commit=False)
-        booksave.student_status = 'Pending'
-        booksave.save()
-        messages.success(request, 'pending')
+    for booking in bookings:
+        messages.success(request, f"{booking.id}-{studentbook_id}")
+        if int(booking.id) == int(studentbook_id):
+            if str(studentbook_status) == 'Pending':
+                booksave = books.save(commit=False)
+                booksave.student_status = 'Approved'
+                booksave.save()
+
+            elif str(studentbook_status) == 'Approved':
+                booksave = books.save(commit=False)
+                booksave.student_status = 'Pending'
+            booksave.save()
 
     return redirect('counsellingUrls:settingsPage', pk)
-
-
-def achievement_add(request, ach_id):
-    pk = request.session['pk']
-
-    achievements = Achievement.objects.all()
-
-    achieve = Achievement.objects.filter(id=ach_id)
-    if achieve.exists():
-        try:
-            ach_id = int(ach_id)
-            ach_id = ach_id + 1
-            Achievement.objects.create(id=ach_id)
-            request.session['ach_id'] = ach_id
-
-        except:
-            pass
-
-    else:
-        pass
-    return redirect('counsellingUrls:dashboardPage', pk)
-
-
-def achievement_del(request, ach_id):
-    pk = request.session['pk']
-    achieve = Achievement.objects.get(id=ach_id)
-    achieve.delete()
-    return redirect('counsellingUrls:dashboardPage', pk)
-
-
-def education_add(request, ed_id):
-    pk = request.session['pk']
-
-    return redirect('counsellingUrls:dashboardPage', pk)
-
-
-def education_del(request, ed_id):
-    pk = request.session['pk']
-    edu = Education.objects.get(id=ed_id)
-    edu.delete()
-    return redirect('counsellingUrls:dashboardPage', pk)
-
-
-def experience_add(request, exp_id):
-    pk = request.session['pk']
-
-    return redirect('counsellingUrls:dashboardPage', pk)
-
-
-def experience_del(request, exp_id):
-    pk = request.session['pk']
-    expe = Experience.objects.get(id=exp_id)
-    expe.delete()
-    return redirect('counsellingUrls:dashboardPage', pk)
-
-
-def therapy_add(request, the_id):
-    pk = request.session['pk']
-
-    return redirect('counsellingUrls:dashboardPage', pk)
-
-
-def therapy_del(request, the_id):
-    pk = request.session['pk']
-    ther = Therapy.objects.create(id=the_id)
-    ther.delete()
-    return redirect('counsellingUrls:dashboardPage', pk)
-
-
-def speciality_add(request, spe_id):
-    pk = request.session['pk']
-
-    return redirect('counsellingUrls:dashboardPage', pk)
-
-
-def speciality_del(request, spe_id):
-    pk = request.session['pk']
-    spec = Specialities.objects.get(id=spe_id)
-    spec.delete()
-    return redirect('counsellingUrls:dashboardPage', pk)
 
 
 def website(request):

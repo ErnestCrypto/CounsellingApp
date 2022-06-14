@@ -21,12 +21,12 @@
                 <th>Action</th>
               </tr>
             </thead>
-
-            <tbody>
-              <!---->
+ <!---->
               {% for studentbook in studentbooks %}
               <!---->
               {% if studentbook.counsellor_user_id == pk|add:0%}
+            <tbody>
+             
               <tr>
                 <td>
                   <center>
@@ -47,14 +47,11 @@
                 <td>{{ studentbook.student_name }}</td>
                 <td>{{studentbook.date}}</td>
                 <td>
-                  {{ avaistudent.start_time }} - {{ avaistudent.end_time }}
+                  {{ studentbook.day }} - {{ studentbook.time}}
                 </td>
-                {% if studentbook_status %}
-                <td>{{ studentbook_status }}</td>
-                {% else %}
+                
                 <td>{{ studentbook.student_status }}</td>
-
-                {% endif %}
+                
                 <td>
                   <center>
                     <a href = {% url 'counsellingUrls:student_details' studentbook.student_id %} id="minelinks">
@@ -67,15 +64,13 @@
                   </a>
                   {% if studentbook.student_status == 'Pending'%}
                     <a
-                      href="{% url 'counsellingUrls:update' studentbook.id  studentbook.student_status  %}"
+                 href="{% url 'counsellingUrls:update' studentbook.id  studentbook.student_status  %}"
                     id="minelinks">
                       <button
                         class="btn btn-sm btn-outline-success edit_employee"
                         type="button"
                       >
-                        {% comment %}
-                        <a href="/url in urls.py//{{object.user_id}}" />
-                        {% endcomment %}
+                       
                         <i class="fas fa-check"></i>
                       </button>
                     </a>
@@ -87,9 +82,7 @@
                         class="btn btn-sm btn-outline-info edit_employee"
                         type="button"
                       >
-                        {% comment %}
-                        <a href="/url in urls.py//{{object.user_id}}" />
-                        {% endcomment %}
+                        
                         <i class="fas fa-times"></i>
                       </button>
                     </a>
@@ -105,56 +98,15 @@
                     </a>
                   </center>
                 </td>
-                {% else %}{% endif %} {% endfor %}
+                
               </tr>
+              
             </tbody>
+            {% else %}{% endif %} {% endfor %}
           </table>
 
-          <script type="text/javascript">
-            $(document).ready(function () {
-              $("#table").DataTable();
-            });
-          </script>
+         
         </div>
       </div>
-
-      <div id="footer6">
-        <a href="{% url 'counsellingUrls:adminPage' pk 'dashboard'%}" id="adminPage">
-          <i
-            class="fas fa-circle"
-            aria-hidden="true"
-            id="elementID6"
-            type="submit"
-            method="GET"
-          >
-          </i>
-        </a>
-
-        <a href="{% url 'counsellingUrls:settingsPage' pk %}" id="settingsPage">
-          <i
-            class="fas fa-circle"
-            aria-hidden="true"
-            id="elementID6"
-            type="submit"
-            method="GET"
-          >
-          </i>
-        </a>
-
-        <a
-          href="{% url 'counsellingUrls:dashboardPage' pk %}"
-          id="dashboardPage"
-        >
-          <i
-            class="fas fa-circle"
-            aria-hidden="true"
-            id="elementID6"
-            type="submit"
-            method="GET"
-          >
-          </i>
-        </a>
-      </div>
-    </div>
   </section>
 </body>

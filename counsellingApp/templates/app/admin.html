@@ -60,7 +60,7 @@
                 <i class="fas fa-book"></i>
               </div>
               <a
-                href="{% url 'counsellingUrls:settingsPage' pk %}"
+                href="{% url 'counsellingUrls:settingsPage' pk 'settings' %}"
                 class="card-box-footer"
                 id="settingsPage"
                 >View More <i class="fa fa-arrow-circle-right"></i
@@ -78,7 +78,7 @@
                 <i class="fa fa-graduation-cap" aria-hidden="true"></i>
               </div>
               <a
-                href="{% url 'counsellingUrls:dashboardPage' pk %}"
+                href="{% url 'counsellingUrls:dashboardPage' pk 'profile' %}"
                 class="card-box-footer"
                 >Edit profile <i class="fa fa-arrow-circle-right"></i
               ></a>
@@ -149,7 +149,6 @@
                       >Available</span
                     >
                     <div class="margin-10px-top font-size14" >{{t|remove_substr:"'" }}</div>
-                    {% comment %} <div class="font-size13 text-light-gray">Ivana Wong</div> {% endcomment %}
                   </td>
                 </tr>
                 {% endwith %}
@@ -167,93 +166,10 @@
       </div>
     </div>
   </div>
-  <div id="footer6">
-    <a href="{% url 'counsellingUrls:adminPage' pk 'dashboard'%}" id="adminPage">
-      <i
-        class="fas fa-circle"
-        aria-hidden="true"
-        id="elementID6"
-        type="submit"
-        method="GET"
-      >
-      </i>
-    </a>
-
-    <a href="{% url 'counsellingUrls:settingsPage' pk %}" id="settingsPage">
-      <i
-        class="fas fa-circle"
-        aria-hidden="true"
-        id="elementID6"
-        type="submit"
-        method="GET"
-      >
-      </i>
-    </a>
-
-    <a href="{% url 'counsellingUrls:dashboardPage' pk %}" id="dashboardPage">
-      <i
-        class="fas fa-circle"
-        aria-hidden="true"
-        id="elementID6"
-        type="submit"
-        method="GET"
-      >
-      </i>
-    </a>
-  </div>
 </section>
 
-{% comment %}
-<script>
-  document.getElementById("adminPage").addEventListener("click", myFunctions1);
-  document
-    .getElementById("settingsPage")
-    .addEventListener("click", myFunctions2);
-  document
-    .getElementById("settingPage")
-    .addEventListener("click", myFunctions2);
 
-  document
-    .getElementById("dashboardPage")
-    .addEventListener("click", myFunctions3);
 
-  function myFunctions1() {
-    document.getElementById("section6container1").style.display = "block";
-    document.getElementById("section6container2").style.display = "none";
-    document.getElementById("section6container3").style.display = "none";
-  }
-
-  function myFunctions2() {
-    document.getElementById("section6container1").style.display = "none";
-    document.getElementById("section6container2").style.display = "block";
-    document.getElementById("section6container3").style.display = "none";
-  }
-
-  function myFunctions3() {
-    document.getElementById("section6container1").style.display = "none";
-    document.getElementById("section6container2").style.display = "none";
-    document.getElementById("section6container3").style.display = "block";
-  }
-</script>
-{% endcomment %}
-
-<script>
-  // Get all the tabs
-  const tab = document.querySelectorAll("#elementID6");
-
-  tab.forEach((clickedTa) => {
-    // Add onClick event listener on each tab
-    clickedTa.addEventListener("click", () => {
-      // Remove the active class from all the tabs (this acts as a "hard" reset)
-      tab.forEach((ta) => {
-        ta.classList.remove("active");
-      });
-
-      // Add the active class on the clicked tab
-      clickedTa.classList.add("active");
-    });
-  });
-</script>
 
 <script>
   date = new Date();

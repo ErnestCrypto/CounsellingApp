@@ -14,6 +14,7 @@ urlpatterns = [
     path('logout/<int:pk>/', views.logout, name='logout'),
     path('index/<int:pk>/', views.index, name='indexPage'),
     path('bookings/<int:pk>/', views.bookings, name='bookings'),
+    path('delete/<int:booking_id>/', views.delete, name='delete'),
     path('counselor/<int:object_id>/', views.details, name="details"),
     path('about/', views.about, name='aboutPage'),
     path('blog_single/', views.blog_single, name='blog_singlePage'),

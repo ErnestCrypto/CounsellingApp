@@ -176,3 +176,10 @@ def bookings(request, pk):
         'counsellors': counsellors,
         'bookings': bookings,
     })
+
+
+def delete(request, booking_id):
+    pk = request.session['pk']
+    bookings = Bookings.objects.get(id=booking_id)
+    bookings.delete()
+    return redirect('bookingUrls:bookings', pk)

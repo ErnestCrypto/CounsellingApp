@@ -245,7 +245,8 @@
         </div>
         <br />
         <!---->
-        <div class="container-fluid bg-3 text-left">
+        <div class = "row">
+        <div class="col-sm-4">
           <h6 style="font-size: 20px;color:white;">Availability</h6>
           <hr style="margin: 0%" />
            <br />
@@ -256,169 +257,33 @@
         </div>
         <!---->
 
-        <div class="container-fluid bg-3 text-left">
+        <div class="col-sm-4">
           <h6 style="font-size: 20px;color:white;">Experience</h6>
           <hr style="margin: 0%" />
           <br />
           <br />
-          <div class="row">
-            {% for exp in expe%}
-            <div class="input-group control-group after-add-last">
-              <div class="col-sm-3">
-                <div
-                  class="control-group input-group"
-                  style="margin-bottom: 20px"
-                >
-                  {{ experience.experience_institution }}
-                  <!---->{% comment %}
-                  <input type="text" class="form-control" /> {% endcomment %}
-                  <label for="usr" style="background-color: white;padding:2%;">Institution</label>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div
-                  class="control-group input-group"
-                  style="margin-bottom: 20px"
-                >
-                  {{experience.experience_position}} {% comment %}
-                  <input type="text" class="form-control" /> {% endcomment %}
-                  <label for="usr" style="background-color: white;padding:2%;">Position</label>
-                </div>
-              </div>
-              <div class="col-sm-1">
-              <a href ="{% url 'counsellingUrls:experience_add' exp.id %}">
-
-                <button
-                  style="font-size: 20px"
-                  class="btn btn-info add-last"
-                  type="button"
-                >
-                  <i class="glyphicon glyphicon-plus"></i>
-                </button></a>
-              </div>
-               <div class="col-sm-1">
-              <a href ="{% url 'counsellingUrls:experience_del' exp.id %}">
-  
-                <button
-                    style="font-size: 20px"
-                    class="btn btn-danger remove"
-                    type="button"
-                  >
-                    <i class="glyphicon glyphicon-remove"></i>
-                  </button></a>
-                </div>
-            </div>
-            {% endfor %}
-           
-          </div>
+        
         </div>
         <!---->
         <!---->
-        <div class="container-fluid bg-3 text-left">
+        <div class="col-sm-4">
           <h6 style="font-size: 20px;color:white;">Education</h6>
           <hr style="margin: 0%" />
           <br />
           <br />
-          <div class="row">
-            {% for ed in edu %}
-            <div class="input-group control-group after-add-much">
-              <div class="col-sm-3">
-                <div
-                  class="control-group input-group"
-                  style="margin-bottom: 20px"
-                >
-                  {{ education.education_institution }}
-                  <!---->{% comment %}
-                  <input type="text" class="form-control" /> {% endcomment %}
-                  <label for="usr" style="background-color: white;padding:2%;">Institution</label>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div
-                  class="control-group input-group"
-                  style="margin-bottom: 20px"
-                >
-                  {{ education.year_completed }} {% comment %}
-                  <input type="text" class="form-control" /> {% endcomment %}
-                  <label for="usr" style="background-color: white;padding:2%;">Year completed</label>
-                </div>
-              </div>
-              <div class="col-sm-1">
-                 <a href ="{% url 'counsellingUrls:education_add' ed.id %}">
-               
-                <button
-                  style="font-size: 20px"
-                  class="btn btn-info add-much"
-                  type="button"
-                >
-                  <i class="glyphicon glyphicon-plus"></i>
-                </button></a>
-              </div>
-               <div class="col-sm-1">
-        <a href ="{% url 'counsellingUrls:education_del' ed.id %}">
-  
-                <button
-                    style="font-size: 20px"
-                    class="btn btn-danger remove"
-                    type="button"
-                  >
-                    <i class="glyphicon glyphicon-remove"></i>
-                  </button></a>
-                </div>
-            </div>
-            {% endfor %}
-           
+         
           </div>
         </div>
         <!---->
         <!---->
-        <div class="container-fluid bg-3 text-left">
+        <div class="col-sm-4">
           <h6 style="font-size: 20px;color:white;">Achievements</h6>
           <hr style="margin: 0%" />
           <br />
 
-          <div class="row">
-            {% for ach in achieve %}
-                              
-
-            <div class="input-group control-group after-add-more">
-              <div class="col-sm-4">
-                <div
-                  class="control-group input-group"
-                  style="margin-bottom: 20px"
-                >
-                  {{ achievement.awards }} {% comment %}
-                  <input
-                    name="addmore[]"
-                    id="ContactNo"
-                    type="text"
-                    class="form-control"
-                  />
-                  {% endcomment %}
-                  <div class="input-group-btn">
-                 <a href ="#">
-
-                    <button
-                      style="font-size: 20px"
-                      class="btn btn-info add-more"
-                      type="button"
-                    >
-                      <i class="glyphicon glyphicon-plus"></i>
-                    </button></a>
-                  </div>
-                   <div class="input-group-btn">
-                 <a href ="#">
-                  
-                    <button
-                    style="font-size: 20px"
-                    class="btn btn-danger remove"
-                    type="button"
-                  >
-                    <i class="glyphicon glyphicon-remove"></i>
-                  </button></a>
+                   
                 </div>
-                </div>
-              </div>                {% endfor %}
+              </div>                
 
             </div>
           </div>
@@ -426,53 +291,13 @@
         <!---->
 
         <!---->
-        <div class="container-fluid bg-3 text-left">
+        <div class="col-sm-4">
           <h6 style="font-size: 20px;color:white;">Therapies Offered</h6>
           <hr style="margin: 0%" />
           <br />
 
-          <div class="row">
-            {% for the in ther %}
-                              
-
-            <div class="input-group control-group after-add-plus">
-              <div class="col-sm-4">
-                <div
-                  class="control-group input-group"
-                  style="margin-bottom: 20px"
-                >
-                  {{ therapy.therapies_offered }} {% comment %}
-                  <input
-                    name="addmore[]"
-                    id="ContactNo"
-                    type="text"
-                    class="form-control"
-                  />
-                  {% endcomment %}
-                  <div class="input-group-btn">
-                 <a href ="{% url 'counsellingUrls:therapy_add' the.id %}">
-
-                    <button
-                      style="font-size: 20px"
-                      class="btn btn-info add-plus"
-                      type="button"
-                    >
-                      <i class="glyphicon glyphicon-plus"></i>
-                    </button></a>
-                  </div>
-                   <div class="input-group-btn">
-                 <a href ="{% url 'counsellingUrls:therapy_del' the.id %}">
- 
-                    <button
-                    style="font-size: 20px"
-                    class="btn btn-danger remove"
-                    type="button"
-                  >
-                    <i class="glyphicon glyphicon-remove"></i>
-                  </button></a>
-                </div>
-                </div>
-              </div>                {% endfor %}
+          
+            
 
             </div>
 
@@ -482,62 +307,19 @@
         <!---->
 
         <!---->
-        <div class="container-fluid bg-3 text-left">
+        <div class="col-sm-4">
           <h6 style="font-size: 20px;color:white;">Top Specialities</h6>
           <hr style="margin: 0%" />
           <br />
 
-          <div class="row">
-            {% for spe in spec %}
-                  
-
-            <div class="input-group control-group after-add-some">
-              <div class="col-sm-4">
-                <div
-                  class="control-group input-group"
-                  style="margin-bottom: 20px"
-                >
-                  {{ specialities.top_specialities }}
-                  <!---->{% comment %}
-                  <input
-                    name="addmore[]"
-                    id="ContactNo"
-                    type="text"
-                    class="form-control"
-                  />
-                  {% endcomment %}
-                  <div class="input-group-btn">
-                 <a href ="{% url 'counsellingUrls:speciality_add' spe.id %}">
-
-                    <button
-                      style="font-size: 20px"
-                      class="btn btn-info add-some"
-                      type="button"
-                    >
-                      <i class="glyphicon glyphicon-plus"></i>
-                    </button></a>
-                  </div>
-                  
-                   <div class="input-group-btn">
-                 <a href ="{% url 'counsellingUrls:speciality_del' spe.id %}">
-
-                    <button
-                    style="font-size: 20px"
-                    class="btn btn-danger remove"
-                    type="button"
-                  >
-                    <i class="glyphicon glyphicon-remove"></i>
-                  </button></a>
-                </div>
-                
-                </div>
-              </div>                {% endfor %}
+         
 
             </div>
 
           
           </div>
         </div>
+      </div>
         <!---->
 
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -549,40 +331,6 @@
       </form>
     </div>
     </div>
-  </diV>
-    <div id="footer6">
-    <a href="{% url 'counsellingUrls:adminPage' pk 'dashboard' %}" id="adminPage">
-      <i
-        class="fas fa-circle"
-        aria-hidden="true"
-        id="elementID6"
-        type="submit"
-        method="GET"
-      >
-      </i>
-    </a>
-
-    <a href="{% url 'counsellingUrls:settingsPage' pk %}" id="settingsPage">
-      <i
-        class="fas fa-circle"
-        aria-hidden="true"
-        id="elementID6"
-        type="submit"
-        method="GET"
-      >
-      </i>
-    </a>
-
-    <a href="{% url 'counsellingUrls:dashboardPage' pk %}" id="dashboardPage">
-      <i
-        class="fas fa-circle"
-        aria-hidden="true"
-        id="elementID6"
-        type="submit"
-        method="GET"
-      >
-      </i>
-    </a>
-  </div></section>
+  </diV></section>
 
 </body>

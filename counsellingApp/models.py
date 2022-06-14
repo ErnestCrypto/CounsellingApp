@@ -93,7 +93,7 @@ class BaseModel(models.Model):
         abstract = True
 
     def __str__(self):
-        return self.lastName
+        return self.lastName + ' ' + self.firstName
 
 
 class SuperCounsellor(BaseModel):

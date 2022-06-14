@@ -1,0 +1,368 @@
+
+  <!--section 3-->
+
+  <script>
+    document
+      .getElementById("profilePage")
+      .addEventListener("click", myFunction1);
+    document
+      .getElementById("notificationPage")
+      .addEventListener("click", myFunction2);
+    document.getElementById("indexPage").addEventListener("click", myFunction3);
+    document.getElementById("admin").addEventListener("click", myFunction4);
+    document
+      .getElementById("super_admin")
+      .addEventListener("click", myFunction5);
+
+    function myFunction5() {
+      document.getElementById("section4").style.display = "none";
+      document.getElementById("footer6").style.display = "none";
+
+      document.getElementById("section5").style.display = "none";
+      document.getElementById("section3").style.display = "none";
+      document.getElementById("section6").style.display = "none";
+      document.getElementById("section6container1").style.display = "none";
+      document.getElementById("section6container2").style.display = "none";
+      document.getElementById("section6container3").style.display = "none";
+      document.getElementById("section7").style.display = "block";
+    }
+
+    function myFunction1() {
+      document.getElementById("section4").style.display = "none";
+      document.getElementById("footer6").style.display = "none";
+
+      document.getElementById("section5").style.display = "none";
+      document.getElementById("section3").style.display = "block";
+      document.getElementById("section6").style.display = "none";
+      document.getElementById("section6container1").style.display = "none";
+      document.getElementById("section6container2").style.display = "none";
+      document.getElementById("section6container3").style.display = "none";
+      document.getElementById("section7").style.display = "none";
+    }
+
+    function myFunction2() {
+      document.getElementById("section3").style.display = "none";
+      document.getElementById("section4").style.display = "block";
+      document.getElementById("footer6").style.display = "none";
+
+      document.getElementById("section5").style.display = "none";
+      document.getElementById("section6").style.display = "none";
+      document.getElementById("section6container1").style.display = "none";
+      document.getElementById("section6container2").style.display = "none";
+      document.getElementById("section6container3").style.display = "none";
+      document.getElementById("section7").style.display = "none";
+    }
+
+    function myFunction3() {
+      document.getElementById("section3").style.display = "none";
+      document.getElementById("section4").style.display = "none";
+      document.getElementById("section5").style.display = "block";
+      document.getElementById("footer6").style.display = "none";
+
+      document.getElementById("section6").style.display = "none";
+      document.getElementById("section6container1").style.display = "none";
+      document.getElementById("section6container2").style.display = "none";
+      document.getElementById("section6container3").style.display = "none";
+      document.getElementById("section7").style.display = "none";
+    }
+
+    function myFunction4() {
+      document.getElementById("section3").style.display = "none";
+      document.getElementById("section4").style.display = "none";
+      document.getElementById("section5").style.display = "none";
+      document.getElementById("section6").style.display = "block";
+      document.getElementById("footer6").style.display = "flex";
+      document.getElementById("section6container1").style.display = "block";
+      document.getElementById("section6container2").style.display = "none";
+      document.getElementById("section6container3").style.display = "none";
+      document.getElementById("section7").style.display = "none";
+    }
+  </script>
+
+  <script>
+    // Get all the tabs
+    const tabs = document.querySelectorAll("#elementID");
+
+    tabs.forEach((clickedTab) => {
+      // Add onClick event listener on each tab
+      clickedTab.addEventListener("click", () => {
+        // Remove the active class from all the tabs (this acts as a "hard" reset)
+        tabs.forEach((tab) => {
+          tab.classList.remove("active");
+        });
+
+        // Add the active class on the clicked tab
+        clickedTab.classList.add("active");
+      });
+    });
+  </script>
+
+  <script>
+    function openNav() {
+      document.getElementById("section2").style.width = "410px";
+      document.getElementById("section2").style.display = "block";
+    }
+
+    function closeNav() {
+      document.getElementById("section2").style.width = "0";
+      document.getElementById("section2").style.display = "none";
+    }
+  </script>
+</body>
+
+
+{% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.firstName}}"
+                />
+                {% endcomment %}
+
+
+                 <!---->
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+
+                {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.lastName}}"
+                />
+                {% endcomment %}
+
+
+                <!---->
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %} {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.email}}"
+                />
+                {% endcomment %}
+
+
+                {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.occupation}}"
+                />
+                {% endcomment %}
+
+
+                 <!---->
+
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+
+{% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %} {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.contact}}"
+                />
+                {% endcomment %}
+
+
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %} {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.contact}}"
+                />
+                {% endcomment %}
+
+
+                {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.firstName}}"
+                />
+                {% endcomment %}
+
+                <!---->
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+                    {% comment %} <div class="font-size13 text-light-gray">Ivana Wong</div> {% endcomment %}
+{% comment %}
+<script>
+  document.getElementById("adminPage").addEventListener("click", myFunctions1);
+  document
+    .getElementById("settingsPage")
+    .addEventListener("click", myFunctions2);
+  document
+    .getElementById("settingPage")
+    .addEventListener("click", myFunctions2);
+
+  document
+    .getElementById("dashboardPage")
+    .addEventListener("click", myFunctions3);
+
+  function myFunctions1() {
+    document.getElementById("section6container1").style.display = "block";
+    document.getElementById("section6container2").style.display = "none";
+    document.getElementById("section6container3").style.display = "none";
+  }
+
+  function myFunctions2() {
+    document.getElementById("section6container1").style.display = "none";
+    document.getElementById("section6container2").style.display = "block";
+    document.getElementById("section6container3").style.display = "none";
+  }
+
+  function myFunctions3() {
+    document.getElementById("section6container1").style.display = "none";
+    document.getElementById("section6container2").style.display = "none";
+    document.getElementById("section6container3").style.display = "block";
+  }
+</script>
+{% endcomment %}
+
+
+
+<script>
+  // Get all the tabs
+  const tab = document.querySelectorAll("#elementID6");
+
+  tab.forEach((clickedTa) => {
+    // Add onClick event listener on each tab
+    clickedTa.addEventListener("click", () => {
+      // Remove the active class from all the tabs (this acts as a "hard" reset)
+      tab.forEach((ta) => {
+        ta.classList.remove("active");
+      });
+
+      // Add the active class on the clicked tab
+      clickedTa.classList.add("active");
+    });
+  });
+</script>
+
+
+ {% comment %}
+                        <a href="/url in urls.py//{{object.user_id}}" />
+                        {% endcomment %}
+
+
+
+                        {% comment %}
+                        <a href="/url in urls.py//{{object.user_id}}" />
+                        {% endcomment %}
+
+
+
+                        
+<script>
+  // Get all the tabs
+  const tab = document.querySelectorAll("#elementID6");
+
+  tab.forEach((clickedTa) => {
+    // Add onClick event listener on each tab
+    clickedTa.addEventListener("click", () => {
+      // Remove the active class from all the tabs (this acts as a "hard" reset)
+      tab.forEach((ta) => {
+        ta.classList.remove("active");
+      });
+
+      // Add the active class on the clicked tab
+      clickedTa.classList.add("active");
+    });
+  });
+</script>
+
+
+
+
+
+
+<script>
+  JSC.Chart('chartDiv', {
+   type: 'horizontal column',
+   series: [
+      {
+        
+         points: [
+         {% for book in books %}
+            {x: {{ book.student_name }}, y: {{ book.student_name }} },
+            {% endfor %}
+         ]
+      }
+   ]
+});
+
+
+
+
+  <div id="footer6">
+    <a href="{% url 'counsellingUrls:adminPage' pk 'dashboard'%}" id="adminPage">
+      <i
+        class="fas fa-circle"
+        aria-hidden="true"
+        id="elementID6"
+        type="submit"
+        method="GET"
+      >
+      </i>
+    </a>
+
+    <a href="{% url 'counsellingUrls:settingsPage' pk %}" id="settingsPage">
+      <i
+        class="fas fa-circle"
+        aria-hidden="true"
+        id="elementID6"
+        type="submit"
+        method="GET"
+      >
+      </i>
+    </a>
+
+    <a href="{% url 'counsellingUrls:dashboardPage' pk 'profile' %}" id="dashboardPage">
+      <i
+        class="fas fa-circle"
+        aria-hidden="true"
+        id="elementID6"
+        type="submit"
+        method="GET"
+      >
+      </i>
+    </a>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

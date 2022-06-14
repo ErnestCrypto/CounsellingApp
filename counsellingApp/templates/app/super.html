@@ -137,23 +137,6 @@
  {% endfor %}
 </section>
 
-<script>
-  // Get all the tabs
-  const tab = document.querySelectorAll("#elementID6");
-
-  tab.forEach((clickedTa) => {
-    // Add onClick event listener on each tab
-    clickedTa.addEventListener("click", () => {
-      // Remove the active class from all the tabs (this acts as a "hard" reset)
-      tab.forEach((ta) => {
-        ta.classList.remove("active");
-      });
-
-      // Add the active class on the clicked tab
-      clickedTa.classList.add("active");
-    });
-  });
-</script>
 
 <script>
   date = new Date();
@@ -164,19 +147,5 @@
     month + "/" + day + "/" + year;
 </script>
 
-<script>
-  JSC.Chart('chartDiv', {
-   type: 'horizontal column',
-   series: [
-      {
-        
-         points: [
-         {% for book in books %}
-            {x: {{ book.student_name }}, y: {{ book.student_name }} },
-            {% endfor %}
-         ]
-      }
-   ]
-});
 
 </script>
