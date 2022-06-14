@@ -19,7 +19,6 @@ def loginPage(request):
         student = Students.objects.all()
 
         if login.is_valid():
-            messages.success(request, 'Welcome to UGCounselling')
             arr_title = []
             arr_firstname = []
             arr_lastname = []
@@ -184,14 +183,8 @@ def addcounsellor(request, pk):
         if counsellor.is_valid():
             counsellor.save()
 
-            messages.success(
-                request, 'Counsellor has been created successfully')
-
         else:
             counsellor = CounsellorForm()
-
-            messages.error(
-                request, 'Failed to create counsellor account, please check your details')
 
     return render(request, 'app/add.html', {'profile': profile,
                                             'notification': notification,
@@ -398,7 +391,6 @@ def schedule(request, pk, day):
         hours = request.session['hours']
         minutes = request.session['minutes']
         request.session['day'] = day
-        messages.success(request, f"{box}")
         availiable = AvailabilityForm(request.POST)
         user = Counsellor.objects.get(user_id=pk)
         already = Availability.objects.filter(counsellor=user, day=day).first()
@@ -690,12 +682,12 @@ def delete(request, studentbook_id):
 
 def update(request, studentbook_id, studentbook_status):
     pk = request.session['pk']
+
     book_id = Bookings.objects.get(id=studentbook_id)
     bookings = Bookings.objects.all()
     books = BookingsForm(instance=book_id)
-
+    settings = 'red'
     for booking in bookings:
-        messages.success(request, f"{booking.id}-{studentbook_id}")
         if int(booking.id) == int(studentbook_id):
             if str(studentbook_status) == 'Pending':
                 booksave = books.save(commit=False)
@@ -707,7 +699,12 @@ def update(request, studentbook_id, studentbook_status):
                 booksave.student_status = 'Pending'
             booksave.save()
 
-    return redirect('counsellingUrls:settingsPage', pk)
+    return redirect('counsellingUrls:settingsPage', pk, settings)
+
+
+def mytimes(request, pk):
+    pk = request.session['pk']
+    return render(request, 'app/time.html', {'pk': pk})
 
 
 def website(request):

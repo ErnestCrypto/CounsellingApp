@@ -40,7 +40,7 @@
           id="objectsprofile"
           
         />
-        j
+        
      
       {% else %}
       <!----><img
@@ -62,17 +62,8 @@
           <div class="row" >
              <div class="col-sm-3">
               <div class="form-group">
-                {% comment %}
-                <input
-                  type="text"
-                  class="form-control"
-                  value="{{object.firstName}}"
-                />
-                {% endcomment %} {{counsellor.user_id}}
-                <!---->
-                {% comment %}
-                <input type="text" class="form-control" required />
-                {% endcomment %}
+                 {{counsellor.user_id}}
+               
 
                 <label for="usr">ID</label>
               </div>
@@ -80,18 +71,8 @@
 
              <div class="col-sm-3">
               <div class="form-group">
-                {% comment %}
-                <input
-                  type="text"
-                  class="form-control"
-                  value="{{object.firstName}}"
-                />
-                {% endcomment %} {{counsellor.pin}}
-                <!---->
-                {% comment %}
-                <input type="text" class="form-control" required />
-                {% endcomment %}
-
+                {{counsellor.pin}}
+                
                 <label for="usr">Pin</label>
               </div>
             </div>
@@ -104,34 +85,15 @@
 
             <div class="col-sm-3">
               <div class="form-group">
-                {% comment %}
-                <input
-                  type="text"
-                  class="form-control"
-                  value="{{object.firstName}}"
-                />
-                {% endcomment %} {{counsellor.firstName}}
-                <!---->
-                {% comment %}
-                <input type="text" class="form-control" required />
-                {% endcomment %}
-
+                {{counsellor.firstName}}
+               
                 <label for="usr">First Name</label>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                {% comment %}
-                <input
-                  type="text"
-                  class="form-control"
-                  value="{{object.lastName}}"
-                />
-                {% endcomment %} {{counsellor.lastName}}
-                <!---->
-                {% comment %}
-                <input type="text" class="form-control" required />
-                {% endcomment %}
+                 {{counsellor.lastName}}
+               
 
                 <label for="usr">Last Name</label>
               </div>
@@ -146,33 +108,15 @@
 
             <div class="col-sm-3">
               <div class="form-group">
-                {% comment %}
-                <input type="text" class="form-control" required />
-                {% endcomment %} {% comment %}
-                <input
-                  type="text"
-                  class="form-control"
-                  value="{{object.email}}"
-                />
-                {% endcomment %} {{counsellor.email}}
+                 {{counsellor.email}}
                 <label for="usr">Email</label>
               </div>
             </div>
 
             <div class="col-sm-3">
               <div class="form-group">
-                {% comment %}
-                <input
-                  type="text"
-                  class="form-control"
-                  value="{{object.occupation}}"
-                />
-                {% endcomment %} {{counsellor.occupation}}
-                <!---->
-
-                {% comment %}
-                <input type="text" class="form-control" required />
-                {% endcomment %}
+               {{counsellor.occupation}}
+                
 
                 <label for="usr">Occupation</label>
               </div>
@@ -180,31 +124,14 @@
 
             <div class="col-sm-3">
               <div class="form-group">
-                {% comment %}
-                <input type="text" class="form-control" required />
-                {% endcomment %} {% comment %}
-                <input
-                  type="text"
-                  class="form-control"
-                  value="{{object.contact}}"
-                />
-                {% endcomment %} {{counsellor.contact}}
+                 {{counsellor.contact}}
                 <label for="usr">Contact</label>
               </div>
             </div>
             <div class="col-sm-5" >
               <div class="form-group">
-                {% comment %}
-                <input
-                  type="text"
-                  class="form-control"
-                  value="{{object.firstName}}"
-                />
-                {% endcomment %} {{counsellor.profile }}
-                <!---->
-                {% comment %}
-                <input type="text" class="form-control" required />
-                {% endcomment %}
+                {{counsellor.profile }}
+                
 
                 <label for="usr">Update Profile Pic</label>
               </div>
@@ -223,112 +150,99 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="form-groups">
-                {% comment %}
-                <textarea type="text" class="form-control">
-{{object.about}}</textarea
-                >
-                {% endcomment %} {{ counsellor.about}}
-                <!---->
-
-                {% comment %}
-                <textarea
-                  type="text"
-                  class="form-control"
-                  id="usr"
-                  style="height: 200px"
-                  required
-                ></textarea>
-                {% endcomment %}
+                {{ counsellor.about}}
+               
               </div>
             </div>
           </div>
-        </div>
+        
         <br />
         <!---->
+
+  <button type="submit" class="btn" style="background:#281564;color:white;">Submit</button>
+        
+        {% else%}{% endif%} {% endfor%}
+        </div>
+      </form>
+
+      <div class = "container" style="padding-top:5%;padding-bottom:20%;">
         <div class = "row">
-        <div class="col-sm-4">
+        <div class="col-sm-4" style="padding-bottom:5%;">
           <h6 style="font-size: 20px;color:white;">Availability</h6>
           <hr style="margin: 0%" />
            <br />
-          <a href= "{% url 'counsellingUrls:availiablePage' pk  %}" class="btn btn-info add-last">
+          <a href= "{% url 'counsellingUrls:availiablePage' pk  %}" class="btn " style="background:#281564;color:white;">
             <i class="glyphicon glyphicon-plus"></i>Add Availability </a>
          
           <br />
         </div>
         <!---->
 
-        <div class="col-sm-4">
+        <div class="col-sm-4" style="padding-bottom:5%;">
           <h6 style="font-size: 20px;color:white;">Experience</h6>
           <hr style="margin: 0%" />
           <br />
-          <br />
-        
+          
+         <a href= "{% url 'counsellingUrls:availiablePage' pk  %}" class="btn " style="background:#281564;color:white;">
+            <i class="glyphicon glyphicon-plus"></i>Add Experience </a>
         </div>
         <!---->
         <!---->
-        <div class="col-sm-4">
+        <div class="col-sm-4" style="padding-bottom:5%;">
           <h6 style="font-size: 20px;color:white;">Education</h6>
           <hr style="margin: 0%" />
           <br />
-          <br />
          
+          <a href= "{% url 'counsellingUrls:availiablePage' pk  %}" class="btn " style="background:#281564;color:white;">
+            <i class="glyphicon glyphicon-plus"></i>Add Education </a>
           </div>
-        </div>
+        
         <!---->
         <!---->
-        <div class="col-sm-4">
+        <div class="col-sm-4" style="padding-bottom:5%;">
           <h6 style="font-size: 20px;color:white;">Achievements</h6>
           <hr style="margin: 0%" />
           <br />
-
+ <a href= "{% url 'counsellingUrls:availiablePage' pk  %}" class="btn " style="background:#281564;color:white;">
+            <i class="glyphicon glyphicon-plus"></i>Add Achievements </a>
                    
                 </div>
-              </div>                
-
-            </div>
-          </div>
-        </div>
+             
         <!---->
 
         <!---->
-        <div class="col-sm-4">
+        <div class="col-sm-4" style="padding-bottom:5%;">
           <h6 style="font-size: 20px;color:white;">Therapies Offered</h6>
           <hr style="margin: 0%" />
           <br />
 
           
-            
+             <a href= "{% url 'counsellingUrls:availiablePage' pk  %}" class="btn " style="background:#281564;color:white;">
+            <i class="glyphicon glyphicon-plus"></i>Add Therapies Offered </a>
 
             </div>
 
             
-          </div>
-        </div>
+         
         <!---->
 
         <!---->
-        <div class="col-sm-4">
+        <div class="col-sm-4" style="padding-bottom:5%;">
           <h6 style="font-size: 20px;color:white;">Top Specialities</h6>
           <hr style="margin: 0%" />
           <br />
 
-         
+          <a href= "{% url 'counsellingUrls:availiablePage' pk  %}" class="btn" style="background:#281564;color:white;">
+            <i class="glyphicon glyphicon-plus"></i>Add Specialities </a>
 
             </div>
 
           
-          </div>
-        </div>
-      </div>
+         
         <!---->
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-        {% comment %} {% if messages %}{% for message in messages %}
-        <div class="alert" alert-{{message.tags}}>{{ message}}</div>
-        {% endfor %}{% endif %} {% endcomment %}
-        <!---->
-        {% else%}{% endif%} {% endfor%}
-      </form>
+      
+    </div>
     </div>
     </div>
   </diV></section>

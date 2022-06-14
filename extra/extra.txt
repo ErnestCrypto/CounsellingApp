@@ -351,15 +351,156 @@
 
 
 
+{% comment %} {% if messages %}{% for message in messages %}
+        <div class="alert" alert-{{message.tags}}>{{ message}}</div>
+        {% endfor %}{% endif %} {% endcomment %}
+        <!---->
+
+
+        {% comment %}
+                <textarea type="text" class="form-control">
+{{object.about}}</textarea
+                >
+                {% endcomment %} 
+
+
+ <!---->
+
+                {% comment %}
+                <textarea
+                  type="text"
+                  class="form-control"
+                  id="usr"
+                  style="height: 200px"
+                  required
+                ></textarea>
+                {% endcomment %}
+
+
+
+
+<!---->
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+
+
+{% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.firstName}}"
+                />
+                {% endcomment %} 
+
+
+
+
+{% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %} {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.contact}}"
+                />
+                {% endcomment %}
+
+
+<!---->
+
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+
+
+
+ {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.occupation}}"
+                />
+                {% endcomment %} 
 
 
 
 
 
+{% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %} {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.email}}"
+                />
+                {% endcomment %}
+
+
+
+ <!---->
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+
+{% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.lastName}}"
+                />
+                {% endcomment %}
+
+
+ <!---->
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
 
 
 
 
+{% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.firstName}}"
+                />
+                {% endcomment %} 
+
+
+
+
+<!---->
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+
+ {% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.firstName}}"
+                />
+                {% endcomment %}
+
+ <!---->
+                {% comment %}
+                <input type="text" class="form-control" required />
+                {% endcomment %}
+
+{% comment %}
+                <input
+                  type="text"
+                  class="form-control"
+                  value="{{object.firstName}}"
+                />
+                {% endcomment %}
 
 
 

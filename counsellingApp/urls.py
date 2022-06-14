@@ -36,6 +36,8 @@ urlpatterns = [
          views.update, name="update"),
     path('availiability/<str:pk>/',
          views.availiablePage, name='availiablePage'),
+    path('mytimes/<int:pk>',
+         views.mytimes, name='mytimes'),
 
     path('details/<int:studentbook_student_id>',
          views.student_detail, name='student_details'),
