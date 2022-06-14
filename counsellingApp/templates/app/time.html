@@ -1,1 +1,60 @@
-{% include 'app/header.html'%}
+{% include 'app/header.html'%}{% load filter_tags %}{% load remove_substr %}
+<div style = "width: 100%; padding:2%; background:#281564" ></div>
+
+<div class="col-sm-4" style="padding-top:2%;padding-bottom:2%;">
+<a href = "{% url 'counsellingUrls:availiablePage' pk  %}" class="btn" style="background:#281564;color:white;">Back </a>
+</div>
+<div class="col-lg-12" style="padding-top:2%;height:100%;overflow:scroll">
+          <table id="table" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+            
+                <th>Day</th>
+                 <th>Slots</th>
+                <th>Hours</th>
+                <th>Minutes</th>
+                <th>Available Times</th>
+                <th>Delete</th>
+
+                
+              </tr>
+            </thead>
+
+            <tbody>
+                {% for availabile in availabiles %}
+                {% if availabile.user_id == pk %}
+              
+              <tr>                 
+                <td>{{availabile.day}}</td>
+                <td>{{availabile.slots}}</td>
+                <td>{{availabile.hours}}</td>
+                <td>{{availabile.minutes}}</td>
+
+                
+                <td>
+                    {% with availabile.availabletime|split:"," as times %}
+                {% for time in times %}
+                {% with time|remove_substr:"[" as tim %}
+                {% with tim|remove_substr:"]" as t %}
+                    
+    <p >{{t|remove_substr:"'" }}<p>
+                 {% endwith %}
+                {% endwith %}
+               {% endfor %}
+               {% endwith %}
+                </td>
+               
+                <td>
+                    <center>    
+<a href = "{% url 'counsellingUrls:deletetime' availabile.id %}" class="btn" style="background:#281564;color:white;">Delete </a>
+                    </center>
+                </td>   
+              </tr>
+              {% else %}
+              {% endif %}
+              
+                {% endfor %}
+            </tbody>
+          </table>
+
+        </div>

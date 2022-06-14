@@ -704,7 +704,20 @@ def update(request, studentbook_id, studentbook_status):
 
 def mytimes(request, pk):
     pk = request.session['pk']
-    return render(request, 'app/time.html', {'pk': pk})
+    availabiles = Availability.objects.all()
+
+    return render(request, 'app/time.html', {
+        'pk': pk,
+        'availabiles': availabiles
+
+    })
+
+
+def deletetime(request, availabile_id):
+    pk = request.session['pk']
+    availabile = Availability.objects.get(id=availabile_id)
+    availabile.delete()
+    return redirect('counsellingUrls:mytimes', pk)
 
 
 def website(request):

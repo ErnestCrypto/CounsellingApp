@@ -132,7 +132,6 @@ transform: scale(1.1, 1.1);
         <a href="{% url 'counsellingUrls:days' pk 'FRIDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> FRIDAY</span></a><br />
         <a href="{% url 'counsellingUrls:days' pk 'SATURDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> SATURDAY</span></a><br />
         <a href="{% url 'counsellingUrls:days' pk 'SUNDAY'%}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> SUNDAY</span></a><br />
-         <a href="{% url 'counsellingUrls:mytimes' pk %}" id="able"><span><i class="fas fa-cloud-sun" id = "ableicon"></i></span><span id = "ables"> My Times</span></a><br />
 
       </div>
             <a href= "{% url 'counsellingUrls:dashboardPage' pk 'profile' %} " style="color:white;">Back</a>
@@ -141,21 +140,30 @@ transform: scale(1.1, 1.1);
     </div>
     </div>
     
+  
     {% if dy%}
     {{dy}}
     {% else %}{% endif %}
+   
+
+    
 
     <div class="col-sm-10" style="padding: 2%; padding-right: 3%;">
      
     <div class="col-sm-12" id="avapad">
-          <div class = "col-sm-12" style="padding: 2%;">
+      <div class = "row">
+          <div class = "col-sm-9" style="padding: 2%;">
        {% if day %}
        <p id = "day">{{day}}</p>
        {% else %}
       <p id = "day">Please choose a day from the menu</p>
        {% endif%}
-       <hr>
-     
+       
+      </div>
+      <div class="col-sm-2" style="padding-top:2%;font-size:19px;">
+<a href="{% url 'counsellingUrls:mytimes' pk %}" style="text-decoration: none;" ><span><i class="fas fa-cloud-sun" ></i></span><span> My Times</span></a><br />
+
+      </div>
       </div>
  <form action = "{% url 'counsellingUrls:times' pk day%}" method = "post">
         {% csrf_token %}
@@ -188,7 +196,6 @@ transform: scale(1.1, 1.1);
                 </div>
                 <div class="col-sm-3">
                 <div class="form-group">
-                  {% comment %} {{availiable.minutes}} {% endcomment %}
                   <select class="form-control" id = 'focusid' name="minutes">
                     {% for i,t in  m_option %}
                     <option value = {{i}}>{{t}}</option>
@@ -198,13 +205,7 @@ transform: scale(1.1, 1.1);
 
                     </div>
                     </div>
-                    {% comment %} <div class="col-sm-3">
-                <div class="form-group">
-                  {{availiable.breaks}}
-                <label for="usr"> Break </label>
-
-                    </div>
-                    </div> {% endcomment %}
+                    
                    <div class="col-sm-3" style="padding-bottom:2%;">
      <button type="submit" class="btn " style="background:#281564;color:white;">
        <i class="fa fa-clock"></i> 
@@ -233,7 +234,7 @@ transform: scale(1.1, 1.1);
                        <div class = "fade-in-image" style = "width:100%;padding-left:30%;padding-right:5%">
                         <div class = "col-sm-8">
                           <center>
-                 <p class = "alert alert-success"> Your time shedule has been recorded successfully.</p>
+                 <p class = "alert alert-success"> Your time shedule has been recorded successfully. Click on My Times to view</p>
                           </center>       
                 </div> 
                         </div> 
@@ -285,7 +286,7 @@ transform: scale(1.1, 1.1);
                             <!---->
                               </div> 
                               <br><br>
-                              <div style = "padding-bottom:5%;">
+                              <div style = "padding-bottom:10%;">
       </div>
           <button class="btn btn-success" type="submit">submit</button>
 
