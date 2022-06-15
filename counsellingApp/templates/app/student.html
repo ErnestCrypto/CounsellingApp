@@ -4,7 +4,7 @@
           <div class = "col-sm-12">
               <div class="col-sm-12">
                   <div class="col-sm-1">
-              <a href ="{% url  'counsellingUrls:settingsPage' pk%}" id="minelinks">
+              <a href ="{% url  'counsellingUrls:settingsPage' pk 'settings' %}" id="minelinks">
                   <i class = "fa fa-angle-left" id="fontstudent" ></i></a>
                   </div></div>
               {% for student in students %}
@@ -37,7 +37,7 @@
                    {{ notifications.subject}}
               <p>Send a message to {{ student.firstName}} {{ student.lastName}} </p>
                {{ notifications.text }}
-
+                    <br>
                    <button type = "submit" class = "btn btn-primary">SEND</buton>
                    
                </form>
