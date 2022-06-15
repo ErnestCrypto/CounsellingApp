@@ -15,13 +15,14 @@
 
 <body>
   <section id="section6container3" >
-    <div style="height:98%;" >
+    <div class = "container" style="background:white; padding:1%;overflow:hidden;">
+    <div style="height:98%;">
     <div class ="col-sm-12">
       {% for object in objects%}<!---->
       {% if object.user_id == pk|add:0 %}
       <div class="container text-left">
         <div class="col-sm-3">
-          <h6 style="font-size: 20px;color:white;">{{object.firstName}} Profile - {{object.user_id}}</h6>
+          <h6 style="font-size: 20px;color:black;">{{object.firstName}} Profile - {{object.user_id}}</h6>
           
         </div>
       </div>
@@ -136,6 +137,11 @@
                 <label for="usr">Update Profile Pic</label>
               </div>
             </div>
+            <div class="col-sm-2" >
+              <div class="form-group">
+              <a href="{% url 'counsellingUrls:clear' pk %}" class="btn" style="background:#281564;color:white;">Clear profile picture</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -143,7 +149,7 @@
         <!---->
 
         <div class="container-fluid bg-3 text-left">
-          <h6 style="font-size: 20px;color:white;">About</h6>
+          <h6 style="font-size: 20px;color:black;">About</h6>
           <hr style="margin: 0%" />
           <br />
 
@@ -168,7 +174,7 @@
       <div class = "container" style="padding-top:5%;padding-bottom:20%;">
         <div class = "row">
         <div class="col-sm-11" style="padding-bottom:5%;">
-          <h6 style="font-size: 20px;color:white;">Availability</h6>
+          <h6 style="font-size: 20px;color:black;">Availability</h6>
           <hr style="margin: 0%" />
            <br />
           <a href= "{% url 'counsellingUrls:availiablePage' pk  %}" class="btn " style="background:#281564;color:white;">
@@ -181,6 +187,8 @@
     </div>
     </div>
     </div>
-  </diV></section>
+  </diV>
+</div>
+</section>
 
 </body>

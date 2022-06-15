@@ -1,16 +1,17 @@
 {% include 'app/header.html' %}{% include 'app/home.html'%} {% load static%}
   <body>
       <section id ="section10">
-          <div class = "col-sm-12">
+          <div class = "col-sm-12" style="background:white; padding:1%;overflow:hidden;">
               <div class="col-sm-12">
                   <div class="col-sm-12">
-              <a href ="{% url  'counsellingUrls:settingsPage' pk 'settings' %}" id="minelinks">
-                  <i class = "fa fa-angle-left" id="fontstudent"  style="color:white;"></i></a>
+              <a href ="{% url  'counsellingUrls:settingsPage' pk 'settings' %}" id="minelinks" class="btn" style="background:#281564;color:white;">
+                 Back</i></a>
                   </div></div>
+                  <br><br><br>
               {% for student in students %}
-              <div class="row">
+              <div class="row" style="overflow:hidden">
                 {% if student.student_id == studentbook_student_id|add:0%}      
-                <div class = "col-sm-12 bg-light-gray" style="height:100%;">
+                <div class = "col-sm-12 " style="height:100%;padding-bottom:10%;">
                      <center>
                     <div class="col-sm-4">
                     {% if student.profile %}
@@ -21,26 +22,30 @@
                     
                     {% endif %}
                     </div> </center>
-                <div class="row">
-            <div class="col-sm-4">
-            <p id = "mystudent">NAME: {{ student.firstName}} {{ student.lastName}}</p>
+                    <div class="container" >
+                <div class="row" >
+            <div class="col-sm-4" style="padding-top:2%;">
+            <p id = "mystudent">FIRSTNAME: {{ student.firstName}}</p>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4" style="padding-top:2%;">
+            <p id = "mystudent">LASTNAME: {{ student.lastName}}</p>
+            </div>
+            <div class="col-sm-4" style="padding-top:2%;">
             <p id = "mystudent">COURSE: {{ student.course}}</p>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4" style="padding-top:2%;">
             <p id = "mystudent">LEVEL: {{ student.level}}</p>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4" style="padding-top:2%;">
             <p id = "mystudent">AGE: {{ student.age}}</p>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4" style="padding-top:2%;">
              <p id = "mystudent">CONTACT: 0{{ student.contact}}</p>
              </div>
-             <div class="col-sm-4">
+             <div class="col-sm-4" style="padding-top:2%;">
             <p id = "mystudent">EMAIL: {{ student.email}}</p>
             </div>
-            </div>
+            </div> </div>
              
               {% else %}{% endif %}
               {% endfor %}

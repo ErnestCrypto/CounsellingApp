@@ -4,7 +4,7 @@
 {% load static%}
 
 <section id="section6container1" class="col-sm-10">
-  <div>
+  <div class="container" style="background:white; padding:1%;width:95%;">
     <div> {% for object in objects%}<!---->
         {% if object.user_id == pk|add:0 %}
       <div id="toprightcontent6">
@@ -30,7 +30,7 @@
         {% endif %}
 
         <div class="dropdown" id="profiletext">
-          <p class="dropbtn" style="font-size: 20px;color:white;">
+          <p class="dropbtn" style="font-size: 20px;color:#281564;">
             {{object.user_id}}
 
             <i class="fas fa-caret-down"></i>
@@ -46,7 +46,7 @@
         </div>
       </div>
       <div id="midcontent6">
-        <p id="midtext">Profile</p>
+        <p id="midtext" style="color:#281564">Profile</p>
       </div>
       <div class="col-sm-12">
         <div class="row">

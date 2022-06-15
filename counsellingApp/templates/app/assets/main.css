@@ -128,9 +128,9 @@ font-family: "Open Sans", sans-serif;
 
 }
 #section6container1 {
-    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    {% comment %} background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");    {% endcomment %}
         background-size: cover;
-
+background:#F8F8F8;
     background-repeat: no-repeat;
     padding: 1%;
    
@@ -148,10 +148,12 @@ font-family: "Open Sans", sans-serif;
 }
 
 #section6container2 {
-    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    {% comment %} background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");    {% endcomment %}
     background-size: cover;
     background-repeat: no-repeat;
     padding: 1%;
+    background:#F8F8F8;
+
        {% comment %} width:85%; {% endcomment %}
     height:100%;
 
@@ -163,8 +165,10 @@ font-family: "Open Sans", sans-serif;
 }
 
 #section6container3 {
-    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    {% comment %} background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");    {% endcomment %}
     background-size: cover;
+        background:#F8F8F8;
+
     background-repeat: no-repeat;
     padding: 1%;
        width:83.3%;
@@ -231,9 +235,10 @@ font-family: "Open Sans", sans-serif;
 
 
 #section10{
-    background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");   
+    {% comment %} background : url("https://www.teahub.io/photos/full/90-905705_free-geometry-high-quality-background-id-high-resolution.jpg");    {% endcomment %}
     background-size: cover;
     background-repeat: no-repeat;
+    background:#F8F8F8;
  display: block;
     width: 83.3%;
     float: right;
@@ -1970,7 +1975,7 @@ body {
     margin: 0;
     font-weight: bold;
 font-family: "Open Sans", sans-serif;
-    color:rgba(255,255,255,0.9);
+    color:#281564;
 }
 
 #profilepic6 {

@@ -387,9 +387,9 @@ def schedule(request, pk, day):
         start = request.POST.getlist('start_time')
         end = request.POST.getlist('end_time')
         box = request.POST.getlist('checkbox')
-        subTime = request.session['subTime']
         hours = request.session['hours']
         minutes = request.session['minutes']
+        slots = request.session['slots']
         request.session['day'] = day
         availiable = AvailabilityForm(request.POST)
         user = Counsellor.objects.get(user_id=pk)
@@ -397,13 +397,13 @@ def schedule(request, pk, day):
 
         if already:
             availiable = AvailabilityForm(request.POST, instance=already)
-
             if availiable.is_valid():
                 myTime = availiable.save(commit=False)
                 if hours or minutes:
                     myTime.availabletime = box
                     myTime.startime = start
                     myTime.endtime = end
+                    myTime.slots = slots
                     myTime.counsellor = user
                     myTime.user_id = pk
                     myTime.hours = hours
@@ -411,8 +411,9 @@ def schedule(request, pk, day):
                     myTime.day = day
                     myTime.save()
                     instruction = 1
-                else:
-                    instruction = 3
+
+            else:
+                instruction = 3
 
         else:
             availiable = AvailabilityForm(request.POST)
@@ -425,13 +426,14 @@ def schedule(request, pk, day):
                     myTime.counsellor = user
                     myTime.user_id = pk
                     myTime.hours = hours
+                    myTime.slots = slots
                     myTime.minutes = minutes
                     myTime.day = day
                     myTime.save()
                     instruction = 1
 
-                else:
-                    instruction = 3
+            else:
+                instruction = 3
 
         day = request.session['day']
 
@@ -624,7 +626,7 @@ def student_detail(request, studentbook_student_id):
     pk = request.session['pk']
     notifications = NotificationsForm()
     studentbook_student_id = studentbook_student_id
-    dashboard = 'red'
+    settings = 'red'
     if request.method == 'POST':
         notifications = NotificationsForm(request.POST)
         ob = CounsellorForm(request.POST)
@@ -666,7 +668,7 @@ def student_detail(request, studentbook_student_id):
     return render(request, 'app/student.html', {
         'students': students,
         'objects': objects,
-        'dashboard': dashboard,
+        'settings': settings,
         'pk': pk,
         'notifications': notifications,
         'studentbook_student_id': studentbook_student_id,
@@ -723,3 +725,15 @@ def deletetime(request, availabile_id):
 def website(request):
     pk = request.session['pk']
     return redirect('bookingUrls:indexPage', pk)
+
+
+def clear(request, pk):
+    profile = 'red'
+    counsellor = Counsellor.objects.filter(user_id=pk).first()
+
+    try:
+        counsellor_profile = counsellor.profile
+        counsellor_profile.delete()
+    except:
+        pass
+    return redirect('counsellingUrls:dashboardPage', pk, profile)

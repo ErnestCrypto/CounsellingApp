@@ -44,6 +44,7 @@ urlpatterns = [
     path('availiability/<str:pk>/<str:day>/', views.days, name='days'),
     path('availiability/<str:pk>/<str:day>/times', views.times, name='times'),
     path('deletetime/<str:availabile_id>', views.deletetime, name='deletetime'),
+    path('clear/<str:pk>', views.clear, name='clear'),
 
 
 ]

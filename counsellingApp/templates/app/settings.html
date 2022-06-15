@@ -4,10 +4,10 @@
 
 <body>
   <section id="section6container2">
-    <div class="col">
+    <div class="col" style="background:white; padding:1%;overflow:hidden;">
       <div style="height: 98%; overflow-x: scroll; overflow-y: scroll">
         <div class="col-sm-12">
-          <h6>MANAGE BOOKINGS</h6>
+          <h5>MANAGE BOOKINGS</h5>
           <hr />
           <table id="table" class="table table-bordered table-striped">
             <thead>
@@ -104,7 +104,11 @@
             </tbody>
             {% else %}{% endif %} {% endfor %}
           </table>
-
+<script type="text/javascript">
+            $(document).ready(function () {
+              $("#table").DataTable();
+            });
+          </script>
          
         </div>
       </div>

@@ -61,7 +61,6 @@ class ExperienceForm(ModelForm):
 class AvailabilityForm(ModelForm):
     class Meta:
         model = Availability
-        exclude = ['counsellor', ]
         fields = "__all__"
         widgets = {
             'breaks': forms.Select(attrs={'class': 'form-control', 'id': 'focusid', }),
