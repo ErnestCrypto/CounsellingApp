@@ -183,3 +183,8 @@ def delete(request, booking_id):
     bookings = Bookings.objects.get(id=booking_id)
     bookings.delete()
     return redirect('bookingUrls:bookings', pk)
+
+
+def dashboard(request, pk):
+    profile = 'red'
+    return redirect('counsellingUrls:dashboardPage', pk, profile)

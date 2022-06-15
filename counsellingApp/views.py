@@ -394,7 +394,7 @@ def schedule(request, pk, day):
         availiable = AvailabilityForm(request.POST)
         user = Counsellor.objects.get(user_id=pk)
         already = Availability.objects.filter(counsellor=user, day=day).first()
-
+        instruction = 3
         if already:
             availiable = AvailabilityForm(request.POST, instance=already)
             if availiable.is_valid():

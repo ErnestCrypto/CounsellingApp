@@ -22,6 +22,7 @@ urlpatterns = [
     path('contact/', views.contact, name='contactPage'),
     path('counselor/', views.counselor, name='counselorPage'),
     path('services/', views.services, name='servicesPage'),
+    path('dashboard/<str:pk>/', views.dashboard, name='dashboard'),
 
 ]
 

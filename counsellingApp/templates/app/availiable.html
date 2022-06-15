@@ -225,28 +225,33 @@ transform: scale(1.1, 1.1);
                         </p>
                         <hr>
                         {% if instruction == 2  %}
+                         <div class="col-sm-12" >
                         <p class = "alert alert-info">After selecting a day,kindly select your prefered slot number, number of hours 
                           and the corresponding 
                           minutes you would like to spend in your meeting for that particular day
                            after which you can click on the generate time button to generate your 
                            availiable time intervals for that day.
                         </p>
+                        </div>
                         {% elif instruction == 1 %}
+                         <div class="col-sm-12" >
                        <div class = "fade-in-image" style = "width:100%;padding-left:30%;padding-right:5%">
                         <div class = "col-sm-8">
                           <center>
                  <p class = "alert alert-success"> Your time shedule has been recorded successfully. Click on My Times to view</p>
                           </center>       
                 </div> 
-                        </div> 
+                        </div>  </div> 
 
                         {% elif instruction == 3 %}
+                                                 <div class="col-sm-12" >
+
                        <div class = "fade-in-image" style = "width:100%;padding-left:25%;padding-right:10%">
                         <div class = "col-sm-9">
                           <center>
                  <p class = "alert alert-danger"> Sorry. An error is keeping us from saving your time schedule</p>
                           </center></div> 
-                        </div> 
+                        </div> </div> 
                         
                        {% endif %}
                                                    
@@ -287,9 +292,8 @@ transform: scale(1.1, 1.1);
                             <!---->
                               </div> 
                               <br><br>
-                              <div style = "padding-bottom:10%;">
+                              <div style = "padding-top:1%;">
         <button class="btn btn-success" type="submit">submit</button>
-
       </div>
 
     </form>
