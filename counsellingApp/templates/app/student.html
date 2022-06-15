@@ -3,46 +3,45 @@
       <section id ="section10">
           <div class = "col-sm-12">
               <div class="col-sm-12">
-                  <div class="col-sm-1">
+                  <div class="col-sm-12">
               <a href ="{% url  'counsellingUrls:settingsPage' pk 'settings' %}" id="minelinks">
-                  <i class = "fa fa-angle-left" id="fontstudent" ></i></a>
+                  <i class = "fa fa-angle-left" id="fontstudent"  style="color:white;"></i></a>
                   </div></div>
               {% for student in students %}
               <div class="row">
                 {% if student.student_id == studentbook_student_id|add:0%}      
-                <div class = "col-sm-4 bg-light-gray" style="height:100%;">
-                    <div class="col-sm-8">
+                <div class = "col-sm-12 bg-light-gray" style="height:100%;">
+                     <center>
+                    <div class="col-sm-4">
                     {% if student.profile %}
                     <img src ="{student.profile.url}" alt="profile" id="profilemine"/>
                     {% else %}
+                   
                     <img src ="{% static 'media/download.png' %}" alt="profile" id="profilemine"/>
+                    
                     {% endif %}
-                    </div>
-                    <div class="col-sm-12 ">
+                    </div> </center>
+                <div class="row">
+            <div class="col-sm-4">
             <p id = "mystudent">NAME: {{ student.firstName}} {{ student.lastName}}</p>
+            </div>
+            <div class="col-sm-4">
             <p id = "mystudent">COURSE: {{ student.course}}</p>
+            </div>
+            <div class="col-sm-4">
             <p id = "mystudent">LEVEL: {{ student.level}}</p>
+            </div>
+            <div class="col-sm-4">
             <p id = "mystudent">AGE: {{ student.age}}</p>
+            </div>
+            <div class="col-sm-4">
              <p id = "mystudent">CONTACT: 0{{ student.contact}}</p>
+             </div>
+             <div class="col-sm-4">
             <p id = "mystudent">EMAIL: {{ student.email}}</p>
             </div>
-                </div>
-              
-
-             <div class = "col-sm-8">
-                 <div class = "col-sm-12">
-               <form method = "post" action ="">
-                   {% csrf_token %}
-                   <p>Add a subject</p>
-                   {{ notifications.subject}}
-              <p>Send a message to {{ student.firstName}} {{ student.lastName}} </p>
-               {{ notifications.text }}
-                    <br>
-                   <button type = "submit" class = "btn btn-primary">SEND</buton>
-                   
-               </form>
             </div>
-            </div>
+             
               {% else %}{% endif %}
               {% endfor %}
                 </div>
